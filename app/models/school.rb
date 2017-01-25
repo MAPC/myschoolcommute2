@@ -23,3 +23,4 @@ class School < ActiveRecord::Base
 end
 
 # https://mapzen.com/documentation/mobility/isochrone/api-reference/
+# https://matrix.mapzen.com/isochrone?json={"locations":[{"lat":"42.118476","lon":"-70.953508"}],"costing":"pedestrian","denoise":0.3,"polygons":true,"generalize":50,"costing_options":{"pedestrian":{"use_ferry":0}},"contours":[{"time":10},{"time":20},{"time":30},{"time":40}]}
