@@ -1,19 +1,70 @@
 class School < ActiveRecord::Base
   belongs_to :district
-  has_many :survey_sets
+  has_many :surveys
 
   scope :with_active_surveys, -> () {
-    self.joins(:survey_sets)
-        .where('survey_sets.start < ? AND survey_sets.end > ?', DateTime.now, DateTime.now)
+    self.joins(:surveys)
+        .where('surveys.begin < ? AND surveys.end > ?', DateTime.now, DateTime.now)
   }
 
   def has_active_survey?
-    survey_sets.where('start < ? AND end > ?', now, now).present?
+    surveys.where('begin < ? AND end > ?', now, now).present?
   end
 
   private 
 
   def walkshed_generator
+    '''
+        WITH paths as (#{})
+        SELECT ST_AsEWKT(
+            ST_MakeValid(
+                ST_Transform(
+                    ST_Union(
+                        array(
+                            select ST_BUFFER(geometry, 100) from (#{}) as BIKE
+                        )
+                    ),
+                    26986
+                )
+            )
+        ) as _20,
+        ST_AsEWKT(
+            ST_MakeValid(
+                ST_Transform(
+                    ST_Union(
+                        array(
+                            select ST_BUFFER(geometry, 100) from paths where cost < 1.5
+                        )
+                    ),
+                    26986
+                )
+            )
+        ) as _15,
+        ST_AsEWKT(
+            ST_MakeValid(
+                ST_Transform(
+                    ST_Union(
+                        array(
+                            select ST_BUFFER(geometry, 100) from paths where cost < 1.0
+                        )
+                    ),
+                    26986
+                )
+            )
+        ) as _10,
+        ST_AsEWKT(
+            ST_MakeValid(
+                ST_Transform(
+                    ST_Union(
+                        array(
+                            select ST_BUFFER(geometry, 100) from paths where cost < 0.5
+                        )
+                    ),
+                    26986
+                )
+            )
+        ) as _05
+    '''
   end
 
   def now
