@@ -15,7 +15,6 @@ ActiveRecord::Schema.define(version: 20170208214215) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "postgis"
 
   create_table "districts", force: :cascade do |t|
     t.string   "name"
@@ -34,43 +33,6 @@ ActiveRecord::Schema.define(version: 20170208214215) do
   end
 
   add_index "schools", ["district_id"], name: "index_schools_on_district_id", using: :btree
-
-  create_table "spatial_ref_sys", primary_key: "srid", force: :cascade do |t|
-    t.string  "auth_name", limit: 256
-    t.integer "auth_srid"
-    t.string  "srtext",    limit: 2048
-    t.string  "proj4text", limit: 2048
-  end
-
-  create_table "survey_child_survey", id: false, force: :cascade do |t|
-    t.integer  "id",                       null: false
-    t.string   "grade",        limit: 255, null: false
-    t.string   "to_school",    limit: 255, null: false
-    t.string   "dropoff",      limit: 255, null: false
-    t.string   "from_school",  limit: 255, null: false
-    t.string   "pickup",       limit: 255, null: false
-    t.integer  "school_id",                null: false
-    t.string   "street",       limit: 255, null: false
-    t.string   "cross_st",     limit: 255, null: false
-    t.string   "nr_vehicles",  limit: 255, null: false
-    t.string   "nr_licenses",  limit: 255, null: false
-    t.string   "distance",     limit: 255, null: false
-    t.datetime "created",                  null: false
-    t.string   "modified",     limit: 255, null: false
-    t.string   "st_astext",    limit: 255, null: false
-    t.integer  "schid",                    null: false
-    t.integer  "shed",                     null: false
-    t.string   "current_time", limit: 255, null: false
-  end
-
-# Could not dump table "survey_intersection" because of following StandardError
-#   Unknown type 'geometry' for column 'geometry'
-
-# Could not dump table "survey_network_bike" because of following StandardError
-#   Unknown type 'geometry' for column 'geometry'
-
-# Could not dump table "survey_network_walk" because of following StandardError
-#   Unknown type 'geometry' for column 'geometry'
 
   create_table "survey_responses", force: :cascade do |t|
     t.decimal  "latitude"
