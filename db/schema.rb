@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -15,6 +14,8 @@ ActiveRecord::Schema.define(version: 20170208214215) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "postgis"
+  enable_extension "pgrouting"
 
   create_table "districts", force: :cascade do |t|
     t.string   "name"
@@ -25,14 +26,12 @@ ActiveRecord::Schema.define(version: 20170208214215) do
   create_table "schools", force: :cascade do |t|
     t.string   "name"
     t.string   "schid"
-    t.decimal  "latitude"
-    t.decimal  "longitude"
+    t.geometry "geometry",    limit: {:srid=>4326, :type=>"point"}
     t.integer  "district_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
+    t.index ["district_id"], name: "index_schools_on_district_id", using: :btree
   end
-
-  add_index "schools", ["district_id"], name: "index_schools_on_district_id", using: :btree
 
   create_table "survey_responses", force: :cascade do |t|
     t.decimal  "latitude"
@@ -182,9 +181,8 @@ ActiveRecord::Schema.define(version: 20170208214215) do
     t.string   "nr_licenses_19"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.index ["survey_id"], name: "index_survey_responses_on_survey_id", using: :btree
   end
-
-  add_index "survey_responses", ["survey_id"], name: "index_survey_responses_on_survey_id", using: :btree
 
   create_table "surveys", force: :cascade do |t|
     t.date     "begin"
@@ -192,9 +190,8 @@ ActiveRecord::Schema.define(version: 20170208214215) do
     t.integer  "school_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["school_id"], name: "index_surveys_on_school_id", using: :btree
   end
-
-  add_index "surveys", ["school_id"], name: "index_surveys_on_school_id", using: :btree
 
   add_foreign_key "schools", "districts"
   add_foreign_key "survey_responses", "surveys"

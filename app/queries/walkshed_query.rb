@@ -5,14 +5,30 @@ class WalkshedQuery
   end
 
   def execute
-    begin
+    # begin
       ActiveRecord::Base.connection.execute(walkshed_generation_sql(@school_id))
-    rescue
-    ensure
-    end
+    # rescue
+    # ensure
+    # end
   end
 
   # private
+
+  # this is confirmed functional, with LOTS of idiosyncratic dependencies server-side.
+  # https://github.com/PostgresApp/PostgresApp/issues/54
+  # on Mac with postgres app, we must run postgres -D /Users/mgardner/Library/Application\ Support/Postgres/var-9.6
+  # just so that the server process can actually find the pogrouting functions
+
+  # in production, the db server is linux, and this may be less of an issue
+
+  # the network data has been projected to - SOMETHING - (not just 0), which is very important for the
+  # query, which tries to set the SRID on-the-fly. 
+
+  # the schema must also use float8, not float4. some pgrouting features are very strict about typecasting.
+  # other columns (like source and target) must be int4.
+
+  # the query takes several minutes to run, probably because our test data is in boston, which includes a very dense and
+  # complicated network (as opposed to suburban networks)
 
   def paths_sql(school_id, network='survey_network_walk', miles=1.5)
     school = "
