@@ -27,10 +27,32 @@ ActiveRecord::Schema.define(version: 20170208214215) do
     t.string   "name"
     t.string   "schid"
     t.geometry "geometry",    limit: {:srid=>4326, :type=>"point"}
+    t.geometry "shed_05",     limit: {:srid=>26986, :type=>"geometry"}
+    t.geometry "shed_10",     limit: {:srid=>26986, :type=>"geometry"}
+    t.geometry "shed_15",     limit: {:srid=>26986, :type=>"geometry"}
+    t.geometry "shed_20",     limit: {:srid=>26986, :type=>"geometry"}
     t.integer  "district_id"
-    t.datetime "created_at",                                        null: false
-    t.datetime "updated_at",                                        null: false
+    t.datetime "created_at",                                            null: false
+    t.datetime "updated_at",                                            null: false
     t.index ["district_id"], name: "index_schools_on_district_id", using: :btree
+  end
+
+  create_table "survey_network_bike", id: false, force: :cascade do |t|
+    t.integer  "ogc_fid",                                               null: false
+    t.geometry "geometry", limit: {:srid=>26986, :type=>"line_string"}, null: false
+    t.integer  "id",                                                    null: false
+    t.float    "miles",                                                 null: false
+    t.integer  "source",                                                null: false
+    t.integer  "target",                                                null: false
+  end
+
+  create_table "survey_network_walk", id: false, force: :cascade do |t|
+    t.integer  "ogc_fid",                                               null: false
+    t.geometry "geometry", limit: {:srid=>26986, :type=>"line_string"}, null: false
+    t.integer  "id",                                                    null: false
+    t.float    "miles",                                                 null: false
+    t.integer  "source",                                                null: false
+    t.integer  "target",                                                null: false
   end
 
   create_table "survey_responses", force: :cascade do |t|

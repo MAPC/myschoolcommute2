@@ -2,6 +2,8 @@ class School < ActiveRecord::Base
   belongs_to :district
   has_many :surveys
 
+  after_save :update_sheds
+
   scope :with_active_surveys, -> () {
     self.joins(:surveys)
         .where('surveys.begin < ? AND surveys.end > ?', DateTime.now, DateTime.now)
@@ -13,8 +15,13 @@ class School < ActiveRecord::Base
 
   private 
 
-  def walkshed_generator
-
+  def update_sheds
+    # active job or sidekick or rabbit mq
+    sheds = WalkshedQuery.new(id).execute
+    shed_05 = sheds[0]['_05']
+    shed_10 = sheds[0]['_10']
+    shed_15 = sheds[0]['_15']
+    shed_20 = sheds[0]['_20']
   end
 
   def now

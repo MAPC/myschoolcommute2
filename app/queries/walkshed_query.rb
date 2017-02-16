@@ -32,8 +32,10 @@ class WalkshedQuery
 
   def paths_sql(school_id, network='survey_network_walk', miles=1.5)
     school = "
-        ST_SetSRID(
-            (SELECT geometry FROM schools WHERE id = #{school_id}), 26986
+        ST_Transform(
+          ST_SetSRID(
+              (SELECT geometry FROM schools WHERE id = #{school_id}), 4326
+          ), 26986
         )
       "
 
