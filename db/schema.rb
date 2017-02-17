@@ -46,6 +46,17 @@ ActiveRecord::Schema.define(version: 20170208214215) do
     t.integer  "target",                                                null: false
   end
 
+  create_table "survey_network_bike_backup", primary_key: "geoid", id: :integer, default: -> { "nextval('survey_network_bike_geoid_seq'::regclass)" }, force: :cascade do |t|
+    t.geometry "geometry",   limit: {:srid=>26986, :type=>"multi_line_string"}
+    t.bigint   "objectid"
+    t.bigint   "ogc_fid"
+    t.bigint   "id"
+    t.float    "miles"
+    t.integer  "source"
+    t.integer  "target"
+    t.float    "shape_leng"
+  end
+
   create_table "survey_network_walk", id: false, force: :cascade do |t|
     t.integer  "ogc_fid",                                               null: false
     t.geometry "geometry", limit: {:srid=>26986, :type=>"line_string"}, null: false
@@ -55,11 +66,22 @@ ActiveRecord::Schema.define(version: 20170208214215) do
     t.integer  "target",                                                null: false
   end
 
+  create_table "survey_network_walk_backup", primary_key: "geoid", id: :integer, default: -> { "nextval('survey_network_walk_geoid_seq'::regclass)" }, force: :cascade do |t|
+    t.geometry "geometry",   limit: {:srid=>26986, :type=>"multi_line_string"}
+    t.bigint   "objectid"
+    t.bigint   "ogc_fid"
+    t.bigint   "id"
+    t.float    "miles"
+    t.integer  "source"
+    t.integer  "target"
+    t.float    "shape_leng"
+  end
+
   create_table "survey_responses", force: :cascade do |t|
-    t.decimal  "latitude"
-    t.decimal  "longitude"
+    t.geometry "geometry",       limit: {:srid=>4326, :type=>"point"}
     t.string   "question"
     t.string   "mode"
+    t.integer  "shed"
     t.integer  "survey_id"
     t.string   "grade_0"
     t.string   "to_school_0"
@@ -201,8 +223,8 @@ ActiveRecord::Schema.define(version: 20170208214215) do
     t.string   "pickup_19"
     t.string   "nr_vehicles_19"
     t.string   "nr_licenses_19"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                                           null: false
+    t.datetime "updated_at",                                           null: false
     t.index ["survey_id"], name: "index_survey_responses_on_survey_id", using: :btree
   end
 
