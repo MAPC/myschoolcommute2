@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(version: 20170208214215) do
     t.string   "question"
     t.string   "mode"
     t.integer  "shed"
+    t.float    "distance"
     t.integer  "survey_id"
     t.string   "grade_0"
     t.string   "to_school_0"

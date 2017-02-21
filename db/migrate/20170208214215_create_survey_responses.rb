@@ -5,6 +5,7 @@ class CreateSurveyResponses < ActiveRecord::Migration
       t.string :question
       t.string :mode
       t.integer :shed
+      t.float :distance
       t.references :survey, index: true, foreign_key: true
 
       20.times do |i|
