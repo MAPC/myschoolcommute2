@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -16,6 +15,7 @@ ActiveRecord::Schema.define(version: 20170208214215) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
+  enable_extension "pgrouting"
 
   create_table "districts", force: :cascade do |t|
     t.string   "name"
@@ -26,57 +26,62 @@ ActiveRecord::Schema.define(version: 20170208214215) do
   create_table "schools", force: :cascade do |t|
     t.string   "name"
     t.string   "schid"
-    t.decimal  "latitude"
-    t.decimal  "longitude"
+    t.geometry "geometry",    limit: {:srid=>4326, :type=>"point"}
+    t.geometry "shed_05",     limit: {:srid=>26986, :type=>"geometry"}
+    t.geometry "shed_10",     limit: {:srid=>26986, :type=>"geometry"}
+    t.geometry "shed_15",     limit: {:srid=>26986, :type=>"geometry"}
+    t.geometry "shed_20",     limit: {:srid=>26986, :type=>"geometry"}
     t.integer  "district_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                                            null: false
+    t.datetime "updated_at",                                            null: false
+    t.index ["district_id"], name: "index_schools_on_district_id", using: :btree
   end
 
-  add_index "schools", ["district_id"], name: "index_schools_on_district_id", using: :btree
-
-  create_table "spatial_ref_sys", primary_key: "srid", force: :cascade do |t|
-    t.string  "auth_name", limit: 256
-    t.integer "auth_srid"
-    t.string  "srtext",    limit: 2048
-    t.string  "proj4text", limit: 2048
+  create_table "survey_network_bike", id: false, force: :cascade do |t|
+    t.integer  "ogc_fid",                                               null: false
+    t.geometry "geometry", limit: {:srid=>26986, :type=>"line_string"}, null: false
+    t.integer  "id",                                                    null: false
+    t.float    "miles",                                                 null: false
+    t.integer  "source",                                                null: false
+    t.integer  "target",                                                null: false
   end
 
-  create_table "survey_child_survey", id: false, force: :cascade do |t|
-    t.integer  "id",                       null: false
-    t.string   "grade",        limit: 255, null: false
-    t.string   "to_school",    limit: 255, null: false
-    t.string   "dropoff",      limit: 255, null: false
-    t.string   "from_school",  limit: 255, null: false
-    t.string   "pickup",       limit: 255, null: false
-    t.integer  "school_id",                null: false
-    t.string   "street",       limit: 255, null: false
-    t.string   "cross_st",     limit: 255, null: false
-    t.string   "nr_vehicles",  limit: 255, null: false
-    t.string   "nr_licenses",  limit: 255, null: false
-    t.string   "distance",     limit: 255, null: false
-    t.datetime "created",                  null: false
-    t.string   "modified",     limit: 255, null: false
-    t.string   "st_astext",    limit: 255, null: false
-    t.integer  "schid",                    null: false
-    t.integer  "shed",                     null: false
-    t.string   "current_time", limit: 255, null: false
+  create_table "survey_network_bike_backup", primary_key: "geoid", id: :integer, default: -> { "nextval('survey_network_bike_geoid_seq'::regclass)" }, force: :cascade do |t|
+    t.geometry "geometry",   limit: {:srid=>26986, :type=>"multi_line_string"}
+    t.bigint   "objectid"
+    t.bigint   "ogc_fid"
+    t.bigint   "id"
+    t.float    "miles"
+    t.integer  "source"
+    t.integer  "target"
+    t.float    "shape_leng"
   end
 
-# Could not dump table "survey_intersection" because of following StandardError
-#   Unknown type 'geometry' for column 'geometry'
+  create_table "survey_network_walk", id: false, force: :cascade do |t|
+    t.integer  "ogc_fid",                                               null: false
+    t.geometry "geometry", limit: {:srid=>26986, :type=>"line_string"}, null: false
+    t.integer  "id",                                                    null: false
+    t.float    "miles",                                                 null: false
+    t.integer  "source",                                                null: false
+    t.integer  "target",                                                null: false
+  end
 
-# Could not dump table "survey_network_bike" because of following StandardError
-#   Unknown type 'geometry' for column 'geometry'
-
-# Could not dump table "survey_network_walk" because of following StandardError
-#   Unknown type 'geometry' for column 'geometry'
+  create_table "survey_network_walk_backup", primary_key: "geoid", id: :integer, default: -> { "nextval('survey_network_walk_geoid_seq'::regclass)" }, force: :cascade do |t|
+    t.geometry "geometry",   limit: {:srid=>26986, :type=>"multi_line_string"}
+    t.bigint   "objectid"
+    t.bigint   "ogc_fid"
+    t.bigint   "id"
+    t.float    "miles"
+    t.integer  "source"
+    t.integer  "target"
+    t.float    "shape_leng"
+  end
 
   create_table "survey_responses", force: :cascade do |t|
-    t.decimal  "latitude"
-    t.decimal  "longitude"
+    t.geometry "geometry",       limit: {:srid=>4326, :type=>"point"}
     t.string   "question"
     t.string   "mode"
+    t.integer  "shed"
     t.integer  "survey_id"
     t.string   "grade_0"
     t.string   "to_school_0"
@@ -218,11 +223,10 @@ ActiveRecord::Schema.define(version: 20170208214215) do
     t.string   "pickup_19"
     t.string   "nr_vehicles_19"
     t.string   "nr_licenses_19"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                                           null: false
+    t.datetime "updated_at",                                           null: false
+    t.index ["survey_id"], name: "index_survey_responses_on_survey_id", using: :btree
   end
-
-  add_index "survey_responses", ["survey_id"], name: "index_survey_responses_on_survey_id", using: :btree
 
   create_table "surveys", force: :cascade do |t|
     t.date     "begin"
@@ -230,9 +234,8 @@ ActiveRecord::Schema.define(version: 20170208214215) do
     t.integer  "school_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["school_id"], name: "index_surveys_on_school_id", using: :btree
   end
-
-  add_index "surveys", ["school_id"], name: "index_surveys_on_school_id", using: :btree
 
   add_foreign_key "schools", "districts"
   add_foreign_key "survey_responses", "surveys"

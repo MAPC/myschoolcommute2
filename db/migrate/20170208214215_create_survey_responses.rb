@@ -1,10 +1,10 @@
 class CreateSurveyResponses < ActiveRecord::Migration
   def change
     create_table :survey_responses do |t|
-      t.decimal :latitude
-      t.decimal :longitude
+      t.st_point :geometry, srid: 4326, geographic: false
       t.string :question
       t.string :mode
+      t.integer :shed
       t.references :survey, index: true, foreign_key: true
 
       20.times do |i|
