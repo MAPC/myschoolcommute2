@@ -1,0 +1,50 @@
+function ember_app() {
+
+  App = Ember.Application.create({
+    rootElement: '#ember-app'
+  });
+
+  App.Router.map(function() {
+  });
+
+  App.IndexController = Em.Controller.extend({
+  });
+
+  App.IntersectingStreetsComponent = Em.Component.extend({
+    intersectionResults: [],
+    didInsertElement: function() {
+      var that = this;
+      $('.ui.dropdown');
+      $('#crossing')
+        .dropdown({
+          apiSettings: {
+            url: "//mapc-admin.carto.com/api/v2/sql?q=SELECT DISTINCT(st_name_1) AS name%20 FROM%20%22mapc-admin%22.survey_intersection%20WHERE%20st_name_1%20LIKE%20%27%25{query}%25%27 AND town_id=<%= survey.school.muni_id %>",
+            onResponse: function(data) {
+              var newObject = {};
+
+              newObject.success = true;
+              newObject.results = data.rows;
+              return newObject;
+            }
+          },
+          onChange: function(value, text, $choice)  {
+            $('#intersection').dropdown('clear');
+            $.getJSON("//mapc-admin.carto.com/api/v2/sql?q=SELECT DISTINCT(st_name_2) AS name%20 FROM%20%22mapc-admin%22.survey_intersection%20WHERE%20st_name_1='" + text + "' AND town_id=<%= survey.school.muni_id %>", function(data) {
+              var results = [];
+              console.log(data);
+              data.rows.forEach(function(el) {
+                results.push(el.name);
+              });
+              that.set('intersectionResults', results);
+              $('#intersection').dropdown('refresh');
+            });
+          }
+        })
+      ;
+    }
+  });
+}
+
+$(document)
+  .ready(ember_app)
+;

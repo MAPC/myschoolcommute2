@@ -2,7 +2,10 @@ class School < ActiveRecord::Base
   belongs_to :district
   has_many :surveys
 
+  validates :muni_id, presence: true
+
   after_save :update_sheds, if: :geometry_changed?
+  after_save :find_intersecting_municipality, if: :geometry_changed?
 
   scope :with_active_surveys, -> () {
     self.joins(:surveys)
@@ -11,6 +14,39 @@ class School < ActiveRecord::Base
 
   def has_active_survey?
     surveys.where('begin < ? AND end > ?', now, now).present?
+  end
+
+  def find_intersecting_municipality
+    # this needs to be refactored. this is lifted from the old app.
+
+    sql = "
+    SELECT muni_id FROM ma_municipalities 
+    WHERE 
+    ST_Intersects(
+      the_geom, 
+        ST_PointFromText ('#{geometry.to_s}', 4326)
+    )"
+
+    uri = "http://mapc-admin.carto.com/api/v2/sql?q=#{sql}"
+    puts uri
+    url = URI(uri)
+    http = Net::HTTP.new(url.host, url.port)
+
+    request = Net::HTTP::Get.new(url)
+    request["content-type"] = 'application/json'
+    request["cache-control"] = 'no-cache'
+    response = http.request(request)
+    json = JSON.parse(response.read_body)
+    
+    begin
+      muni_id = JSON.parse(response.read_body)['rows'][0]['muni_id']
+    rescue
+      muni_id = -9999
+    end
+    
+    update_columns({
+      muni_id: muni_id
+    })
   end
 
   private 

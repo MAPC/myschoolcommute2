@@ -1,4 +1,40 @@
-<%= render partial: 'layouts/menu' %>
+<div class="ui inverted vertical center masthead aligned segment">
+  <div class="ui text container">
+    <h1 class="ui inverted center aligned header">
+      Safe Routes Survey
+    </h1>
+    <p>Would you like to help create safe routes to school for students in your community?</p>
+    <p>The survey takes less than 3 minutes and will help your school plan for more transportation choices. All responses are voluntary and confidential.</p>
+    <div class="ui equal width stackable internally celled grid">
+      <div class="center aligned row">
+        <div class="column">
+          <h3>Please select your school district</h3>
+          <div class="ui fluid search selection dropdown">
+            <input type="hidden" name="country">
+            <i class="dropdown icon"></i>
+            <div class="default text">Select Country</div>
+            <div class="menu">
+              <div class="item" data-value="af"><i class="af flag"></i>Boston</div>
+              <div class="item" data-value="ax"><i class="ax flag"></i>Durham</div>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <h3>Please select your school</h3>
+          <div class="ui fluid search selection dropdown">
+            <input type="hidden" name="country">
+            <i class="dropdown icon"></i>
+            <div class="default text">Select Country</div>
+            <div class="menu">
+              <div class="item" data-value="af"><i class="af flag"></i>Boston</div>
+              <div class="item" data-value="ax"><i class="ax flag"></i>Durham</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="ui vertical stripe segment">
   <div class="ui middle aligned stackable grid container">
