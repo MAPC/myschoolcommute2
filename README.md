@@ -1,4 +1,4 @@
-== README
+# README
 
 MySchoolCommute is a statewide platform for surveying and tracking longitudinal and spatial information about transportation modes and behavior from and to school. This platform runs surveys and analyses data collected for surveys. 
 
