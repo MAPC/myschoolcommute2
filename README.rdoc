@@ -1,5 +1,0 @@
-== README
-
-## Dependencies
-This requires Postgres 9.4 and pgrouting. See http://www.kyngchaos.com/software/postgres.
-
