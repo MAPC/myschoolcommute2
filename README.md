@@ -5,5 +5,7 @@ MySchoolCommute is a statewide platform for surveying and tracking longitudinal 
 It is currently in active re-development. 
 
 ## Dependencies
-This requires Postgres 9.4 and pgrouting. See http://www.kyngchaos.com/software/postgres.
+This project requires Postgres 9.4 and pgrouting. See http://www.kyngchaos.com/software/postgres. The setup process will fail without these dependencies.
 
+## Setup
+Run `bin/setup` in your terminal.
