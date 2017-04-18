@@ -8,4 +8,5 @@ It is currently in active re-development.
 This project requires Postgres 9.4 and pgrouting. See http://www.kyngchaos.com/software/postgres. The setup process will fail without these dependencies.
 
 ## Setup
+This project uses Git LFS to manage large seed files. Make sure you download those files before doing anything else.
 Run `bin/setup` in your terminal.

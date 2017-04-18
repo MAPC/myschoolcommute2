@@ -19,8 +19,16 @@ ActiveRecord::Schema.define(version: 20170208214215) do
 
   create_table "districts", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "distname"
+    t.string   "slug"
+    t.string   "startgrade"
+    t.string   "endgrade"
+    t.string   "distcode4"
+    t.string   "distcode8"
+    t.integer  "districtid_id"
+    t.geometry "geometry",      limit: {:srid=>26986, :type=>"geometry"}
+    t.datetime "created_at",                                              null: false
+    t.datetime "updated_at",                                              null: false
   end
 
   create_table "schools", force: :cascade do |t|
@@ -38,21 +46,21 @@ ActiveRecord::Schema.define(version: 20170208214215) do
   end
 
   create_table "survey_network_bike", id: false, force: :cascade do |t|
-    t.integer  "ogc_fid",                                               null: false
-    t.geometry "geometry", limit: {:srid=>26986, :type=>"line_string"}, null: false
-    t.integer  "id",                                                    null: false
-    t.float    "miles",                                                 null: false
-    t.integer  "source",                                                null: false
-    t.integer  "target",                                                null: false
+    t.integer  "ogc_fid",                                        null: false
+    t.geometry "geometry", limit: {:srid=>0, :type=>"geometry"}, null: false
+    t.integer  "id",                                             null: false
+    t.float    "miles",                                          null: false
+    t.integer  "source",                                         null: false
+    t.integer  "target",                                         null: false
   end
-  
+
   create_table "survey_network_walk", id: false, force: :cascade do |t|
-    t.integer  "ogc_fid",                                               null: false
-    t.geometry "geometry", limit: {:srid=>26986, :type=>"line_string"}, null: false
-    t.integer  "id",                                                    null: false
-    t.float    "miles",                                                 null: false
-    t.integer  "source",                                                null: false
-    t.integer  "target",                                                null: false
+    t.integer  "ogc_fid",                                        null: false
+    t.geometry "geometry", limit: {:srid=>0, :type=>"geometry"}, null: false
+    t.integer  "id",                                             null: false
+    t.float    "miles",                                          null: false
+    t.integer  "source",                                         null: false
+    t.integer  "target",                                         null: false
   end
 
   create_table "survey_responses", force: :cascade do |t|
