@@ -6,11 +6,11 @@ class School < ActiveRecord::Base
 
   scope :with_active_surveys, -> () {
     self.joins(:surveys)
-        .where('surveys.begin < ? AND surveys.end > ?', DateTime.now, DateTime.now)
+        .where('surveys.begin <= ? AND surveys.end >= ?', DateTime.now, DateTime.now)
   }
 
   def has_active_survey?
-    surveys.where('begin < ? AND end > ?', now, now).present?
+    surveys.where('begin <= ? AND "end" >= ?', now, now).present?
   end
 
   private 
