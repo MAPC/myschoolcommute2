@@ -1,0 +1,45 @@
+<div id="ember-app" class="ui vertical stripe segment">
+</div>
+
+<script type="text/x-handlebars">
+  {{outlet}}
+</script>
+
+
+<script type="text/x-handlebars" data-template-name="index"> 
+  {{intersecting-streets}}
+</script>
+
+<script type="text/x-handlebars" data-template-name="components/intersecting-streets"> 
+  <div class="ui middle equal width aligned stackable grid container">
+    <div class="row">
+      <div class="column">
+        <h3 class="ui header">Survey</h3>
+        <div class="ui search selection dropdown remote cross" id="crossing">
+          <i class="dropdown icon"></i>
+          <input type="text" class="search" tabindex="0">
+          <div class="default text">Type here to search for Road</div>
+          <div class="menu">
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <h3 class="ui header">Survey</h3>
+        <div class="ui search selection dropdown intersection" id="intersection">
+          <i class="dropdown icon"></i>
+          <div class="default text">Select Intersection</div>
+          <div class="menu">
+            {{#each intersectionResults as |result|}}
+              <div class="item" data-value="result">{{result}}</div>
+            {{/each}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</script>
+
+<script>
+  <%= render partial: '/intersection', formats: [:js], locals: { survey: @survey } %>
+</script>

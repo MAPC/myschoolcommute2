@@ -37,7 +37,7 @@ $(document)
       .sidebar('attach events', '.toc.item')
     ;
 
-    $('.ui.dropdown').dropdown();
+    // $('.ui.dropdown').dropdown();
 
     $.getJSON('/districts.json?all=true', function(results) {
       $('.ui.search').search({
