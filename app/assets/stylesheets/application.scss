@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require leaflet
  */
 
 @import "semantic-ui";
@@ -77,6 +78,11 @@
   display: none;
 }
 
+#map {
+  width: 100%;
+  min-height: 500px;
+}
+
 @media only screen and (max-width: 700px) {
   .ui.fixed.menu {
     display: none !important;
@@ -100,6 +106,3 @@
     font-size: 1.5em;
   }
 }
-
-
-
