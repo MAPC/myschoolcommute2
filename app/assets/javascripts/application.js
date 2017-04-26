@@ -12,8 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require semantic-ui
+//= require leaflet
 //= require_tree .
 
 $(document)
@@ -38,6 +38,18 @@ $(document)
     ;
 
     $('.ui.dropdown').dropdown();
+
+    $.getJSON('/districts.json?all=true', function(results) {
+      $('.ui.search').search({
+        source: results,
+        searchFields   : [
+          'distname'
+        ],
+        fields: {
+          title: 'distname'
+        }
+      });
+    })
 
   })
 ;
