@@ -1,0 +1,49 @@
+<div class="ui inverted vertical center aligned segment">
+  <%= render partial: 'layouts/menu' %>
+</div>
+
+<div class="ui container">
+  <div class="ui basic segment">
+    <h1 class="ui header"><%= @school.district.distname %>, <%= @school.name %></h1>
+    <div class="ui grid">
+      <div class="four wide column">
+        <div class="ui segment">
+          <h2 class="ui header">Summary</h2>
+        </div>
+        <div class="ui segment">
+          <h2 class="ui header">Paper Surveys</h2>
+        </div>
+      </div>
+      <div class="twelve wide column">
+        <%= map(:center => {
+          :latlng => [51.52238797921441, -0.08366235665359283],
+          :zoom => 18
+        }) %>
+
+        <h3 class="ui header">Survey Instances</h3>
+        <table class="ui striped table">
+          <thead>
+            <tr>
+              <th>Surveys</th>
+              <th>Status</th>
+              <th>Report</th>
+              <th>Begin</th>
+              <th>End</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @school.surveys.each do |survey| %>
+              <tr>
+                <td><%= survey.survey_responses.count %></td>
+                <td><%= survey.id %></td>
+                <td>View</td>
+                <td><%= survey.begin %></td>
+                <td><%= survey.end %></td>
+              </tr>              
+            <% end %>
+          </tbody> 
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

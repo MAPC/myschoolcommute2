@@ -1,0 +1,37 @@
+<div class="ui inverted vertical center aligned segment">
+  <%= render partial: 'layouts/menu' %>
+</div>
+
+<div class="ui container">
+  <div class="ui basic segment">
+    <h1 class="ui header"><%= @district.distname %></h1>
+    <table class="ui striped table">
+      <thead>
+        <tr>
+          <th>District</th>
+          <th>Number of Surveys</th>
+          <th>Is Active</th>
+          <th>Batch Entry</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @district.schools.each do |school| %>
+          <tr>
+            <td>
+              <%= link_to school.name, school %>
+            </td>
+            <td>
+              <%= school.surveys.count %>
+            </td>
+            <td>
+              <%= school.has_active_survey? %>
+            </td>
+            <td>
+              Begin Entry
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
