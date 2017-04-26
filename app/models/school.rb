@@ -1,3 +1,5 @@
+CARTO_SQL_API_ENDPOINT = 'http://mapc-admin.carto.com/api/v2'
+
 class School < ActiveRecord::Base
   belongs_to :district
   has_many :surveys
@@ -16,19 +18,26 @@ class School < ActiveRecord::Base
     surveys.where('begin <= ? AND "end" >= ?', now, now).present?
   end
 
+  def muni_id
+    if read_attribute(:muni_id).nil?
+      find_intersecting_municipality
+    else
+      read_attribute(:muni_id)
+    end
+  end
+
   def find_intersecting_municipality
     # this needs to be refactored. this is lifted from the old app.
 
-    sql = "
-    SELECT muni_id FROM ma_municipalities 
-    WHERE 
-    ST_Intersects(
-      the_geom, 
-        ST_PointFromText ('#{geometry.to_s}', 4326)
+    sql = "\
+    SELECT muni_id FROM ma_municipalities \
+    WHERE \
+    ST_Intersects(\
+        ST_Transform(the_geom, 26986), \
+        ST_PointFromText ('#{geometry.to_s}', 26986)\
     )"
 
-    uri = "http://mapc-admin.carto.com/api/v2/sql?q=#{sql}"
-    puts uri
+    uri = "#{CARTO_SQL_API_ENDPOINT}/sql?q=#{sql}"
     url = URI(uri)
     http = Net::HTTP.new(url.host, url.port)
 
@@ -41,12 +50,14 @@ class School < ActiveRecord::Base
     begin
       muni_id = JSON.parse(response.read_body)['rows'][0]['muni_id']
     rescue
-      muni_id = -9999
+      muni_id = nil
     end
     
     update_columns({
       muni_id: muni_id
     })
+
+    muni_id
   end
 
   private 
