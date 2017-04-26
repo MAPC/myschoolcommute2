@@ -1,55 +1,9 @@
-<div class="ui inverted vertical masthead center aligned segment">
-
-  <div class="ui container">
-    <div class="ui large secondary inverted pointing menu">
-      <a class="toc item">
-        <i class="sidebar icon"></i>
-      </a>
-      <a class="active item">Home</a>
-      <a class="item">Accounts</a>
-      <a class="item">District Resources</a>
-      <a class="item">Districts</a>
-      <a class="item">Schools</a>
-    </div>
+<div class="ui container">
+  <div class="ui large secondary inverted pointing menu">
+    <a class="toc item">
+      <i class="sidebar icon"></i>
+    </a>
+    <%= link_to 'Home', root_path, class: 'item' %>
+    <%= link_to 'Districts', districts_path, class: 'item' %>
   </div>
-
-  <div class="ui text container">
-    <h1 class="ui inverted header">
-      Safe Routes Survey
-    </h1>
-    <p>Would you like to help create safe routes to school for students in your community?</p>
-    <p>The survey takes less than 3 minutes and will help your school plan for more transportation choices. All responses are voluntary and confidential.</p>
-    <div class="ui equal width stackable internally celled grid">
-      <div class="center aligned row">
-        <div class="column">
-          <h3>Please select your school district</h3>
-          <div class="ui fluid search selection dropdown">
-            <input type="hidden" name="country">
-            <i class="dropdown icon"></i>
-            <div class="default text">Select Country</div>
-            <div class="menu">
-              <div class="item" data-value="af"><i class="af flag"></i>Boston</div>
-              <div class="item" data-value="ax"><i class="ax flag"></i>Durham</div>
-            </div>
-          </div>
-<!--           <%- @schools_with_active_surveys.each do |school| %>
-            <%= school.name %> <br/>
-          <% end %> -->
-        </div>
-        <div class="column">
-          <h3>Please select your school</h3>
-          <div class="ui fluid search selection dropdown">
-            <input type="hidden" name="country">
-            <i class="dropdown icon"></i>
-            <div class="default text">Select Country</div>
-            <div class="menu">
-              <div class="item" data-value="af"><i class="af flag"></i>Boston</div>
-              <div class="item" data-value="ax"><i class="ax flag"></i>Durham</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
 </div>

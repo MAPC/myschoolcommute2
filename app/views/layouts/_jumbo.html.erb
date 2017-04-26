@@ -1,0 +1,44 @@
+<div class="ui inverted vertical masthead center aligned segment">
+
+  <%= render partial: 'layouts/menu' %>
+
+  <div class="ui text container">
+    <h1 class="ui inverted header">
+      Safe Routes Survey
+    </h1>
+    <p>Would you like to help create safe routes to school for students in your community?</p>
+    <p>The survey takes less than 3 minutes and will help your school plan for more transportation choices. All responses are voluntary and confidential.</p>
+    <div class="ui equal width stackable internally celled grid">
+      <div class="center aligned row">
+        <div class="column">
+          <h3>Please select your school district</h3>
+          <div class="ui fluid search selection dropdown">
+            <input type="hidden" name="country">
+            <i class="dropdown icon"></i>
+            <div class="default text">Select District</div>
+            <div class="menu">
+              <% schools.map(&:district).each do |district| %>
+                <div class="item" data-value="district-<%= district.id %>"></i><%= district.distname %></div>
+              <% end %>
+            </div>
+          </div>
+
+        </div>
+        <div class="column">
+          <h3>Please select your school</h3>
+          <div class="ui fluid search selection dropdown">
+            <input type="hidden" name="country">
+            <i class="dropdown icon"></i>
+            <div class="default text">Select School</div>
+            <div class="menu">
+              <% schools.each do |school| %>
+                <div class="item" data-value="school-<%= school.id %>"></i><%= school.name %></div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
