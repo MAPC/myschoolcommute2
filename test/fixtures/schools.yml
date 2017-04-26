@@ -3,13 +3,9 @@
 one:
   name: MyString
   schid: MyString
-  latitude: 1.5
-  longitude: 9.99
-  district_id: 
+  district_id: 1
 
 two:
   name: MyString
   schid: MyString
-  latitude: 1.5
-  longitude: 9.99
-  district_id: 
+  district_id: 1
