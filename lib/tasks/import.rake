@@ -16,6 +16,7 @@ namespace :import do
     csv.each_with_index do |row, index|
       a = District.new
       a.distname = row['distname']
+      a.geometry = row['geometry']
       a.slug = row['slug']
       a.startgrade = row['startgrade']
       a.endgrade = row['endgrade']
@@ -41,6 +42,7 @@ namespace :import do
       a.shed_15 = row['shed_15']
       a.shed_20 = row['shed_20']
       a.district = District.find_by_districtid_id(row['districtid_id'])
+      a.save
     end
   end
 end

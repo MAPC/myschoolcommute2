@@ -561,3 +561,25 @@ LOG:  checkpoints are occurring too frequently (17 seconds apart)
 HINT:  Consider increasing the configuration parameter "max_wal_size".
 LOG:  checkpoints are occurring too frequently (16 seconds apart)
 HINT:  Consider increasing the configuration parameter "max_wal_size".
+ERROR:  database "mysc-test" already exists
+STATEMENT:  CREATE DATABASE "mysc-test" ENCODING = 'utf8'
+LOG:  checkpoints are occurring too frequently (18 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (16 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+ERROR:  update or delete on table "districts" violates foreign key constraint "fk_rails_bf9778ac51" on table "schools"
+DETAIL:  Key (id)=(2) is still referenced from table "schools".
+STATEMENT:  DELETE FROM "districts" WHERE "districts"."id" = $1
+ERROR:  update or delete on table "districts" violates foreign key constraint "fk_rails_bf9778ac51" on table "schools"
+DETAIL:  Key (id)=(2) is still referenced from table "schools".
+STATEMENT:  DELETE FROM "districts" WHERE "districts"."id" = $1
+ERROR:  database "mysc-test" already exists
+STATEMENT:  CREATE DATABASE "mysc-test" ENCODING = 'utf8'
+LOG:  checkpoints are occurring too frequently (19 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  checkpoints are occurring too frequently (15 seconds apart)
+HINT:  Consider increasing the configuration parameter "max_wal_size".
+LOG:  received smart shutdown request
+LOG:  autovacuum launcher shutting down
+LOG:  shutting down
+LOG:  database system is shut down
