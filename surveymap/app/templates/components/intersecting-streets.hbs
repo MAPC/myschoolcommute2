@@ -1,0 +1,49 @@
+<div class="ui middle equal width aligned stackable grid container">
+  <div class="row">
+    {{#leaflet-map lat=42 lng=-71 zoom=13 id='map'}}
+      {{tile-layer url="http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"}}
+      {{#unless secondSelection}}
+        {{#each secondStreets as |street|}}
+          {{marker-layer lat=street.lat lng=street.long}}
+        {{/each}}
+      {{/unless}}
+      {{#if secondSelection}}
+        {{marker-layer lat=secondSelection.lat lng=secondSelection.long}}
+      {{/if}}
+    {{/leaflet-map}}
+  </div>
+  <div class="row">
+    <div class="column">
+      <h3 class="ui header">Survey</h3>
+      {{#ui-dropdown class="search selection" allowAdditions=true selected=firstSelection onChange=(action 'onFirstChange') as |execute mapper|}}
+        <div class="default text">Streets</div>
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          {{#each firstStreets as |street|}}
+            <div class="item" data-value="{{map-value mapper street.name}}">
+              {{street.name}}
+            </div>
+          {{/each}}
+        </div>
+      {{/ui-dropdown}}
+    </div>
+
+    <div class="column">
+      <h3 class="ui header">Survey</h3>
+      {{#ui-dropdown class="search selection" allowAdditions=true selected=secondSelection.name onChange=(action (mut secondSelection)) as |execute mapper|}}
+        <div class="default text">Streets</div>
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          {{#each secondStreets as |street|}}
+            <div class="item" data-value="{{map-value mapper street}}">
+              {{street.name}}
+            </div>
+          {{/each}}
+        </div>
+      {{/ui-dropdown}}
+    </div>
+  </div>
+  <div class="row">
+    Selected: {{secondSelection.name}}
+  </div>
+</div>

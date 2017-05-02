@@ -25,6 +25,7 @@ gem 'jquery-rails'
 gem 'leaflet-rails'
 gem 'kaminari'
 gem 'rgeo-geojson'
+gem "ember-cli-rails", '0.8.4'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 # gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
