@@ -1,3 +1,3 @@
 EmberCli.configure do |c|
-  c.app :surveymap
+  c.app :surveymap, path: "intersecting-streets"
 end
