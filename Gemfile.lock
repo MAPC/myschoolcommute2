@@ -95,8 +95,6 @@ GEM
       activerecord
       kaminari-core (= 1.0.1)
     kaminari-core (1.0.1)
-    leaflet-rails (1.0.3)
-      rails (>= 4.2.0)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.4)
@@ -217,7 +215,6 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   kaminari
-  leaflet-rails
   pg (~> 0.18)
   pry
   rails (= 5.0.1)
