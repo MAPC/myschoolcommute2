@@ -6,6 +6,9 @@
   <div class="ui basic segment">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css">
     <div id="root"><div id="map-container"></div></div>
+    <script type="text/javascript">
+      window.muni_id = <%= @survey.school.muni_id %>
+    </script>
     <%= javascript_include_tag "react_modules/intersectingstreets.min.js" %>
   </div>
 </div>
