@@ -4,7 +4,7 @@
 
 <div class="ui container">
   <div class="ui basic segment">
-    <div class="ui form">
+    <%= form_for @survey.survey_responses.new do |f| %>
       <!-- Where is your nearest intersection? -->
       <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css">
       <div class="field" id="root"><div id="map-container"></div></div>
@@ -99,6 +99,7 @@
           </div>
         </div>
       </div>
-    </div>
+      <%= f.submit 'Submit Survey' %>
+    <% end %>
   </div>
 </div>
