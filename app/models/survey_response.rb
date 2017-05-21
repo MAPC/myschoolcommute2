@@ -7,6 +7,8 @@ class SurveyResponse < ActiveRecord::Base
   belongs_to :survey
   has_one :school, through: :survey
 
+  validates :geometry, presence: true
+
   def find_intersecting_shed
     update_columns(shed: IntersectionQuery.new(geometry.to_s, school).execute)
   end
