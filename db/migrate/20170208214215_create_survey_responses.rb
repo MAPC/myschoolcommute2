@@ -14,9 +14,10 @@ class CreateSurveyResponses < ActiveRecord::Migration
         t.string "dropoff_#{i}".to_sym
         t.string "from_school_#{i}".to_sym
         t.string "pickup_#{i}".to_sym
-        t.string "nr_vehicles_#{i}".to_sym
-        t.string "nr_licenses_#{i}".to_sym
       end
+
+      t.string "nr_vehicles".to_sym
+      t.string "nr_licenses".to_sym
 
       t.timestamps null: false
     end
