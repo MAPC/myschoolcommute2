@@ -67,8 +67,8 @@ class SurveyResponsesController < ApplicationController
       @survey_response = SurveyResponse.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def survey_response_params
-      params.fetch(:survey_response, {})
+      keys = params[:survey_response].keys
+      params.permit(survey_response: [keys]).fetch(:survey_response)
     end
 end
