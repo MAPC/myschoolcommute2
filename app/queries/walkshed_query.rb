@@ -34,7 +34,7 @@ class WalkshedQuery
     school = "
         ST_Transform(
           ST_SetSRID(
-              (SELECT geometry FROM schools WHERE id = #{school_id}), 4326
+              (SELECT geometry FROM schools WHERE id = #{school_id}), 26986
           ), 26986
         )
       "
