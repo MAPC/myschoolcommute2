@@ -15,7 +15,7 @@ class SurveyResponse < ActiveRecord::Base
 
   def calculate_distance
     # this needs to be refactored. this is lifted from the old app.
-    url = URI("http://maps.googleapis.com/maps/api/directions/json?sensor=false&origin=#{geometry.y},#{geometry.x}&destination=#{school.geometry.y},#{school.geometry.x}")
+    url = URI("http://maps.googleapis.com/maps/api/directions/json?sensor=false&origin=#{geometry.y},#{geometry.x}&destination=#{school.wgs84_lat},#{school.wgs84_lng}")
     http = Net::HTTP.new(url.host, url.port)
 
     request = Net::HTTP::Get.new(url)
