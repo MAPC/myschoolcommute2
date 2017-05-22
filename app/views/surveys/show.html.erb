@@ -5,101 +5,14 @@
 <div class="ui container">
   <div class="ui basic segment">
     <%= form_for @survey.survey_responses.new do |f| %>
-      <!-- Where is your nearest intersection? -->
       <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css">
       <div class="field" id="root"><div id="map-container"></div></div>
       <script type="text/javascript">
         window.muni_id = <%= @survey.school.muni_id %>
       </script>
       <%= javascript_include_tag "react_modules/intersectingstreets.min.js" %>
-
-      <!-- What grade is your child in? -->
-      <div class="inline field">
-        <label>What grade is your child in?</label>
-        <div class="ui selection no-react dropdown">
-          <input type="hidden" name="grade">
-          <i class="dropdown icon"></i>
-          <div class="default text">Select an option from below</div>
-          <div class="menu">
-            <%- %w( Pre-K K 1 2 3 4 5 6 7 8 9 10 11 12 ).each do |option| %> 
-              <div class="item" data-value="<%= option %>"><%= option %></div>  
-            <%- end %>
-          </div>
-        </div>
-      </div>
-
-      <!-- How does your child get TO school on most days? -->
-      <div class="inline field">
-        <label>How does your child get TO school on most days?</label>
-        <div class="ui selection no-react dropdown">
-          <input type="hidden" name="from">
-          <i class="dropdown icon"></i>
-          <div class="default text">Select an option from below</div>
-          <div class="menu">
-            <%- [ {value: "sb",   label: "School Bus"},
-                  {value: "b",    label: "Bicycle"},
-                  {value: "o",    label: "Other (skateboard, scooter, inline skates, etc.)"},
-                  {value: "t",    label: "Transit (city bus, subway, etc.)"},
-                  {value: "cp",   label: "Carpool (with children from other families)"},
-                  {value: "w",    label: "Walk"},
-                  {value: "fv",   label: "Family Vehicle (only children in your family)"}].each do |option| %>
-              <div class="item" data-value="<%= option[:value] %>"><%= option[:label] %></div>  
-            <%- end %>
-          </div>
-        </div>
-      </div>
-
-      <!-- How does your child get FROM school on most days? -->
-      <div class="inline field">
-        <label>How does your child get FROM school on most days?</label>
-        <div class="ui selection no-react dropdown">
-          <input type="hidden" name="from">
-          <i class="dropdown icon"></i>
-          <div class="default text">Select an option from below</div>
-          <div class="menu">
-            <%- [ {value: "sb",   label: "School Bus"},
-                  {value: "b",    label: "Bicycle"},
-                  {value: "o",    label: "Other (skateboard, scooter, inline skates, etc.)"},
-                  {value: "t",    label: "Transit (city bus, subway, etc.)"},
-                  {value: "cp",   label: "Carpool (with children from other families)"},
-                  {value: "w",    label: "Walk"},
-                  {value: "fv",   label: "Family Vehicle (only children in your family)"}].each do |option| %>
-              <div class="item" data-value="<%= option[:value] %>"><%= option[:label] %></div>  
-            <%- end %>
-          </div>
-        </div>
-      </div>
-
-      <!-- How many vehicles do you have in your household? -->
-      <div class="inline field">
-        <label>How many vehicles do you have in your household?</label>
-        <div class="ui selection no-react dropdown">
-          <input type="hidden" name="grade">
-          <i class="dropdown icon"></i>
-          <div class="default text">Select an option from below</div>
-          <div class="menu">
-            <%- %w( 0 1 2 3 4 5 6 7 8 9 ).each do |option| %> 
-              <div class="item" data-value="<%= option %>"><%= option %></div>  
-            <%- end %>
-          </div>
-        </div>
-      </div>
-
-      <!-- How many people in your household have a driver's license? -->
-      <div class="inline field">
-        <label>How many people in your household have a driver's license?</label>
-        <div class="ui selection no-react dropdown">
-          <input type="hidden" name="grade">
-          <i class="dropdown icon"></i>
-          <div class="default text">Select an option from below</div>
-          <div class="menu">
-            <%- %w( 0 1 2 3 4 5 6 7 8 9 ).each do |option| %> 
-              <div class="item" data-value="<%= option %>"><%= option %></div>  
-            <%- end %>
-          </div>
-        </div>
-      </div>
-      <%= f.submit 'Submit Survey' %>
+      <%= f.hidden_field :survey_id, value: @survey.id %>
+      <%= f.submit 'Submit Survey' %> 
     <% end %>
   </div>
 </div>
