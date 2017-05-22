@@ -14,6 +14,14 @@ class School < ActiveRecord::Base
         .where('surveys.begin <= ? AND surveys.end >= ?', DateTime.now, DateTime.now)
   }
 
+  def wgs84_lat
+    School.select('ST_X(ST_Transform(geometry,4326)), ST_Y(ST_Transform(geometry,4326)),id').find(id).st_y
+  end
+
+  def wgs84_lng
+    School.select('ST_X(ST_Transform(geometry,4326)), ST_Y(ST_Transform(geometry,4326)),id').find(id).st_x
+  end
+
   def has_active_survey?
     surveys.where('begin <= ? AND "end" >= ?', now, now).present?
   end
