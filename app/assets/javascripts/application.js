@@ -33,18 +33,6 @@ $(document)
 
     $('.ui.dropdown.no-react').dropdown();
 
-    $.getJSON('/districts.json?all=true', function(results) {
-      $('.ui.search').search({
-        source: results,
-        searchFields   : [
-          'distname'
-        ],
-        fields: {
-          title: 'distname'
-        }
-      });
-    })
-
   })
 ;
 
