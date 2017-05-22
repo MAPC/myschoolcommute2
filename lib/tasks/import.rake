@@ -7,6 +7,8 @@ namespace :import do
           WARNING: Importing this 1GB file will take a while. =="
     sh "psql #{Rails.configuration.database_configuration[Rails.env]['database']} < lib/seeds/survey_network_bike.sql"
     sh "psql #{Rails.configuration.database_configuration[Rails.env]['database']} < lib/seeds/survey_network_walk.sql"
+    sh "psql #{Rails.configuration.database_configuration['test']['database']} < lib/seeds/survey_network_bike.sql"
+    sh "psql #{Rails.configuration.database_configuration['test']['database']} < lib/seeds/survey_network_walk.sql"
   end
 
   desc 'Import districts'
