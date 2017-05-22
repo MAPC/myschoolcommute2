@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20170224214437) do
   create_table "schools", force: :cascade do |t|
     t.string   "name"
     t.string   "schid"
-    t.geometry "geometry",    limit: {:srid=>4326, :type=>"point"}
+    t.geometry "geometry",    limit: {:srid=>26986, :type=>"point"}
     t.geometry "shed_05",     limit: {:srid=>26986, :type=>"geometry"}
     t.geometry "shed_10",     limit: {:srid=>26986, :type=>"geometry"}
     t.geometry "shed_15",     limit: {:srid=>26986, :type=>"geometry"}
