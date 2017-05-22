@@ -4,10 +4,7 @@ class School < ActiveRecord::Base
   belongs_to :district
   has_many :surveys
 
-  validates :muni_id, presence: true
-
   after_save :update_sheds, if: :geometry_changed?
-  after_save :find_intersecting_municipality, if: :geometry_changed?
 
   scope :with_active_surveys, -> () {
     self.joins(:surveys)
@@ -35,8 +32,6 @@ class School < ActiveRecord::Base
   end
 
   def find_intersecting_municipality
-    # this needs to be refactored. this is lifted from the old app.
-
     sql = "\
     SELECT muni_id FROM ma_municipalities \
     WHERE \
