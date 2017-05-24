@@ -19,6 +19,10 @@ class School < ActiveRecord::Base
     School.select('ST_X(ST_Transform(geometry,4326)), ST_Y(ST_Transform(geometry,4326)),id').find(id).st_x
   end
 
+  def to_wgs84(column)
+    School.select("ST_Transform(#{column}, 4326) as #{column}").find(id)[column]
+  end
+
   def has_active_survey?
     surveys.where('begin <= ? AND "end" >= ?', now, now).present?
   end

@@ -1,0 +1,1 @@
+json.extract! survey, :id, :survey_responses
