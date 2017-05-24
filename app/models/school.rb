@@ -3,6 +3,7 @@ CARTO_SQL_API_ENDPOINT = 'http://mapc-admin.carto.com/api/v2'
 class School < ActiveRecord::Base
   belongs_to :district
   has_many :surveys
+  has_many :survey_responses, through: :surveys
 
   after_save :update_sheds, if: :geometry_changed?
 
@@ -21,6 +22,14 @@ class School < ActiveRecord::Base
 
   def to_wgs84(column)
     School.select("ST_Transform(#{column}, 4326) as #{column}").find(id)[column]
+  end
+
+  def recent_surveys_since(date=24.hours.ago)
+    survey_responses.where('survey_responses.created_at > ?', date).count
+  end
+
+  def total_surveys
+    survey_responses.count
   end
 
   def has_active_survey?
