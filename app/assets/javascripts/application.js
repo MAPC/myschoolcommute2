@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require semantic-ui
+//= require bootstrap-datepicker
 //= require_tree .
 
 $(document)

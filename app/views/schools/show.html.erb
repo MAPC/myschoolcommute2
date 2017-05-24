@@ -26,6 +26,7 @@
         </div>
         <div class="ui segment">
           <h2 class="ui header">Paper Surveys</h2>
+          <p>For paper survey templates and other resources for a successful survey, visit the District Resources page.</p>
         </div>
       </div>
       <div class="twelve wide column">
@@ -35,6 +36,7 @@
           window.endpoint = '/schools/<%= @school.id %>.json';
         </script>
         <%= javascript_include_tag "react_modules/schoolmap.min.js" %>
+
         <h3 class="ui header">Survey Instances</h3>
         <table class="ui striped table">
           <thead>
@@ -50,7 +52,13 @@
             <% @school.surveys.each do |survey| %>
               <tr>
                 <td><%= survey.survey_responses.count %></td>
-                <td><%= survey.id %></td>
+                <td>
+                  <% if Time.now >= survey.begin and Time.now <= survey.end %>
+                    In Progress
+                  <% else %>
+                    Finished
+                  <% end %>
+                </td>
                 <td>View</td>
                 <td><%= survey.begin %></td>
                 <td><%= survey.end %></td>
@@ -58,7 +66,23 @@
             <% end %>
           </tbody> 
         </table>
+        
+        <h3 class="ui header">Create New Survey</h3>
+        <%= form_for Survey.new, html: { class: 'ui form' } do |f| %>
+          <div class="field">
+            <label>Survey Begin Date</label>
+            <input type="text" name="survey[begin]" class='datepicker'>
+          </div>
+          <div class="field">
+            <label>Survey End Date</label>
+            <input type="text" name="survey[end]" class='datepicker'>
+          </div>
+          <%= f.hidden_field :school_id, value: @school.id %>
+          <%= f.submit 'Submit Survey', class: "ui button" %> 
+        <% end %>
       </div>
     </div>
   </div>
 </div>
+
+<%= render partial: 'layouts/footer' %>
