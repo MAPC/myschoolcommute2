@@ -27,7 +27,7 @@
               <%= school.has_active_survey? %>
             </td>
             <td>
-              Begin Entry
+              <%= link_to 'Begin Entry', new_school_survey_response_path(school.id) %>
             </td>
           </tr>
         <% end %>
