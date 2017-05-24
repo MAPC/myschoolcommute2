@@ -9,6 +9,20 @@
       <div class="four wide column">
         <div class="ui segment">
           <h2 class="ui header">Summary</h2>
+          <div class="ui list">
+            <div class="item">
+              <%= @school.recent_surveys_since %> surveys in past 24 hours
+            </div>
+            <div class="item">
+              <%= @school.recent_surveys_since(1.week.ago) %> surveys in past week
+            </div>
+            <div class="item">
+              <%= @school.total_surveys %> total surveys
+            </div>
+            <div class="item">
+              <%= @school.has_active_survey? ? 'Survey is active' : 'No active surveys' %>
+            </div>
+          </div>
         </div>
         <div class="ui segment">
           <h2 class="ui header">Paper Surveys</h2>
