@@ -1,6 +1,18 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :districts
+    resources :schools
+    resources :surveys
+    resources :survey_responses
+
+    root to: "districts#index"
+  end
+
   resources :survey_responses
-  resources :schools
+  resources :schools do
+    resources :survey_responses, only: [:create, :new]
+  end
+
   get 'welcome/index'
 
   resources :surveys, only: [:show, :index, :create]
