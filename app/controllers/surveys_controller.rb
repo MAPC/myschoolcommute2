@@ -23,10 +23,8 @@ class SurveysController < ApplicationController
     respond_to do |format|
       if @survey.save
         format.html { redirect_to @survey.school, notice: 'Survey was successfully created.' }
-        format.json { render :show, status: :created, location: @survey }
       else
-        format.html { render :new }
-        format.json { render json: @survey.errors, status: :unprocessable_entity }
+        format.html { redirect_to School.find(survey_params[:school_id]) }
       end
     end
   end
