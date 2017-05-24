@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :schools
   get 'welcome/index'
 
-  resources :surveys, only: [:show, :index]
+  resources :surveys, only: [:show, :index, :create]
   resources :survey_responses, only: [:post]
 
   # The priority is based upon order of creation: first created -> highest priority.
