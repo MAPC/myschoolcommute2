@@ -32,8 +32,6 @@ $(document)
       })
     ;
 
-    $('.ui.dropdown.no-react').dropdown();
-
   })
 ;
 

@@ -8,9 +8,8 @@ class School < ActiveRecord::Base
 
   after_save :update_sheds, if: :geometry_changed?
 
-  scope :with_active_surveys, -> () {
-    self.joins(:surveys)
-        .where('surveys.begin <= ? AND surveys.end >= ?', DateTime.now, DateTime.now)
+  scope :active, -> () {
+    self.where(id: Survey.active.pluck(:id))
   }
 
   def wgs84_lat
@@ -19,6 +18,11 @@ class School < ActiveRecord::Base
 
   def wgs84_lng
     School.select('ST_X(ST_Transform(geometry,4326)), ST_Y(ST_Transform(geometry,4326)),id').find(id).st_x
+  end
+
+  # refactor this
+  def active_surveys
+    surveys.where(id: Survey.active.pluck(:id))
   end
 
   # Through AR Base, transform to 4326, cast as GeoJSON, then find the first row in the result and get 
