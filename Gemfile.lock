@@ -242,6 +242,7 @@ DEPENDENCIES
   pg (~> 0.18)
   pry
   rails (= 5.0.1)
+  rgeo-activerecord
   rgeo-geojson
   rspec-rails (~> 3.5)
   sass-rails (~> 5.0)

@@ -1,3 +1,4 @@
+require 'json'
 CARTO_SQL_API_ENDPOINT = 'http://mapc-admin.carto.com/api/v2'
 
 class School < ActiveRecord::Base
@@ -20,8 +21,13 @@ class School < ActiveRecord::Base
     School.select('ST_X(ST_Transform(geometry,4326)), ST_Y(ST_Transform(geometry,4326)),id').find(id).st_x
   end
 
+  # Through AR Base, transform to 4326, cast as GeoJSON, then find the first row in the result and get 
+  # the geom. Return an empty array if nil.
+  # needs refactoring ASAP.
   def to_wgs84(column)
-    School.select("ST_Transform(#{column}, 4326) as #{column}").find(id)[column]
+    sql = "SELECT ST_AsGeoJSON(ST_Transform(#{column}, 4326)) as transformedgeo from schools where id=#{id}"
+    result = ActiveRecord::Base.establish_connection.connection.execute(sql)[0]['transformedgeo'] || '[]'
+    JSON.parse(result)
   end
 
   def recent_surveys_since(date=24.hours.ago)

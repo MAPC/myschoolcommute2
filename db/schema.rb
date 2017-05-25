@@ -35,13 +35,13 @@ ActiveRecord::Schema.define(version: 20170224214437) do
     t.string   "name"
     t.string   "schid"
     t.geometry "geometry",    limit: {:srid=>26986, :type=>"point"}
-    t.geometry "shed_05",     limit: {:srid=>26986, :type=>"geometry"}
-    t.geometry "shed_10",     limit: {:srid=>26986, :type=>"geometry"}
-    t.geometry "shed_15",     limit: {:srid=>26986, :type=>"geometry"}
-    t.geometry "shed_20",     limit: {:srid=>26986, :type=>"geometry"}
+    t.geometry "shed_05",     limit: {:srid=>26986, :type=>"multi_polygon"}
+    t.geometry "shed_10",     limit: {:srid=>26986, :type=>"multi_polygon"}
+    t.geometry "shed_15",     limit: {:srid=>26986, :type=>"multi_polygon"}
+    t.geometry "shed_20",     limit: {:srid=>26986, :type=>"multi_polygon"}
     t.integer  "district_id"
-    t.datetime "created_at",                                            null: false
-    t.datetime "updated_at",                                            null: false
+    t.datetime "created_at",                                                 null: false
+    t.datetime "updated_at",                                                 null: false
     t.integer  "muni_id"
     t.index ["district_id"], name: "index_schools_on_district_id", using: :btree
   end
