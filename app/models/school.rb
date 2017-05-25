@@ -9,7 +9,7 @@ class School < ActiveRecord::Base
   after_save :update_sheds, if: :geometry_changed?
 
   scope :active, -> () {
-    self.where(id: Survey.active.pluck(:id))
+    self.where(id: Survey.active.pluck(:school_id))
   }
 
   def wgs84_lat
