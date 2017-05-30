@@ -1,5 +1,6 @@
 class SchoolsController < ApplicationController
   before_action :set_school, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_district_user
 
   # GET /schools
   # GET /schools.json
@@ -70,5 +71,13 @@ class SchoolsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def school_params
       params.fetch(:school, {})
+    end
+
+    def authenticate_district_user
+      redirect_to '/', alert: 'Not authorized - please notify program coordinator to grant access.' unless access_whitelist
+    end
+
+    def access_whitelist
+      current_user.try(:is_admin?) || current_user.try(:is_district?)
     end
 end

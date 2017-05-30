@@ -6,10 +6,16 @@
 # you're free to overwrite the RESTful controller actions.
 module Admin
   class ApplicationController < Administrate::ApplicationController
+    before_action :authenticate_user!
     before_action :authenticate_admin
 
-    def authenticate_admin
-      # TODO Add authentication logic here.
+  def authenticate_admin
+    redirect_to '/', alert: 'Not authorized - please notify program coordinator to grant access.' unless current_user && access_whitelist
+  end
+
+  private
+    def access_whitelist
+      current_user.try(:is_admin?)
     end
 
     # Override this value to specify the number of elements to display at a time

@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
+  devise_for :users
   namespace :admin do
     resources :districts
     resources :schools
     resources :surveys
     resources :survey_responses
+    resources :users
 
     root to: "districts#index"
   end
