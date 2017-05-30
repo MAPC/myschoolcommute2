@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :schools
     resources :surveys
     resources :survey_responses
+    resources :users
 
     root to: "districts#index"
   end
