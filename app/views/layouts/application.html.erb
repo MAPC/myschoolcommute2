@@ -10,27 +10,9 @@
   </head>
   <body class="<%= controller_name %> <%= action_name %>">
 
-    <!-- Following Menu -->
-    <div class="ui large top fixed menu transition hidden">
-      <div class="ui container">
-        <a class="active item">Home</a>
-        <a class="item">Work</a>
-        <a class="item">Company</a>
-        <a class="item">Careers</a>
-      </div>
-    </div>
-
-    <!-- Sidebar Menu -->
-    <div class="ui vertical inverted sidebar menu left">
-      <a class="active item">Home</a>
-      <a class="item">Work</a>
-      <a class="item">Company</a>
-      <a class="item">Careers</a>
-    </div>
-
     <!-- Page Contents -->
-
-
+    <%= notice %>
+    <%= alert %>
     <%= yield %>
 
     
