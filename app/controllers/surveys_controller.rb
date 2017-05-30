@@ -1,6 +1,7 @@
 class SurveysController < ApplicationController
   before_action :set_survey, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!, except: [:show]
+  before_action :authenticate_district_user, except: [:show]
   # GET /surveys/1
   # GET /surveys/1.json
   def show
@@ -57,6 +58,14 @@ class SurveysController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_survey
       @survey = Survey.find(params[:id])
+    end
+
+    def authenticate_district_user
+      redirect_to '/', alert: 'Not authorized - please notify program coordinator to grant access.' unless access_whitelist
+    end
+
+    def access_whitelist
+      current_user.try(:is_admin?) || current_user.try(:is_district?)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
