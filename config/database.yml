@@ -23,3 +23,9 @@ test:
 production:
   <<: *default
   database: myschoolcommute2
+
+staging:
+  <<: * default
+  database: myschoolcommute2_staging
+  host: db.live.mapc.org
+  username: editor
