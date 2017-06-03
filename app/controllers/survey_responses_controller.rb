@@ -14,7 +14,11 @@ class SurveyResponsesController < ApplicationController
 
   # GET /survey_responses/new
   def new
-    @survey_response = SurveyResponse.new
+    if params[:school_id]
+      @survey_response = SurveyResponse.new(school: School.find(params[:school_id]))
+    else
+      @survey_response = SurveyResponse.new
+    end
   end
 
   # GET /survey_responses/1/edit
