@@ -1,0 +1,7 @@
+figure/
+Reports/
+NA
+minimal.pdf
+*.aux
+*.tex
+*.log
