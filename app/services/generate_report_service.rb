@@ -1,4 +1,8 @@
 class GenerateReportService
+  def initialize(survey)
+    @survey = survey
+  end
+
   def perform
     filepath = Rails.root.join('lib', 'external_scripts', 'compile.R')
 
