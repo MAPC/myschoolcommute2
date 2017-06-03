@@ -4,7 +4,8 @@
 
 <div class="ui container">
   <div class="ui basic segment">
-    <h1 class="ui header"><%= @district.distname %></h1>
+    <%= link_to 'Edit', edit_admin_district_path(@district), class: 'ui right floated button' %>
+    <h1 class="ui left floated header"><%= @district.distname %></h1>
     <table class="ui striped table">
       <thead>
         <tr>
