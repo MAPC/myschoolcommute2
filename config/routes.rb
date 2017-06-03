@@ -18,6 +18,9 @@ Rails.application.routes.draw do
   get 'welcome/index'
 
   resources :surveys, only: [:show, :index, :create]
+
+  get 'surveys/:id/show_report' => 'surveys#show_report'
+
   resources :survey_responses, only: [:post]
 
   # The priority is based upon order of creation: first created -> highest priority.
