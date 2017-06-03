@@ -17,9 +17,9 @@ Rails.application.routes.draw do
 
   get 'welcome/index'
 
-  resources :surveys, only: [:show, :index, :create]
-
-  get 'surveys/:id/show_report' => 'surveys#show_report'
+  resources :surveys, only: [:show, :index, :create, :show_report] do
+    get 'show_report' => 'surveys#show_report', on: :member
+  end
 
   resources :survey_responses, only: [:post]
 
