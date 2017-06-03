@@ -1,0 +1,370 @@
+\documentclass[12pt,letterpaper]{report}\usepackage[]{graphicx}\usepackage[]{color}
+%% maxwidth is the original width if it is less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+\let\hlipl\hlkwb
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+% \usepackage{fontspec} % requires xelatex; table layout and font-family specs
+\usepackage[margin=0.5in]{geometry}
+\usepackage[font={bf,sf,small},% san-serif font for float captions
+               skip=0pt,% no space between captions and floats
+               labelfont=bf,% caption lable (ie "Table 1") in bold face
+               justification=justified,% left-justify captions
+               singlelinecheck=false]{caption} %
+% \usepackage{sectsty} % section headings
+\usepackage{multicol} % for 2-column page layout
+
+% control paragraph indent and spacing
+\usepackage{parskip}
+\setlength{\parindent}{0pt}
+% end control paragraph indent and spacing
+
+\newcommand{\factoid}[1]{\flushleft{\large{#1}}} %  
+\newenvironment{itemize*}% bullet pointed list with smaller line spacing
+  {\begin{itemize}%
+    \setlength{\itemsep}{0pt}%
+    \setlength{\parskip}{0pt}}%
+  {\end{itemize}}
+  
+% Control number layout
+\usepackage{siunitx}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{lipsum}
+
+
+% define serif and san-serif fonts
+%\allsectionsfont{\sffamily} % section headings in san-serif font
+\renewcommand{\familydefault}{\sfdefault}
+% \setromanfont{Goudy Old Style} % serif font to be Goudy Old Style
+% \setsansfont{Tw Cen MT} % san-serif font to be Tw Cen MT
+
+%%%%% Setting up table and caption environment
+\usepackage{floatrow} % san-serif font for tabular material
+\floatsetup[table]{font={sf, small},%
+                    captionskip=0pt,% no space between tables and captions                                       
+                    postcode=captionskip,% 
+                    capposition=top,% place caption above tables
+                    footskip=-10pt,% no space between tables and notes
+                    footposition=bottom} % place notes below tables
+\floatsetup[figure]{font={sf, small},%
+                    captionskip=0pt,% no space between figure and captions                                       
+                    postcode=captionskip,% 
+                    capposition=bottom,% place caption below figures
+                    footskip=0pt,% no space between tables and notes
+                    footposition=bottom} % place notes below figures
+
+\captionsetup{footfont=sf,skip=0pt} % no space between notes and table
+%%%%% End Setting up table and caption environment
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\begin{document}
+
+\begin{multicols}{2}
+\raggedcolumns          % don't require 2 text columns to bottom align
+                        % this will remove the excess white space between 
+                        % floats and text
+\thispagestyle{empty}   % remove page number
+
+
+
+
+
+
+{\flushleft   
+\includegraphics[height=20 mm]{2010SRTSLogo}%[height=12 mm]{2010SRTSLogo}
+\newline
+\newline
+\includegraphics[height=12 mm]{MassDOT_Logo_Color}%[height=12 mm]{MassDOT_Logo_Color}
+\newline
+\newline
+
+  {
+    MASafeRoutesSurvey.org\\
+    Survey Report\\
+    % Survey Report\\[.2 cm]
+    New Bedford - Hayden/McFadden\\ 
+  }                                 
+\today \\     
+}
+
+\section*{Introduction}
+This report will help your school plan safe transportation options for all students. It contains the results of a survey conducted at New Bedford - Hayden/McFadden in June 2012. Participating parents provided information about how students travel to school and their approximate home location. If your school is interested in 
+\begin{itemize*}
+\item reducing traffic congestion,
+\item encouraging walking and biking,
+\item increasing safety, or
+\item tracking progress towards community goals,
+\end{itemize*}
+then this information can help you identify the right strategies and best opportunities for new projects and investments. 
+
+\subsection*{How to Read This Report}
+This report measures distance to school in terms of walksheds and bikesheds. A \emph{walkshed} includes all the homes within a certain distance to school, based on mapped sidewalks, pedestrian paths, and low volume roadways. We define walksheds for 0.5, 1.0, and 1.5 mile walking distances to school. A \emph{bikeshed} of 2.0 miles also includes multi-use paths and on-road cycle facilities, where mapped. For a map of the walksheds and bikesheds, see the last page of the report. Where "walkshed" is used alone, it always includes the bikeshed of the same distance.
+
+\vfill
+\columnbreak
+\vspace*{180 pt}
+
+\section*{Survey Statistics}
+\begin{itemize*}
+\item Survey Dates: 2012-06-01 to 2013-06-01
+\item Responses Received: 180
+\item School-wide Participation Rate: 25\%
+\end{itemize*}
+\vspace*{0 cm}
+The figure below shows the survey participation rate for each grade. Total enrollment is based on the 2011-2012 school year, per Department of Elementary and Secondary Education. Survey responses from each grade were used to estimate the distance and travel choice for the entire grade.The higher the participation rate, the more reliable the survey results are.
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+
+{\centering \includegraphics[width=\maxwidth]{figure/g_dfg-1} 
+
+}
+
+
+
+\end{knitrout}
+
+%%%%% New Code %%%%%%
+\vfill
+\columnbreak
+%%%%%% End New Code %%%%%
+\section*{Student Proximity}
+\begin{itemize*}
+\item  Average Distance to School: 1 miles
+\item  Within 1.0 Mile Walkshed: 79\%
+\item  Within 2.0 Mile Bikeshed: 90\%
+\end{itemize*}
+
+The chart and table below show the number of students surveyed and the total estimated students by walkshed. Student totals by walkshed are estimated assuming that the proportion of surveyed students within each walkshed and grade is proportional to the enrolled students within each walkshed and grade.
+
+
+{\centering \includegraphics[width=\maxwidth]{figure/b_dfg-1} 
+
+}
+
+
+
+
+\begin{table}[H]
+\captionsetup{width=.75\textwidth}
+\caption*{Students By Walkshed}
+%latex.default(b_dft[, 2:ncol(b_dft)], file = "", colheads = buffers,     table.env = FALSE, first.hline.double = FALSE, rowname = c("Estimated",         "Surveyed", "Percent"), rowlabel = "Students", where = "H",     col.just = rep("r", 5))%
+\begin{center}
+\begin{tabular}{lrrrrr}
+\hline
+\multicolumn{1}{l}{Students}&\multicolumn{1}{c}{0.5}&\multicolumn{1}{c}{1.0}&\multicolumn{1}{c}{1.5}&\multicolumn{1}{c}{2.0}&\multicolumn{1}{c}{2.0+}\tabularnewline
+\hline
+Estimated&313&261&63&20&74\tabularnewline
+Surveyed&78&60&17&5&17\tabularnewline
+Percent&43\%&36\%&9\%&3\%&10\%\tabularnewline
+\hline
+\end{tabular}\end{center}
+
+\end{table}
+
+\thispagestyle{empty}
+\section*{Student Travel Choices}
+\begin{itemize*}
+\item Walk\textbackslash Bike Trips Within One Mile: 38\%
+\item Walk\textbackslash Bike Trips Overall: 31\%
+\item Family Vehicle\textbackslash Carpool Trips Overall: 56\%
+\item School Bus Trips Beyond One Mile: 31\%
+\end{itemize*}
+
+The chart below shows what percent of trips are made by each travel mode in the morning and afternoon.
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+
+{\centering \includegraphics[width=\maxwidth]{figure/modeByTime-1} 
+
+}
+
+
+
+\end{knitrout}
+
+Walk share is 30.2\% in the morning and 32.4\% in the afternoon. The auto share is lower in the afternoon, indicating that as many as 3.3\% of those who are driven to school in the morning get home by other means in the afternoon.
+
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+
+{\centering \includegraphics[width=\maxwidth]{figure/mByBuffer-1} 
+
+}
+
+
+
+\end{knitrout}
+
+%%%%% Begin New Code %%%%%
+\begin{table}[H]
+\captionsetup{width=.75\textwidth}
+\caption*{Travel Mode, Morning and Afternoon}
+%latex.default(mSb_df_for_latex, file = "", colheads = buffers,     col.just = c(rep("r", length(buffers))), rowlabel = "", table.env = FALSE,     rowname = rep(c("Auto", "School Bus", "Walk"), 2), rgroup = c("Morning",         "Afternoon"), n.rgroup = c(3, 3), first.hline.double = FALSE,     center = "none", where = "H")%
+\begin{tabular}{lrrrrr}
+\hline
+\multicolumn{1}{l}{}&\multicolumn{1}{c}{0.5}&\multicolumn{1}{c}{1.0}&\multicolumn{1}{c}{1.5}&\multicolumn{1}{c}{2.0}&\multicolumn{1}{c}{2.0+}\tabularnewline
+\hline
+{\bfseries Morning}&&&&&\tabularnewline
+Auto&157&173&31&4&53\tabularnewline
+School Bus&3&35&32&7&15\tabularnewline
+Walk&153&53&0&8&6\tabularnewline
+\hline
+{\bfseries Afternoon}&&&&&\tabularnewline
+Auto&140&164&27&9&65\tabularnewline
+School Bus&7&39&33&7&3\tabularnewline
+Walk&167&57&3&3&6\tabularnewline
+\hline
+\end{tabular}
+
+\end{table}
+%%%%% End New Code %%%%%
+
+%latex.default(mSb_df_wide_morning_pct, file = "", colheads = c("Mode",     buffers), first.hline.double = FALSE, rowname = NULL, where = "!htbp",     col.just = c("l", rep("r", 5)), caption = "Morning Mode by Walk/Bikeshed")%
+\begin{table}[!htbp]
+\caption{Morning Mode by Walk/Bikeshed\label{mSb}} 
+\begin{center}
+\begin{tabular}{lrrrrr}
+\hline
+\multicolumn{1}{c}{Mode}&\multicolumn{1}{c}{0.5}&\multicolumn{1}{c}{1.0}&\multicolumn{1}{c}{1.5}&\multicolumn{1}{c}{2.0}&\multicolumn{1}{c}{2.0+}\tabularnewline
+\hline
+Auto&33\%&33\%&33\%&33\%&33\%\tabularnewline
+School Bus&33\%&33\%&33\%&33\%&33\%\tabularnewline
+Walk&33\%&33\%&33\%&33\%&33\%\tabularnewline
+Total&100\%&100\%&100\%&100\%&100\%\tabularnewline
+\hline
+\end{tabular}\end{center}
+\end{table}
+
+
+\thispagestyle{empty}
+
+%latex.default(mSb_df_wide_afternoon_pct, file = "", colheads = c("Mode",     buffers), first.hline.double = FALSE, rowname = NULL, where = "!htbp",     col.just = c("l", rep("r", 5)), caption = "Afternoon Mode by Walk/Bikeshed")%
+\begin{table}[!htbp]
+\caption{Afternoon Mode by Walk/Bikeshed\label{mSb}} 
+\begin{center}
+\begin{tabular}{lrrrrr}
+\hline
+\multicolumn{1}{c}{Mode}&\multicolumn{1}{c}{0.5}&\multicolumn{1}{c}{1.0}&\multicolumn{1}{c}{1.5}&\multicolumn{1}{c}{2.0}&\multicolumn{1}{c}{2.0+}\tabularnewline
+\hline
+Auto&33\%&33\%&33\%&33\%&33\%\tabularnewline
+School Bus&33\%&33\%&33\%&33\%&33\%\tabularnewline
+Walk&33\%&33\%&33\%&33\%&33\%\tabularnewline
+Total&100\%&100\%&100\%&100\%&100\%\tabularnewline
+\hline
+\end{tabular}\end{center}
+\end{table}
+
+
+\columnbreak
+
+\section*{Greenhouse Gas Emissions (GHG)}
+\begin{itemize*}
+\item Per-student GHGs within 1 mile: 138 kg
+\item Per-student GHGs beyond 1 mile: 611 kg
+\end{itemize*}
+
+Transportation generates more than one-third of the total greenhouse gas (GHG) emissions produced in Massachusetts. Increasing the number of trips made by walking or biking is a critical step toward achieving state goals for GHG reduction.  The following table shows the estimated annual GHG emissions (in kilograms of CO2) for students being driven to school, by walkshed. (It does not include emissions from school buses.) For comparison, the average Massachusetts household drives about 19,000 miles per year, generating approximately 8,000 kg of GHG emissions. 
+
+%latex.default(ghgBufferDFgeneric[c("Buffer", "ghgEst", "ghgEstPerCap",     "PctTotGHGprint")], file = "", colheads = c("Buffer", "Total (kg)",     "Per Student", "Percent"), where = "H", first.hline.double = FALSE,     col.just = c("l", rep("r", 3)), rowname = NULL)%
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{lrrr}
+\hline
+\multicolumn{1}{c}{Buffer}&\multicolumn{1}{c}{Total (kg)}&\multicolumn{1}{c}{Per Student}&\multicolumn{1}{c}{Percent}\tabularnewline
+\hline
+0.5&23827&74&13\%\tabularnewline
+1.0&54689&221&31\%\tabularnewline
+1.5&18858&269&11\%\tabularnewline
+2.0&6504&310&4\%\tabularnewline
+2.0+&73059&1044&41\%\tabularnewline
+\hline
+\end{tabular}\end{center}
+\end{table}
+
+% 
+
+\thispagestyle{empty}
+\section*{How Your School Compares}
+The table below compares your school's actual walk \textbackslash bike share to an expected value reflecting average walking and biking rates across Massachusetts. The expected value accounts for student grade levels and proximity to school, and is based on more than 6,000 surveys collected statewide since 2011. 
+
+\begin{table}[H]
+\captionsetup{width=.75\textwidth}
+\caption*{Actual and Expected Walk\textbackslash Bike Share}
+%latex.default(dfLatex, file = "", title = "", booktabs = TRUE,     table.env = FALSE, col.just = rep("r", lc), rowlabel = "",     colheads = buffers, colnamesTexCmd = "bfseries")%
+\begin{center}
+\begin{tabular}{lrrrrr}
+\toprule
+\multicolumn{1}{l}{\bfseries }&\multicolumn{1}{c}{\bfseries 0.5}&\multicolumn{1}{c}{\bfseries 1.0}&\multicolumn{1}{c}{\bfseries 1.5}&\multicolumn{1}{c}{\bfseries 2.0}&\multicolumn{1}{c}{\bfseries 2.0+}\tabularnewline
+\midrule
+Actual&51\%&21\%&3\%&29\%&9\%\tabularnewline
+Expected&61\%&29\%&7\%&4\%&3\%\tabularnewline
+\bottomrule
+\end{tabular}\end{center}
+
+\end{table}
+
+\section*{Benefits of Walking and Biking}
+Shifting some school commutes from auto to walking or biking can create real benefits for your community.  This section estimates the traffic, physical activity, and GHG benefits that might result from increasing walking and biking. It can help you make the case for investing in Safe Routes to School programs and to track your progress over time.
+
+If your school achieved the "expected" values described 
+                  above based on grade specific averages for each walkshed, 
+                  it would:
+\begin{itemize*}
+\item Reduce number of daily car trips to and from school by 108.
+\item Provide an additional 22 minutes of physical activity for each newly participating student.
+\item Reduce annual auto-generated GHG emissions from between 7,023 kg to 12,254 kg, or 4\% to 6.9\%.
+\end{itemize*}
+
+\end{multicols}
+\newpage
+\begin{center}
+
+\end{center}
+\end{document}
