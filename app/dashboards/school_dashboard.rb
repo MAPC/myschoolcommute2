@@ -75,7 +75,7 @@ class SchoolDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how schools are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(school)
-  #   "School ##{school.id}"
-  # end
+  def display_resource(school)
+    "#{school.name}"
+  end
 end
