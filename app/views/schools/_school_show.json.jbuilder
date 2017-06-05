@@ -1,5 +1,5 @@
 require 'rgeo/geo_json'
-json.extract! school, :id, :created_at, :updated_at
+json.extract! school, :id
 json.url school_url(school, format: :json)
 json.wgs84_lat  @school.wgs84_lat
 json.wgs84_lng @school.wgs84_lng

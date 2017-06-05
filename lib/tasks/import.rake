@@ -9,6 +9,12 @@ namespace :import do
     sh "psql #{Rails.configuration.database_configuration[Rails.env]['database']} < lib/seeds/survey_network_walk.sql"
     sh "psql #{Rails.configuration.database_configuration['test']['database']} < lib/seeds/survey_network_bike.sql"
     sh "psql #{Rails.configuration.database_configuration['test']['database']} < lib/seeds/survey_network_walk.sql"
+    sh "psql #{Rails.configuration.database_configuration[Rails.env]['database']} < lib/seeds/schools.sql"
+    sh "psql #{Rails.configuration.database_configuration[Rails.env]['database']} -c 'ALTER TABLE survey_school RENAME TO schools;'"
+    sh "psql #{Rails.configuration.database_configuration[Rails.env]['database']} -c 'ALTER TABLE schools RENAME districtid_id TO district_id;'"
+    sh "psql #{Rails.configuration.database_configuration['test']['database']} < lib/seeds/schools.sql"
+    sh "psql #{Rails.configuration.database_configuration['test']['database']} -c 'ALTER TABLE survey_school RENAME TO schools;'"
+    sh "psql #{Rails.configuration.database_configuration['test']['database']} -c 'ALTER TABLE schools RENAME districtid_id TO district_id;'"
   end
 
   desc 'Import districts'
@@ -31,7 +37,7 @@ namespace :import do
 
   desc 'Import schools' 
   task schools: :environment do
-    csv_text = File.read(Rails.root.join('lib', 'seeds', 'schools.csv')).encode("UTF-8","Windows-1252")
+    csv_text = File.read(Rails.root.join('lib', 'seeds', 'schools.csv')).encode("UTF-8","Windows-1252"); nil
     csv = CSV.parse(csv_text, headers: true, encoding: 'Windows-1252')
     School.skip_callback(:save, :after, :update_sheds)
     csv.each_with_index do |row, index|
@@ -40,11 +46,15 @@ namespace :import do
       a.schid = row['schid']
       a.geometry = row['geometry']
       a.shed_05 = row['shed_05']
+      a.save!
       a.shed_10 = row['shed_10']
+      a.save!
       a.shed_15 = row['shed_15']
+      a.save!
       a.shed_20 = row['shed_20']
+      a.save!
       a.district = District.find_by_districtid_id(row['districtid_id'])
-      a.save
+      a.save!
     end
   end
 end

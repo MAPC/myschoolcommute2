@@ -31,19 +31,34 @@ ActiveRecord::Schema.define(version: 20170530161527) do
     t.datetime "updated_at",                                              null: false
   end
 
-  create_table "schools", force: :cascade do |t|
-    t.string   "name"
-    t.string   "schid"
-    t.geometry "geometry",    limit: {:srid=>26986, :type=>"point"}
-    t.geometry "shed_05",     limit: {:srid=>26986, :type=>"multi_polygon"}
-    t.geometry "shed_10",     limit: {:srid=>26986, :type=>"multi_polygon"}
-    t.geometry "shed_15",     limit: {:srid=>26986, :type=>"multi_polygon"}
-    t.geometry "shed_20",     limit: {:srid=>26986, :type=>"multi_polygon"}
+  create_table "schools", id: :integer, default: -> { "nextval('survey_school_id_seq'::regclass)" }, force: :cascade do |t|
+    t.string   "name",             limit: 200,                                    null: false
+    t.string   "slug",             limit: 200
+    t.string   "schid",            limit: 8
+    t.string   "address",          limit: 150
+    t.string   "town_mail",        limit: 25
+    t.string   "town",             limit: 25
+    t.string   "state",            limit: 2
+    t.string   "zip",              limit: 10
+    t.string   "principal",        limit: 50
+    t.string   "phone",            limit: 15
+    t.string   "fax",              limit: 15
+    t.string   "grades",           limit: 70
+    t.string   "schl_type",        limit: 3
     t.integer  "district_id"
-    t.datetime "created_at",                                                 null: false
-    t.datetime "updated_at",                                                 null: false
+    t.text     "survey_incentive"
+    t.boolean  "survey_active",                                                   null: false
+    t.geometry "geometry",         limit: {:srid=>26986, :type=>"point"},         null: false
+    t.geometry "shed_05",          limit: {:srid=>26986, :type=>"multi_polygon"}
+    t.geometry "shed_10",          limit: {:srid=>26986, :type=>"multi_polygon"}
+    t.geometry "shed_15",          limit: {:srid=>26986, :type=>"multi_polygon"}
+    t.geometry "shed_20",          limit: {:srid=>26986, :type=>"multi_polygon"}
     t.integer  "muni_id"
-    t.index ["district_id"], name: "index_schools_on_district_id", using: :btree
+    t.index "slug varchar_pattern_ops", name: "survey_school_slug_like", using: :btree
+    t.index ["district_id"], name: "survey_school_districtid_id", using: :btree
+    t.index ["geometry"], name: "survey_school_geometry_id", using: :gist
+    t.index ["schid"], name: "survey_school_schid_key", unique: true, using: :btree
+    t.index ["slug"], name: "survey_school_slug", using: :btree
   end
 
   create_table "survey_network_bike", id: false, force: :cascade do |t|
@@ -206,7 +221,6 @@ ActiveRecord::Schema.define(version: 20170530161527) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  add_foreign_key "schools", "districts"
   add_foreign_key "survey_responses", "surveys"
   add_foreign_key "surveys", "schools"
 end

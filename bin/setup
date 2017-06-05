@@ -28,7 +28,6 @@ Dir.chdir APP_ROOT do
 
   puts "\n== Import CSV Seed Data =="
   system 'bin/rails import:districts'
-  system 'bin/rails import:schools'
 
   puts "\n== Removing old logs and tempfiles =="
   system 'bin/rails log:clear tmp:clear'
