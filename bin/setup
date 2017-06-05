@@ -27,6 +27,7 @@ Dir.chdir APP_ROOT do
   system 'bin/rails db:migrate RAILS_ENV=test'
 
   puts "\n== Import CSV Seed Data =="
+  system 'bin/rails db:seed'
   system 'bin/rails import:districts'
 
   puts "\n== Removing old logs and tempfiles =="
