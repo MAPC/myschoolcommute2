@@ -23,6 +23,7 @@ namespace :import do
     csv = CSV.parse(csv_text, headers: true, encoding: 'ISO-8859-1')
     csv.each_with_index do |row, index|
       a = District.new
+      a.id = row['districtid']
       a.distname = row['distname']
       a.geometry = row['geometry']
       a.slug = row['slug']
@@ -56,5 +57,71 @@ namespace :import do
       a.district = District.find_by_districtid_id(row['districtid_id'])
       a.save!
     end
+  end
+
+  # todo:
+  # get surveys from survey_set begin/end dates - these determine how to assign ids and pull apart survey responses
+  # surveysetdata.each {|set| survey_response=SurveyResponse.where(before < set.before)...; survey_response.survey=#blahblah create  }
+  desc 'Import survey responses'
+  task survey_responses: :environment do
+    csv_text = File.read(Rails.root.join('lib', 'seeds', 'survey_responses.csv')); nil
+    csv = CSV.parse(csv_text, headers: true, encoding: 'ISO-8859-1')
+
+    SurveyResponse.connection
+    SurveyResponse.skip_callback(:save, :after, :find_intersecting_shed)
+    SurveyResponse.skip_callback(:save, :after, :calculate_distance)
+    csv.group_by{|row| row['survey_id']}.values.each do |group|
+      # 16 = survey_id
+      survey_response = SurveyResponse.new
+      school = School.find(group[0]['school_id'])
+      survey = Survey.new({school:school})
+      survey.save!(validate: false)
+      puts "Survey ID #{survey.id}"
+      survey_response.nr_vehicles = group[0]['nr_vehicles']
+      survey_response.nr_licenses = group[0]['nr_licenses']
+      survey_response.survey = survey
+      survey_response.geometry = group[0]['st_astext']
+      survey_response.distance = group[0]['distance']
+      survey_response.shed = group[0]['shed']
+      survey_response.created_at = group[0]['created']
+
+      group.each_with_index do |row, index|
+        survey_response["grade_#{index}"] = row['grade']
+        survey_response["to_school_#{index}"] = row['to_school']
+        survey_response["dropoff_#{index}"] = row['dropoff']
+        survey_response["from_school_#{index}"] = row['from_school']
+        survey_response["pickup_#{index}"] = row['pickup']
+      end
+
+      survey_response.save
+      puts "Saved Survey Response #{survey_response.id} with Survey #{survey_response.survey.id}"
+    end
+
+
+  end
+
+  desc 'Import survey set distinctions'
+  task survey_sets: :environment do
+    csv_test = File.read(Rails.root.join('lib', 'seeds', 'surveys.csv')); nil
+    csv = CSV.parse(csv_test, headers: true, encoding: 'ISO-8859-1')
+
+    SurveyResponse.connection
+    SurveyResponse.skip_callback(:save, :after, :find_intersecting_shed)
+    SurveyResponse.skip_callback(:save, :after, :calculate_distance)
+
+    puts "Assigning correct survey set ids"
+    csv.each do |set|
+      school = School.find(set['school_id'])
+      survey = Survey.create({begin: set['begin'], end: set['end'], school: school})
+      responses = SurveyResponse.joins(:survey).where("survey_responses.created_at >= '#{set['begin']}' AND survey_responses.created_at <= '#{set['end']}' AND surveys.school_id= #{school.id} ")
+      puts "Responses count for #{school.name} in #{school.district.distname}: #{responses.length}"
+      responses.each do |response|
+        puts "Reponse #{response.id} for Survey #{response.survey.id} in #{response.survey.school.name}"
+        response.survey_id = survey.id
+        response.save
+      end
+    end
+    puts 'Cleaning up'
+    Survey.where("begin IS null").destroy_all
   end
 end
