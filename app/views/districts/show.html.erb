@@ -12,7 +12,7 @@
         <thead>
           <tr>
             <th>District</th>
-            <th>Number of Surveys</th>
+            <th>Number of Survey Responses</th>
             <th>Is Active</th>
             <th>Batch Entry</th>
           </tr>
@@ -24,7 +24,7 @@
                 <%= link_to school.name, school %>
               </td>
               <td>
-                <%= school.surveys.count %>
+                <%= school.surveys_responses.count %>
               </td>
               <td>
                 <%= school.has_active_survey? %>
@@ -53,7 +53,7 @@
                 <%= link_to school.name, school %>
               </td>
               <td>
-                <%= school.surveys.count %>
+                <%= school.survey_responses.count %>
               </td>
               <td>
                 <%= school.has_active_survey? %>
