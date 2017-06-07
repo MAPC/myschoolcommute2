@@ -56,7 +56,7 @@
               <%= district.schools.count %>
             </td>
             <td>
-              <%= district.schools.joins(:surveys).count %>
+              <%= district.schools.map(&:survey_responses).flatten.count %>
             </td>
           </tr>
           <% end %>
