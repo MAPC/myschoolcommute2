@@ -6,7 +6,8 @@ class DistrictsController < ApplicationController
   # GET /districts.json
   def index
     if params[:all]
-      @districts = District.all
+      @districts = District.order(:distname).all
+      @active_districts = District.active
     else
       @districts = District.order(:distname).page params[:page]
       @active_districts = District.active
