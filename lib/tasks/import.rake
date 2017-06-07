@@ -127,7 +127,16 @@ namespace :import do
     end
   end
 
-  desc 'Round-up foster survey responses'
+  desc 'Remove childless surveys'
+  task cleanup: :environment do
+    Survey.all.each do |survey|
+      if survey.survey_responses.count == 0
+        survey.destroy
+      end
+    end
+  end
+
+  desc 'Remove survey response orphans'
   task cleanup: :environment do
     Survey.all.each do |survey|
       if survey.survey_responses.count == 0
