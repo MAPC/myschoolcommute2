@@ -635,11 +635,11 @@ gmSbse_df_afternoon <-  droplevels(gmSbse_df_afternoon)
 
 # 5.5 check if reported grades match actual grades:
 if (sum(gmSbse_df_morning$Grade_Surveyed) == 0){
-  knit2pdf("compile_no_school_code.Rnw")
-  school_name_no_space <- gsub("\\s","",School_Name)
+  # knit2pdf("compile_no_school_code.Rnw")
+  # school_name_no_space <- gsub("\\s","",School_Name)
   #file.rename("compile_no_school_code.pdf",paste("Reports/",paste(school_name_no_space,".pdf",sep=""),sep=""))
-  file.rename("compile_no_school_code.pdf","minimal.pdf")
-  stop()
+  # file.rename("compile_no_school_code.pdf","minimal.pdf")
+  stop("No school")
 }
 
 # 6:
