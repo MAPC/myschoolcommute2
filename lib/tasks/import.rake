@@ -64,6 +64,8 @@ namespace :import do
   # surveysetdata.each {|set| survey_response=SurveyResponse.where(before < set.before)...; survey_response.survey=#blahblah create  }
   desc 'Import survey responses'
   task survey_responses: :environment do
+    puts 'WARNING: This will APPEND data rather than sync. This should only be run on a blank database. Pausing 10 seconds...'
+    sleep 10
     csv_text = File.read(Rails.root.join('lib', 'seeds', 'survey_responses.csv')); nil
     csv = CSV.parse(csv_text, headers: true, encoding: 'ISO-8859-1')
 
@@ -102,6 +104,8 @@ namespace :import do
 
   desc 'Import survey set distinctions'
   task survey_sets: :environment do
+    puts 'WARNING: This will APPEND data rather than sync. This should only be run on a blank database. Pausing 10 seconds...'
+    sleep 10
     csv_test = File.read(Rails.root.join('lib', 'seeds', 'surveys.csv')); nil
     csv = CSV.parse(csv_test, headers: true, encoding: 'ISO-8859-1')
 
@@ -121,7 +125,14 @@ namespace :import do
         response.save
       end
     end
-    puts 'Cleaning up'
-    Survey.where("begin IS null").destroy_all
+  end
+
+  desc 'Round-up foster survey responses'
+  task cleanup: :environment do
+    Survey.all.each do |survey|
+      if survey.survey_responses.count == 0
+        survey.destroy
+      end
+    end
   end
 end
