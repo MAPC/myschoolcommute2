@@ -113,10 +113,10 @@ namespace :import do
     csv.each do |set|
       school = School.find(set['school_id'])
       survey = Survey.create({begin: set['begin'], end: set['end'], school: school})
-      responses = SurveyResponse.joins(:survey).where("survey_responses.created_at >= '#{set['begin']}' AND survey_responses.created_at <= '#{set['end']}' AND surveys.school_id= #{school.id} ")
+      upper_bound = Date.parse(set['end']) + 1 # for whatever reason, the upper bounds is increased by a day
+      responses = SurveyResponse.joins(:survey).where("survey_responses.created_at >= '#{set['begin']}' AND survey_responses.created_at <= '#{upper_bound}' AND surveys.school_id= #{school.id} ")
       puts "Responses count for #{school.name} in #{school.district.distname}: #{responses.length}"
       responses.each do |response|
-        puts "Reponse #{response.id} for Survey #{response.survey.id} in #{response.survey.school.name}"
         response.survey_id = survey.id
         response.save
       end
