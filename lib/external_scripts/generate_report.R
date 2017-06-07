@@ -34,12 +34,24 @@
 #ORG_CODE = "05160002"
 #ORG_CODE = "00010505"
 
+
+establishConnection <- function(url=Sys.getenv("DATABASE_URL"))
+{
+  cred <- parse_url(url)
+  if (!(identical(cred$scheme, "postgres") || identical(cred$scheme, "postgis"))) stop("Invalid database url")
+  if (is.null(cred$username)) cred$username <- ""
+  if (is.null(cred$password)) cred$password <- ""
+  if (is.null(cred$port)) cred$port <- 5432
+  dbConnect(PostgreSQL(), host=cred$hostname, port=cred$port,
+    user=cred$username, password=cred$password, dbname=cred$path)
+}
+
 # drv <- dbDriver("PostgreSQL")
-# ch <- dbConnect(drv, host='localhost', port='5432', dbname=dbname, user=dbuser, password=dbpasswd)
-# sql <- paste("SELECT grade,to_school,dropoff,from_school,pickup,distance,shed FROM survey_child_survey WHERE schid = '",ORG_CODE,"' AND created BETWEEN timestamp '",DATE1,"' AND timestamp '",DATE2,"'",sep="")
-# df_all <- dbSendQuery(ch,sql)
-# df_all <- fetch(df_all,n=-1)
-# dbDisconnect(ch) # disconnect from PostGres database
+ch <- establishConnection(url=dbname)
+sql <- paste("SELECT id,survey_id,distance,created,modified,shed,dropoff,from_school,grade,pickup,to_school FROM melted_survey_responses WHERE survey_id = '",SURVEY_ID,"'",sep="")
+df_all <- dbSendQuery(ch,sql)
+df_all <- fetch(df_all,n=-1)
+dbDisconnect(ch) # disconnect from PostGres database
 # 2)
 # cols_needed contains variables that cannot be NA 
 #df_all <- df_all[complete.cases(df_all),] # remove any tuples that contain NA values in the cols_needed columns
@@ -74,23 +86,24 @@ enrollmentDate = get_enrollment_date(start_date)
 # check if Enrollment table contains ORG_CODE; if not
 # create pdf 'no_school_code.pdf' with error message to user
 # and terminate application
-if (!(ORG_CODE %in% enrollmentDF$ORG.CODE)){
-  #source("compile_no_school_code.R")
-  #file.rename("no_school_id.pdf", "Reports/no_school_code.pdf")
-  knit2pdf("compile_no_school_code.Rnw")
-  file.rename("compile_no_school_code.pdf", "minimal.pdf")
-  stop()
-}
+# if (!(ORG_CODE %in% enrollmentDF$ORG.CODE)){
+#   #source("compile_no_school_code.R")
+#   #file.rename("no_school_id.pdf", "Reports/no_school_code.pdf")
+#   knit2pdf("compile_no_school_code.Rnw")
+#   file.rename("compile_no_school_code.pdf", "minimal.pdf")
+#   stop()
+# }
 
 # 4b)
 # check if survey data contains fewer than 10 responses
 # if it does, then create pdf "too_few_responses.pdf"
 # with error message to user and terminate application
+
 if (nrow(df) < 10){
    #source("compile_too_few_responses.R")
    #file.rename("minimal.pdf",paste("Reports/",paste(ORG_CODE,".pdf",sep=""),sep=""))
-   knit2pdf("too_few_responses.Rnw")
-   file.rename("too_few_responses.pdf","minimal.pdf")
+   # knit2pdf("too_few_responses.Rnw")
+   # file.rename("too_few_responses.pdf","minimal.pdf")
    stop()
 }
 
