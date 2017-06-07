@@ -8,7 +8,7 @@ class DistrictsController < ApplicationController
     if params[:all]
       @districts = District.all
     else
-      @districts = District.order(:name).page params[:page]
+      @districts = District.order(:distname).page params[:page]
       @active_districts = District.active
     end
   end
