@@ -34,6 +34,9 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-datepicker-rails', '1.3.1.1'
 gem 'devise'
+gem 'devise_invitable'
+gem 'mailgun_rails'
+gem 'dotenv-rails'
 
 gem 'scenic'
 # Use ActiveModel has_secure_password
