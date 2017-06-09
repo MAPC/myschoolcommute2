@@ -1,16 +1,14 @@
 <%= render partial: 'layouts/jumbo', locals: { districts: @districts } %>
-
-<div class="ui vertical stripe segment">
-  <div class="ui middle aligned stackable grid container">
-    <div class="row">
-      <div class="column">
-        <h3 class="ui header">More information about the survey...</h3>
-        <p>The Massachusetts Safe Routes to School (SRTS) program partners with schools throughout the Commonwealth to help reduce traffic congestion and air pollution near schools while increasing the health, safety, and physical activity of students. Evaluating trends in how students and families travel to and from school is a key component to building a successful Safe Routes to School program. Parent responses to this survey provide valuable information and help determine how we can improve the environment around the school, target investments, track progress toward goals and ultimately develop local programs that benefit students, parents and our communities.
-
-        To learn more about your school’s efforts or to find out how to get involved, visit MassDOT’s Safe Routes to School Program at <a href="http://www.commute.com/schools/">commute.com/schools</a> or call us at 857-368-863.</p>
+  <div class="ui vertical stripe segment">
+    <div class="ui middle aligned stackable grid container">
+      <div class="row">
+        <div class="column">
+          <h3 class="ui header"><%= _("More information about the survey...") %></h3>
+          <p>
+            <%= _("The Massachusetts Safe Routes to School (SRTS) program partners with schools throughout the Commonwealth  to help reduce traffic congestion and air pollution near schools while increasing the health, safety, and physical activity of students. Evaluating trends in how students and families travel to and from school is a key component to building a successful Safe Routes to School program.  Parent responses to this survey provide valuable information and help determine how we can improve the environment around the school, target investments, track progress toward goals and ultimately develop local programs that benefit students, parents and our communities.") %>
+          </p>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
-<%= render partial: 'layouts/footer' %>
+  <%= render partial: 'layouts/footer' %>

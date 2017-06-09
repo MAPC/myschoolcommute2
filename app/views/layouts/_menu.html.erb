@@ -13,8 +13,12 @@
       <% else %>
         <%= link_to 'Profile', edit_user_registration_path, class: 'item' %>
         <%= link_to 'Log Out', destroy_user_session_path, method: 'delete', class: 'item' %>
-        
       <% end %>
     </div>
+  </div>
+  <div class="ui small secondary inverted menu">
+    <% alternate_locales.each do |lang| %>
+      <%= link_to _(lang[:verbose]), { locale: lang[:code] }, class: 'item' %>
+    <% end %>
   </div>
 </div>
