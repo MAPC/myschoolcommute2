@@ -72,7 +72,7 @@ class DistrictDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how districts are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(district)
-  #   "District ##{district.id}"
-  # end
+  def display_resource(district)
+    "#{district.distname}"
+  end
 end

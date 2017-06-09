@@ -1,37 +1,69 @@
 <div class="ui inverted vertical center aligned segment">
   <%= render partial: 'layouts/menu' %>
 </div>
-
 <div class="ui container">
   <div class="ui basic segment">
-    <h1 class="ui header"><%= @district.distname %></h1>
-    <table class="ui striped table">
-      <thead>
-        <tr>
-          <th>District</th>
-          <th>Number of Surveys</th>
-          <th>Is Active</th>
-          <th>Batch Entry</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @district.schools.each do |school| %>
+    <%= link_to 'Edit', edit_admin_district_path(@district), class: 'ui right floated button' %>
+      <h1 class="ui left floated header"><%= @district.distname %></h1>
+      <br/>
+      <br/>
+      <h3 class="ui header">Schools with active surveys</h3>
+      <table class="ui striped table">
+        <thead>
           <tr>
-            <td>
-              <%= link_to school.name, school %>
-            </td>
-            <td>
-              <%= school.surveys.count %>
-            </td>
-            <td>
-              <%= school.has_active_survey? %>
-            </td>
-            <td>
-              <%= link_to 'Begin Entry', new_school_survey_response_path(school.id) %>
-            </td>
+            <th>District</th>
+            <th>Number of Survey Responses</th>
+            <th>Is Active</th>
+            <th>Batch Entry</th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <% @district.schools.active.each do |school| %>
+            <tr class="positive">
+              <td>
+                <%= link_to school.name, school %>
+              </td>
+              <td>
+                <%= school.survey_responses.count %>
+              </td>
+              <td>
+                <%= school.has_active_survey? %>
+              </td>
+              <td>
+                <%= link_to 'Begin Entry', new_school_survey_response_path(school.id) %>
+              </td>
+            </tr>
+            <% end %>
+        </tbody>
+      </table>
+      <h3 class="ui header">All schools in <%= @district.distname %></h3>
+      <table class="ui striped table">
+        <thead>
+          <tr>
+            <th>District</th>
+            <th>Number of Surveys</th>
+            <th>Is Active</th>
+            <th>Batch Entry</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @district.schools.each do |school| %>
+            <tr>
+              <td>
+                <%= link_to school.name, school %>
+              </td>
+              <td>
+                <%= school.survey_responses.count %>
+              </td>
+              <td>
+                <%= school.has_active_survey? %>
+              </td>
+              <td>
+                <%= link_to 'Begin Entry', new_school_survey_response_path(school.id) %>
+              </td>
+            </tr>
+            <% end %>
+        </tbody>
+      </table>
   </div>
 </div>

@@ -3,6 +3,6 @@ class District < ActiveRecord::Base
   has_many :surveys, through: :schools
 
   scope :active, -> () {
-    School.active.map(&:district)
+    School.active.map(&:district).uniq
   }
 end

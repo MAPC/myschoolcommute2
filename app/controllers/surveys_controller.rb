@@ -1,5 +1,5 @@
 class SurveysController < ApplicationController
-  before_action :set_survey, only: [:show, :edit, :update, :destroy]
+  before_action :set_survey, only: [:show, :edit, :update, :destroy, :show_report]
   before_action :authenticate_user!, except: [:show]
   before_action :authenticate_district_user, except: [:show]
   # GET /surveys/1
@@ -14,6 +14,10 @@ class SurveysController < ApplicationController
 
   # GET /surveys/1/edit
   def edit
+  end
+
+  def show_report
+    redirect_to '/reports/' + GenerateReportService.new(@survey).perform
   end
 
   # POST /surveys
