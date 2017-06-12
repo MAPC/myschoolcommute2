@@ -15,6 +15,8 @@
 //= require semantic-ui
 //= require bootstrap-datepicker
 //= require_tree .
+//= require_tree ./locale
+//= require gettext/all
 
 $(document)
   .ready(function() {

@@ -39,6 +39,11 @@ gem 'mailgun_rails'
 gem 'dotenv-rails'
 
 gem 'scenic'
+
+gem 'gettext_i18n_rails'
+gem 'gettext', '>=3.0.2', :require => false, :group => :development
+gem "gettext_i18n_rails_js", "~> 1.2.0"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
