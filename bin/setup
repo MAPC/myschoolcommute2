@@ -19,8 +19,8 @@ Dir.chdir APP_ROOT do
   puts "\n== Creating database =="
   system 'bin/rails db:create'
 
-  puts "\n== Import SQL Seed Data =="
-  system 'bin/rails import:seed'
+  # puts "\n== Import SQL Seed Data =="
+  # system 'bin/rails import:seed'
 
   puts "\n== Preparing database =="
   system 'bin/rails db:migrate'

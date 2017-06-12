@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20170608173707) do
     t.datetime "updated_at",                                              null: false
   end
 
-  create_table "schools", id: :integer, default: -> { "nextval('survey_school_id_seq'::regclass)" }, force: :cascade do |t|
+  create_table "schools", force: :cascade do |t|
     t.string   "name",             limit: 200,                                    null: false
     t.string   "slug",             limit: 200
     t.string   "schid",            limit: 8
