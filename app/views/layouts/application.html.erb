@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="<%= I18n.locale %>">
-  <head>
-    <title>Myschoolcommute2</title>
-    <%= stylesheet_link_tag    'application', media: 'all' %>
+
+<head>
+  <title>Myschoolcommute2</title>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <%= csrf_meta_tags %>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+      <%= csrf_meta_tags %>
 
-  </head>
-  <body class="<%= controller_name %> <%= action_name %>">
+</head>
 
-    <!-- Page Contents -->
-    <%= notice %>
+<body class="<%= controller_name %> <%= action_name %>">
+
+  <!-- Page Contents -->
+  <%= notice %>
     <%= alert %>
-    <%= yield %>
+      <%= yield %>
 
-    
+</body>
 
-  </body>
 </html>
