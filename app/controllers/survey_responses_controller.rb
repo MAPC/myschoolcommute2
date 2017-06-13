@@ -32,11 +32,9 @@ class SurveyResponsesController < ApplicationController
 
     respond_to do |format|
       if @survey_response.save
-        format.html { redirect_to @survey_response, notice: 'Survey response was successfully created.' }
-        format.json { render :show, status: :created, location: @survey_response }
+        format.html { redirect_to thankyou_survey_response_path(@survey_response), notice: 'Survey response was successfully created.' }
       else
-        format.html { render :new }
-        format.json { render json: @survey_response.errors, status: :unprocessable_entity }
+        format.html { redirect_to '/', notice: 'Something went wrong. Please contact an administrator.' }
       end
     end
   end
@@ -63,6 +61,9 @@ class SurveyResponsesController < ApplicationController
       format.html { redirect_to survey_responses_url, notice: 'Survey response was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def thankyou
   end
 
   private

@@ -21,7 +21,9 @@ Rails.application.routes.draw do
     get 'show_report' => 'surveys#show_report', on: :member
   end
 
-  resources :survey_responses, only: [:post]
+  resources :survey_responses, only: [:post] do
+    get :thankyou, on: :member
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
