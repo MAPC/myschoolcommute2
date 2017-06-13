@@ -8,7 +8,7 @@ class DistrictDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    schools: Field::HasMany,
+    # schools: Field::HasMany.with_options( scope: -> { School.select(:id,:name,:slug,:schid,:address,:town_mail,:town,:state,:zip,:principal,:phone,:fax,:grades,:schl_type,:district_id,:survey_incentive,:survey_active,:geometry,:muni_id) }),
     id: Field::Number,
     name: Field::String,
     distname: Field::String,
@@ -29,7 +29,7 @@ class DistrictDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :schools,
+    # :schools,
     :id,
     :name,
     :distname,
@@ -38,7 +38,7 @@ class DistrictDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :schools,
+    # :schools,
     :id,
     :name,
     :distname,
@@ -57,7 +57,7 @@ class DistrictDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :schools,
+    # :schools,
     :name,
     :distname,
     :slug,
