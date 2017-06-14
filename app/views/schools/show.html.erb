@@ -25,6 +25,7 @@
               <%= @school.has_active_survey? ? 'Survey is active' : 'No active surveys' %>
             </div>
           </div>
+          <%= link_to_if @school.survey_responses.any?, 'Download Survey Results', school_path(@school, format: :csv), class: 'ui primary fluid button' %>
         </div>
         <div class="ui segment">
           <h2 class="ui header">Paper Surveys</h2>
