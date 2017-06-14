@@ -15,11 +15,5 @@ class GenerateReportService
     ]
 
     output = `Rscript --vanilla #{filepath} #{arguments.join(" ")}`
-
-    Rails.logger.info "====================RSCRIPT!========================"
-    Rails.logger.info "Rscript --vanilla #{filepath} #{arguments.join(" ")}"
-    Rails.logger.info ENV.inspect
-    Rails.logger.info ENV['DATABASE_URL'].to_s
-    Rails.logger.info ENV['TEST'].to_s
   end
 end

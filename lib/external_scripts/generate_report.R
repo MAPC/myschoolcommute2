@@ -23,6 +23,7 @@
 # library(knitr)
 # library(Hmisc)
 # library(car)
+# library(httr)
 
 #DATE1 = "2012-06-01"
 #DATE2 = "2014-01-14"

@@ -45,29 +45,29 @@
     </div>
 </div>
 <script type="text/javascript">
-var options =
-  <%= nest_for_menus(districts) %>
+  var options =
+    <%= nest_for_menus(districts) %>
 
 
-$('#select-brand').dropdown({
-  apiSettings: {
-    mockResponse: {
-      success: true,
-      results: options.districts
-    }
-  },
-  onChange: function(value, text, $selectedItem) {
-    $('#select-model').dropdown({
-      apiSettings: {
-        mockResponse: {
-          success: true,
-          results: options.schools[text]
-        }
-      },
-      onChange: function(value, text) {
-        window.location = 'surveys/' + value;
+  $('#select-brand').dropdown({
+    apiSettings: {
+      mockResponse: {
+        success: true,
+        results: options.districts
       }
-    });
-  }
-});
+    },
+    onChange: function(value, text, $selectedItem) {
+      $('#select-model').dropdown({
+        apiSettings: {
+          mockResponse: {
+            success: true,
+            results: options.schools[text]
+          }
+        },
+        onChange: function(value, text) {
+          window.location = 'surveys/' + value;
+        }
+      });
+    }
+  });
 </script>
