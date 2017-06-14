@@ -60,7 +60,7 @@
                     <%= survey.status %>
                   </td>
                   <td>
-                    <%= link_to 'View', show_report_survey_path(survey), target: '_blank' %>
+                    <%= link_to_if survey.survey_responses.count > 10, 'View', show_report_survey_path(survey), target: '_blank' %>
                   </td>
                   <td>
                     <%= survey.begin %>

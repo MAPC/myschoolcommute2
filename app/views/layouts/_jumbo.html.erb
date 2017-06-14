@@ -21,17 +21,20 @@
             <%- else %>
               <div class="column">
                 <h3><%= _("Please select your school district") %></h3>
-                <div id="select-brand" class="ui fluid search selection dropdown">
+                <div id="select-brand" class="ui fluid selection dropdown">
                   <input type="hidden" name="brand">
                   <i class="dropdown icon"></i>
                   <div class="default text">District</div>
                   <div class="menu">
+                    <% active_districts.each do |district| %>
+                      <div class="item" data-value=<%= district[:value] %>> <%= district[:name] %> </div>
+                    <% end %>
                   </div>
                 </div>
               </div>
               <div class="column">
                 <h3><%= _("Please select your school") %></h3>
-                <div id="select-model" class="ui fluid search selection dropdown">
+                <div id="select-model" class="ui fluid selection dropdown">
                   <input type="hidden" name="brand">
                   <i class="dropdown icon"></i>
                   <div class="default text">School</div>
@@ -46,26 +49,20 @@
 </div>
 <script type="text/javascript">
   var options =
-    <%= nest_for_menus(districts) %>
+    <%= nest_for_menus %>
 
 
   $('#select-brand').dropdown({
-    apiSettings: {
-      mockResponse: {
-        success: true,
-        results: options.districts
-      }
-    },
     onChange: function(value, text, $selectedItem) {
+      if(text) {
+        var $menu = $('#select-model').find('.menu');
+        options.schools[text].forEach(function(option) {
+          $menu.append('<a href="surveys/' +  option.value + '" class="item" data-value="' + option.value + '">' + option.name + '</a>');
+        });
+      }
       $('#select-model').dropdown({
-        apiSettings: {
-          mockResponse: {
-            success: true,
-            results: options.schools[text]
-          }
-        },
         onChange: function(value, text) {
-          window.location = 'surveys/' + value;
+          $('#select-brand').dropdown('restore defaults');
         }
       });
     }
