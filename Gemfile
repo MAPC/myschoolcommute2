@@ -36,7 +36,6 @@ gem 'bootstrap-datepicker-rails', '1.3.1.1'
 gem 'devise'
 gem 'devise_invitable'
 gem 'mailgun_rails'
-gem 'dotenv-rails'
 
 gem 'scenic'
 
@@ -57,6 +56,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'dotenv-rails'
 end
 
 group :test do
