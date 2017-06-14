@@ -7,6 +7,7 @@ library(scales)
 library(knitr)
 library(Hmisc)
 library(httr)
+library(car)
 
 DATE1 = "2012-06-01"
 DATE2 = "2013-06-01"
