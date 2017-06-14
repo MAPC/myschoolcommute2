@@ -15,5 +15,8 @@ class GenerateReportService
     ]
 
     output = `Rscript --vanilla #{filepath} #{arguments.join(" ")}`
+
+    Rails.logger.info "====================RSCRIPT!========================"
+    Rails.logger.info "Rscript --vanilla #{filepath} #{arguments.join(" ")}"
   end
 end
