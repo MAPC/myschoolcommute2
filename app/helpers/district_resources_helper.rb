@@ -1,0 +1,2 @@
+module DistrictResourcesHelper
+end

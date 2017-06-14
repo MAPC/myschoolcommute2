@@ -24,6 +24,8 @@ Rails.application.routes.draw do
     get :thankyou, on: :member
   end
 
+  get 'district_resources' => 'district_resources#show'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

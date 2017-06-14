@@ -3,9 +3,8 @@
     <%= link_to 'Home', root_path, class: 'item' %>
     <% if current_user %>
       <%= link_to 'Districts', districts_path, class: 'item' %>
-    <% end %>
-    <% if current_user %>
       <%= link_to 'Administration', admin_districts_path, class: 'item' %>
+      <%= link_to 'District Resources', district_resources_path, class: 'item' %>
     <% end %>
     <div class="right menu">
       <% if current_user.nil? %>
