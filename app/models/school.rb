@@ -54,6 +54,23 @@ class School < ActiveRecord::Base
     end
   end
 
+  def results_to_csv
+    if survey_responses.any?
+      csv  = []
+      query = "COPY (SELECT * FROM melted_survey_responses WHERE survey_id IN (#{surveys.pluck(:id).join(',')})) TO STDOUT WITH (FORMAT CSV, HEADER TRUE, FORCE_QUOTE *, ESCAPE E'\\\\');"
+
+      conn = ActiveRecord::Base.connection.raw_connection
+      conn.copy_data(query) do
+        while row = conn.get_copy_data
+          csv.push(row)
+        end
+      end
+      csv.join("\n")
+    else
+      "No Results Found."
+    end
+  end
+
   def find_intersecting_municipality
     sql = "\
     SELECT muni_id FROM ma_municipalities \
