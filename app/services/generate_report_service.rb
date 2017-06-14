@@ -15,5 +15,7 @@ class GenerateReportService
     ]
 
     output = `Rscript --vanilla #{filepath} #{arguments.join(" ")}`
+
+    "SurveyReport#{@survey.id}.pdf"
   end
 end
