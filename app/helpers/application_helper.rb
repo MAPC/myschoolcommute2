@@ -2,14 +2,14 @@ module ApplicationHelper
   def alternate_locales
     [
       { code: 'en', verbose: 'English'},
-      { code: 'es', verbose: 'Spanish'},
-      { code: 'pt', verbose: 'Portuguese'},
-      { code: 'fr', verbose: 'French'},
+      { code: 'es', verbose: 'español'},
+      { code: 'pt', verbose: 'português'},
+      { code: 'fr', verbose: 'français'},
       { code: 'ht', verbose: 'Haitian Creole'},
-      { code: 'vi', verbose: 'Vietnamese'},
+      { code: 'vi', verbose: 'Việt'},
       { code: 'km', verbose: 'Khmer'},
-      { code: 'zh', verbose: 'Chinese'},
-      { code: 'ar', verbose: 'Arabic'}
+      { code: 'zh', verbose: '中国的'},
+      { code: 'ar', verbose: 'العربية'}
     ]
   end
 end

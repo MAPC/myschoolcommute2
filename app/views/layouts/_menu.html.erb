@@ -18,7 +18,7 @@
   </div>
   <div class="ui small secondary inverted menu">
     <% alternate_locales.each do |lang| %>
-      <%= link_to _(lang[:verbose]), root_path({ locale: lang[:code] }), class: 'item' %>
+      <%= link_to lang[:verbose], root_path({ locale: lang[:code] }), class: 'item' %>
     <% end %>
   </div>
 </div>
