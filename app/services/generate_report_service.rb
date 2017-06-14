@@ -18,5 +18,7 @@ class GenerateReportService
 
     Rails.logger.info "====================RSCRIPT!========================"
     Rails.logger.info "Rscript --vanilla #{filepath} #{arguments.join(" ")}"
+    Rails.logger.info ENV.inspect
+    Rails.logger.info ENV['DATABASE_URL']
   end
 end
