@@ -57,13 +57,7 @@
                     <%= survey.survey_responses.count %>
                   </td>
                   <td>
-                    <% if survey.try(:begin) and survey.try(:end) %>
-                      <% if Time.now >= survey.begin and Time.now <= survey.end %>
-                        <%= link_to 'In Progress', survey_path(survey) %>
-                          <% else %>
-                            Finished
-                            <% end %>
-                              <% end %>
+                    <%= survey.status %>
                   </td>
                   <td>
                     <%= link_to 'View', show_report_survey_path(survey), target: '_blank' %>
