@@ -1,0 +1,26 @@
+FactoryGirl.define do
+  factory :school do
+    name 'MLK High School'
+    slug ''
+    schid ''
+    address ''
+    town_mail ''
+    town ''
+    state ''
+    zip ''
+    principal ''
+    phone ''
+    fax ''
+    grades ''
+    schl_type ''
+    district_id ''
+    survey_incentive ''
+    survey_active ''
+    geometry 'POINT (276499.6977514899 834860.7436856688)'
+    shed_05 ''
+    shed_10 ''
+    shed_15 ''
+    shed_20 ''
+    muni_id ''
+  end
+end
