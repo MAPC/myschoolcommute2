@@ -8,6 +8,6 @@ RSpec.describe School, type: :model do
 
   it 'should allow creation of a school' do
     school = build(:school)
-    school.save
+    expect(school.save).to be true
   end
 end

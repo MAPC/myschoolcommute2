@@ -9,19 +9,19 @@ class SchoolDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     district: Field::BelongsTo,
-    surveys: Field::HasMany,
-    survey_responses: Field::HasMany,
+    # surveys: Field::HasMany,
+    # survey_responses: Field::HasMany,
     id: Field::Number,
     name: Field::String,
     schid: Field::String,
     geometry: Field::String.with_options(searchable: false),
-    shed_05: Field::String.with_options(searchable: false),
-    shed_10: Field::String.with_options(searchable: false),
-    shed_15: Field::String.with_options(searchable: false),
-    shed_20: Field::String.with_options(searchable: false),
+    # shed_05: Field::String.with_options(searchable: false),
+    # shed_10: Field::String.with_options(searchable: false),
+    # shed_15: Field::String.with_options(searchable: false),
+    # shed_20: Field::String.with_options(searchable: false),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    muni_id: Field::Number,
+    # muni_id: Field::Number,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -60,16 +60,9 @@ class SchoolDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :district,
-    :surveys,
-    :survey_responses,
     :name,
     :schid,
-    :geometry,
-    :shed_05,
-    :shed_10,
-    :shed_15,
-    :shed_20,
-    :muni_id,
+    :geometry
   ].freeze
 
   # Overwrite this method to customize how schools are displayed
