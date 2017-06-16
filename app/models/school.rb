@@ -25,7 +25,7 @@ class School < ActiveRecord::Base
     surveys.where(id: Survey.active.pluck(:id))
   end
 
-  # Through AR Base, transform to 4326, cast as GeoJSON, then find the first row in the result and get 
+  # Through AR Base, transform to 4326, cast as GeoJSON, then find the first row in the result and get
   # the geom. Return an empty array if nil.
   # needs refactoring ASAP.
   def to_wgs84(column)
@@ -89,13 +89,13 @@ class School < ActiveRecord::Base
     request["cache-control"] = 'no-cache'
     response = http.request(request)
     json = JSON.parse(response.read_body)
-    
+
     begin
       muni_id = JSON.parse(response.read_body)['rows'][0]['muni_id']
     rescue
       muni_id = nil
     end
-    
+
     update_columns({
       muni_id: muni_id
     })
@@ -103,7 +103,7 @@ class School < ActiveRecord::Base
     muni_id
   end
 
-  private 
+  private
 
     def update_sheds
       # TODO: active job or sidekick or rabbit mq
@@ -124,7 +124,7 @@ class School < ActiveRecord::Base
       update_columns({  shed_10: shed_10_ring,
                         shed_15: shed_15_ring,
                         shed_20: shed_20_ring  })
-      
+
     end
 
     def now
