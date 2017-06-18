@@ -9,8 +9,8 @@ class SchoolDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     district: Field::BelongsTo,
-    # surveys: Field::HasMany,
-    # survey_responses: Field::HasMany,
+    surveys: Field::HasMany,
+    survey_responses: Field::HasMany,
     id: Field::Number,
     name: Field::String,
     schid: Field::String,
@@ -46,13 +46,13 @@ class SchoolDashboard < Administrate::BaseDashboard
     :name,
     :schid,
     :geometry,
-    :shed_05,
-    :shed_10,
-    :shed_15,
-    :shed_20,
+    # :shed_05,
+    # :shed_10,
+    # :shed_15,
+    # :shed_20,
     :created_at,
     :updated_at,
-    :muni_id,
+    # :muni_id,
   ].freeze
 
   # FORM_ATTRIBUTES
