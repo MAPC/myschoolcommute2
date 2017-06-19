@@ -18,10 +18,10 @@ class CreateSchools < ActiveRecord::Migration[5.0]
       t.text     "survey_incentive"
       t.boolean  "survey_active"
       t.geometry "geometry",         limit: {:srid=>0, :type=>"point"},             null: false
-      t.geometry "shed_05",          limit: {:srid=>26986, :type=>"multi_polygon"}
-      t.geometry "shed_10",          limit: {:srid=>26986, :type=>"multi_polygon"}
-      t.geometry "shed_15",          limit: {:srid=>26986, :type=>"multi_polygon"}
-      t.geometry "shed_20",          limit: {:srid=>26986, :type=>"multi_polygon"}
+      t.geometry "shed_05",          limit: {:srid=>26986, :type=>"geometry"}
+      t.geometry "shed_10",          limit: {:srid=>26986, :type=>"geometry"}
+      t.geometry "shed_15",          limit: {:srid=>26986, :type=>"geometry"}
+      t.geometry "shed_20",          limit: {:srid=>26986, :type=>"geometry"}
       t.integer  "muni_id"
       t.index "slug varchar_pattern_ops", name: "survey_school_slug_like", using: :btree
       t.index ["district_id"], name: "survey_school_districtid_id", using: :btree

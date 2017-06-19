@@ -38,6 +38,7 @@ gem 'devise_invitable'
 gem 'mailgun_rails'
 
 gem 'scenic'
+gem 'sidekiq'
 
 gem 'gettext_i18n_rails'
 gem 'gettext', '>=3.0.2', :require => false, :group => :development
