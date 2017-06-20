@@ -11,7 +11,6 @@ class SchoolsController < ApplicationController
   # GET /schools/1
   # GET /schools/1.json
   def show
-    puts School.find(2834).shed_05
     respond_to do |format|
       format.html 
       format.json

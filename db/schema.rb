@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20170612200930) do
   end
 
   create_table "schools", force: :cascade do |t|
-    t.string   "name",             limit: 200,                                    null: false
+    t.string   "name",             limit: 200,                               null: false
     t.string   "slug",             limit: 200
     t.string   "schid",            limit: 8
     t.string   "address",          limit: 150
@@ -48,11 +48,11 @@ ActiveRecord::Schema.define(version: 20170612200930) do
     t.integer  "district_id"
     t.text     "survey_incentive"
     t.boolean  "survey_active"
-    t.geometry "geometry",         limit: {:srid=>0, :type=>"point"},             null: false
-    t.geometry "shed_05",          limit: {:srid=>26986, :type=>"multi_polygon"}
-    t.geometry "shed_10",          limit: {:srid=>26986, :type=>"multi_polygon"}
-    t.geometry "shed_15",          limit: {:srid=>26986, :type=>"multi_polygon"}
-    t.geometry "shed_20",          limit: {:srid=>26986, :type=>"multi_polygon"}
+    t.geometry "geometry",         limit: {:srid=>0, :type=>"point"},        null: false
+    t.geometry "shed_05",          limit: {:srid=>26986, :type=>"geometry"}
+    t.geometry "shed_10",          limit: {:srid=>26986, :type=>"geometry"}
+    t.geometry "shed_15",          limit: {:srid=>26986, :type=>"geometry"}
+    t.geometry "shed_20",          limit: {:srid=>26986, :type=>"geometry"}
     t.integer  "muni_id"
     t.index "slug varchar_pattern_ops", name: "survey_school_slug_like", using: :btree
     t.index ["district_id"], name: "survey_school_districtid_id", using: :btree
