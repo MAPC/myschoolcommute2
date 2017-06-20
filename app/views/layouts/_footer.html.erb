@@ -6,4 +6,11 @@
       <img src="/assets/images/mapc-logo.png" />
     </div>
   </div>
+  <div class="ui secondary menu">
+    <div class="right menu">
+      <% if current_user.nil? %>
+        <%= link_to 'Administrator Sign In', new_user_session_path, class: 'item' %>
+      <% end %>
+    </div>
+  </div>
 </div>
