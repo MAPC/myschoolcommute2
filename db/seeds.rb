@@ -12,3 +12,6 @@ if Rails.env.development? || Rails.env.test?
 else
   sh "pg_restore -a -O -h #{Rails.configuration.database_configuration[Rails.env]['host']} -U #{Rails.configuration.database_configuration[Rails.env]['username']} -w -d #{Rails.configuration.database_configuration[Rails.env]['database']} -t schools -t survey_network_bike -t survey_network_walk lib/seeds/mysc-seed.dump" || true
 end
+
+ActiveRecord::Base.connection.execute("SELECT setval('districts_id_seq', (SELECT MAX(id) FROM districts)+1);")
+ActiveRecord::Base.connection.execute("SELECT setval('schools_id_seq', (SELECT MAX(id) FROM schools)+1);")
