@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :district do
-    name 'Lexington'
-    distname ''
+    add_attribute :name, 'Lexington'
+    distname 'Lexington'
     slug ''
     startgrade '1'
     endgrade '12'
