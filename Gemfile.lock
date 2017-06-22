@@ -169,6 +169,8 @@ GEM
       activerecord
       kaminari-core (= 1.0.1)
     kaminari-core (1.0.1)
+    launchy (2.4.3)
+      addressable (~> 2.3)
     locale (2.1.2)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
@@ -347,6 +349,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   kaminari
+  launchy
   mailgun_rails
   pg (~> 0.18)
   pry
