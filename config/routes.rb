@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :districts, only: [:index, :show, :update, :edit]
     resources :schools
-    resources :survey_responses
+    resources :surveys
     resources :users
 
     root to: "districts#index"
