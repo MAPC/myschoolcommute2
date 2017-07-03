@@ -15,6 +15,9 @@
         <%= link_to 'Settings', admin_districts_path, class: 'item' %>
         <%= link_to 'District Resources', district_resources_path, class: 'item' %>
       <% end %>
+      <% if current_user.is_admin %>
+        <%= link_to 'Download Data', survey_responses_path(format: :csv), class: 'item'  %>
+      <% end %>
       <div class="right menu">
         <% if current_user.nil? %>
           <%= link_to 'Administrator Sign In', new_user_session_path, class: 'item' %>

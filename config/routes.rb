@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     get 'show_report' => 'surveys#show_report', on: :member
   end
 
-  resources :survey_responses, only: [:post] do
+  resources :survey_responses, only: [:post, :index] do
     get :thankyou, on: :member
   end
 
