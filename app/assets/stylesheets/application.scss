@@ -18,51 +18,51 @@
 
 @font-face {
   font-family: "Fakt";
-  src: url('FaktPro-Normal.ttf');
+  src: url('fonts/FaktPro-Normal.ttf');
 }
 
 @font-face {
   font-family: "Fakt";
-  src: url('FaktPro-NormalItalic.ttf');
+  src: url('fonts/FaktPro-NormalItalic.ttf');
   font-weight: normal;
   font-style: italic;
 }
 
 @font-face {
   font-family: "FaktLight";
-  src: url('FaktPro-Blond.ttf');
+  src: url('fonts/FaktPro-Blond.ttf');
   font-weight: normal;
 }
 
 @font-face {
   font-family: "FaktLight";
-  src: url('FaktPro-BlondItalic.ttf');
+  src: url('fonts/FaktPro-BlondItalic.ttf');
   font-weight: normal;
   font-style: italic;
 }
 
 @font-face {
   font-family: "Fakt";
-  src: url('FaktPro-Medium.ttf');
+  src: url('fonts/FaktPro-Medium.ttf');
   font-weight: bold;
 }
 
 @font-face {
   font-family: "Fakt";
-  src: url('FaktPro-MediumItalic.ttf');
+  src: url('fonts/FaktPro-MediumItalic.ttf');
   font-weight: bold;
   font-style: italic;
 }
 
 @font-face {
   font-family: "FaktSlab";
-  src: url('FaktSlabPro-Light.ttf');
+  src: url('fonts/FaktSlabPro-Light.ttf');
 }
 
 @font-face {
   font-family: 'Icons';
-  src: url("icons.eot");
-  src: url("icons.eot?#iefix") format('embedded-opentype'), url("icons.woff2") format('woff2'), url("icons.woff") format('woff'), url("icons.ttf") format('truetype'), url("icons.svg#icons") format('svg');
+  src: url("fonts/icons.eot");
+  src: url("fonts/icons.eot?#iefix") format('embedded-opentype'), url("fonts/icons.woff2") format('woff2'), url("fonts/icons.woff") format('woff'), url("fonts/icons.ttf") format('truetype'), url("fonts/icons.svg#icons") format('svg');
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
