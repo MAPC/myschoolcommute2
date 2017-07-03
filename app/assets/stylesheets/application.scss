@@ -16,6 +16,59 @@
  */
 
 
+@font-face {
+  font-family: "Fakt";
+  src: url('FaktPro-Normal.ttf');
+}
+
+@font-face {
+  font-family: "Fakt";
+  src: url('FaktPro-NormalItalic.ttf');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "FaktLight";
+  src: url('FaktPro-Blond.ttf');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "FaktLight";
+  src: url('FaktPro-BlondItalic.ttf');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Fakt";
+  src: url('FaktPro-Medium.ttf');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Fakt";
+  src: url('FaktPro-MediumItalic.ttf');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "FaktSlab";
+  src: url('FaktSlabPro-Light.ttf');
+}
+
+@font-face {
+  font-family: 'Icons';
+  src: url("icons.eot");
+  src: url("icons.eot?#iefix") format('embedded-opentype'), url("icons.woff2") format('woff2'), url("icons.woff") format('woff'), url("icons.ttf") format('truetype'), url("icons.svg#icons") format('svg');
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-decoration: inherit;
+  text-transform: none;
+}
 
 .hidden.menu {
   display: none;
@@ -94,6 +147,7 @@
 }
 
 
+
 @media only screen and (max-width: 700px) {
   .ui.fixed.menu {
     display: none !important;
@@ -117,3 +171,4 @@
     font-size: 1.5em;
   }
 }
+
