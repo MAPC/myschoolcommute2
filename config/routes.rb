@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     resources :districts, only: [:index, :show, :update, :edit]
     resources :schools
     resources :surveys
-    resources :survey_responses
+    resources :survey_responses, except: [:new]
     resources :users
 
     root to: "districts#index"
