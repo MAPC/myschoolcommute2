@@ -22,8 +22,8 @@ class UserDashboard < Administrate::BaseDashboard
     last_sign_in_ip: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    is_admin: Field::Boolean,
-    is_district: Field::Boolean,
+    is_admin: BooleanField,
+    is_district: BooleanField,
   }.freeze
 
   # COLLECTION_ATTRIBUTES

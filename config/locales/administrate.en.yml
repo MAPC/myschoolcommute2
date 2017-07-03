@@ -12,7 +12,7 @@ en:
       create:
         success: "%{resource} was successfully created."
       destroy:
-        success: "%{resource} was successfully destroyed."
+        success: "%{resource} was successfully deleted."
       update:
         success: "%{resource} was successfully updated."
     fields:
@@ -32,3 +32,6 @@ en:
         distname: Community Name
       school:
         schid: DOE Org Code
+      user:
+        is_admin: Admin Permission
+        is_district: District Permission
