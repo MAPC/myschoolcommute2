@@ -130,8 +130,7 @@ class SurveyResponseDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :created_at,
     :survey,
-    :school,
-    :id
+    :school
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
