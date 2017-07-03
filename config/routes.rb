@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   namespace :admin do
-    resources :districts, only: [:index, :show, :update, :edit]
+    resources :districts
     resources :schools
     resources :surveys
     resources :survey_responses, except: [:new]
