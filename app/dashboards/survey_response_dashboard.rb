@@ -128,10 +128,9 @@ class SurveyResponseDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
+    :created_at,
     :survey,
-    :school,
-    :id,
-    :geometry,
+    :school
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -140,7 +139,6 @@ class SurveyResponseDashboard < Administrate::BaseDashboard
     :survey,
     :school,
     :id,
-    :geometry,
     :question,
     :mode,
     :shed,
