@@ -30,9 +30,9 @@ class DistrictDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     # :schools,
-    :id,
-    :name,
     :distname,
+    :startgrade,
+    :endgrade,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
