@@ -21,3 +21,8 @@ User: `admin@user.org`
 Password: `password`
 
 This should be deleted before moved to production!
+
+# Submodules
+Some of the view logic was complicated enough to warrant a FE framework. There are two, both using React:
+1. Public survey form: https://github.com/MAPC/intersecting-streets-react
+2. Map for viewing a school and its walksheds: https://github.com/MAPC/school-map
