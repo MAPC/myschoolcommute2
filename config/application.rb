@@ -23,5 +23,12 @@ module Myschoolcommute2
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
     config.generators.javascript_engine :js
+    config.generators.test_framework :rspec
+
+    config.assets.paths << Rails.root.join("app", "assets", "fonts")
+
+    config.to_prepare do
+      Administrate::ApplicationController.helper Myschoolcommute2::Application.helpers
+    end
   end
 end

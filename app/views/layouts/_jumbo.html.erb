@@ -1,62 +1,68 @@
 <div class="ui inverted vertical masthead center aligned segment">
-
   <%= render partial: 'layouts/menu' %>
-
-  <div class="ui text container">
-    <h1 class="ui inverted header">
+    <div class="ui text container">
+      <h1 class="ui inverted header">
       Safe Routes Survey
     </h1>
-    <p>Would you like to help create safe routes to school for students in your community?</p>
-    <p>The survey takes less than 3 minutes and will help your school plan for more transportation choices. All responses are voluntary and confidential.</p>
-    <div class="ui equal width stackable internally celled grid">
-      <div class="center aligned row">
-        <div class="column">
-          <h3>Please select your school district</h3>
-          <div id="select-brand" class="ui fluid search selection dropdown">
-            <input type="hidden" name="brand">
-            <i class="dropdown icon"></i>
-            <div class="default text">District</div>
-            <div class="menu">
+      <p>
+        <%= _('Would you like to help create safe routes to school for students in your community?') %>
+      </p>
+      <p>
+        <%= _("The survey takes less than 3 minutes and will help your school plan for more transportation choices. All responses are voluntary and confidential.") %>
+      </p>
+      <div class="ui equal width stackable internally celled grid">
+        <div class="center aligned row">
+          <%- if districts.count < 1 %>
+            <div class="column">
+              <div class="ui center aligned disabled header">
+                No Active Surveys
+              </div>
             </div>
-          </div>
-        </div>
-        <div class="column">
-          <h3>Please select your school</h3>
-          <div id="select-model" class="ui fluid search selection dropdown">
-            <input type="hidden" name="brand">
-            <i class="dropdown icon"></i>
-            <div class="default text">School</div>
-            <div class="menu">
-            </div>
-          </div>
+            <%- else %>
+              <div class="column">
+                <h3><%= _("Please select your school district") %></h3>
+                <div id="select-brand" class="ui fluid selection dropdown">
+                  <input type="hidden" name="brand">
+                  <i class="dropdown icon"></i>
+                  <div class="default text">District</div>
+                  <div class="menu">
+                    <% active_districts.each do |district| %>
+                      <div class="item" data-value=<%= district[:value] %>> <%= district[:name] %> </div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+              <div class="column">
+                <h3><%= _("Please select your school") %></h3>
+                <div id="select-model" class="ui fluid selection dropdown">
+                  <input type="hidden" name="brand">
+                  <i class="dropdown icon"></i>
+                  <div class="default text">School</div>
+                  <div class="menu">
+                  </div>
+                </div>
+              </div>
+              <%- end %>
         </div>
       </div>
     </div>
-  </div>
 </div>
-
 <script type="text/javascript">
-  var options = 
-  <%= nest_for_menus(districts) %>
+  var options =
+    <%= nest_for_menus %>
 
-  
+
   $('#select-brand').dropdown({
-    apiSettings: {
-      mockResponse: {
-        success: true,
-        results: options.districts
-      }
-    },
     onChange: function(value, text, $selectedItem) {
+      if(text) {
+        var $menu = $('#select-model').find('.menu');
+        options.schools[text].forEach(function(option) {
+          $menu.append('<a href="surveys/' +  option.value + '" class="item" data-value="' + option.value + '">' + option.name + '</a>');
+        });
+      }
       $('#select-model').dropdown({
-        apiSettings: {
-          mockResponse: {
-            success: true,
-            results: options.schools[text]
-          }
-        },
         onChange: function(value, text) {
-          window.location = 'surveys/' + value;
+          $('#select-brand').dropdown('restore defaults');
         }
       });
     }

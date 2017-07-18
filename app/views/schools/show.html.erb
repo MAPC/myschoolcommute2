@@ -1,10 +1,12 @@
 <div class="ui inverted vertical center aligned segment">
   <%= render partial: 'layouts/menu' %>
 </div>
-
 <div class="ui container">
   <div class="ui basic segment">
-    <h1 class="ui header"><%= @school.district.distname %>, <%= @school.name %></h1>
+    <div class="ui clearing basic segment">
+      <%= link_to 'Edit', edit_admin_school_path(@school), class: 'ui right floated button' %>
+        <h1 class="ui left floated header"><%= @school.district.distname %>, <%= @school.name %></h1>
+    </div>
     <div class="ui grid">
       <div class="four wide column">
         <div class="ui segment">
@@ -23,6 +25,7 @@
               <%= @school.has_active_survey? ? 'Survey is active' : 'No active surveys' %>
             </div>
           </div>
+          <%= link_to_if @school.survey_responses.any?, 'Download Survey Results', school_path(@school, format: :csv), class: 'ui primary fluid button' %>
         </div>
         <div class="ui segment">
           <h2 class="ui header">Paper Surveys</h2>
@@ -33,56 +36,57 @@
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css">
         <div id="root"></div>
         <script type="text/javascript">
-          window.endpoint = '/schools/<%= @school.id %>.json';
+        window.endpoint = '/schools/<%= @school.id %>.json';
         </script>
         <%= javascript_include_tag "react_modules/schoolmap.min.js" %>
-
-        <h3 class="ui header">Surveys</h3>
-        <table class="ui striped table">
-          <thead>
-            <tr>
-              <th>Responses</th>
-              <th>Status</th>
-              <th>Report</th>
-              <th>Begin</th>
-              <th>End</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @school.surveys.each do |survey| %>
+        <p>To print the map place your mouse pointer over the printer icon above (below the +/- buttons).</p>
+          <h3 class="ui header">Surveys</h3>
+          <table class="ui striped table">
+            <thead>
               <tr>
-                <td><%= survey.survey_responses.count %></td>
-                <td>
-                  <% if Time.now >= survey.begin and Time.now <= survey.end %>
-                    In Progress
-                  <% else %>
-                    Finished
-                  <% end %>
-                </td>
-                <td>View</td>
-                <td><%= survey.begin %></td>
-                <td><%= survey.end %></td>
-              </tr>              
-            <% end %>
-          </tbody> 
-        </table>
-        
-        <h3 class="ui header">Create New Survey</h3>
-        <%= form_for Survey.new, html: { class: 'ui form' } do |f| %>
-          <div class="field">
-            <label>Survey Begin Date</label>
-            <input type="text" name="survey[begin]" class='datepicker'>
-          </div>
-          <div class="field">
-            <label>Survey End Date</label>
-            <input type="text" name="survey[end]" class='datepicker'>
-          </div>
-          <%= f.hidden_field :school_id, value: @school.id %>
-          <%= f.submit 'Submit Survey', class: "ui button" %> 
-        <% end %>
+                <th>Responses</th>
+                <th>Status</th>
+                <th>Report</th>
+                <th>Begin</th>
+                <th>End</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @school.surveys.each do |survey| %>
+                <tr>
+                  <td>
+                    <%= survey.survey_responses.count %>
+                  </td>
+                  <td>
+                    <%= survey.status %>
+                  </td>
+                  <td>
+                    <%= link_to_if survey.survey_responses.count > 10, 'View', show_report_survey_path(survey), target: '_blank' %>
+                  </td>
+                  <td>
+                    <%= survey.begin %>
+                  </td>
+                  <td>
+                    <%= survey.end %>
+                  </td>
+                </tr>
+                <% end %>
+            </tbody>
+          </table>
+          <h3 class="ui header">Create New Survey</h3>
+          <%= form_for Survey.new, html: { class: 'ui form' } do |f| %>
+            <div class="field">
+              <label>Survey Begin Date</label>
+              <input type="text" name="survey[begin]" class='datepicker'>
+            </div>
+            <div class="field">
+              <label>Survey End Date</label>
+              <input type="text" name="survey[end]" class='datepicker'>
+            </div>
+            <%= f.hidden_field :school_id, value: @school.id %>
+              <%= f.submit 'Submit Survey', class: "ui button" %>
+                <% end %>
       </div>
     </div>
   </div>
 </div>
-
-<%= render partial: 'layouts/footer' %>

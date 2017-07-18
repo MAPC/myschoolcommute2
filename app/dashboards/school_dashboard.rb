@@ -15,13 +15,13 @@ class SchoolDashboard < Administrate::BaseDashboard
     name: Field::String,
     schid: Field::String,
     geometry: Field::String.with_options(searchable: false),
-    shed_05: Field::String.with_options(searchable: false),
-    shed_10: Field::String.with_options(searchable: false),
-    shed_15: Field::String.with_options(searchable: false),
-    shed_20: Field::String.with_options(searchable: false),
+    # shed_05: Field::String.with_options(searchable: false),
+    # shed_10: Field::String.with_options(searchable: false),
+    # shed_15: Field::String.with_options(searchable: false),
+    # shed_20: Field::String.with_options(searchable: false),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    muni_id: Field::Number,
+    # muni_id: Field::Number,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -30,6 +30,7 @@ class SchoolDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
+    :name,
     :district,
     :surveys,
     :survey_responses,
@@ -46,13 +47,13 @@ class SchoolDashboard < Administrate::BaseDashboard
     :name,
     :schid,
     :geometry,
-    :shed_05,
-    :shed_10,
-    :shed_15,
-    :shed_20,
+    # :shed_05,
+    # :shed_10,
+    # :shed_15,
+    # :shed_20,
     :created_at,
     :updated_at,
-    :muni_id,
+    # :muni_id,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -60,22 +61,15 @@ class SchoolDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :district,
-    :surveys,
-    :survey_responses,
     :name,
     :schid,
-    :geometry,
-    :shed_05,
-    :shed_10,
-    :shed_15,
-    :shed_20,
-    :muni_id,
+    :geometry
   ].freeze
 
   # Overwrite this method to customize how schools are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(school)
-  #   "School ##{school.id}"
-  # end
+  def display_resource(school)
+    "#{school.name}"
+  end
 end

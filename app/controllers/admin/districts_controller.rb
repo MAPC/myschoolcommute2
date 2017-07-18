@@ -1,5 +1,11 @@
 module Admin
   class DistrictsController < Admin::ApplicationController
+    before_filter :default_params
+
+    def default_params
+      params[:order] ||= "distname"
+      params[:direction] ||= "asc"
+    end
     # To customize the behavior of this controller,
     # you can overwrite any of the RESTful actions. For example:
     #

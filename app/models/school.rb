@@ -25,7 +25,7 @@ class School < ActiveRecord::Base
     surveys.where(id: Survey.active.pluck(:id))
   end
 
-  # Through AR Base, transform to 4326, cast as GeoJSON, then find the first row in the result and get 
+  # Through AR Base, transform to 4326, cast as GeoJSON, then find the first row in the result and get
   # the geom. Return an empty array if nil.
   # needs refactoring ASAP.
   def to_wgs84(column)
@@ -54,6 +54,23 @@ class School < ActiveRecord::Base
     end
   end
 
+  def results_to_csv
+    if survey_responses.any?
+      csv  = []
+      query = "COPY (SELECT * FROM melted_survey_responses WHERE survey_id IN (#{surveys.pluck(:id).join(',')})) TO STDOUT WITH (FORMAT CSV, HEADER TRUE, FORCE_QUOTE *, ESCAPE E'\\\\');"
+
+      conn = ActiveRecord::Base.connection.raw_connection
+      conn.copy_data(query) do
+        while row = conn.get_copy_data
+          csv.push(row)
+        end
+      end
+      csv.join("\n")
+    else
+      "No Results Found."
+    end
+  end
+
   def find_intersecting_municipality
     sql = "\
     SELECT muni_id FROM ma_municipalities \
@@ -72,13 +89,13 @@ class School < ActiveRecord::Base
     request["cache-control"] = 'no-cache'
     response = http.request(request)
     json = JSON.parse(response.read_body)
-    
+
     begin
       muni_id = JSON.parse(response.read_body)['rows'][0]['muni_id']
     rescue
       muni_id = nil
     end
-    
+
     update_columns({
       muni_id: muni_id
     })
@@ -86,7 +103,7 @@ class School < ActiveRecord::Base
     muni_id
   end
 
-  private 
+  private
 
     def update_sheds
       # TODO: active job or sidekick or rabbit mq
@@ -107,7 +124,7 @@ class School < ActiveRecord::Base
       update_columns({  shed_10: shed_10_ring,
                         shed_15: shed_15_ring,
                         shed_20: shed_20_ring  })
-      
+
     end
 
     def now

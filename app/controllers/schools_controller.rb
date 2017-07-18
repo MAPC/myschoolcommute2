@@ -11,6 +11,11 @@ class SchoolsController < ApplicationController
   # GET /schools/1
   # GET /schools/1.json
   def show
+    respond_to do |format|
+      format.html 
+      format.json
+      format.csv { send_data @school.results_to_csv }
+    end
   end
 
   # GET /schools/new

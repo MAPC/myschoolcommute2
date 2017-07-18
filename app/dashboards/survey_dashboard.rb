@@ -10,6 +10,7 @@ class SurveyDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     survey_responses: Field::HasMany,
     school: Field::BelongsTo,
+    school_name: Field::String,
     id: Field::Number,
     begin: Field::DateTime,
     end: Field::DateTime,
@@ -25,7 +26,7 @@ class SurveyDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :survey_responses,
     :school,
-    :id,
+    :school_name,
     :begin,
     :end
   ].freeze
@@ -34,8 +35,6 @@ class SurveyDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :survey_responses,
-    :school,
-    :id,
     :begin,
     :end,
     :created_at,
@@ -46,7 +45,6 @@ class SurveyDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :school,
     :begin,
     :end,
   ].freeze
@@ -54,7 +52,7 @@ class SurveyDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how surveys are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(survey)
-  #   "Survey ##{survey.id}"
-  # end
+  def display_resource(survey)
+    "Survey ##{survey.id}"
+  end
 end

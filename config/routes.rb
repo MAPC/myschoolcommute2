@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     resources :districts
     resources :schools
     resources :surveys
-    resources :survey_responses
+    resources :survey_responses, except: [:new]
     resources :users
 
     root to: "districts#index"
@@ -17,8 +17,15 @@ Rails.application.routes.draw do
 
   get 'welcome/index'
 
-  resources :surveys, only: [:show, :index, :create]
-  resources :survey_responses, only: [:post]
+  resources :surveys, only: [:show, :index, :create, :show_report] do
+    get 'show_report' => 'surveys#show_report', on: :member
+  end
+
+  resources :survey_responses, only: [:post, :index] do
+    get :thankyou, on: :member
+  end
+
+  get 'district_resources' => 'district_resources#show'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

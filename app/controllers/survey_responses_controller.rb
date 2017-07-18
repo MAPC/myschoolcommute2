@@ -4,7 +4,9 @@ class SurveyResponsesController < ApplicationController
   # GET /survey_responses
   # GET /survey_responses.json
   def index
-    @survey_responses = SurveyResponse.all
+    respond_to do |format|
+      format.csv { send_data SurveyResponse.to_csv }
+    end
   end
 
   # GET /survey_responses/1
@@ -14,7 +16,11 @@ class SurveyResponsesController < ApplicationController
 
   # GET /survey_responses/new
   def new
-    @survey_response = SurveyResponse.new
+    if params[:school_id]
+      @survey_response = SurveyResponse.new(school: School.find(params[:school_id]))
+    else
+      @survey_response = SurveyResponse.new
+    end
   end
 
   # GET /survey_responses/1/edit
@@ -28,11 +34,9 @@ class SurveyResponsesController < ApplicationController
 
     respond_to do |format|
       if @survey_response.save
-        format.html { redirect_to @survey_response, notice: 'Survey response was successfully created.' }
-        format.json { render :show, status: :created, location: @survey_response }
+        format.html { redirect_to thankyou_survey_response_path(@survey_response), notice: 'Survey response was successfully created.' }
       else
-        format.html { render :new }
-        format.json { render json: @survey_response.errors, status: :unprocessable_entity }
+        format.html { redirect_to '/', notice: 'Something went wrong. Please contact an administrator.' }
       end
     end
   end
@@ -59,6 +63,9 @@ class SurveyResponsesController < ApplicationController
       format.html { redirect_to survey_responses_url, notice: 'Survey response was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def thankyou
   end
 
   private

@@ -36,4 +36,17 @@ class SurveyResponse < ActiveRecord::Base
     })
 
   end
+
+  def self.to_csv
+    csv  = []
+    query = "COPY (SELECT * FROM melted_survey_responses) TO STDOUT WITH (FORMAT CSV, HEADER TRUE, FORCE_QUOTE *, ESCAPE E'\\\\');"
+
+    conn = ActiveRecord::Base.connection.raw_connection
+    conn.copy_data(query) do
+      while row = conn.get_copy_data
+        csv.push(row)
+      end
+    end
+    csv.join("\n")
+  end
 end

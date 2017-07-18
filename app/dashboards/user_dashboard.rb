@@ -10,6 +10,7 @@ class UserDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::Number,
     email: Field::String,
+    # password: Field::String,
     encrypted_password: Field::String,
     reset_password_token: Field::String,
     reset_password_sent_at: Field::DateTime,
@@ -21,8 +22,8 @@ class UserDashboard < Administrate::BaseDashboard
     last_sign_in_ip: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    is_admin: Field::Boolean,
-    is_district: Field::Boolean,
+    is_admin: BooleanField,
+    is_district: BooleanField,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -58,6 +59,7 @@ class UserDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :email,
+    # :password,
     :is_admin,
     :is_district,
   ].freeze
