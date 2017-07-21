@@ -70,6 +70,30 @@ namespace :import do
     end
   end
 
+  desc 'import schools quickly'
+  task schools_fast: :environment do
+      # Setup raw connection
+      conn = ActiveRecord::Base.connection
+      rc = conn.raw_connection
+      rc.exec("COPY schools FROM STDIN WITH CSV")
+
+      file = File.open(Rails.root.join('lib', 'seeds', 'schools.csv'), 'r')
+      while !file.eof?
+        # Add row to copy data
+        rc.put_copy_data(file.readline)
+      end
+
+      # We are done adding copy data
+      rc.put_copy_end
+
+      # Display any error messages
+      while res = rc.get_result
+        if e_message = res.error_message
+          p e_message
+        end
+      end
+    end
+
   # todo:
   # get surveys from survey_set begin/end dates - these determine how to assign ids and pull apart survey responses
   # surveysetdata.each {|set| survey_response=SurveyResponse.where(before < set.before)...; survey_response.survey=#blahblah create  }
