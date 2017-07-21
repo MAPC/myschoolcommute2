@@ -36,7 +36,7 @@ namespace :import do
     end
   end
 
-  desc 'Import schools' 
+  desc 'Import schools'
   task schools: :environment do
     csv_text = File.read(Rails.root.join('lib', 'seeds', 'schools.csv')).encode("UTF-8","Windows-1252"); nil
     csv = CSV.parse(csv_text, headers: true, encoding: 'Windows-1252')
@@ -46,6 +46,17 @@ namespace :import do
       a.name = row['name']
       a.schid = row['schid']
       a.geometry = row['geometry']
+      a.address = row['address']
+      a.town_mail = row['town_mail']
+      a.state = row['state']
+      a.zip = row['zip']
+      a.principal = row['principal']
+      a.phone = row['phone']
+      a.fax = row['fax']
+      a.grades = row['grades']
+      a.schl_type = row['schl_type']
+      a.survey_incentive = row['survey_incentive']
+      a.survey_active = row['survey_active']
       a.shed_05 = row['shed_05']
       a.save!
       a.shed_10 = row['shed_10']
