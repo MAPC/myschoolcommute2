@@ -106,8 +106,6 @@ namespace :import do
       survey_response.save!
       puts "Saved Survey Response #{survey_response.id} with Survey #{survey_response.survey.id}"
     end
-
-
   end
 
   desc 'Import survey set distinctions'
@@ -124,6 +122,7 @@ namespace :import do
     puts "Assigning correct survey set ids"
     csv.each do |set|
       school = School.find_by_old_id(set['school_id'])
+
       survey = Survey.create({begin: set['begin'], end: set['end'], school: school})
       upper_bound = Date.parse(set['end']) + 1 # for whatever reason, the upper bounds is increased by a day
       responses = SurveyResponse.joins(:survey).where("survey_responses.created_at >= '#{set['begin']}' AND survey_responses.created_at <= '#{upper_bound}' AND surveys.school_id= #{school.id} ")
@@ -144,12 +143,14 @@ namespace :import do
     end
   end
 
-  desc 'Remove survey response orphans'
-  task cleanup: :environment do
-    Survey.all.each do |survey|
-      if survey.survey_responses.count == 0
-        survey.destroy
-      end
+  desc 'Import users from django app'
+  task users: :environment do
+    csv_test = File.read(Rails.root.join('lib', 'seeds', 'mysc_users.csv'))
+    csv = CSV.parse(csv_test, headers: true, encoding: 'ISO-8859-1')
+
+    csv.each do |user|
+      new_user = User.new(email: user["email"], encrypted_password: user["password"], is_admin: user["is_superuser"] == "t")
+      new_user.save(validate: false)
     end
   end
 end
