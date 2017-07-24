@@ -38,8 +38,8 @@ namespace :import do
 
   desc 'Import schools'
   task schools: :environment do
-    csv_text = File.read(Rails.root.join('lib', 'seeds', 'schools.csv')).encode("UTF-8","Windows-1252"); nil
-    csv = CSV.parse(csv_text, headers: true, encoding: 'Windows-1252')
+    csv_text = File.read(Rails.root.join('lib', 'seeds', 'schools.csv'))
+    csv = CSV.parse(csv_text, headers: true)
     School.skip_callback(:save, :after, :update_sheds)
     csv.each_with_index do |row, index|
       a = School.new
@@ -58,41 +58,14 @@ namespace :import do
       a.survey_incentive = row['survey_incentive']
       a.survey_active = row['survey_active']
       a.shed_05 = row['shed_05']
-      a.save!
       a.shed_10 = row['shed_10']
-      a.save!
       a.shed_15 = row['shed_15']
-      a.save!
       a.shed_20 = row['shed_20']
-      a.save!
+      a.old_id = row['id']
       a.district = District.find_by_districtid_id(row['districtid_id'])
       a.save!
     end
   end
-
-  desc 'import schools quickly'
-  task schools_fast: :environment do
-      # Setup raw connection
-      conn = ActiveRecord::Base.connection
-      rc = conn.raw_connection
-      rc.exec("COPY schools FROM STDIN WITH CSV")
-
-      file = File.open(Rails.root.join('lib', 'seeds', 'schools.csv'), 'r')
-      while !file.eof?
-        # Add row to copy data
-        rc.put_copy_data(file.readline)
-      end
-
-      # We are done adding copy data
-      rc.put_copy_end
-
-      # Display any error messages
-      while res = rc.get_result
-        if e_message = res.error_message
-          p e_message
-        end
-      end
-    end
 
   # todo:
   # get surveys from survey_set begin/end dates - these determine how to assign ids and pull apart survey responses
@@ -110,14 +83,14 @@ namespace :import do
     csv.group_by{|row| row['survey_id']}.values.each do |group|
       # 16 = survey_id
       survey_response = SurveyResponse.new
-      school = School.find(group[0]['school_id'])
+      school = School.find_by_old_id(group[0]['school_id'])
       survey = Survey.new({school:school})
       survey.save!(validate: false)
       puts "Survey ID #{survey.id}"
       survey_response.nr_vehicles = group[0]['nr_vehicles']
       survey_response.nr_licenses = group[0]['nr_licenses']
       survey_response.survey = survey
-      survey_response.geometry = group[0]['st_astext']
+      survey_response.geometry = group[0]['location']
       survey_response.distance = group[0]['distance']
       survey_response.shed = group[0]['shed']
       survey_response.created_at = group[0]['created']
@@ -130,7 +103,7 @@ namespace :import do
         survey_response["pickup_#{index}"] = row['pickup']
       end
 
-      survey_response.save
+      survey_response.save!
       puts "Saved Survey Response #{survey_response.id} with Survey #{survey_response.survey.id}"
     end
 
@@ -150,7 +123,7 @@ namespace :import do
 
     puts "Assigning correct survey set ids"
     csv.each do |set|
-      school = School.find(set['school_id'])
+      school = School.find_by_old_id(set['school_id'])
       survey = Survey.create({begin: set['begin'], end: set['end'], school: school})
       upper_bound = Date.parse(set['end']) + 1 # for whatever reason, the upper bounds is increased by a day
       responses = SurveyResponse.joins(:survey).where("survey_responses.created_at >= '#{set['begin']}' AND survey_responses.created_at <= '#{upper_bound}' AND surveys.school_id= #{school.id} ")
