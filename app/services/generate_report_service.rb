@@ -14,7 +14,13 @@ class GenerateReportService
       @survey.id # survey id
     ]
 
+    Rails.logger.info "The R script command is below"
+    Rails.logger.info "Rscript --vanilla #{filepath} #{arguments.join(" ")}"
+
     output = `Rscript --vanilla #{filepath} #{arguments.join(" ")}`
+
+    Rails.logger.info "Output result is below"
+    Rails.logger.info output
 
     "SurveyReport#{@survey.id}.pdf"
   end
