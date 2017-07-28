@@ -67,7 +67,6 @@ $font-family: 'Fakt';
 }
 
 .masthead.segment {
-  min-height: 650px;
   padding: 1em 0em;
 }
 .masthead .logo.item img {
@@ -77,7 +76,7 @@ $font-family: 'Fakt';
   margin-left: 0.5em;
 }
 .masthead h1.ui.header {
-  margin-top: 2em;
+  margin-top: 0.2em;
   margin-bottom: .5em;
   font-size: 4em;
   font-weight: normal;
@@ -92,7 +91,7 @@ $font-family: 'Fakt';
 }
 
 .ui.vertical.stripe {
-  padding: 8em 0em;
+  padding: 1em 0em;
 }
 .ui.vertical.stripe h3 {
   font-size: 2em;
