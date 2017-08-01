@@ -32,6 +32,7 @@ server '174.129.122.98', user: 'myschoolcommute2', roles: %w{app db web}
 # Feel free to add new variables to customise your setup.
 set :branch, 'develop'
 set :rvm_ruby_version, '2.3.3'
+set :keep_releases, 3
 
 # Custom SSH Options
 # ==================
