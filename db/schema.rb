@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170721204202) do
+ActiveRecord::Schema.define(version: 20170807155237) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20170721204202) do
   end
 
   create_table "schools", force: :cascade do |t|
-    t.string   "name",             limit: 200,                                    null: false
+    t.string   "name",             limit: 200,                               null: false
     t.string   "slug",             limit: 200
     t.string   "schid",            limit: 8
     t.string   "address",          limit: 150
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 20170721204202) do
     t.integer  "district_id"
     t.text     "survey_incentive"
     t.boolean  "survey_active"
-    t.geometry "geometry",         limit: {:srid=>0, :type=>"point"},             null: false
+    t.geometry "geometry",         limit: {:srid=>0, :type=>"point"},        null: false
     t.geometry "shed_05",          limit: {:srid=>26986, :type=>"geometry"}
     t.geometry "shed_10",          limit: {:srid=>26986, :type=>"geometry"}
     t.geometry "shed_15",          limit: {:srid=>26986, :type=>"geometry"}
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 20170721204202) do
     t.float    "miles",                                          null: false
     t.integer  "source",                                         null: false
     t.integer  "target",                                         null: false
+    t.index ["geometry"], name: "index_survey_network_bike_on_geometry", using: :gist
   end
 
   create_table "survey_network_walk", id: false, force: :cascade do |t|
@@ -78,6 +79,7 @@ ActiveRecord::Schema.define(version: 20170721204202) do
     t.float    "miles",                                          null: false
     t.integer  "source",                                         null: false
     t.integer  "target",                                         null: false
+    t.index ["geometry"], name: "index_survey_network_walk_on_geometry", using: :gist
   end
 
   create_table "survey_responses", force: :cascade do |t|
