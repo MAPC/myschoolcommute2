@@ -26,3 +26,11 @@ This should be deleted before moved to production!
 Some of the view logic was complicated enough to warrant a FE framework. There are two, both using React:
 1. Public survey form: https://github.com/MAPC/intersecting-streets-react
 2. Map for viewing a school and its walksheds: https://github.com/MAPC/school-map
+
+To push changes from these submodules into this repository, follow these steps:
+1. Setup the submodule; it must be a sibling directory with this repository:
+  /repositories
+     /myschoolcommute2
+     /intersectin-streets-react
+     /school-map
+2. From within the submodule directory, run `npm build`. This will build the script and load it into the correct place in the Rails app.
