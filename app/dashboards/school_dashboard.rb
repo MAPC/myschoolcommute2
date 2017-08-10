@@ -43,7 +43,7 @@ class SchoolDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :name,
-    :district,
+    :town_mail,
     :surveys,
     :survey_responses,
     :id,
