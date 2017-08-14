@@ -965,8 +965,6 @@ School_Name <- enrollmentDF[enrollmentDF$ORG.CODE==ORG_CODE,"SCHOOL"]
 school_name_no_slash <- paste("SurveyReport", SURVEY_ID, sep="")
 # knit2pdf("minimal.Rnw", compiler = "lualatex", output=paste(school_name_no_slash,".tex", sep=""), quiet=TRUE)
 knit2html("minimal.Rnw", compiler = "lualatex", output=paste(school_name_no_slash,".tex", sep=""), quiet=TRUE)
-#knit2html("minimal.Rnw", compiler = "lualatex", output=paste(school_name_no_slash,".tex", sep=""), envir = parent.frame(), text = NULL, quiet = FALSE,
-    encoding = getOption("encoding"), force_v1 = FALSE)
 file.copy(paste(school_name_no_slash, ".pdf", sep=""),"../../public/reports", overwrite=TRUE)
 file.remove(paste(school_name_no_slash, ".pdf", sep=""))
 cat(paste(school_name_no_slash,".pdf",sep=""))
