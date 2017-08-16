@@ -5,6 +5,7 @@ class School < ActiveRecord::Base
   belongs_to :district
   has_many :surveys
   has_many :survey_responses, through: :surveys
+  before_create :transform_geometry
 
   after_save :update_sheds, if: :geometry_changed?
 
@@ -126,5 +127,12 @@ class School < ActiveRecord::Base
 
   def now
     DateTime.now
+  end
+
+  def transform_geometry
+    # Ugly hack to transform SRID 4326 input from leaflet to the expected SRID of 26986
+    point = RGeo::Cartesian.factory(srid: 4326, proj4: '+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs').point(self.geometry.x, self.geometry.y)
+    ma_factory = RGeo::Cartesian.factory(srid: 26986, proj4: '+proj=lcc +lat_1=42.68333333333333 +lat_2=41.71666666666667 +lat_0=41 +lon_0=-71.5 +x_0=200000 +y_0=750000 +ellps=GRS80 +datum=NAD83 +units=m +no_defs')
+    self.geometry = RGeo::Feature.cast(point, factory: ma_factory, project: true)
   end
 end
