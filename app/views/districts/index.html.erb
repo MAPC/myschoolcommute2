@@ -29,7 +29,7 @@
               <%= district.schools.count %>
             </td>
             <td>
-              <%= district.schools.joins(:surveys).count %>
+              <%= district.schools.joins(:surveys).where('surveys.begin IS NOT NULL AND surveys.end IS NOT NULL').count %>
             </td>
           </tr>
           <% end %>

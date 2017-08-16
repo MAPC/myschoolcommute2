@@ -12,7 +12,7 @@ class SchoolsController < ApplicationController
   # GET /schools/1.json
   def show
     respond_to do |format|
-      format.html 
+      format.html
       format.json
       format.csv { send_data @school.results_to_csv }
     end
