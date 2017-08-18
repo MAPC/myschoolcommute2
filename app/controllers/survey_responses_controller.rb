@@ -34,7 +34,7 @@ class SurveyResponsesController < ApplicationController
 
     respond_to do |format|
       if @survey_response.save
-        format.html { redirect_to thankyou_survey_response_path(@survey_response), notice: 'Survey response was successfully created.' }
+        format.html { redirect_back fallback_location: districts_path, notice: 'Survey response was successfully created.' }
       else
         format.html { redirect_to '/', notice: 'Something went wrong. Please contact an administrator.' }
       end
