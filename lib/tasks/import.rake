@@ -153,4 +153,10 @@ namespace :import do
       new_user.save(validate: false)
     end
   end
+
+  desc 'Remove draft surveys'
+  task destroy_drafts: :environment do
+    Survey.destroy_all(begin: nil)
+    Survey.destroy_all(end: nil)
+  end
 end
