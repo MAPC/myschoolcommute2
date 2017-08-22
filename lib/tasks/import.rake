@@ -74,13 +74,13 @@ namespace :import do
   task survey_responses: :environment do
     puts 'WARNING: This will APPEND data rather than sync. This should only be run on a blank database. Pausing 10 seconds...'
     sleep 10
-    csv_text = File.read(Rails.root.join('lib', 'seeds', 'survey_responses.csv')); nil
+    csv_text = File.read(Rails.root.join('lib', 'seeds', 'survey_child_survey.csv')); nil
     csv = CSV.parse(csv_text, headers: true, encoding: 'ISO-8859-1')
 
     SurveyResponse.connection
     SurveyResponse.skip_callback(:save, :after, :find_intersecting_shed)
     SurveyResponse.skip_callback(:save, :after, :calculate_distance)
-    csv.group_by{|row| row['survey_id']}.values.each do |group|
+    csv.group_by{|row| row['id']}.values.each do |group|
       # 16 = survey_id
       survey_response = SurveyResponse.new
       school = School.find_by_old_id(group[0]['school_id'])
@@ -90,7 +90,7 @@ namespace :import do
       survey_response.nr_vehicles = group[0]['nr_vehicles']
       survey_response.nr_licenses = group[0]['nr_licenses']
       survey_response.survey = survey
-      survey_response.geometry = group[0]['location']
+      survey_response.geometry = group[0]['st_astext']
       survey_response.distance = group[0]['distance']
       survey_response.shed = group[0]['shed']
       survey_response.created_at = group[0]['created']
@@ -122,9 +122,10 @@ namespace :import do
     puts "Assigning correct survey set ids"
     csv.each do |set|
       school = School.find_by_old_id(set['school_id'])
-
       survey = Survey.create({begin: set['begin'], end: set['end'], school: school})
       upper_bound = Date.parse(set['end']) + 1 # for whatever reason, the upper bounds is increased by a day
+      #Get responses for the relevant school
+
       responses = SurveyResponse.joins(:survey).where("survey_responses.created_at >= '#{set['begin']}' AND survey_responses.created_at <= '#{upper_bound}' AND surveys.school_id= #{school.id} ")
       puts "Responses count for #{school.name} in #{school.district.distname}: #{responses.length}"
       responses.each do |response|
