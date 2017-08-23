@@ -17,6 +17,7 @@
 //= require_tree .
 //= require_tree ./locale
 //= require gettext/all
+//= stub new_school.js
 
 $(document)
   .ready(function() {
