@@ -1,4 +1,4 @@
- var mymap = L.map('mapid').setView([42.360, -72.058], 9);
+ var mymap = L.map('school-location').setView([42.360, -72.058], 9);
  var clickMarker
  var latlong
 
