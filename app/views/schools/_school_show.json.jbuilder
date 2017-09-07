@@ -14,5 +14,7 @@ json.surveys @school.surveys do |survey|
   json.survey_responses survey.survey_responses do |survey_response|
     json.geometry RGeo::GeoJSON.encode(survey_response.geometry)
     json.shed survey_response.shed
+    json.to_school survey_response.to_school
+    json.from_school survey_response.from_school
   end
 end
