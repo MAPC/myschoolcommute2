@@ -9,6 +9,7 @@ class SurveyResponse < ActiveRecord::Base
 
   validates :geometry, presence: true
 
+
   def find_intersecting_shed
     update_columns(shed: IntersectionQuery.new(geometry.to_s, school).execute)
   end
@@ -37,6 +38,14 @@ class SurveyResponse < ActiveRecord::Base
 
   end
 
+  def to_school
+    non_blank_grade_value('to_school')
+  end
+
+  def from_school
+    non_blank_grade_value('from_school')
+  end
+
   def self.to_csv
     csv  = []
     query = "COPY (SELECT * FROM melted_survey_responses) TO STDOUT WITH (FORMAT CSV, HEADER TRUE, FORCE_QUOTE *, ESCAPE E'\\\\');"
@@ -49,4 +58,16 @@ class SurveyResponse < ActiveRecord::Base
     end
     csv.join("\n")
   end
+
+  private
+    def non_blank_grade_value(column)
+      (0..19).each do |grade_num|
+        unless self["#{column}_#{grade_num}"].blank?
+          return self["#{column}_#{grade_num}"]
+        end
+      end
+
+      nil
+    end
+
 end
