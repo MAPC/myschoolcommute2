@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :districts
     resources :schools
-    resources :surveys
+    resources :surveys, except: [:new]
     resources :survey_responses, except: [:new]
     resources :users
 
