@@ -1,0 +1,25 @@
+.jumbo-layout {
+  text-align: left;
+
+  .row { padding: 80px 0; }
+
+  .main-column {
+    padding-right: 30px;
+
+    .header {
+      margin: 0 !important; 
+
+      text-align: left; 
+    }
+  }
+
+  .sub-column {
+    padding: 20px 25px;
+
+    background: darken(#3399CC, 10);
+
+    .selection-wrapper { margin: 20px auto; }
+  }
+
+  #select-model-wrapper { display: none; }
+}

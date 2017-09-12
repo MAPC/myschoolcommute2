@@ -1,16 +1,23 @@
-<div class="ui vertical footer segment">
-  <div class="ui container">
-    <div class="ui medium images">
-      <%= image_tag('massdot-logo.png') %>
-      <%= image_tag('saferoutes-logo.jpg') %>
-      <%= image_tag('mapc-logo.png') %>
+<div class="ui vertical segment container footer-layout">
+  <div class="footer-content">
+
+    <div class="state-images">
+      <a href="http://www.massdot.state.ma.us/">
+        <%= image_tag('massdot-logo.png') %>
+      </a>
+      <a href="http://www.massdot.state.ma.us/saferoutestoschool/Home.aspx">
+        <%= image_tag('saferoutes-logo.jpg') %>
+      </a>
+      <a href="https://www.mapc.org">
+        <%= image_tag('mapc-logo.png') %>
+      </a>
     </div>
-  </div>
-  <div class="ui secondary menu">
-    <div class="right menu">
+
+    <div class="login-wrapper">
       <% if current_user.nil? %>
         <%= link_to 'Administrator Sign In', new_user_session_path, class: 'item' %>
       <% end %>
     </div>
+
   </div>
 </div>
