@@ -1,25 +1,37 @@
 <div class="ui inverted vertical masthead center aligned segment">
+
   <%= render partial: 'layouts/menu' %>
-    <div class="ui text container">
-      <h1 class="ui inverted header">
-      Massachusetts Safe Routes to School Parent Survey
-    </h1>
-      <p>
-        <%= _('Would you like to help create safe routes to school for students in your community?') %>
-      </p>
-      <p>
-        <%= _("The survey takes less than 3 minutes and will help your school plan for more transportation choices. All responses are voluntary and confidential.") %>
-      </p>
-      <div class="ui equal width stackable internally celled grid">
-        <div class="center aligned row">
-          <%- if districts.count < 1 %>
-            <div class="column">
-              <div class="ui center aligned disabled header">
-                No Active Surveys
-              </div>
-            </div>
-            <%- else %>
+
+  <div class="ui container jumbo-layout">
+    <div class="row">
+
+      <div class="main-column">
+        <h1 class="ui inverted header">
+          Massachusetts Safe Routes to School Parent Survey
+        </h1>
+      </div>
+
+      <div class="sub-column">
+        <p>
+          <%= _('Would you like to help create safe routes to school for students in your community?') %>
+        </p>
+        <p>
+          <%= _("The survey takes less than 3 minutes and will help your school plan for more transportation choices. All responses are voluntary and confidential.") %>
+        </p>
+        <div class="ui equal width stackable internally celled grid">
+          <div class="aligned">
+
+            <%- if districts.count < 1 %>
+
               <div class="column">
+                <div class="ui center aligned disabled header">
+                  No Active Surveys
+                </div>
+              </div>
+
+            <%- else %>
+
+              <div class="selection-wrapper">
                 <h3><%= _("Please select your school district") %></h3>
                 <div id="select-brand" class="ui fluid selection dropdown">
                   <input type="hidden" name="brand">
@@ -32,7 +44,7 @@
                   </div>
                 </div>
               </div>
-              <div class="column">
+              <div id="select-model-wrapper" class="selection-wrapper">
                 <h3><%= _("Please select your school") %></h3>
                 <div id="select-model" class="ui fluid selection dropdown">
                   <input type="hidden" name="brand">
@@ -42,11 +54,18 @@
                   </div>
                 </div>
               </div>
-              <%- end %>
+
+            <%- end %>
+
+          </div>
         </div>
-      </div>
-    </div>
+      </div><!--/ .column-3 -->
+
+    </div><!--/ .row -->
+  </div>
+
 </div>
+
 <script type="text/javascript">
   var options =
     <%= nest_for_menus %>
@@ -54,13 +73,23 @@
 
   $('#select-brand').dropdown({
     onChange: function(value, text, $selectedItem) {
-      if(text) {
-        var $menu = $('#select-model').find('.menu');
+      var $selectModel = $('#select-model'),
+          selectModelWrapper = document.querySelector('#select-model-wrapper');
+
+      if (text) {
+        var $menu = $selectModel.find('.menu');
+
         options.schools[text].forEach(function(option) {
           $menu.append('<a href="surveys/' +  option.value + '" class="item" data-value="' + option.value + '">' + option.name + '</a>');
         });
+
+        selectModelWrapper.style.display = 'block';
       }
-      $('#select-model').dropdown({
+      else {
+        selectModelWrapper.style.display = 'none';
+      }
+
+      $selectModel.dropdown({
         onChange: function(value, text) {
           $('#select-brand').dropdown('restore defaults');
         }

@@ -171,3 +171,11 @@ body {
   background: #FFFFFF;
 }
 
+.ui {
+  &.row, .row {
+    display: flex;
+
+    > .main-column { flex: 1 0 65%; } 
+    > .sub-column  { flex: 1 0 35%; } 
+  }
+}
