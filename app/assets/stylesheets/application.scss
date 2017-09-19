@@ -86,8 +86,21 @@ $font-family: 'Fakt';
   font-weight: normal;
 }
 
+.masthead .ui.disabled.header {
+  margin: 15px auto;
+  color: #EEE;
+}
+
 .ui.inverted.segment {
   background: #3399CC;
+}
+
+.ui.large.menu .item {
+  color: darken(#3399CC, 10);
+}
+
+.ui.large.menu .item:hover {
+  color: darken(#3399CC, 20);
 }
 
 .ui.vertical.stripe {
