@@ -90,6 +90,10 @@ $font-family: 'Fakt';
   background: #3399CC;
 }
 
+.ui.large.menu .item {
+  color: darken(#3399CC, 10);
+}
+
 .ui.vertical.stripe {
   padding: 1em 0em;
 }
