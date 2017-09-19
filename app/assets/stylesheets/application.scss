@@ -94,6 +94,10 @@ $font-family: 'Fakt';
   color: darken(#3399CC, 10);
 }
 
+.ui.large.menu .item:hover {
+  color: darken(#3399CC, 20);
+}
+
 .ui.vertical.stripe {
   padding: 1em 0em;
 }
