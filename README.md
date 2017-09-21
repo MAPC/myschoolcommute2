@@ -15,6 +15,9 @@ PGRouting is needed for the School walkshed re-generation. This is a less critic
 This project uses Git LFS to manage large seed files. Make sure you download those files before doing anything else.
 Run `bin/setup` in your terminal.
 
+## Deployment
+This project is setup to deploy with capistrano to MAPC servers. Run `cap staging deploy` or `cap production deploy` to deploy the develop branch to staging or master branch to production after pushing your changes to Github. 
+
 ## WARNING
 `bin/setup` runs a seed task that creates an admin user with the following credentials: 
 User: `admin@user.org`
