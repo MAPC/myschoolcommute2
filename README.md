@@ -18,6 +18,9 @@ Run `bin/setup` in your terminal.
 ## Deployment
 This project is setup to deploy with capistrano to MAPC servers. Run `cap staging deploy` or `cap production deploy` to deploy the develop branch to staging or master branch to production after pushing your changes to Github. 
 
+## Data Migration
+The data migration process to generate a new seed file from the old site is documented [in this commit](https://github.com/MAPC/myschoolcommute2/commit/1fe57646446be2779203b97c5347c3f9dc5e6af4).
+
 ## WARNING
 `bin/setup` runs a seed task that creates an admin user with the following credentials: 
 User: `admin@user.org`
