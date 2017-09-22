@@ -28,4 +28,5 @@ rake import:cleanup
 rake import:destroy_drafts
 rake import:user
 
+rm ./lib/seeds/mysc-seed.dump
 pg_dump -h localhost -Fc -o -d mysc-development > ./lib/seeds/mysc-seed.dump
