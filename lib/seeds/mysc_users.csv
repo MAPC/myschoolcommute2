@@ -3,7 +3,6 @@ id,username,first_name,last_name,email,password,is_staff,is_active,is_superuser,
 24,jpelletier,John,Pelletier,jpelletier@salem.com,pbkdf2_sha256$12000$PjXMahcYvjcq$aJAfLpuOVHXXibq70ykAbED2m7MdMEwLyXWa+Ex4lqo=,f,t,f,2015-05-14 14:12:30.711757-04,2013-08-05 11:23:45.199387-04
 23,hdrake,Heather,Drake,heather.drake@state.ma.us,pbkdf2_sha256$12000$YW6rEynYKvl5$m4KCApymSbc/5OpHdCb1cPG7l5MDvlX10fpKBE7hVWg=,f,t,f,2014-01-07 11:06:53.095458-05,2013-07-17 08:52:31-04
 31,SRTSTest,Kristin,Slaton,kristin.slaton@urs.com,pbkdf2_sha256$10000$tXT2tCFixov2$kW1Y47x13GBXBfzx6SxSiTf9Y+M1T6kYcHZ0EpQiRlk=,f,t,f,2013-10-21 16:28:32.86403-04,2013-10-18 08:39:07.137717-04
-21,ErinReed,Erin,Reed,erin.reed@state.ma.us,pbkdf2_sha256$12000$YlkjokMTOihX$Cm65jM2MGeDhm3wCpcSnoS9iPAwwE4ywu519yJxw99Q=,t,t,f,2017-07-14 15:00:11.391799-04,2013-07-15 11:57:37-04
 18,testing,test,tester,timothy.g.reardon@gmail.com,pbkdf2_sha256$10000$6VQTD95uJB27$Z8/NtFBnWDiEg7a4hf2gfbXic0gTfda1T/JBM7nhvzU=,f,t,f,2013-10-24 17:46:00.170895-04,2013-07-09 09:33:12-04
 19,sfonsecamoreira,Samantha,Fonseca-Moreira,Samantha.Fonseca-Moreira@state.ma.us,pbkdf2_sha256$10000$30AxX06yWQUB$r+gqHMWbryw5tjf5oJ9iDuvPR5AVBoHccKHjV87yO1Q=,f,t,f,2013-08-13 12:44:29.749352-04,2013-07-15 11:04:47-04
 17,zachdyer,Zach,Dyer,dyerz@worcesterma.gov,pbkdf2_sha256$10000$o2nemDR6DU9S$6amPpO+bYdJNXaHQxj8JwPQBag1YIozcZaePU1s5l2Q=,f,t,f,2013-08-22 10:45:27.032466-04,2013-07-02 11:37:25-04
@@ -29,6 +28,7 @@ id,username,first_name,last_name,email,password,is_staff,is_active,is_superuser,
 36,garymazzo,Dr. Gary,Mazzola,gmazzola@easton.k12.ma.us,pbkdf2_sha256$10000$YJAXR9tvSoVI$fd4DKp6fs3VosKK1MvsuaKsBvdcQOCpbCaNR6FdV/Fo=,f,t,f,2013-10-31 14:18:23.156042-04,2013-10-31 14:06:14.705064-04
 39,ywcamalden,Christina,Murphy,cmurphy@ywcamalden.org,pbkdf2_sha256$12000$Zu2E9casiAPL$25DxH9o9WHx0hs2Rdsn6YbTgR6EQiu301JwUifS8jYU=,f,t,f,2014-01-09 16:27:17.719542-05,2013-11-15 14:11:36.501214-05
 25,heathermross,Heather,Ross,heather.ross@dot.state.ma.us,pbkdf2_sha256$12000$9Gwd0zlAEEzX$EXRNi5NQGyoThAun1BxX7wHZX4T/Ch1yiBoFBq3MGRQ=,f,t,f,2016-06-28 13:46:01.874548-04,2013-08-05 11:38:05-04
+21,ErinReed,Erin,Reed,erin.reed@state.ma.us,pbkdf2_sha256$12000$YlkjokMTOihX$Cm65jM2MGeDhm3wCpcSnoS9iPAwwE4ywu519yJxw99Q=,t,t,f,2017-09-20 15:52:27.838951-04,2013-07-15 11:57:37-04
 22,paquettec,Catherine,Paquette,catherine.a.paquette@state.ma.us,pbkdf2_sha256$12000$A9wKuWvsXLwu$Y7GlwG1y4SNDeJZA36K5sIFBgb7aIytEMZmo8c2YUk0=,f,t,f,2015-04-02 14:17:46.573622-04,2013-07-15 16:17:47-04
 32,MiMNB,Kimberly,Ferreira,kim.ferreira@newbedford-ma.gov,pbkdf2_sha256$12000$D3lmQpjO6xe6$uEeSY3VnSrT6eTA6doan1v3KnplmevzJglA89PXtq3A=,f,t,f,2014-04-16 15:19:22.495251-04,2013-10-18 13:26:22-04
 20,oteroN,Nitza,Otero,nitza.otero@dot.state.ma.us,pbkdf2_sha256$12000$A0i0nPCbzdQZ$ngLk6V1LrKd8IbnlfRNT1x2cFLoKHGmzlfo/ftFHl2M=,f,t,f,2015-06-25 12:03:20.557975-04,2013-07-15 11:33:22-04
@@ -71,8 +71,9 @@ id,username,first_name,last_name,email,password,is_staff,is_active,is_superuser,
 79,DeirdreH70,Deirdre ,Howard,deirdrehoward99@yahoo.com,pbkdf2_sha256$12000$HN6isFvsZSJq$EsI5+KBqVVbsrz9IwW3XUeBNIp8k8CQmb2vCVr6H9eo=,f,t,f,2014-10-23 12:02:55.627289-04,2014-10-16 11:09:43.23727-04
 97,jviel01,Jannell,Viel,jviel@mail.danvers-ma.org,pbkdf2_sha256$12000$q3WcpdOpFy05$vhKfoNU6Owlf7vVkevurE50zIMm/6YZQvUbU854zaBA=,f,t,f,2015-05-01 11:05:40.358166-04,2015-05-01 11:05:40.358166-04
 88,JodieGruen,Jodie ,Gruen,jodiegruen@gmail.com,pbkdf2_sha256$12000$GfNt67yBXx4A$RjGZ+secW04IAVL8dNtWKn0a4LSvozbaWf1erqQ+14c=,f,t,f,2015-03-30 14:25:51.259414-04,2015-02-12 11:59:40.377825-05
-85,mgardner,Matt,Gardner,mgardner@mapc.org,pbkdf2_sha256$12000$fL848gs9GmA7$AKJ2o7TXfmTM6+XUCjwrNEbJs9f9qSX42Z3CX3wfaGg=,t,t,t,2017-07-18 11:01:24.148608-04,2014-12-22 15:29:13-05
+87,ebudzynk,Emily,Budzynkiewicz,emily.budzynkiewicz@state.ma.us,pbkdf2_sha256$12000$Fef4Uw5PrFUD$V82cwZZ0Iqf3RfKwnoyxvT1wiim8SJaxV2Q6E2POMH4=,t,t,t,2017-09-12 10:00:43.173332-04,2015-02-04 12:52:49-05
 82,trotterschool,Kim,Connolly,kngo@bostonpublicschools.org,pbkdf2_sha256$12000$pCSH8VDSvxiy$VCRvul1o4OUbiGbxU3tfgwW8+P5BNs2y6N/sD9MRIzk=,f,t,f,2015-03-26 15:20:33.195996-04,2014-11-17 18:18:21.6784-05
+85,mgardner,Matt,Gardner,mgardner@mapc.org,pbkdf2_sha256$12000$fL848gs9GmA7$AKJ2o7TXfmTM6+XUCjwrNEbJs9f9qSX42Z3CX3wfaGg=,t,t,t,2017-09-22 10:39:59.714317-04,2014-12-22 15:29:13-05
 99,morenoa,Amneris,Moreno,morenoa@holyoke.org,pbkdf2_sha256$12000$np25pDxoOK8a$dMVGLpbdGd6gZphpY43AQArYcMEqGITKuah6WZACggw=,f,t,f,2015-10-05 11:22:16.820778-04,2015-06-10 10:02:19.095148-04
 93,matherschool,Karyn,Stranberg,kstranberg@bostonpublicschools.org,pbkdf2_sha256$12000$WFba2LR24NpG$uApnMeCAsgFLz2edkzfmOw7YiX9Z5MLr/HQLXL+qRSE=,f,t,f,2015-03-18 14:10:11.850865-04,2015-03-18 14:10:11.850865-04
 76,janiehynson,Janie,Hynson,jhynson@jsi.com,pbkdf2_sha256$12000$bixaPM8zvjst$OYP+EzoAXg28+DQ93mqWAEEXvyEmeyzvESlODTkZA+E=,f,t,f,2015-04-20 18:38:32.087892-04,2014-10-09 17:03:05.799361-04
@@ -83,14 +84,13 @@ id,username,first_name,last_name,email,password,is_staff,is_active,is_superuser,
 70,MassinMotionNB,Julia,Kantner,Julia.Kantner@newbedford-ma.gov,pbkdf2_sha256$12000$ZW3yYAp5Hqyn$8Rckmbd3SYuY76eE6ZNItf4DQR/AcH0nrbofUZmU/As=,f,t,f,2016-08-17 11:51:13.318942-04,2014-09-03 12:27:58.959153-04
 67,greenm,Melissa,Green,melissa.green@dot.state.ma.us,pbkdf2_sha256$12000$Zgk4WmVRzcUP$tHN3datKbqAkXaeaaqz1oBwR3Sex5S8jVPXNBBbExgU=,f,t,f,2016-06-15 08:25:37.533632-04,2014-05-13 12:06:19-04
 100,CfA_judge,Code ,for America,eirvin@mapc.org,pbkdf2_sha256$12000$j6RI28h6msdZ$7wLZuTbB3Lum1hqxDuSek0XwrxDfVWw2TkLHkpaSt4Y=,f,t,f,2015-07-13 18:40:48.688466-04,2015-07-13 18:39:07.496286-04
-87,ebudzynk,Emily,Budzynkiewicz,emily.budzynkiewicz@state.ma.us,pbkdf2_sha256$12000$Fef4Uw5PrFUD$V82cwZZ0Iqf3RfKwnoyxvT1wiim8SJaxV2Q6E2POMH4=,t,t,t,2017-07-10 15:01:57.642895-04,2015-02-04 12:52:49-05
 112,ChristinaCooper,Christina,Cooper,chrisuss@hotmail.com,pbkdf2_sha256$12000$BIkdvBf7jjL9$+gwA6zIO8dHdFZs1a54zT0bCW6zwFPxLKQQQgkFYQb4=,f,t,f,2016-10-27 15:33:26.56922-04,2016-10-27 15:33:26.56922-04
 116,Movitsky,Morgan,Ovitsky,movitsky@bhs1.org,pbkdf2_sha256$12000$7bIEkkDoqI7f$goyuhLCyi89qujzNHBRkS9T8qEEl578pUT7yngI82HQ=,f,t,f,2017-01-12 11:50:14.495542-05,2017-01-12 11:20:39.305335-05
 107,keithdoty,Keith,Doty,keith.doty@state.ma.us,pbkdf2_sha256$12000$fREIEq9ETg9u$RdUIjkgM3eoeGGc85lzUW/0VbOYWccq/Xw39ROh4GQQ=,f,t,f,2016-04-20 08:16:10.430814-04,2016-04-20 08:14:49.098615-04
 108,Rlcyr,Rebecca,Cyr,Rebecca.Cyr@state.ma.us,pbkdf2_sha256$12000$uFwWhA9ftwnF$8DyX0OA01xoApEfFzfv6qhQCyDH+ZAQkcwvxpvXvs6s=,f,t,f,2016-04-21 11:27:54.93697-04,2016-04-21 11:24:41.407372-04
 102,Sborges,Sally,Borges,s_borges@stoughtonschools.org,pbkdf2_sha256$12000$b2muKY7pZoIY$1TXgy7icECSwkGq+OgcBFDvZpJ8L4vXvX49Fut+7gbs=,f,t,f,2015-08-24 14:36:36.486942-04,2015-08-24 13:06:38.251628-04
 106,dhansonnv,Diane,Hanson,diane.hanson@dot.state.ma.us,pbkdf2_sha256$12000$Cti94SPh272W$EXttSQFUU+ExyR5nCB2gs5flgalg7PksCYARc6MEuDI=,t,t,t,2016-09-16 15:32:01.344537-04,2016-03-31 15:19:21.194652-04
-118,cclaude,Casey,Claude,cclaude@ctps.org,pbkdf2_sha256$12000$NLwenZ5KUFtD$T8W/wBS6ppLzbIei3W7/UaJQJMBPKXpMTiahhoeW+G0=,f,t,f,2017-04-24 09:56:19.834091-04,2017-04-21 11:45:42.244282-04
+120,llynch,Lincoln,Lynch,lincolnlynch@norton.k12.ma.us,pbkdf2_sha256$12000$q2tVnDbZ0wn3$gONeRB4vdp9vRCjIs2H1b64Db4Tql/HQWSAMGt1nY2M=,f,t,f,2017-09-06 13:44:23.19936-04,2017-09-06 13:20:49.753662-04
 104,SuzanneStein,Suzanne,Stein,Suzanne.stein@comcast.net,pbkdf2_sha256$12000$23nyXE3GBuAt$pnpTYBX7dzdkZV/d4rRyF/gFaR6f/tV04q/8ZL/hlqE=,f,t,f,2015-12-17 10:25:03.912736-05,2015-11-24 09:54:03.459467-05
 103,jengonzalez,Jennifer,Gonzalez-Morales,jenngonzalez@hps.holyoke.ma.us,pbkdf2_sha256$12000$umiUifghBRYu$o/JbfWt4ziXMAyi1M53zzqAGZeWsvsoXTZxQNw7Vu2E=,f,t,f,2015-10-23 15:34:32.550614-04,2015-10-23 15:34:32.550614-04
 110,acradock,Angie,Cradock,acradock@hsph.harvard.edu,pbkdf2_sha256$12000$fgzYDKXQtVvG$yskatpoO2A+R4TWvdXOdbEDtLgKfGX//pMxVTq9Esb4=,f,t,f,2016-05-31 08:25:12.432995-04,2016-05-31 08:25:12.432995-04
@@ -101,5 +101,6 @@ id,username,first_name,last_name,email,password,is_staff,is_active,is_superuser,
 113,nedmonds1,Nicole,Edmonds,nicole.edmonds@dot.state.ma.us,pbkdf2_sha256$12000$aoxI9Hik3FuI$xGEQEMIuYQNP24kLaIiuIslzFnfFJyr1pjopa7xqSE0=,t,t,t,2017-01-27 09:42:23.973193-05,2016-10-31 14:21:57.117455-04
 111,tjpettus,Timothy,Pettus,timothy.pettus@dot.state.ma.us,pbkdf2_sha256$12000$FnVlmoWZQWEi$hZhmrumSB05jsguYABVKXX+cMht3x5hjWz3FweOF3IM=,t,t,t,2017-06-06 09:43:37.004949-04,2016-10-19 15:15:49.783245-04
 115,MountainView,Christina,Cooper,christina@christinauss.com,pbkdf2_sha256$12000$Qcaq7a5BAqGk$jTGnvk2J+ewLcVkc6OrfxrYUwJyvJSSM4avc9d8l7MM=,f,t,f,2017-06-09 14:45:43.985824-04,2017-01-12 11:14:25.226132-05
-119,bswsb,Roni,Gold,ronigold1@gmail.com,pbkdf2_sha256$12000$g5Kl7wjyJz3T$aDvlCtv2t0FUDcZG6mbPmScAa+mG8I6TliW13FTjpzU=,f,t,f,2017-06-09 16:04:38.406615-04,2017-04-26 12:42:21.716614-04
 117,jakeleonard,Jake,Leonard,jake.leonard@dot.state.ma.us,pbkdf2_sha256$12000$qJjjNI3QXHOR$GloGU/GZfr/Ryp8U9tlUSmKsmiozaRTtqNxy2LGhNAo=,f,t,f,2017-03-15 08:35:01.828839-04,2017-01-13 14:36:52.864603-05
+119,bswsb,Roni,Gold,ronigold1@gmail.com,pbkdf2_sha256$12000$g5Kl7wjyJz3T$aDvlCtv2t0FUDcZG6mbPmScAa+mG8I6TliW13FTjpzU=,f,t,f,2017-08-14 14:12:14.769255-04,2017-04-26 12:42:21.716614-04
+118,cclaude,Casey,Claude,cclaude@ctps.org,pbkdf2_sha256$12000$NLwenZ5KUFtD$T8W/wBS6ppLzbIei3W7/UaJQJMBPKXpMTiahhoeW+G0=,f,t,f,2017-08-30 11:06:16.242877-04,2017-04-21 11:45:42.244282-04

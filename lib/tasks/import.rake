@@ -41,6 +41,7 @@ namespace :import do
     csv_text = File.read(Rails.root.join('lib', 'seeds', 'schools.csv'))
     csv = CSV.parse(csv_text, headers: true)
     School.skip_callback(:save, :after, :update_sheds)
+    School.skip_callback(:create, :before, :transform_geometry)
     csv.each_with_index do |row, index|
       a = School.new
       a.name = row['name']
@@ -63,7 +64,11 @@ namespace :import do
       a.shed_20 = row['shed_20']
       a.old_id = row['id']
       a.district = District.find_by_districtid_id(row['districtid_id'])
-      a.save!
+      begin
+        a.save!
+      rescue StandardError => error
+        puts a.name + ' ' + error.to_s
+      end
     end
   end
 
@@ -125,8 +130,11 @@ namespace :import do
       survey = Survey.create({begin: set['begin'], end: set['end'], school: school})
       upper_bound = Date.parse(set['end']) + 1 # for whatever reason, the upper bounds is increased by a day
       #Get responses for the relevant school
-
-      responses = SurveyResponse.joins(:survey).where("survey_responses.created_at >= '#{set['begin']}' AND survey_responses.created_at <= '#{upper_bound}' AND surveys.school_id= #{school.id} ")
+      begin
+        responses = SurveyResponse.joins(:survey).where("survey_responses.created_at >= '#{set['begin']}' AND survey_responses.created_at <= '#{upper_bound}' AND surveys.school_id= #{school.id} ")
+      rescue NoMethodError => e
+        binding.pry
+      end
       puts "Responses count for #{school.name} in #{school.district.distname}: #{responses.length}"
       responses.each do |response|
         response.survey_id = survey.id
@@ -145,7 +153,7 @@ namespace :import do
   end
 
   desc 'Import users from django app'
-  task users: :environment do
+  task user: :environment do
     csv_test = File.read(Rails.root.join('lib', 'seeds', 'mysc_users.csv'))
     csv = CSV.parse(csv_test, headers: true, encoding: 'ISO-8859-1')
 
