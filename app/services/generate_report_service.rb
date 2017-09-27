@@ -7,7 +7,7 @@ class GenerateReportService
     filepath = Rails.root.join('lib', 'external_scripts', 'compile.R')
 
     arguments = [
-      ENV['DATABASE_URL'] || 'postgres://db.live.mapc.org/myschoolcommute2', # DB_URL
+      ENV['DATABASE_URL'] || 'postgres://editor@db.live.mapc.org/myschoolcommute2', # DB_URL
       @survey.school.schid || '00010505', # ORG_CODE
       @survey.begin.strftime("%Y/%m/%d"), # DATE1
       @survey.end.strftime("%Y/%m/%d"), # DATE2
