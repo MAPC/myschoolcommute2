@@ -4,6 +4,7 @@
 # Step 3: Commit the updated seed files to the repo
 # Step 4: Push the updated seed files to GitHub and deploy the update to production with `cap production deploy`
 # Step 5: On production run `RAILS_ENV=production DISABLE_DATABASE_ENVIRONMENT_CHECK=1 bundle exec rake db:reset` to reset production DB using the new seed file
+# Step 6: On production run `RAILS_ENV=production DISABLE_DATABASE_ENVIRONMENT_CHECK=1 bundle exec rake database:correct_seq_id` to reset sequence tables so we can add new data to database
 
 # Grab the updated information from the remote server
 ssh ubuntu@54.243.237.9 << EOF
