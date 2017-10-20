@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170807155237) do
+ActiveRecord::Schema.define(version: 20171020140748) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -242,10 +242,10 @@ ActiveRecord::Schema.define(version: 20170807155237) do
   add_foreign_key "surveys", "schools"
 
   create_view "melted_survey_responses",  sql_definition: <<-SQL
-      SELECT melted.id,
+      SELECT melted.survey_response_id,
       melted.survey_id,
       melted.distance,
-      melted.geometry,
+      st_astext(melted.geometry) AS st_astext,
       melted.created,
       melted.modified,
       melted.shed,
@@ -253,8 +253,12 @@ ActiveRecord::Schema.define(version: 20170807155237) do
       melted.from_school,
       melted.grade,
       melted.pickup,
-      melted.to_school
-     FROM ( SELECT survey_responses.id,
+      melted.to_school,
+      melted.school_id,
+      melted.nr_licenses,
+      melted.nr_vehicles,
+      melted.schid
+     FROM ( SELECT survey_responses.id AS survey_response_id,
               survey_responses.survey_id,
               survey_responses.distance,
               survey_responses.geometry,
@@ -267,8 +271,12 @@ ActiveRecord::Schema.define(version: 20170807155237) do
               unnest(ARRAY[survey_responses.from_school_0, survey_responses.from_school_1, survey_responses.from_school_10, survey_responses.from_school_11, survey_responses.from_school_12, survey_responses.from_school_13, survey_responses.from_school_14, survey_responses.from_school_15, survey_responses.from_school_16, survey_responses.from_school_17, survey_responses.from_school_18, survey_responses.from_school_19, survey_responses.from_school_2, survey_responses.from_school_3, survey_responses.from_school_4, survey_responses.from_school_5, survey_responses.from_school_6, survey_responses.from_school_7, survey_responses.from_school_8, survey_responses.from_school_9]) AS from_school,
               unnest(ARRAY[survey_responses.grade_0, survey_responses.grade_1, survey_responses.grade_10, survey_responses.grade_11, survey_responses.grade_12, survey_responses.grade_13, survey_responses.grade_14, survey_responses.grade_15, survey_responses.grade_16, survey_responses.grade_17, survey_responses.grade_18, survey_responses.grade_19, survey_responses.grade_2, survey_responses.grade_3, survey_responses.grade_4, survey_responses.grade_5, survey_responses.grade_6, survey_responses.grade_7, survey_responses.grade_8, survey_responses.grade_9]) AS grade,
               unnest(ARRAY[survey_responses.pickup_0, survey_responses.pickup_1, survey_responses.pickup_10, survey_responses.pickup_11, survey_responses.pickup_12, survey_responses.pickup_13, survey_responses.pickup_14, survey_responses.pickup_15, survey_responses.pickup_16, survey_responses.pickup_17, survey_responses.pickup_18, survey_responses.pickup_19, survey_responses.pickup_2, survey_responses.pickup_3, survey_responses.pickup_4, survey_responses.pickup_5, survey_responses.pickup_6, survey_responses.pickup_7, survey_responses.pickup_8, survey_responses.pickup_9]) AS pickup,
-              unnest(ARRAY[survey_responses.to_school_0, survey_responses.to_school_1, survey_responses.to_school_10, survey_responses.to_school_11, survey_responses.to_school_12, survey_responses.to_school_13, survey_responses.to_school_14, survey_responses.to_school_15, survey_responses.to_school_16, survey_responses.to_school_17, survey_responses.to_school_18, survey_responses.to_school_19, survey_responses.to_school_2, survey_responses.to_school_3, survey_responses.to_school_4, survey_responses.to_school_5, survey_responses.to_school_6, survey_responses.to_school_7, survey_responses.to_school_8, survey_responses.to_school_9]) AS to_school
-             FROM survey_responses
+              unnest(ARRAY[survey_responses.to_school_0, survey_responses.to_school_1, survey_responses.to_school_10, survey_responses.to_school_11, survey_responses.to_school_12, survey_responses.to_school_13, survey_responses.to_school_14, survey_responses.to_school_15, survey_responses.to_school_16, survey_responses.to_school_17, survey_responses.to_school_18, survey_responses.to_school_19, survey_responses.to_school_2, survey_responses.to_school_3, survey_responses.to_school_4, survey_responses.to_school_5, survey_responses.to_school_6, survey_responses.to_school_7, survey_responses.to_school_8, survey_responses.to_school_9]) AS to_school,
+              schools.id AS school_id,
+              schools.schid
+             FROM ((survey_responses
+               JOIN surveys ON ((survey_responses.survey_id = surveys.id)))
+               JOIN schools ON ((surveys.school_id = schools.id)))
             ORDER BY survey_responses.id) melted
     WHERE ((melted.dropoff IS NOT NULL) AND (melted.from_school IS NOT NULL) AND (melted.grade IS NOT NULL) AND (melted.pickup IS NOT NULL) AND (melted.to_school IS NOT NULL));
   SQL
