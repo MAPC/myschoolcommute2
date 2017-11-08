@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171020140748) do
+ActiveRecord::Schema.define(version: 20171106165612) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pgrouting"
   enable_extension "plpgsql"
   enable_extension "postgis"
-  enable_extension "pgrouting"
 
   create_table "districts", force: :cascade do |t|
     t.string   "name"
@@ -278,7 +278,7 @@ ActiveRecord::Schema.define(version: 20171020140748) do
                JOIN surveys ON ((survey_responses.survey_id = surveys.id)))
                JOIN schools ON ((surveys.school_id = schools.id)))
             ORDER BY survey_responses.id) melted
-    WHERE ((melted.dropoff IS NOT NULL) AND (melted.from_school IS NOT NULL) AND (melted.grade IS NOT NULL) AND (melted.pickup IS NOT NULL) AND (melted.to_school IS NOT NULL));
+    WHERE ((melted.from_school IS NOT NULL) AND (melted.grade IS NOT NULL) AND (melted.to_school IS NOT NULL));
   SQL
 
 end
