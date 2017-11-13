@@ -49,7 +49,7 @@ establishConnection <- function(url=Sys.getenv("DATABASE_URL"))
 
 # drv <- dbDriver("PostgreSQL")
 ch <- establishConnection(url=dbname)
-sql <- paste("SELECT id,survey_id,distance,created,modified,shed,dropoff,from_school,grade,pickup,to_school FROM melted_survey_responses WHERE survey_id = '",SURVEY_ID,"'",sep="")
+sql <- paste("SELECT survey_response_id,survey_id,distance,created,modified,shed,dropoff,from_school,grade,pickup,to_school FROM melted_survey_responses WHERE survey_id = '",SURVEY_ID,"'",sep="")
 df_all <- dbSendQuery(ch,sql)
 df_all <- fetch(df_all,n=-1)
 dbDisconnect(ch) # disconnect from PostGres database
