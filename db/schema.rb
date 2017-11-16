@@ -13,9 +13,9 @@
 ActiveRecord::Schema.define(version: 20171106165612) do
 
   # These are extensions that must be enabled in order to support this database
-  enable_extension "pgrouting"
   enable_extension "plpgsql"
   enable_extension "postgis"
+  enable_extension "pgrouting"
 
   create_table "districts", force: :cascade do |t|
     t.string   "name"
