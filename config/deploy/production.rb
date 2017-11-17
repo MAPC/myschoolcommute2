@@ -30,6 +30,7 @@ server 'live.mapc.org', user: 'myschoolcommute2', roles: %w{app db web}
 # http://capistranorb.com/documentation/getting-started/configuration/
 # Feel free to add new variables to customise your setup.
 set :rvm_ruby_version, '2.4.2'
+set :rvm_custom_path, '/usr/share/rvm'
 set :keep_releases, 3
 
 # Custom SSH Options
