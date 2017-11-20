@@ -144,6 +144,9 @@ df$gradeRanges = ifelse(df$grade %in% lowGrades, "low",
 DF <- df
 DF <- DF[DF$grade %in% getGrades(enrollmentDF,ORG_CODE),]
 
+# Someone allowed -9999 to be a default value for a quantitative field :face_with_rolling_eyes:
+DF$distance[DF$distance < 0] <- NA
+
 ############### End Read Data from PostGres database ###################
 
 ############### Begin Calculate GHG Emissions ###################
