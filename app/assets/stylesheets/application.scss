@@ -192,3 +192,11 @@ body {
     > .sub-column  { flex: 1 0 35%; } 
   }
 }
+
+.map-container {
+  &.error {
+    color: red; 
+
+    .leaflet-container { border: 1px solid red; }
+  }
+}

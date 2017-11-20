@@ -1,9 +1,20 @@
 $(document).ready(function() {
 
   if (document.querySelector('body').classList.contains('surveys')) { // this file is shared by multiple pages
+    var ERROR_CLASS = 'error';
+    var DEFAULT_POINT = 'POINT (-71 42)';
+
     var reactRoot = document.querySelector('#root'),
         form = reactRoot.parentNode,
-        submit = form.querySelector('input[type="submit"]');
+        submit = form.querySelector('input[type="submit"]'),
+        mapContainer = form.querySelector('.map-container'),
+        geometry = form.querySelector('input[name="survey_response[geometry]"]');
+
+    $('.leaflet-container').click(function() {
+      if (geometry.value !== DEFAULT_POINT) {
+        mapContainer.classList.remove(ERROR_CLASS);
+      }
+    });
 
     $(submit).click(function(e) {
       e.preventDefault();
@@ -11,11 +22,19 @@ $(document).ready(function() {
       var formFields = Array.from(form.querySelectorAll('*[required]')); // the user might add more fields dynamically
       var noErrors = true;
 
+      if (geometry.value === DEFAULT_POINT) {
+        mapContainer.classList.add(ERROR_CLASS);
+        noErrors = false;
+      }
+      else {
+        mapContainer.classList.remove(ERROR_CLASS);
+      }
+
       formFields.forEach(function(field) {
         var input = field.querySelector('select');
 
         if (input.value === '') {
-          field.classList.add('error');
+          field.classList.add(ERROR_CLASS);
           noErrors = false;
         }
       });
