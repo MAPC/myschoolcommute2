@@ -15,28 +15,17 @@ class SurveyResponse < ActiveRecord::Base
   end
 
   def calculate_distance
-    
-    # this needs to be refactored. this is lifted from the old app.
-    url = URI("http://maps.googleapis.com/maps/api/directions/json?sensor=false&origin=#{geometry.y},#{geometry.x}&destination=#{school.wgs84_lat},#{school.wgs84_lng}")
-    http = Net::HTTP.new(url.host, url.port)
+    retries = 0
+    miles = nil
 
-    request = Net::HTTP::Get.new(url)
-    request["content-type"] = 'application/json'
-    request["cache-control"] = 'no-cache'
-    response = http.request(request)
-    json = JSON.parse(response.read_body)
-    
-    begin
-      meters = JSON.parse(response.read_body)['routes'][0]['legs'][0]['distance']['value']
-      miles = meters * 0.000621371
-    rescue
-      miles = nil
+    while miles == nil && retries <= 5
+      retries += 1
+      miles = get_distance()
     end
     
     update_columns({
       distance: miles
     })
-
   end
 
   def to_school
@@ -61,6 +50,38 @@ class SurveyResponse < ActiveRecord::Base
   end
 
   private
+    def lat_lng(a, b)
+      if a < 0 && b > 0
+        return b, a
+      else
+        return a, b
+      end
+    end
+
+    def get_distance
+      origin_lat, origin_lng = lat_lng(geometry.x, geometry.y)
+      dest_lat, dest_lng = lat_lng(school.wgs84_lat, school.wgs84_lng)
+
+      # this needs to be refactored. this is lifted from the old app.
+      url = URI("http://maps.googleapis.com/maps/api/directions/json?sensor=false&origin=#{origin_lat},#{origin_lng}&destination=#{dest_lat},#{dest_lng}")
+      http = Net::HTTP.new(url.host, url.port)
+
+      request = Net::HTTP::Get.new(url)
+      request["content-type"] = 'application/json'
+      request["cache-control"] = 'no-cache'
+      response = http.request(request)
+
+      begin
+        meters = JSON.parse(response.read_body)['routes'][0]['legs'][0]['distance']['value']
+        miles = meters * 0.000621371
+      rescue Exception => e
+        Raven.capture_exception(e)
+        miles = nil
+      end
+
+      return miles
+    end
+
     def non_blank_grade_value(column)
       (0..19).each do |grade_num|
         unless self["#{column}_#{grade_num}"].blank?

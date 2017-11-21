@@ -30,5 +30,9 @@ module Myschoolcommute2
     config.to_prepare do
       Administrate::ApplicationController.helper Myschoolcommute2::Application.helpers
     end
+
+    Raven.configure do |config|
+      config.dsn = ENV['SENTRY_DSN']
+    end
   end
 end

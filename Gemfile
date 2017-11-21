@@ -40,6 +40,8 @@ gem 'mailgun_rails'
 gem 'scenic'
 gem 'sidekiq'
 
+gem 'sentry-raven'
+
 gem 'gettext_i18n_rails'
 gem 'gettext', '>=3.0.2', :require => false, :group => :development
 gem "gettext_i18n_rails_js", "~> 1.2.0"
