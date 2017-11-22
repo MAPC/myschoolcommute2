@@ -14,6 +14,7 @@ namespace :database do
 
     corrupted.each do |record|
       record.calculate_distance
+      record.touch(:updated_at)
     end
   end
 end

@@ -18,7 +18,7 @@ class SurveyResponse < ActiveRecord::Base
     retries = 0
     miles = nil
 
-    while miles == nil && retries <= 5
+    while miles == nil && retries <= 10
       retries += 1
       miles = get_distance()
     end
