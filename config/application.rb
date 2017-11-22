@@ -26,6 +26,7 @@ module Myschoolcommute2
     config.generators.test_framework :rspec
 
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
+    config.assets.initialize_on_precompile = false
 
     config.to_prepare do
       Administrate::ApplicationController.helper Myschoolcommute2::Application.helpers
