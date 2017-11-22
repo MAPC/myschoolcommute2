@@ -8,7 +8,7 @@ namespace :database do
 
   desc "Correct distance entries"
   task correct_distances: :environment do
-    corrupted = SurveyResponse.where('distance < 0')
+    corrupted = SurveyResponse.where('distance < 0 OR (distance IS NULL AND geometry IS NOT NULL)')
     
     puts "Fixing #{corrupted.size} corrupted records..."
 
