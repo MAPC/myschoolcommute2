@@ -18,7 +18,7 @@ class SurveyResponse < ActiveRecord::Base
     retries = 0
     miles = nil
 
-    while miles == nil && retries <= 10
+    while miles == nil && retries <= 15
       retries += 1
       miles = get_distance()
     end
@@ -75,7 +75,7 @@ class SurveyResponse < ActiveRecord::Base
         meters = JSON.parse(response.read_body)['routes'][0]['legs'][0]['distance']['value']
         miles = meters * 0.000621371
       rescue Exception => e
-        Raven.capture_exception(e)
+        Raven.capture_exception(e, :extra => { 'lat': origin_lat, 'lng': origin_lng })
         miles = nil
       end
 
