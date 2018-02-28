@@ -9,6 +9,103 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
       <%= csrf_meta_tags %>
 
+  <style leaflet-browser-print-content>
+    .MapLegend * { 
+      position: relative;
+      box-sizing: border-box;
+
+      line-height: initial;
+    }
+
+    .MapLegend {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      z-index: 999;
+      display: flex;
+
+      width: 350px;
+      padding: 9px 12px;
+
+      background: rgba(255,255,255,.7);
+
+      border: 1px solid #aaa;
+      box-shadow: 3px 3px 4px 0px rgba(10,10,10,.26);
+    }
+
+    @media (max-width: 960px) {
+      .MapLegend {
+        display: block; 
+        width: 160px;
+      }
+    }
+
+    .MapLegend h4 {
+      margin-top: 0;
+      margin-bottom: 8px;
+
+      font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+      font-weight: bold;
+      font-size: 10px;
+      text-align: left;
+    }
+
+    .MapLegend ul { 
+      margin: 6px auto;
+      padding-left: 4px;
+
+      list-style: none; 
+    }
+
+    .MapLegend li {
+      position: relative;
+
+      margin: 4px auto;
+      
+      font-size: 10px;
+      text-align: left;
+    }
+
+    .MapLegend li span {
+      display: inline-block;
+      overflow: hidden;
+
+      width: 14px;
+      height: 14px;
+      margin-right: 10px;
+
+      text-align: center;
+
+      border: 1px solid #444;
+    }
+
+    .MapLegend li span svg {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+
+      margin: 0 auto; 
+    }
+
+
+    .MapLegend .modes {
+      flex: 1 0 80%; 
+    }
+
+    .MapLegend .modes li span {
+      width: 7px; 
+      height: 7px;
+
+      border-radius: 50%;
+    }
+
+    .MapLegend .walksheds {
+      flex: 1 0 20%;
+    }
+  </style>
+
 </head>
 
 <body class="<%= controller_name %> <%= action_name %>">
