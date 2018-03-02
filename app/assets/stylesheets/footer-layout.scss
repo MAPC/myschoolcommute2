@@ -4,6 +4,10 @@
 
     padding: 15px 0;
 
+    @media only screen and (max-width: 640px) {
+      display: block;  
+    }
+
     .state-images {
       flex: 1 0 40%;
 
@@ -26,6 +30,21 @@
           opacity: .85;
 
           &:hover { opacity: 1; }
+        }
+      }
+
+      @media only screen and (max-width: 640px) {
+        height: auto;
+
+        text-align: left; 
+
+        a {
+          img {
+            display: block;             
+
+            height: auto;
+            width: 50%;
+          }
         }
       }
     }

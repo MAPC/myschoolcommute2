@@ -1,3 +1,15 @@
 // Place all the styles related to the Schools controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.ui {
+  @media only screen and (max-width: 640px) {
+    .ui.grid {
+      display: block; 
+
+      & > [class*="wide"].column {
+        width: 100% !important; 
+      }
+    }
+  }
+}
