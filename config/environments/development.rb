@@ -17,9 +17,10 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :mailgun
   config.action_mailer.mailgun_settings = {
     api_key: Rails.application.secrets.mailgun_api_key,
-    domain: 'mailgun.mapc.org'
+    domain: 'mailgun2.mapc.org'
   }
-  
+
+
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
 

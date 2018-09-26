@@ -8,7 +8,7 @@
 User.create({ email: 'admin@user.org', password: 'password', is_admin: true })
 
 if Rails.env.development? || Rails.env.test?
-  sh "pg_restore -a -O -d #{Rails.configuration.database_configuration[Rails.env]['database']} -t survey_network_bike -t survey_network_walk -t districts -t surveys -t schools -t survey_responses lib/seeds/mysc-seed.dump" || true
+  sh "pg_restore -a -O -h #{Rails.configuration.database_configuration[Rails.env]['host']} -U #{Rails.configuration.database_configuration[Rails.env]['username']} -d #{Rails.configuration.database_configuration[Rails.env]['database']} -t survey_network_bike -t survey_network_walk -t districts -t surveys -t schools -t survey_responses lib/seeds/mysc-seed.dump" || true
 else
   sh "pg_restore -a -O -h #{Rails.configuration.database_configuration[Rails.env]['host']} -U #{Rails.configuration.database_configuration[Rails.env]['username']} -w -d #{Rails.configuration.database_configuration[Rails.env]['database']} -t survey_network_bike -t survey_network_walk -t districts -t schools -t surveys -t survey_responses lib/seeds/mysc-seed.dump" || true
 end
