@@ -12,6 +12,10 @@ default: &default
 development:
   <<: *default
   database: mysc-development
+  host: 127.0.0.1
+  port: 5432
+  username: postgres
+  password: <%= ENV['DATABASE_PASS'] %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -19,6 +23,10 @@ development:
 test:
   <<: *default
   database: mysc-test
+  host: 127.0.0.1
+  port: 5432
+  username: postgres
+  password: <%= ENV['DATABASE_PASS'] %>
 
 production:
   <<: *default

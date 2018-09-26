@@ -5,6 +5,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :invitable
 
+  after_create :send_notification_email
+
+  def send_notification_email
+    UserMailer.new_user_email(self).deliver_now
+  end
+
   def valid_password?(pwd)
     begin
       super(pwd) # try the standard way
