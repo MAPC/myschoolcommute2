@@ -46,7 +46,6 @@ class SurveyResponse < ActiveRecord::Base
         csv.push(row)
       end
     end
-    csv.insert(1,'ID of Survey Response in the Database,ID of the Survey associated with the survey response in the database.,Distance from street intersection near the home and the destination school as calculated by the Google Maps API,Point location of the intersection near the survey respondent’s home. Provided on a 4326 projected plane.,When the survey response was created.,When the survey response was last modified.,Integer value that enumerates the type of walk shed the point is in. ,Do you usually drop off your child on your way to work or another destination?,How does your child get home FROM school on most days?,What grade is your child in?,Do you usually pick up your child on your way from work or another origin?,How does your child get TO school on most days?,ID of the school associated with the survey in the database.,How many people in your household have a driver license?,How many vehicles do you have in your household?,DOE Org Code for the Respondent’s School')
     csv.join
   end
 
