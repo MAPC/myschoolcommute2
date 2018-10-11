@@ -22,7 +22,7 @@ class SurveyResponse < ActiveRecord::Base
       retries += 1
       miles = get_distance()
     end
-    
+
     update_columns({
       distance: miles
     })
@@ -46,7 +46,7 @@ class SurveyResponse < ActiveRecord::Base
         csv.push(row)
       end
     end
-    csv.join("\n")
+    csv.join
   end
 
   private
