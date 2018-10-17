@@ -10,7 +10,6 @@ class SurveyDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     survey_responses: Field::HasMany,
     school: Field::BelongsTo,
-    school_name: Field::String,
     id: Field::Number,
     begin: Field::DateTime,
     end: Field::DateTime,
@@ -26,7 +25,6 @@ class SurveyDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :survey_responses,
     :school,
-    :school_name,
     :begin,
     :end
   ].freeze
