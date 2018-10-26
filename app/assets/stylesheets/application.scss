@@ -91,6 +91,10 @@ $font-family: 'Fakt';
   color: #EEE;
 }
 
+.search__hint {
+  visibility: hidden;
+}
+
 .ui.inverted.segment {
   background: #3399CC;
 }
@@ -106,7 +110,7 @@ $font-family: 'Fakt';
 
 .ui.large.menu {
   & > .ui.menu {
-    border: none; 
+    border: none;
     box-shadow: none;
   }
 
@@ -117,7 +121,7 @@ $font-family: 'Fakt';
 
   &, & > .ui.menu {
     @media only screen and (max-width: 640px) {
-      font-size: 12px; 
+      font-size: 12px;
     }
   }
 }
@@ -128,7 +132,7 @@ $font-family: 'Fakt';
 
     text-align: left;
 
-    & > * { display: inline-block; } 
+    & > * { display: inline-block; }
   }
 }
 
@@ -217,14 +221,14 @@ body {
   &.row, .row {
     display: flex;
 
-    > .main-column { flex: 1 0 65%; } 
-    > .sub-column  { flex: 1 0 35%; } 
+    > .main-column { flex: 1 0 65%; }
+    > .sub-column  { flex: 1 0 35%; }
   }
 }
 
 .map-container {
   &.error {
-    color: red; 
+    color: red;
 
     .leaflet-container { border: 1px solid red; }
   }
