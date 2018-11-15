@@ -364,6 +364,7 @@ DEPENDENCIES
   pry
   pry-byebug
   rails
+  rgeo
   rgeo-activerecord
   rgeo-geojson
   rspec-rails (~> 3.5)
