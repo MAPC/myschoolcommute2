@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171106165612) do
+ActiveRecord::Schema.define(version: 20181115153745) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 20171106165612) do
     t.integer  "district_id"
     t.text     "survey_incentive"
     t.boolean  "survey_active"
-    t.geometry "geometry",         limit: {:srid=>0, :type=>"point"},        null: false
+    t.geometry "geometry",         limit: {:srid=>26986, :type=>"point"},    null: false
     t.geometry "shed_05",          limit: {:srid=>26986, :type=>"geometry"}
     t.geometry "shed_10",          limit: {:srid=>26986, :type=>"geometry"}
     t.geometry "shed_15",          limit: {:srid=>26986, :type=>"geometry"}
