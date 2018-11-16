@@ -15,6 +15,13 @@ Run `bin/setup` in your terminal.
 
 Obtain a Sentry Client Key DSN from [Sentry](https://sentry.io/settings/metropolitan-area-planning-cou/my-school-commute-2/keys/) and set `SENTRY_DSN` in your `.env` to that value.
 
+Make sure to install the libgeos dev package on your deployment server so that the RGeo gem native extensions work.
+
+`sudo apt-get install libgeos-dev`
+
+Mac users will also need to install the geos library locally to do development.
+`brew install geos`
+
 ## Deployment
 This project is setup to deploy with capistrano to MAPC servers. Run `cap staging deploy` or `cap production deploy` to deploy the develop branch to staging or master branch to production after pushing your changes to Github. 
 
