@@ -54,7 +54,7 @@ class WalkshedQuery
          pgr_drivingDistance(
               'SELECT ogc_fid as id, source, target, miles AS cost
                FROM #{network}
-               WHERE geometry && ST_Buffer(ST_Envelope(#{school}), 80000)'
+               WHERE geometry && ST_Buffer(ST_Envelope(#{school}), 8000)'
               , #{closest_street}, #{miles}, false
           )) AS route
       ON
