@@ -1,11 +1,12 @@
 require 'json'
+require 'rgeo/geos/geos_c_impl'
 CARTO_SQL_API_ENDPOINT = 'http://mapc-admin.carto.com/api/v2'
 
 class School < ActiveRecord::Base
   belongs_to :district
   has_many :surveys
   has_many :survey_responses, through: :surveys
-  before_create :transform_geometry
+  before_save :transform_geometry
 
   after_save :update_sheds, if: :geometry_changed?
 

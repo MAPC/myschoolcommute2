@@ -9,15 +9,19 @@ default: &default
   pool: 5
   timeout: 5000
 
-development:
+development: &development
   <<: *default
-  database: myschoolcommute2_development
+  host: <%= ENV.fetch("POSTGRES_DEV_HOST") { nil } %>
+  port: <%= ENV.fetch("POSTGRES_PORT") { nil } %>
+  username: <%= ENV.fetch("POSTGRES_USER") { nil } %>
+  password: <%= ENV.fetch("POSTGRES_PASSWORD") { nil } %>
+  database: <%= ENV.fetch("POSTGRES_DB") { 'myschoolcommute2_development' } %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  <<: *default
+  <<: *development
   database: myschoolcommute2_test
 
 production:

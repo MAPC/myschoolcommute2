@@ -6,7 +6,8 @@ class WalkshedQuery
 
   def execute
     # begin
-      ActiveRecord::Base.connection.execute(walkshed_generation_sql(@school_id))
+    query = walkshed_generation_sql(@school_id)
+      ActiveRecord::Base.connection.execute(query)
     # rescue
     # ensure
     # end
@@ -22,7 +23,7 @@ class WalkshedQuery
   # in production, the db server is linux, and this may be less of an issue
 
   # the network data has been projected to - SOMETHING - (not just 0), which is very important for the
-  # query, which tries to set the SRID on-the-fly. 
+  # query, which tries to set the SRID on-the-fly.
 
   # the schema must also use float8, not float4. some pgrouting features are very strict about typecasting.
   # other columns (like source and target) must be int4.
@@ -50,19 +51,19 @@ class WalkshedQuery
       SELECT ogc_fid, geometry, route.cost from #{network} as w
       JOIN
       (SELECT * FROM
-         pgr_drivingdistance(
+         pgr_drivingDistance(
               'SELECT ogc_fid as id, source, target, miles AS cost
                FROM #{network}
                WHERE geometry && ST_Buffer(ST_Envelope(#{school}), 8000)'
-              , #{closest_street}, #{miles}, false, false
+              , #{closest_street}, #{miles}, false
           )) AS route
       ON
-      w.target = route.id1
+      w.target = route.node
     "
   end
 
   def walkshed_generation_sql(school_id)
-    query = paths_sql(school_id, 'survey_network_walk', miles=1.5)
+    query = paths_sql(school_id, 'survey_network_walk', 1.5)
     bike_query = paths_sql(school_id, 'survey_network_bike', 2.0)
 
     "
