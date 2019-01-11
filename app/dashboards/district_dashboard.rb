@@ -18,7 +18,6 @@ class DistrictDashboard < Administrate::BaseDashboard
     distcode4: Field::String,
     distcode8: Field::String,
     districtid_id: Field::Number,
-    geometry: Field::String.with_options(searchable: false),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -48,7 +47,6 @@ class DistrictDashboard < Administrate::BaseDashboard
     :distcode4,
     :distcode8,
     :districtid_id,
-    :geometry,
     :created_at,
     :updated_at,
   ].freeze
@@ -66,7 +64,6 @@ class DistrictDashboard < Administrate::BaseDashboard
     :distcode4,
     :distcode8,
     :districtid_id,
-    :geometry,
   ].freeze
 
   # Overwrite this method to customize how districts are displayed
