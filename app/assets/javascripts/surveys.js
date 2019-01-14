@@ -8,7 +8,8 @@ $(document).ready(function() {
         form = reactRoot.parentNode,
         submit = form.querySelector('input[type="submit"]'),
         mapContainer = form.querySelector('.map-container'),
-        geometry = form.querySelector('input[name="survey_response[geometry]"]');
+        geometry = form.querySelector('input[name="survey_response[geometry]"]')
+        inDistrict = form.querySelector('input[name="survey_response[in_district]"]');
 
     $('.leaflet-container').click(function() {
       if (geometry.value !== DEFAULT_POINT) {
@@ -22,7 +23,7 @@ $(document).ready(function() {
       var formFields = Array.from(form.querySelectorAll('*[required]')); // the user might add more fields dynamically
       var noErrors = true;
 
-      if (geometry.value === DEFAULT_POINT) {
+      if (inDistrict.checked && geometry.value === DEFAULT_POINT) {
         mapContainer.classList.add(ERROR_CLASS);
         noErrors = false;
       }
@@ -31,9 +32,9 @@ $(document).ready(function() {
       }
 
       formFields.forEach(function(field) {
-        var input = field.querySelector('select');
+        var value = field.querySelector(':scope > .text:not(.default)');
 
-        if (input.value === '') {
+        if (!value || value.textContent === '') {
           field.classList.add(ERROR_CLASS);
           noErrors = false;
         }

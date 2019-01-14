@@ -2,12 +2,12 @@ require 'uri'
 require 'net/http'
 
 class SurveyResponse < ActiveRecord::Base
-  after_save :find_intersecting_shed, if: :geometry_changed?
-  after_save :calculate_distance
+  after_save :find_intersecting_shed, if: :geometry_changed? && :in_district?
+  after_save :calculate_distance, if: :in_district?
   belongs_to :survey
   has_one :school, through: :survey
 
-  validates :geometry, presence: true
+  validates :geometry, presence: true, if: :in_district?
 
 
   def find_intersecting_shed
