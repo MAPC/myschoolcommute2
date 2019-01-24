@@ -6,7 +6,8 @@ class UserMailer < ApplicationMailer
     @user = user
 
     mail(
-      to: @recipients,
+      to: @user.email,
+      cc: @recipients,
       subject: 'New User Signup'
     )
   end
