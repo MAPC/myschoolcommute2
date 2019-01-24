@@ -5,6 +5,8 @@ WORKDIR /usr/src/app
 VOLUME /usr/src/app
 EXPOSE 3000
 
+# Install Ruby deps
+
 COPY Gemfile* ./
 
 RUN set -ex \
@@ -34,5 +36,11 @@ RUN set -ex \
 #    echo 'install.packages(c("RPostgreSQL","DBI","reshape2","plyr","ggplot2","scales","knitr","Hmisc","httr","Rcpp","car"), repos="http://cran.rstudio.com")' > install-packages \
 #    && Rscript install-packages \
 #    && rm install-packages
+
+
+# Create user account for Cap and security
+
+COPY .ssh /root/.ssh
+
 
 CMD rm -f tmp/pids/server.pid && rails server -b 0.0.0.0
