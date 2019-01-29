@@ -26,6 +26,9 @@ Dir.chdir APP_ROOT do
   puts "\n== Import SQL Seed Data =="
   system 'bin/rails db:seed'
 
+  puts "\n== Reset ID Sequences =="
+  system 'bin/rails database:correct_seq_id'
+
   puts "\n== Removing old logs and tempfiles =="
   system 'bin/rails log:clear tmp:clear'
 
