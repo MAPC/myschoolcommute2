@@ -1,3 +1,5 @@
+require 'pry-byebug'
+
 class SurveysController < ApplicationController
   before_action :set_survey, only: [:show, :edit, :update, :destroy, :show_report]
   before_action :authenticate_user!, except: [:show]
@@ -17,7 +19,7 @@ class SurveysController < ApplicationController
   end
 
   def show_report
-    redirect_to '/reports/' + GenerateReportService.new(@survey).perform
+    redirect_to '/reports/' + generate_report
   end
 
   # POST /surveys
@@ -76,4 +78,46 @@ class SurveysController < ApplicationController
     def survey_params
       params.permit(survey: [:begin, :end, :school_id]).fetch(:survey)
     end
+
+    def generate_report
+      write_data_to_file()
+      generate_map()
+
+      report_script = Rails.root.join('lib', 'external', 'report', 'compile.R')
+
+      report_args = [
+        ENV['DATABASE_URL'] || 'postgres://editor@db.live.mapc.org/myschoolcommute2', # DB_URL
+        @survey.school.schid || '00010505', # ORG_CODE
+        @survey.begin.strftime("%Y/%m/%d"), # DATE1
+        @survey.end.strftime("%Y/%m/%d"), # DATE2
+        @survey.id # survey id
+      ]
+
+      report_cmd = "Rscript --vanilla #{report_script} #{report_args.join(" ")}"
+      Rails.logger.info report_cmd
+
+      report_output = `#{report_cmd}`
+      Rails.logger.info report_output
+
+      "SurveyReport#{@survey.id}.pdf"
+    end
+
+    def write_data_to_file
+      Rails.logger.info "Writing data to .json"
+
+      data = ApplicationController.render(template: 'schools/_school_show', locals: { school: @survey.school })
+
+      file_path = Rails.root.join('lib', 'external', 'school-map', 'build', 'data', "#{@survey.school.schid}.json")
+      File.open(file_path, "w") do |f|
+        f.write(data)
+      end
+    end
+
+    def generate_map
+      Rails.logger.info "Generating Map"
+
+      render_script = Rails.root.join('lib', 'external', 'school-map', 'render.js')
+      `node #{render_script} #{@survey.school.schid}`
+    end
+
 end
