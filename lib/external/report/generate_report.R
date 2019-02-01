@@ -965,16 +965,13 @@ bufferByModeDF = mergeDF(bufferByModeDF,
 School_Name <- enrollmentDF[enrollmentDF$ORG.CODE==ORG_CODE,"SCHOOL"]
 # school_name_no_space <- gsub("\\s","",School_Name)
 # school_name_no_slash <- gsub("\\/","",school_name_no_space)
+surveyMap <- ORG_CODE
 school_name_no_slash <- paste("SurveyReport", SURVEY_ID, sep="")
 knit2pdf("minimal.Rnw", compiler = "lualatex", output=paste(school_name_no_slash,".tex", sep=""), quiet=TRUE)
 # knit2html("minimal.Rnw", compiler = "lualatex", output=paste(school_name_no_slash,".tex", sep=""), quiet=TRUE)
 file.copy(paste(school_name_no_slash, ".pdf", sep=""),"../../../public/reports", overwrite=TRUE)
 file.remove(paste(school_name_no_slash, ".pdf", sep=""))
+
 cat(paste(school_name_no_slash,".pdf",sep=""))
 
 ################### End  How Your School Compares ########################
-
-
-
-
-
