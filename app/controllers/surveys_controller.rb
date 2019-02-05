@@ -1,7 +1,7 @@
-require 'pry-byebug'
+require 'securerandom'
 
-DATA_DIR = Rails.root.join('lib', 'external', 'school-map', 'build', 'data')
 REPORT_DIR = Rails.root.join('lib', 'external', 'report')
+DATA_DIR = Rails.root.join('lib', 'external', 'school-map', 'build', 'data')
 
 
 class SurveysController < ApplicationController
