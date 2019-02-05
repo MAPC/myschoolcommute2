@@ -80,17 +80,19 @@ class SurveysController < ApplicationController
     end
 
     def generate_report
-      write_data_to_file()
-      generate_map()
+      data_file = write_data_to_file()
+      generate_map(data_file)
 
-      report_script = Rails.root.join('lib', 'external', 'report', 'compile.R')
+      report_dir = Rails.root.join('lib', 'external', 'report')
+      report_script = File.join(report_dir, 'compile.R')
 
       report_args = [
         ENV['DATABASE_URL'] || 'postgres://editor@db.live.mapc.org/myschoolcommute2', # DB_URL
         @survey.school.schid || '00010505', # ORG_CODE
         @survey.begin.strftime("%Y/%m/%d"), # DATE1
         @survey.end.strftime("%Y/%m/%d"), # DATE2
-        @survey.id # survey id
+        @survey.id, # survey id
+        data_file # temp filename for the rendered PNG
       ]
 
       report_cmd = "Rscript --vanilla #{report_script} #{report_args.join(" ")}"
@@ -99,25 +101,32 @@ class SurveysController < ApplicationController
       report_output = `#{report_cmd}`
       Rails.logger.info report_output
 
+      map_path = File.join(report_dir, "#{data_file}.png")
+      File.delete(map_path) if File.exists?(map_path)
+
       "SurveyReport#{@survey.id}.pdf"
     end
 
     def write_data_to_file
       Rails.logger.info "Writing data to .json"
+      uid = SecureRandom.uuid.split('-')[0]
+      file_name = "#{@survey.school.schid}-#{uid}"
 
       data = ApplicationController.render(template: 'schools/_school_show', locals: { school: @survey.school })
 
-      file_path = Rails.root.join('lib', 'external', 'school-map', 'build', 'data', "#{@survey.school.schid}.json")
+      file_path = Rails.root.join('lib', 'external', 'school-map', 'build', 'data', "#{file_name}.json")
       File.open(file_path, "w") do |f|
         f.write(data)
       end
+
+      file_name
     end
 
-    def generate_map
+    def generate_map(data_file)
       Rails.logger.info "Generating Map"
 
       render_script = Rails.root.join('lib', 'external', 'school-map', 'render.js')
-      `node #{render_script} #{@survey.school.schid}`
+      `node #{render_script} #{data_file}`
     end
 
 end

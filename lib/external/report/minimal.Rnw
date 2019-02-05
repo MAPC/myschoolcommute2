@@ -228,6 +228,6 @@ Shifting some school commutes from auto to walking or biking can create real ben
 \newpage
 
 \thispagestyle{empty}
-\includegraphics[max width=\textwidth, max height=\pageheight]{\Sexpr{surveyMap}}
+\includegraphics[max width=\textwidth, max height=\pageheight]{\Sexpr{MAP_PNG}}
 
 \end{document}

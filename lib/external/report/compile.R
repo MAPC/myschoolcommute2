@@ -22,6 +22,7 @@ ORG_CODE = args[2]
 DATE1 = args[3]
 DATE2 = args[4]
 SURVEY_ID = args[5]
+MAP_PNG = args[6]
 
 source("generate_report.R")
 # test with 1 response
