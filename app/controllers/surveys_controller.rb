@@ -1,5 +1,9 @@
 require 'pry-byebug'
 
+DATA_DIR = Rails.root.join('lib', 'external', 'school-map', 'build', 'data')
+REPORT_DIR = Rails.root.join('lib', 'external', 'report')
+
+
 class SurveysController < ApplicationController
   before_action :set_survey, only: [:show, :edit, :update, :destroy, :show_report]
   before_action :authenticate_user!, except: [:show]
@@ -83,8 +87,7 @@ class SurveysController < ApplicationController
       data_file = write_data_to_file()
       generate_map(data_file)
 
-      report_dir = Rails.root.join('lib', 'external', 'report')
-      report_script = File.join(report_dir, 'compile.R')
+      report_script = File.join(REPORT_DIR, 'compile.R')
 
       report_args = [
         ENV['DATABASE_URL'] || 'postgres://editor@db.live.mapc.org/myschoolcommute2', # DB_URL
@@ -101,8 +104,11 @@ class SurveysController < ApplicationController
       report_output = `#{report_cmd}`
       Rails.logger.info report_output
 
-      map_path = File.join(report_dir, "#{data_file}.png")
-      File.delete(map_path) if File.exists?(map_path)
+      Rails.logger.info "Cleaning up"
+      [
+        File.join(REPORT_DIR, "#{data_file}.png"),
+        File.join(DATA_DIR, "#{data_file}.json"),
+      ].each { |file| File.delete(file) if File.exists?(file) }
 
       "SurveyReport#{@survey.id}.pdf"
     end
@@ -114,7 +120,7 @@ class SurveysController < ApplicationController
 
       data = ApplicationController.render(template: 'schools/_school_show', locals: { school: @survey.school })
 
-      file_path = Rails.root.join('lib', 'external', 'school-map', 'build', 'data', "#{file_name}.json")
+      file_path = File.join(DATA_DIR, "#{file_name}.json")
       File.open(file_path, "w") do |f|
         f.write(data)
       end
@@ -126,7 +132,7 @@ class SurveysController < ApplicationController
       Rails.logger.info "Generating Map"
 
       render_script = Rails.root.join('lib', 'external', 'school-map', 'render.js')
-      `node #{render_script} #{data_file}`
+      `node #{render_script} #{data_file} #{REPORT_DIR}`
     end
 
 end
