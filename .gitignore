@@ -21,6 +21,7 @@ bower_components/
 node_modules/
 .DS_Store
 public/reports/*.pdf
+lib/external/school-map/build
 
 .env
 .ssh
