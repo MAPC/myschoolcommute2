@@ -63,7 +63,15 @@ class SurveyResponse < ActiveRecord::Base
       dest_lat, dest_lng = lat_lng(school.wgs84_lat, school.wgs84_lng)
 
       # this needs to be refactored. this is lifted from the old app.
-      url = URI("https://maps.googleapis.com/maps/api/directions/json?sensor=false&origin=#{origin_lat},#{origin_lng}&destination=#{dest_lat},#{dest_lng}&key=#{Rails.application.secrets.maps_api_key}")
+      google_api_url = "https://maps.googleapis.com/maps/api/directions/json?" +
+                      [
+                        "sensor=false",
+                        "origin=#{origin_lat},#{origin_lng}",
+                        "destination=#{dest_lat},#{dest_lng}",
+                        "key=#{Rails.application.secrets.maps_api_key}",
+                      ].join('&')
+
+      url = URI(google_api_url)
 
       request = Net::HTTP::Get.new(url)
       request["content-type"] = 'application/json'
