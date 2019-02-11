@@ -63,19 +63,33 @@ class SurveyResponse < ActiveRecord::Base
       dest_lat, dest_lng = lat_lng(school.wgs84_lat, school.wgs84_lng)
 
       # this needs to be refactored. this is lifted from the old app.
-      url = URI("http://maps.googleapis.com/maps/api/directions/json?sensor=false&origin=#{origin_lat},#{origin_lng}&destination=#{dest_lat},#{dest_lng}")
-      http = Net::HTTP.new(url.host, url.port)
+      google_api_url = "https://maps.googleapis.com/maps/api/directions/json?" +
+                      [
+                        "sensor=false",
+                        "origin=#{origin_lat},#{origin_lng}",
+                        "destination=#{dest_lat},#{dest_lng}",
+                        "key=#{Rails.application.secrets.maps_api_key}",
+                      ].join('&')
+
+      url = URI(google_api_url)
 
       request = Net::HTTP::Get.new(url)
       request["content-type"] = 'application/json'
       request["cache-control"] = 'no-cache'
+
+      http = Net::HTTP.new(url.host, url.port)
+      http.use_ssl = true
       response = http.request(request)
 
       begin
         meters = JSON.parse(response.read_body)['routes'][0]['legs'][0]['distance']['value']
         miles = meters * 0.000621371
       rescue Exception => e
-        Raven.capture_exception(e, :extra => { 'lat': origin_lat, 'lng': origin_lng })
+        Raven.capture_exception(e, :extra => {
+          'lat': origin_lat,
+          'lng': origin_lng,
+          'req_url': url,
+        })
         miles = nil
       end
 
