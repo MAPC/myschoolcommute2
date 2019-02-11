@@ -59,3 +59,4 @@ set :keep_releases, 3
 #     # password: "please use keys"
 #   }
 
+after 'deploy:published', 'schoolmap:install'
