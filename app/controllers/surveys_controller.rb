@@ -89,8 +89,20 @@ class SurveysController < ApplicationController
 
       report_script = File.join(REPORT_DIR, 'compile.R')
 
+      db_config = Rails.configuration.database_configuration
+      pg_user = db_config[Rails.env]['username']
+      pg_password = db_config[Rails.env]['password']
+      pg_host = db_config[Rails.env]['host']
+      pg_port = db_config[Rails.env]['port']
+      pg_database = db_config[Rails.env]['database']
+
+      pg_dsn = nil
+      if pg_user && pg_password && pg_host && pg_port && pg_database
+        pg_dsn = "postgis://#{pg_user}:#{pg_password}@#{pg_host}:#{pg_port}/#{pg_database}"
+      end
+
       report_args = [
-        ENV['DATABASE_URL'] || 'postgres://editor@db.live.mapc.org/myschoolcommute2', # DB_URL
+        pg_dsn || 'postgres://editor@db.live.mapc.org/myschoolcommute2', # DB_URL
         @survey.school.schid || '00010505', # ORG_CODE
         @survey.begin.strftime("%Y/%m/%d"), # DATE1
         @survey.end.strftime("%Y/%m/%d"), # DATE2
