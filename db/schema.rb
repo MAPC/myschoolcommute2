@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181115153745) do
+ActiveRecord::Schema.define(version: 20190213175020) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,9 +26,8 @@ ActiveRecord::Schema.define(version: 20181115153745) do
     t.string   "distcode4"
     t.string   "distcode8"
     t.integer  "districtid_id"
-    t.geometry "geometry",      limit: {:srid=>26986, :type=>"geometry"}
-    t.datetime "created_at",                                              null: false
-    t.datetime "updated_at",                                              null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "schools", force: :cascade do |t|
