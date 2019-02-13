@@ -10,11 +10,15 @@ Dir.chdir APP_ROOT do
   puts "== Installing dependencies =="
   system "gem install bundler --conservative"
   system "bundle check || bundle install"
+  `echo 'install.packages(c("RPostgreSQL","DBI","reshape2","plyr","ggplot2","scales","knitr","Hmisc","httr","Rcpp","car","tinytex"), repos="http://cran.rstudio.com")' > install-packages && Rscript install-packages; rm install-packages`
 
   # puts "\n== Copying sample files =="
   # unless File.exist?("config/database.yml")
   #   system "cp config/database.yml.sample config/database.yml"
   # end
+
+  puts "\n== Installing React Components =="
+  system 'bin/rails schoolmap:install'
 
   puts "\n== Creating database =="
   system 'bin/rails db:create'
