@@ -8,7 +8,7 @@ class DistrictDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    # schools: Field::HasMany.with_options( scope: -> { School.select(:id,:name,:slug,:schid,:address,:town_mail,:town,:state,:zip,:principal,:phone,:fax,:grades,:schl_type,:district_id,:survey_incentive,:survey_active,:geometry,:muni_id) }),
+    # schools: Field::HasMany.with_options( scope: -> { School.select(:id,:name,:slug,:schid,:address,:town_mail,:town,:state,:zip,:principal,:phone,:fax,:grades,:schl_type,:district_id,:survey_incentive,:survey_active,:muni_id) }),
     id: Field::Number,
     name: Field::String,
     distname: Field::String,
@@ -18,7 +18,6 @@ class DistrictDashboard < Administrate::BaseDashboard
     distcode4: Field::String,
     distcode8: Field::String,
     districtid_id: Field::Number,
-    geometry: Field::String.with_options(searchable: false),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -48,7 +47,6 @@ class DistrictDashboard < Administrate::BaseDashboard
     :distcode4,
     :distcode8,
     :districtid_id,
-    :geometry,
     :created_at,
     :updated_at,
   ].freeze
@@ -66,7 +64,6 @@ class DistrictDashboard < Administrate::BaseDashboard
     :distcode4,
     :distcode8,
     :districtid_id,
-    :geometry,
   ].freeze
 
   # Overwrite this method to customize how districts are displayed
