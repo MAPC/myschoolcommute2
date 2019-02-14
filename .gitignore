@@ -22,6 +22,10 @@ node_modules/
 .DS_Store
 public/reports/*.pdf
 lib/external/school-map/build
+lib/external/report/*.png
+lib/external/school-map/screens/*.png
+
 
 .env
 .ssh
+

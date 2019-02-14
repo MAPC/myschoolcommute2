@@ -1,0 +1,5 @@
+#!/bin/bash
+
+react-scripts build \
+&& cp build/static/js/*.js "$1/vendor/assets/javascripts/react_modules/schoolmap.min.js" \
+&& cp build/static/css/*.css "$1/vendor/assets/stylesheets/react_modules/schoolmap.min.css"

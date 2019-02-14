@@ -1,3 +1,9 @@
+require 'securerandom'
+
+REPORT_DIR = Rails.root.join('lib', 'external', 'report')
+DATA_DIR = Rails.root.join('lib', 'external', 'school-map', 'build', 'data')
+
+
 class SurveysController < ApplicationController
   before_action :set_survey, only: [:show, :edit, :update, :destroy, :show_report]
   before_action :authenticate_user!, except: [:show]
@@ -17,7 +23,7 @@ class SurveysController < ApplicationController
   end
 
   def show_report
-    redirect_to '/reports/' + GenerateReportService.new(@survey).perform
+    redirect_to '/reports/' + generate_report
   end
 
   # POST /surveys
@@ -76,4 +82,66 @@ class SurveysController < ApplicationController
     def survey_params
       params.permit(survey: [:begin, :end, :school_id]).fetch(:survey)
     end
+
+    def generate_report
+      data_file = write_data_to_file()
+      generate_map(data_file)
+
+      report_script = File.join(REPORT_DIR, 'compile.R')
+
+      pg_values = Rails.configuration.database_configuration[Rails.env].values_at('username', 'password', 'host', 'port', 'database').compact
+
+      if pg_values.count == 5
+        pg_user, pg_password, pg_host, pg_port, pg_database = pg_values
+        pg_dsn = "postgis://#{pg_user}:#{pg_password}@#{pg_host}:#{pg_port}/#{pg_database}"
+      else
+        raise 'Missing database credentials. Please set DATABASE_URL to a valid PostGIS DSN.'
+      end
+
+      report_args = [
+        pg_dsn || ENV['DATABASE_URL'],
+        @survey.school.schid || '00010505', # ORG_CODE
+        @survey.begin.strftime("%Y/%m/%d"), # DATE1
+        @survey.end.strftime("%Y/%m/%d"), # DATE2
+        @survey.id, # survey id
+        data_file # temp filename for the rendered PNG
+      ]
+
+      report_cmd = "Rscript --vanilla #{report_script} #{report_args.join(" ")}"
+      Rails.logger.info report_cmd
+
+      report_output = `#{report_cmd}`
+      Rails.logger.info report_output
+
+      Rails.logger.info "Cleaning up"
+      [
+        File.join(REPORT_DIR, "#{data_file}.png"),
+        File.join(DATA_DIR, "#{data_file}.json"),
+      ].each { |file| File.delete(file) if File.exists?(file) }
+
+      "SurveyReport#{@survey.id}.pdf"
+    end
+
+    def write_data_to_file
+      Rails.logger.info "Writing data to .json"
+      uid = SecureRandom.uuid.split('-')[0]
+      file_name = "#{@survey.school.schid}-#{uid}"
+
+      data = ApplicationController.render(template: 'schools/_school_show', locals: { school: @survey.school })
+
+      file_path = File.join(DATA_DIR, "#{file_name}.json")
+      File.open(file_path, "w") do |f|
+        f.write(data)
+      end
+
+      file_name
+    end
+
+    def generate_map(data_file)
+      Rails.logger.info "Generating Map"
+
+      render_script = Rails.root.join('lib', 'external', 'school-map', 'render.js')
+      `node #{render_script} #{data_file} #{REPORT_DIR}`
+    end
+
 end

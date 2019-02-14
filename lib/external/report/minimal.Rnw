@@ -1,18 +1,44 @@
+%
+%%% Minimal Report Document
+
 \documentclass[12pt,letterpaper]{report}
-% \usepackage{fontspec} % requires xelatex; table layout and font-family specs
+
+
+%%% Packages
+
 \usepackage[margin=0.5in]{geometry}
 \usepackage[font={bf,sf,small},% san-serif font for float captions
                skip=0pt,% no space between captions and floats
                labelfont=bf,% caption lable (ie "Table 1") in bold face
                justification=justified,% left-justify captions
                singlelinecheck=false]{caption} %
-% \usepackage{sectsty} % section headings
-\usepackage{multicol} % for 2-column page layout
+
+% allows us to set max dimensions
+\usepackage[export]{adjustbox}
+
+% for 2-column page layout
+\usepackage{multicol} 
 
 % control paragraph indent and spacing
 \usepackage{parskip}
+
+% san-serif font for tabular material
+\usepackage{floatrow} 
+ 
+% control number layout
+\usepackage{siunitx}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{lipsum}
+
+
+%%% Setup
+
+% control paragraph indent and spacing
 \setlength{\parindent}{0pt}
-% end control paragraph indent and spacing
+
+% define serif and san-serif fonts
+\renewcommand{\familydefault}{\sfdefault}
 
 \newcommand{\factoid}[1]{\flushleft{\large{#1}}} %  
 \newenvironment{itemize*}% bullet pointed list with smaller line spacing
@@ -20,22 +46,8 @@
     \setlength{\itemsep}{0pt}%
     \setlength{\parskip}{0pt}}%
   {\end{itemize}}
-  
-% Control number layout
-\usepackage{siunitx}
-\usepackage{booktabs}
-\usepackage{graphicx}
-\usepackage{lipsum}
-
-
-% define serif and san-serif fonts
-%\allsectionsfont{\sffamily} % section headings in san-serif font
-\renewcommand{\familydefault}{\sfdefault}
-% \setromanfont{Goudy Old Style} % serif font to be Goudy Old Style
-% \setsansfont{Tw Cen MT} % san-serif font to be Tw Cen MT
-
+ 
 %%%%% Setting up table and caption environment
-\usepackage{floatrow} % san-serif font for tabular material
 \floatsetup[table]{font={sf, small},%
                     captionskip=0pt,% no space between tables and captions                                       
                     postcode=captionskip,% 
@@ -51,6 +63,9 @@
 
 \captionsetup{footfont=sf,skip=0pt} % no space between notes and table
 %%%%% End Setting up table and caption environment
+
+
+%%% Document
 
 \begin{document}
 
@@ -209,8 +224,10 @@ Shifting some school commutes from auto to walking or biking can create real ben
 \end{itemize*}
 
 \end{multicols}
-\newpage
-\begin{center}
 
-\end{center}
+\newpage
+
+\thispagestyle{empty}
+\includegraphics[max width=\textwidth]{\Sexpr{MAP_PNG}}
+
 \end{document}

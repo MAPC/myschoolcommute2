@@ -11,7 +11,7 @@ library(car)
 
 DATE1 = "2012-06-01"
 DATE2 = "2013-06-01"
-setwd('lib/external_scripts')
+setwd('lib/external/report')
 load('.RData')
 
 commandArguments = commandArgs(trailingOnly=TRUE)
@@ -22,6 +22,7 @@ ORG_CODE = args[2]
 DATE1 = args[3]
 DATE2 = args[4]
 SURVEY_ID = args[5]
+MAP_PNG = args[6]
 
 source("generate_report.R")
 # test with 1 response

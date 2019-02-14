@@ -1,0 +1,12 @@
+.WalkshedMap {
+  z-index: 1;
+}
+
+.leaflet-container {
+  width: 100%;
+  min-height: 400px;
+}
+
+.WalkshedMap.static .leaflet-container {
+  height: 100vh;    
+}

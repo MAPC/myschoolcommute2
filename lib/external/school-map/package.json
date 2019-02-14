@@ -1,0 +1,28 @@
+{
+  "name": "school-map",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "express": "^4.16.4",
+    "finalhandler": "^1.1.1",
+    "jquery": "^3.2.1",
+    "leaflet": "^1.0.3",
+    "leaflet.browser.print": "^0.3.2",
+    "puppeteer": "^1.11.0",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-leaflet": "^1.1.7",
+    "semantic-ui-react": "^0.68.3",
+    "serve-static": "^1.13.2",
+    "sharp": "^0.21.3"
+  },
+  "devDependencies": {
+    "react-scripts": "1.0.5"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "bin/build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
