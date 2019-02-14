@@ -31,7 +31,7 @@ $(document).ready(function() {
       }
 
       formFields.forEach(function(field) {
-        var input = field.querySelector('select');
+        var input = field.querySelector('.selected');
 
         if (input.value === '') {
           field.classList.add(ERROR_CLASS);
