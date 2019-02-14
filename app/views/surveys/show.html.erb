@@ -27,7 +27,11 @@
         window.muni_id = <%= @survey.school.muni_id %>;
         window.school = { lat: <%= @survey.school.wgs84_lat %>, lng: <%= @survey.school.wgs84_lng %> };
       </script>
-      <%= javascript_include_tag "react_modules/intersectingstreets.min.js" %>
+
+      <%= javascript_include_tag "react_modules/intersectingstreets-vendor.min.js" %>
+      <%= javascript_include_tag "react_modules/intersectingstreets-runtime.min.js" %>
+      <%= javascript_include_tag "react_modules/intersectingstreets-main.min.js" %>
+
       <%= f.hidden_field :survey_id, value: @survey.id %>
       <%= f.submit 'Submit Survey' %>
     <% end %>
