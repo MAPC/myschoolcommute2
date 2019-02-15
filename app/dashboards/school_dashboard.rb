@@ -8,7 +8,7 @@ class SchoolDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    district: Field::BelongsTo,
+    district: Field::BelongsTo.with_options(order: "distname ASC"),
     surveys: Field::HasMany,
     survey_responses: Field::HasMany,
     id: Field::Number,
