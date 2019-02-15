@@ -27,25 +27,10 @@ to display a collection of resources in an HTML table.
         cell-label--<%= attr_type.html_class %>
         cell-label--<%= collection_presenter.ordered_html_class(attr_name) %>
         " scope="col">
-        <%= link_to(sanitized_order_params.merge(
-          collection_presenter.order_params_for(attr_name)
-        )) do %>
         <%= t(
           "helpers.label.#{resource_name}.#{attr_name}",
           default: attr_name.to_s,
         ).titleize %>
-
-            <% if collection_presenter.ordered_by?(attr_name) %>
-              <span class="cell-label__sort-indicator cell-label__sort-indicator--<%= collection_presenter.ordered_html_class(attr_name) %>">
-                <%= svg_tag(
-                  "administrate/sort_arrow.svg",
-                  "sort_arrow",
-                  width: "13",
-                  height: "13"
-                ) %>
-              </span>
-            <% end %>
-          <% end %>
         </th>
       <% end %>
       <% [valid_action?(:edit), valid_action?(:destroy)].count(true).times do %>
