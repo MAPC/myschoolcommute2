@@ -31,7 +31,7 @@ server 'live.mapc.org', user: 'myschoolcommute2', roles: %w{app db web}
 # Feel free to add new variables to customise your setup.
 set :passenger_restart_command, 'passenger-config restart-app'
 set :rvm_custom_path, '/usr/share/rvm'
-set :rvm_ruby_version, '2.4.2'
+set :rvm_ruby_version, '2.5.3'
 set :keep_releases, 3
 
 # Custom SSH Options
@@ -60,3 +60,4 @@ set :keep_releases, 3
 #   }
 
 after 'deploy:published', 'schoolmap:install'
+after 'deploy:published', 'intersectingstreets:install'

@@ -227,6 +227,8 @@ body {
 }
 
 .map-container {
+  z-index: 0;
+
   &.error {
     color: red;
 
