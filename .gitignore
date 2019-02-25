@@ -30,3 +30,4 @@ lib/external/school-map/screens/*.png
 .env
 .ssh
 
+.Rproj.user
