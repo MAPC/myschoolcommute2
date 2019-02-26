@@ -41,8 +41,11 @@ get_enrollment_df = function(start_date) {
   else if (start_date < as.Date("2018-07-30")) {
     df = enrollment17_18
   }
+  else if (start_date < as.Date("2019-07-30")) {
+    df = enrollment18_19
+  }
   else {
-    df = enrollment17_18
+    df = enrollment18_19
   }
 
   return(df)
@@ -74,8 +77,11 @@ get_enrollment_date = function(start_date) {
   else if (start_date < as.Date("2018-07-30")) {
     df = "2017-2018"
   }
+  else if (start_date < as.Date("2019-07-30")) {
+    df = "2018-2019"
+  }
   else {
-    df = "2017-2018"
+    df = "2018-2019"
   }
 
   return(df)
