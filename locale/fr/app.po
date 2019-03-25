@@ -28,12 +28,11 @@ msgstr "Nom de la rue transversale la plus proche (intersection la plus proche) 
 
 #: forms.py:32
 msgid "How many vehicles do you have in your household?"
-msgstr "Combien de véhicules vous avez dans votre maison?"
+msgstr "Combien de véhicules avez-vous dans votre foyer?"
 
 #: forms.py:37
 msgid "How many people in your household have a driver's license?"
-msgstr ""
-"Combien de personnes possèdent des permis de conduire dans votre maison?"
+msgstr "Combien de personnes dans votre foyer ont un permis de conduire?"
 
 #: forms.py:83
 msgid "What grade is your child in?"

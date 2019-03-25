@@ -27,11 +27,11 @@ msgstr "Non kafou ki pi pre lakay ou (entèseksyon pi pre a):"
 
 #: forms.py:32
 msgid "How many vehicles do you have in your household?"
-msgstr "Konbyen veyikil ou genyen lakay ou?"
+msgstr "Konbyen oto ou genyen lakay ou?"
 
 #: forms.py:37
 msgid "How many people in your household have a driver's license?"
-msgstr "Konbyen moun lakay ou ki gen yon lisans chofè?"
+msgstr "Konbyen moun lakay ou ki genyen yon lisans chofè?"
 
 #: forms.py:83
 msgid "What grade is your child in?"

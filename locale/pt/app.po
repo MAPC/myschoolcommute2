@@ -28,11 +28,11 @@ msgstr "Nome do cruzamento mais próximo (cruzamento de vias mais próximo):"
 
 #: forms.py:32
 msgid "How many vehicles do you have in your household?"
-msgstr "Quantos veículos vocês tem na vossa casa?"
+msgstr "A sua residência tem quantos veículos?"
 
 #: forms.py:37
 msgid "How many people in your household have a driver's license?"
-msgstr "Quantas pessoas na sua casa têm carteira de motorista?"
+msgstr "Quantas pessoas na sua família têm carteira de motorista?"
 
 #: forms.py:83
 msgid "What grade is your child in?"

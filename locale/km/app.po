@@ -28,11 +28,11 @@ msgstr "ឈ្មោះផ្លូវខ្វែងដែលនៅជិតប
 
 #: forms.py:32
 msgid "How many vehicles do you have in your household?"
-msgstr "etIG~kmanrfyn¶bunµane¨KOg k~¬g¨kum¨KYsarrbs'G~k?\""
+msgstr "តើលោក-អ្នកមានរថយន្តប៉ុន្មាននៅក្នុងផ្ទះរបស់លោក-អ្នក?"
 
 #: forms.py:37
 msgid "How many people in your household have a driver's license?"
-msgstr " etImanmnus§bunµannak' k~¬g¨kum¨KYsarrbs'G~k EdlmanlixitebIkbr?\""
+msgstr "តើមានមនុស្សប៉ុន្មាននាក់នៅក្នុងគ្រួសាររបស់អ្នកមានបណ្ណ័បើកបរ?"
 
 #: forms.py:83
 msgid "What grade is your child in?"

@@ -28,11 +28,11 @@ msgstr "اسم أقرب تقاطع لشارعين بالنسبة لكم"
 
 #: forms.py:32
 msgid "How many vehicles do you have in your household?"
-msgstr "كم سيارة عندكم في منزلكم"
+msgstr "كم سيارة لديك في المنزل؟"
 
 #: forms.py:37
 msgid "How many people in your household have a driver's license?"
-msgstr "كم شخص في منزلكم يحوز على رخصة قيادة السيارات"
+msgstr "كم شخص في منزلك لديه رخصة قيادة سيارة؟"
 
 #: forms.py:83
 msgid "What grade is your child in?"

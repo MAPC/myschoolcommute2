@@ -28,11 +28,11 @@ msgstr "Nombre de la calle perpendicular más cercana (intersección más cercan
 
 #: forms.py:32
 msgid "How many vehicles do you have in your household?"
-msgstr "¿Cuántos vehículos tienen en su domicilio? "
+msgstr "¿Cuántos vehículos tiene en su hogar?"
 
 #: forms.py:37
 msgid "How many people in your household have a driver's license?"
-msgstr "¿Cuántas personas en su domicilio tienen permiso de conducir?"
+msgstr "¿Cuántas personas en su hogar tienen una licencia de conducir?"
 
 #: forms.py:83
 msgid "What grade is your child in?"
