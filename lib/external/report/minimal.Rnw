@@ -46,6 +46,8 @@
     \setlength{\itemsep}{0pt}%
     \setlength{\parskip}{0pt}}%
   {\end{itemize}}
+
+\newenvironment{itpar}{\par\itshape}{\par}
  
 %%%%% Setting up table and caption environment
 \floatsetup[table]{font={sf, small},%
@@ -94,22 +96,18 @@ read_chunk("process_postgres_chunks.R")
 
   {
     MASafeRoutesSurvey.org\\
-    Survey Report\\
-    % Survey Report\\[.2 cm]
-    \Sexpr{School_Name}\\ 
+    Survey Report: \Sexpr{School_Name}\\ 
+    Date Printed: \today \\     
   }                                 
-\today \\     
 }
 
 \section*{Introduction}
-This report will help your school plan safe transportation options for all students. It contains the results of a survey conducted at \Sexpr{School_Name} in \Sexpr{start_month} \Sexpr{start_year}. Participating parents provided information about how students travel to school and their approximate home location. If your school is interested in 
-\begin{itemize*}
-\item reducing traffic congestion,
-\item encouraging walking and biking,
-\item increasing safety, or
-\item tracking progress towards community goals,
-\end{itemize*}
-then this information can help you identify the right strategies and best opportunities for new projects and investments. 
+This report will help your school plan safe transportation options for all students. It contains 
+the results of a survey conducted at \Sexpr{School_Name} in \Sexpr{start_month} \Sexpr{start_year}. 
+Participating parents/guardians provided information about how students travel to school and their 
+approximate home location. This information can help you identify the right strategies and best 
+opportunities for new projects and investments related to reducing traffic congestion, encouraging
+walking and biking, and increasing safety around your school.
 
 \subsection*{How to Read This Report}
 This report measures distance to school in terms of walksheds and bikesheds. A \emph{walkshed} includes all the homes within a certain distance to school, based on mapped sidewalks, pedestrian paths, and low volume roadways. We define walksheds for 0.5, 1.0, and 1.5 mile walking distances to school. A \emph{bikeshed} of 2.0 miles also includes multi-use paths and on-road cycle facilities, where mapped. For a map of the walksheds and bikesheds, see the last page of the report. Where "walkshed" is used alone, it always includes the bikeshed of the same distance.
@@ -122,13 +120,23 @@ This report measures distance to school in terms of walksheds and bikesheds. A \
 \begin{itemize*}
 \item Survey Dates: \Sexpr{start_date} to \Sexpr{end_date}
 \item Responses Received: \Sexpr{sampleSize}
-\item School-wide Participation Rate: \Sexpr{surveyPct}\%
+\item School-wide Participation Rate: \Sexpr{surveyPct}\% \textsuperscript{*}
 \end{itemize*}
 \vspace*{0 cm}
-The figure below shows the survey participation rate for each grade. Total enrollment is based on the \Sexpr{enrollmentDate} school year, per Department of Elementary and Secondary Education. Survey responses from each grade were used to estimate the distance and travel choice for the entire grade.The higher the participation rate, the more reliable the survey results are.
+
+The figure below shows the survey participation rate for each grade. Total enrollment is based on 
+the \Sexpr{enrollmentDate} school year, per Department of Elementary and Secondary Education \textsuperscript{*}. 
+Survey responses from each grade were used to estimate the distance and travel choice for the entire grade. The 
+higher the participation rate, the more reliable the survey results are.
 
 <<g_dfg,echo=FALSE, fig.height = 5, fig.align="center",fig.pos='H'>>=
 @
+
+\begin{itpar}
+\textsuperscript{*} Survey data discrepancies may exist in cases where more than one survey was 
+submitted per student. Current year enrollment is not currently available or school enrollment has 
+increase since reported to ESE on October 1\textsuperscript{st}.
+\end{itpar}
 
 %%%%% New Code %%%%%%
 \vfill
@@ -204,7 +212,11 @@ Transportation generates more than one-third of the total greenhouse gas (GHG) e
 
 \thispagestyle{empty}
 \section*{How Your School Compares}
-The table below compares your school's actual walk \textbackslash bike share to an expected value reflecting average walking and biking rates across Massachusetts. The expected value accounts for student grade levels and proximity to school, and is based on more than 6,000 surveys collected statewide since 2011. 
+The table below compares, for each walkshed, your school's actual walk \textbackslash bike 
+share to an expected value reflecting average walking and biking rates across Massachusetts. 
+Each percentage is the share of students in the walkshed that are walking or biking or expected 
+to be walking or biking. The expected value accounts for student grade levels and proximity to 
+school, and is based on more than 6,000 surveys collected statewide since 2011. 
 
 \begin{table}[H]
 \captionsetup{width=.75\textwidth}
