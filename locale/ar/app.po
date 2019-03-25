@@ -20,7 +20,7 @@ msgstr ""
 
 #: forms.py:24
 msgid "Name of your street"
-msgstr "إسم الشارع"
+msgstr "اسم الشارع الذي تسكنون فيه"
 
 #: forms.py:28
 msgid "Name of nearest cross-street"

@@ -19,7 +19,7 @@ msgstr ""
 
 #: forms.py:24
 msgid "Name of your street"
-msgstr "Non ri kote w ap viv la: "
+msgstr "Non ri kote ou rete a:"
 
 #: forms.py:28
 msgid "Name of nearest cross-street"

@@ -19,7 +19,7 @@ msgstr ""
 
 #: forms.py:24
 msgid "Name of your street"
-msgstr "街道名称："
+msgstr "您所住街道的名称："
 
 #: forms.py:28
 msgid "Name of nearest cross-street"
