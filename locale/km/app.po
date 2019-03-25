@@ -36,7 +36,7 @@ msgstr " etImanmnus§bunµannak' k~¬g¨kum¨KYsarrbs'G~k EdlmanlixitebIkbr?\""
 
 #: forms.py:83
 msgid "What grade is your child in?"
-msgstr "etIkUnrbs'G~keronf~ak'bunµan?\""
+msgstr "តើកូនរបស់លោក-អ្នកនៅថ្នាក់ទីប៉ុន្នាន?"
 
 #: forms.py:89
 msgid "How does your child get TO school on most days?"

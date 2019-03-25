@@ -35,7 +35,7 @@ msgstr "Konbyen moun lakay ou ki gen yon lisans chofè?"
 
 #: forms.py:83
 msgid "What grade is your child in?"
-msgstr "Nan ki klas pitit ou ye?"
+msgstr "Nan ki klas pitit ou a ye?"
 
 #: forms.py:89
 msgid "How does your child get TO school on most days?"

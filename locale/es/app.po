@@ -36,7 +36,7 @@ msgstr "¿Cuántas personas en su domicilio tienen permiso de conducir?"
 
 #: forms.py:83
 msgid "What grade is your child in?"
-msgstr "¿En qué grado/curso está su hijo(a)?  "
+msgstr "¿En qué grado está su hijo?"
 
 #: forms.py:89
 msgid "How does your child get TO school on most days?"

@@ -36,7 +36,7 @@ msgstr "Bao nhiêu người trong gia đình của quí vị có bằng lái xe?
 
 #: forms.py:83
 msgid "What grade is your child in?"
-msgstr "Con của quí vị học lớp mấy ?"
+msgstr "Con em quý vị học lớp mấy?"
 
 #: forms.py:89
 msgid "How does your child get TO school on most days?"

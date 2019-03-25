@@ -35,7 +35,7 @@ msgstr "您家有多少人拥有驾驶执照?"
 
 #: forms.py:83
 msgid "What grade is your child in?"
-msgstr "您的子女读几年级？"
+msgstr "您孩子上几年级？"
 
 #: forms.py:89
 msgid "How does your child get TO school on most days?"

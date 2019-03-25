@@ -37,7 +37,7 @@ msgstr ""
 
 #: forms.py:83
 msgid "What grade is your child in?"
-msgstr "En quelle classe se trouve votre enfant?"
+msgstr "En quelle classe est votre enfant?"
 
 #: forms.py:89
 msgid "How does your child get TO school on most days?"

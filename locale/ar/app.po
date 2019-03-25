@@ -36,7 +36,7 @@ msgstr "كم شخص في منزلكم يحوز على رخصة قيادة الس
 
 #: forms.py:83
 msgid "What grade is your child in?"
-msgstr "ولدكم هو في أي صف مدرسي؟"
+msgstr "في أي مرحلة دراسية يدرس طفلك؟"
 
 #: forms.py:89
 msgid "How does your child get TO school on most days?"
