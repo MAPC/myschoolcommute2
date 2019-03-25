@@ -387,8 +387,8 @@ msgid "Submit Survey"
 msgstr "soumèt Sondaj"
 
 #: templates/survey/form.html:334
-msgid "Travel to School Survey"
-msgstr "Vwayaje nan Sondaj Lekòl"
+msgid "Important School Travel Survey"
+msgstr "Kesyonnè Enpòtan sou Transpò pou Lekòl"
 
 #: templates/survey/form.html:338
 msgid "Dear Parent or Guardian,"

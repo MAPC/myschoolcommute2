@@ -390,8 +390,8 @@ msgid "Submit Survey"
 msgstr "ដាក់ស្នើ ការស្ទង់មតិ"
 
 #: templates/survey/form.html:334
-msgid "Travel to School Survey"
-msgstr "ធ្វើដំណើរទៅកាន់ សាលា អង្កេត"
+msgid "Important School Travel Survey"
+msgstr "ការស្ទង់មតិពីការធ្វើដំណើរសំខាន់ៗ សម្រាប់សាលា"
 
 #: templates/survey/form.html:338
 msgid "Dear Parent or Guardian,"

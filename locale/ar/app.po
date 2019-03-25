@@ -368,8 +368,8 @@ msgid "Submit Survey"
 msgstr "يقدم المسح"
 
 #: templates/survey/form.html:334
-msgid "Travel to School Survey"
-msgstr "السفر إلى مسح مدرسة"
+msgid "Important School Travel Survey"
+msgstr "مسح هام خاص بالتنقل من وإلى المدرسة"
 
 #: templates/survey/form.html:338
 msgid "Dear Parent or Guardian,"

@@ -329,8 +329,8 @@ msgid "Submit Survey"
 msgstr "提交调查"
 
 #: templates/survey/form.html:334
-msgid "Travel to School Survey"
-msgstr "前往学校调查"
+msgid "Important School Travel Survey"
+msgstr "关于学生上、放学交通方式的重要调查"
 
 #: templates/survey/form.html:338
 msgid "Dear Parent or Guardian,"

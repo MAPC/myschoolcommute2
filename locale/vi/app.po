@@ -393,8 +393,8 @@ msgid "Submit Survey"
 msgstr "trình điều tra"
 
 #: templates/survey/form.html:334
-msgid "Travel to School Survey"
-msgstr "Đi du lịch đến khảo sát trường học"
+msgid "Important School Travel Survey"
+msgstr "Bản khảo sát Quan trọng về Phương tiện đến Trường"
 
 #: templates/survey/form.html:338
 msgid "Dear Parent or Guardian,"

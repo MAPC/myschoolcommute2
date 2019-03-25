@@ -396,8 +396,8 @@ msgid "Submit Survey"
 msgstr "enviar Levantamento"
 
 #: templates/survey/form.html:334
-msgid "Travel to School Survey"
-msgstr "Viagem à Pesquisa Escola"
+msgid "Important School Travel Survey"
+msgstr "Pesquisa Importante sobre Deslocamento Escolar"
 
 #: templates/survey/form.html:338
 msgid "Dear Parent or Guardian,"
