@@ -22,75 +22,71 @@ msgstr ""
 msgid "Name of your street"
 msgstr "Nome da sua rua"
 
+msgid "Name of your town/city"
+msgstr "Cidade/Município:"
+
 #: forms.py:28
-msgid "Name of nearest cross-street"
-msgstr "Nome da rua tranversal mais próxima"
+msgid "Name of nearest cross-street (intersection)"
+msgstr "Nome do cruzamento mais próximo (cruzamento de vias mais próximo):"
 
 #: forms.py:32
 msgid "How many vehicles do you have in your household?"
-msgstr "Quantos veículos vocês tem na vossa casa?"
+msgstr "A sua residência tem quantos veículos?"
 
 #: forms.py:37
 msgid "How many people in your household have a driver's license?"
-msgstr "Quantas pessoas na sua casa têm carteira de motorista?"
+msgstr "Quantas pessoas na sua família têm carteira de motorista?"
 
 #: forms.py:83
 msgid "What grade is your child in?"
-msgstr "Em que turma està o seu filho(a)?"
+msgstr "Sua criança está em que série?"
 
 #: forms.py:89
 msgid "How does your child get TO school on most days?"
-msgstr "Como é que o seu filho(a) chega à escola na maioria dos dias? "
+msgstr "Como sua criança se locomove PARA a escola normalmente?"
 
 #: forms.py:94
 msgid ""
 "Do you usually drop off your child on your way to work or another "
-"destination?"
-msgstr ""
-"Você costuma deixar seu filho em seu caminho para o trabalho ou para outro "
-"destino ?"
+"destination (other than home)?"
+msgstr "Você normalmente deixa sua criança no caminho para o trabalho ou outro destino (fora casa)?"
 
 #: forms.py:100
 msgid "How does your child get home FROM school on most days?"
-msgstr ""
-"Como é que o seu filho(a) volta para casa da escola, na maioria dos dias? "
+msgstr "Como sua criança volta para a casa DA escola normalmente?"
 
 #: forms.py:105
 msgid ""
-"Do you usually pick up your child on your way from work or another origin?"
-msgstr ""
-"Você costuma pegar o seu filho(a) quando volta do trabalho ou de outro "
-"local?"
+"Do you usually pick up your child on your way from work or another location (other than home)?"
+msgstr "Você normalmente pega sua criança no caminho de volta do trabalho ou de outro destino (fora casa)?"
 
 #: models.py:275
 msgid "Walk"
 msgstr "Caminhando"
 
 #: models.py:276
-msgid "Bicycle"
-msgstr "Bicicleta"
+msgid "Bike (skateboard, scooter, inline skates, etc.)"
+msgstr "Bicicleta (skate, patinete, patins, etc.)"
 
 #: models.py:277
-msgid "School Bus"
-msgstr "Transporte escolar"
+msgid "School Bus (regular & SPED transport)"
+msgstr "Ônibus Escolar (regular & SPED transport)"
 
 #: models.py:278
 msgid "Family Vehicle (only children in your family)"
-msgstr "Veículo Familiar (só crianças da sua família)"
+msgstr "Veículo da família (apenas as crianças da família)"
 
 #: models.py:279
 msgid "Carpool (with children from other families)"
-msgstr "Veículo compartilhado/ boleia (com crianças de outras famílias)"
+msgstr "Carro partilhado (com crianças de outras famílias)"
 
 #: models.py:280
 msgid "Transit (city bus, subway, etc.)"
-msgstr ""
-"Transportes Públicos (ônibus, metro, etc.)\n"
-"Other (skateboard"
+msgstr "Transporte público (ônibus, metrô, etc.)"
 
 #: models.py:281
-msgid "Other (skateboard, scooter, inline skates, etc.)"
-msgstr "Outros ( skate , patinete, patins , etc )"
+msgid "Other (private bus/van, taxi, after-school transport, etc.)"
+msgstr "Outro (van/ônibus privado, táxi, transporte após a escola, etc.)"
 
 #: models.py:297
 msgid "Yes"
@@ -396,25 +392,16 @@ msgid "Submit Survey"
 msgstr "enviar Levantamento"
 
 #: templates/survey/form.html:334
-msgid "Travel to School Survey"
-msgstr "Viagem à Pesquisa Escola"
+msgid "Important School Travel Survey"
+msgstr "Pesquisa Importante sobre Deslocamento Escolar"
 
 #: templates/survey/form.html:338
 msgid "Dear Parent or Guardian,"
 msgstr "Prezado pai ou responsável ,"
 
 #: templates/survey/form.html:342
-msgid ""
-"Your child’s school is conducting a survey to learn how students get to and "
-"from school. This information  will be used to plan safe and healthy "
-"transportation choices for all students. The survey will take less than 3 "
-"minutes to complete. All responses are voluntary and confidential. "
-msgstr ""
-"A escola de seu filho está realizando uma pesquisa para saber como os alunos"
-" ir e voltar da escola. Esta informação será usada para planejar seguras e "
-"saudáveis ​​opções de transporte para todos os alunos . A pesquisa vai "
-"demorar menos de 3 minutos para ser concluído. Todas as respostas são "
-"voluntários e confidenciais ."
+msgid "Your school would like to learn how students get to and from school. This information will be used to plan safe and healthy transportation options for all students. The survey will take less than 3 minutes to complete."
+msgstr "Sua escola quer apreender como os alunos chegam e voltam da escola. Essas informações serão usadas para planejar opções de transporte seguras e saldáveis para todos os alunos. Completar a pesquisa leva menos de três minutos."
 
 #: templates/survey/form.html:344
 msgid ""

@@ -20,74 +20,73 @@ msgstr ""
 
 #: forms.py:24
 msgid "Name of your street"
-msgstr "eQµaHpÂèvrbs'G~k :"
+msgstr "ឈ្មោះផ្លូវរបស់អ្នក:"
+
+msgid "Name of your town/city"
+msgstr "ក្រុង:"
 
 #: forms.py:28
-msgid "Name of nearest cross-street"
-msgstr "eQµaHpÂèvkat'TTwgEdlCitCageKbMput"
+msgid "Name of nearest cross-street (intersection)"
+msgstr "ឈ្មោះផ្លូវខ្វែងដែលនៅជិតបំផុត (ឈ្មោះផ្លូវប្រសព្វគ្នាដែលជិតបំផុត):"
 
 #: forms.py:32
 msgid "How many vehicles do you have in your household?"
-msgstr "etIG~kmanrfyn¶bunµane¨KOg k~¬g¨kum¨KYsarrbs'G~k?\""
+msgstr "តើលោក-អ្នកមានរថយន្តប៉ុន្មាននៅក្នុងផ្ទះរបស់លោក-អ្នក?"
 
 #: forms.py:37
 msgid "How many people in your household have a driver's license?"
-msgstr " etImanmnus§bunµannak' k~¬g¨kum¨KYsarrbs'G~k EdlmanlixitebIkbr?\""
+msgstr "តើមានមនុស្សប៉ុន្មាននាក់នៅក្នុងគ្រួសាររបស់អ្នកមានបណ្ណ័បើកបរ?"
 
 #: forms.py:83
 msgid "What grade is your child in?"
-msgstr "etIkUnrbs'G~keronf~ak'bunµan?\""
+msgstr "តើកូនរបស់លោក-អ្នកនៅថ្នាក់ទីប៉ុន្នាន?"
 
 #: forms.py:89
 msgid "How does your child get TO school on most days?"
-msgstr "etIkUnrbs'G~k eTA salaswgEtral'«f©  edayrebobNa?"
+msgstr "តើកូនរបស់លោក-អ្នកទៅសាលាដោយវិធីណា ភាគច្រើន?"
 
 #: forms.py:94
 msgid ""
 "Do you usually drop off your child on your way to work or another "
-"destination?"
-msgstr ""
-"ebIG~ke¨CIsyk \\rfyn¶¨KYsar| É \\CiHLanrYmK~a| sMrab'kareFÃIdMeNIreTAsala "
-"etItamFmµta G~kebIkrfyn¶bn¶eFÃIdMeNIreTAeFÃIkar ÉeTATisedAmYyeTot ÉeT?"
+"destination (other than home)?"
+msgstr "មិនសូវទម្លាក់កូននៅសាលាពេលអ្នកចេញទៅធ្វើការ ឬក៏ទៅណាផ្សេងទៀត (ក្រៅពីផ្ទះ)?"
 
 #: forms.py:100
 msgid "How does your child get home FROM school on most days?"
-msgstr "etIkUnrbs'G~k mkBI salaswgEtral'«f©  edayrebobNa?"
+msgstr "តើកូនរបស់លោក-អ្នកចេញពីសាលាមកផ្ទះដោយវិធីណា ភាគច្រើន? (ជ្រើសមួយ)"
 
 #: forms.py:105
 msgid ""
-"Do you usually pick up your child on your way from work or another origin?"
-msgstr ""
-"ebIG~ke¨CIsyk \\rfyn¶¨KYsar| É \\CiHLanrYmK~a| sMrab'kareFÃIdMeNIrmkBIsala "
-"etItamFmµta G~kmkykkUnrbs'G~k tampÂèvmkBIeFÃIkar ÉmkBITIkEnÂgmYyeTot ÉeT?"
+"Do you usually pick up your child on your way from work or another location (other than home)?"
+msgstr "តាមធម្មតាទៅយកកូននៅពេលចេញពីធ្វើការមកផ្ទះ ឫពីកន្លែងដទៃទៀត (ក្រៅពីផ្ទះ)?"
 
 #: models.py:275
 msgid "Walk"
-msgstr "edIr"
+msgstr "ដើរ"
 
 #: models.py:276
-msgid "Bicycle"
-msgstr "kg'"
+msgid "Bike (skateboard, scooter, inline skates, etc.)"
+msgstr "កង់ (ស្កេតបត, ស្កូតទ័រ, ស្បែកជើងមានកង់, ។ល។) "
 
 #: models.py:277
-msgid "School Bus"
-msgstr "Lansala"
+msgid "School Bus (regular & SPED transport)"
+msgstr "រថយន្តបឺសរបស់សាលា (ធម្មតា & ការដឹកជញ្ជូនតាម SPED)"
 
 #: models.py:278
 msgid "Family Vehicle (only children in your family)"
-msgstr "rfyn¶¨KYsar (EtkUnrbs'G~k k~¬g¨KYsarrbs'G~k)"
+msgstr "រថយន្តប្រចាំគ្រួសារ (សម្រាប់តែក្មេងនៅក្នុងគ្រួសាររបស់អ្នក)"
 
 #: models.py:279
 msgid "Carpool (with children from other families)"
-msgstr "CiHLanrYmK~a (CamYyekµg@mkBI¨KYsard«TeTot)"
+msgstr "ជិះជុំគ្នា (ជាមួយក្មេងៗ ពីគ្រួសារដទៃ)"
 
 #: models.py:280
 msgid "Transit (city bus, subway, etc.)"
-msgstr "¨bB&nìKmnaKmn_ (Lan¨kug, rfePÂIge¨kamdI, CaedIm)"
+msgstr "ការដឹកជញ្ជូនសាធារណៈ (រថយន្តក្រុង, រថភ្លើងក្រោមដី, ។ល។)"
 
 #: models.py:281
-msgid "Other (skateboard, scooter, inline skates, etc.)"
-msgstr "ep§geTot (edIresûtbßt, sðèT&r, esûtmankg', CaedIm)"
+msgid "Other (private bus/van, taxi, after-school transport, etc.)"
+msgstr "ផ្សេងទៀត (រថយន្តបឺសឯកជន/រថយន្តវែន, តាក់ស៊ី, ការដឹកជញ្ជូនក្រោយម៉ោងសាលា ។ល។)"
 
 #: models.py:297
 msgid "Yes"
@@ -390,25 +389,16 @@ msgid "Submit Survey"
 msgstr "ដាក់ស្នើ ការស្ទង់មតិ"
 
 #: templates/survey/form.html:334
-msgid "Travel to School Survey"
-msgstr "ធ្វើដំណើរទៅកាន់ សាលា អង្កេត"
+msgid "Important School Travel Survey"
+msgstr "ការស្ទង់មតិពីការធ្វើដំណើរសំខាន់ៗ សម្រាប់សាលា"
 
 #: templates/survey/form.html:338
 msgid "Dear Parent or Guardian,"
 msgstr "មាតាបិតា ឬអាណាព្យាបាល ជាទីស្រឡាញ់ ,"
 
 #: templates/survey/form.html:342
-msgid ""
-"Your child’s school is conducting a survey to learn how students get to and "
-"from school. This information  will be used to plan safe and healthy "
-"transportation choices for all students. The survey will take less than 3 "
-"minutes to complete. All responses are voluntary and confidential. "
-msgstr ""
-"សាលារៀនរបស់កូន របស់អ្នកត្រូវបាន ធ្វើ ការស្ទង់មតិ មួយដើម្បី រៀនពីរបៀប ទទួលបាន"
-" សិស្សនិស្សិត ទៅនិងមកពី សាលារៀន។ ព័ត៌មាននេះនឹង ត្រូវបានប្រើដើម្បី មានគម្រោង "
-"ការជ្រើសរើស ការដឹកជញ្ជូន មានសុវត្ថិភាព និងមានសុខភាពល្អ សម្រាប់ សិស្សនិស្សិត "
-"ទាំងអស់។ ការស្ទង់មតិ នេះនឹង ចំណាយពេលតិចជាង 3 នាទី ដើម្បីបញ្ចប់។ "
-"ចម្លើយទាំងអស់ មាន ការស្ម័គ្រចិត្ត និង ជាសម្ងាត់។"
+msgid "Your school would like to learn how students get to and from school. This information will be used to plan safe and healthy transportation options for all students. The survey will take less than 3 minutes to complete."
+msgstr "សាលារៀនរបស់លោក-អ្នកចង់ដឹងនូវវិធីដែលសិស្សានុសិស្សទៅ និងត្រឡប់ពីសាលារៀន។ ព័ត៌មាននេះនឹងត្រូវគេប្រើដើម្បីរៀបចំជម្រើសនៃការដឹកជញ្ជូនដោយសុវត្ថិភាព និងភាពរឹងមាំសម្រាប់សិស្សទាំងអស់។ ការស្ទង់មតិនេះនឹងចំណាយពេលតិចជាង 3 នាទីដើម្បីបញ្ចប់"
 
 #: templates/survey/form.html:344
 msgid ""

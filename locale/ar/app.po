@@ -20,70 +20,72 @@ msgstr ""
 
 #: forms.py:24
 msgid "Name of your street"
-msgstr "إسم الشارع"
+msgstr "اسم الشارع الذي تسكنون فيه"
+
+msgid "Name of your town/city"
+msgstr "اسم المدينة/ القرية"
 
 #: forms.py:28
-msgid "Name of nearest cross-street"
-msgstr "إسم أقرب شارع يتقاطع مع شارعكم"
+msgid "Name of nearest cross-street (intersection)"
+msgstr "اسم أقرب تقاطع لشارعين بالنسبة لكم"
 
 #: forms.py:32
 msgid "How many vehicles do you have in your household?"
-msgstr "كم سيارة عندكم في منزلكم"
+msgstr "كم سيارة لديك في المنزل؟"
 
 #: forms.py:37
 msgid "How many people in your household have a driver's license?"
-msgstr "كم شخص في منزلكم يحوز على رخصة قيادة السيارات"
+msgstr "كم شخص في منزلك لديه رخصة قيادة سيارة؟"
 
 #: forms.py:83
 msgid "What grade is your child in?"
-msgstr "ولدكم هو في أي صف مدرسي؟"
+msgstr "في أي مرحلة دراسية يدرس طفلك؟"
 
 #: forms.py:89
 msgid "How does your child get TO school on most days?"
-msgstr "بأي وسيلة يتم نقل ولدكم إلى المدرسة في ؟"
+msgstr "كيف يذهب طفلكم إلى المدرسة في معظم الأيام؟"
 
 #: forms.py:94
 msgid ""
 "Do you usually drop off your child on your way to work or another "
-"destination?"
-msgstr "لمدرسة، هل يتابع عادةً سائق السيارة رحلته إلى العمل او إلى وجهة اخرى؟"
+"destination (other than home)?"
+msgstr " إذا اخترت 'سيارة العائلة' أو 'سيارة مشتركة' للذهاب إلى المدرسة، هل تقوم بتوصيل طفلك في طريقك إلى العمل أو في طريقك إلى مكانٍ ثانٍ (غير المنزل)؟"
 
 #: forms.py:100
 msgid "How does your child get home FROM school on most days?"
-msgstr "بأي وسيلة يتم نقل ولدكم من المدرسة في"
+msgstr "كيف يعود طفك من المدرسة إلى المنزل في معظم الأيام؟"
 
 #: forms.py:105
-msgid ""
-"Do you usually pick up your child on your way from work or another origin?"
-msgstr "للمدرسة، هل تقلّون ولدكم على طريق عودتكم من العمل او مكان آخر؟"
+msgid "Do you usually pick up your child on your way from work or another location (other than home)?"
+msgstr "إذا اخترت 'سيارة العائلة' أو 'سيارة مشتركة' للذهاب إلى المنزل، هل تقوم بأخذ طفلك من المدرسة في طريقك إلى المنزل قادما من العمل او من مكانٍ ثانٍ (غير المنزل)؟"
 
 #: models.py:275
 msgid "Walk"
-msgstr "السير على الأقدام"
+msgstr "مشيا على الاقدام"
 
 #: models.py:276
-msgid "Bicycle"
-msgstr "الدراجة"
+msgid "Bike (skateboard, scooter, inline skates, etc.)"
+msgstr "بالدراجة الهوائية (لوح التزلج، أو السكوتر، أو احذية التزلج، إلخ)"
 
 #: models.py:277
-msgid "School Bus"
-msgstr "باص المدرسة"
+msgid "School Bus (regular & SPED transport)"
+msgstr "باص المدرسة (باص اعتيادي والباص الخاص بذوي الاحتياجات الخاصة)"
 
 #: models.py:278
 msgid "Family Vehicle (only children in your family)"
-msgstr "العائلة المركبة (الأطفال فقط في عائلتك )"
+msgstr "سيارة العائلة (فقط الأطفال في عائلتك)"
 
 #: models.py:279
 msgid "Carpool (with children from other families)"
-msgstr "(سيارة مشتركة (مع أولاد عائلات أخرى"
+msgstr "سيارة مشتركة (مع أطفال من عوائل أخرى)"
 
 #: models.py:280
 msgid "Transit (city bus, subway, etc.)"
-msgstr "(وسائل النقل العام (باص المدينة، القطار، المترو، الخ"
+msgstr "النقل العام (باص المدينة، القطار، إلخ)"
 
 #: models.py:281
-msgid "Other (skateboard, scooter, inline skates, etc.)"
-msgstr "(غيرها (لوح تزلج، سكوتر، مزلج عجلات، الخ"
+msgid "Other (private bus/van, taxi, after-school transport, etc.)"
+msgstr "غير ذلك (باص خاص/ سيارة من نوع فان، سيارة اجرة، وسيلة نقل لفترة ما بعد المدرسة، إلخ) "
 
 #: models.py:297
 msgid "Yes"
@@ -368,23 +370,16 @@ msgid "Submit Survey"
 msgstr "يقدم المسح"
 
 #: templates/survey/form.html:334
-msgid "Travel to School Survey"
-msgstr "السفر إلى مسح مدرسة"
+msgid "Important School Travel Survey"
+msgstr "مسح هام خاص بالتنقل من وإلى المدرسة"
 
 #: templates/survey/form.html:338
 msgid "Dear Parent or Guardian,"
 msgstr "عزيزي الوالد أو ولي الأمر ،"
 
 #: templates/survey/form.html:342
-msgid ""
-"Your child’s school is conducting a survey to learn how students get to and "
-"from school. This information  will be used to plan safe and healthy "
-"transportation choices for all students. The survey will take less than 3 "
-"minutes to complete. All responses are voluntary and confidential. "
-msgstr ""
-"مدرسة طفلك هو إجراء مسح لمعرفة كيفية الحصول على الطلاب من وإلى المدرسة . "
-"وسيتم استخدام هذه المعلومات للتخطيط ل خيارات نقل آمنة و صحية لجميع الطلاب. "
-"سوف يستغرق المسح أقل من 3 دقائق لإكمال. جميع الردود طوعية وسرية."
+msgid "Your school would like to learn how students get to and from school. This information will be used to plan safe and healthy transportation options for all students. The survey will take less than 3 minutes to complete."
+msgstr "ترغب مدرستكم بالتعرف على الطريقة التي يتنقل بها الطلاب من وإلى المدرسة. وسيتم استخدام هذه المعلومات للتخطيط من أجل توفير اختيارات نقل آمنة وصحية لجميع الطلاب. يستغرق المسح اقل من 3 دقائق."
 
 #: templates/survey/form.html:344
 msgid ""

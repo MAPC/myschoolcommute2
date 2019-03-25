@@ -20,76 +20,73 @@ msgstr ""
 
 #: forms.py:24
 msgid "Name of your street"
-msgstr "Tên đường: "
+msgstr "Tên phố:"
+
+msgid "Name of your town/city"
+msgstr "Thành phố/Thị trấn:"
 
 #: forms.py:28
-msgid "Name of nearest cross-street"
-msgstr "Tên giao lộ gần nhất:  "
+msgid "Name of nearest cross-street (intersection)"
+msgstr "Tên phố giao cắt gần nhất (giao lộ):"
 
 #: forms.py:32
 msgid "How many vehicles do you have in your household?"
-msgstr "Gia đình của quí vị có bao nhiêu chiếc xe?  "
+msgstr "Gia đình quý vị có bao nhiêu xe?"
 
 #: forms.py:37
 msgid "How many people in your household have a driver's license?"
-msgstr "Bao nhiêu người trong gia đình của quí vị có bằng lái xe?"
+msgstr "Có bao nhiêu người trong gia đình quý vị có bằng lái xe?"
 
 #: forms.py:83
 msgid "What grade is your child in?"
-msgstr "Con của quí vị học lớp mấy ?"
+msgstr "Con em quý vị học lớp mấy?"
 
 #: forms.py:89
 msgid "How does your child get TO school on most days?"
-msgstr "Con quí vị đến trường bằng cách nào hầu hết các ngày?"
+msgstr "Hầu như các ngày con em quý vị ĐẾN trường bằng gì?"
 
 #: forms.py:94
 msgid ""
 "Do you usually drop off your child on your way to work or another "
-"destination?"
-msgstr ""
-"Nếu quí vị chọn “xe gia đình” hoặc “xe đi chung” là phương tiện đến trường, "
-"vậy người lái xe có thường tiếp tục đi làm việc hoặc đến các địa điểm khác "
-"không?"
+"destination (other than home)?"
+msgstr "Quý vị có thường thả con mình qua trường trên đường đi làm hoặc đến nơi nào khác (không phải nhà)?"
 
 #: forms.py:100
 msgid "How does your child get home FROM school on most days?"
-msgstr "Con quí vị từ trường học về nhà bằng cách nào hầu hết các ngày?"
+msgstr "Hầu như các ngày con em quý vị VỀ nhà từ trường bằng gì?"
 
 #: forms.py:105
 msgid ""
-"Do you usually pick up your child on your way from work or another origin?"
-msgstr ""
-"Nếu quí vị chọn “xe gia đình” hoặc “xe đi chung” là phương tiện từ trường về"
-" nhà, quí vị có thường đón con trên đường làm việc về hoặc từ một nơi khác "
-"không?"
+"Do you usually pick up your child on your way from work or another location (other than home)?"
+msgstr "Quý vị có thường đón con em mình trên đường từ chỗ làm hoặc nơi nào khác (không phải là nhà)?"
 
 #: models.py:275
 msgid "Walk"
 msgstr "Đi bộ"
 
 #: models.py:276
-msgid "Bicycle"
-msgstr "Xe đạp"
+msgid "Bike (skateboard, scooter, inline skates, etc.)"
+msgstr "Xe đạp (ván trượt, xe đẩy chân, giày trượt, v.v…)"
 
 #: models.py:277
-msgid "School Bus"
-msgstr "Xe buýt trường học"
+msgid "School Bus (regular & SPED transport)"
+msgstr "Xe buýt của Trường (phương tiện SPED và thông thường)"
 
 #: models.py:278
 msgid "Family Vehicle (only children in your family)"
-msgstr "Xe gia đình (chỉ chở con của quí vị)"
+msgstr "Xe Gia đình (chỉ con em trong gia đình quý vị)"
 
 #: models.py:279
 msgid "Carpool (with children from other families)"
-msgstr "Xe đi chung (cùng đi với các học sinh khác)"
+msgstr "Đi chung xe (với con em của các gia đình khác)"
 
 #: models.py:280
 msgid "Transit (city bus, subway, etc.)"
-msgstr "Trung chuyển (xe city bus, xe subway, vv.)"
+msgstr "Phương tiện công cộng (xe buýt của thành phố, tàu điện ngầm, v.v…)"
 
 #: models.py:281
-msgid "Other (skateboard, scooter, inline skates, etc.)"
-msgstr "Cách khác (ván trượt, xe tay ga, giày trượt, vv.)"
+msgid "Other (private bus/van, taxi, after-school transport, etc.)"
+msgstr "Khác (xe buýt/tải cá nhân, taxi, phương tiện đi lại sau giờ học v.v…)"
 
 #: models.py:297
 msgid "Yes"
@@ -393,25 +390,16 @@ msgid "Submit Survey"
 msgstr "trình điều tra"
 
 #: templates/survey/form.html:334
-msgid "Travel to School Survey"
-msgstr "Đi du lịch đến khảo sát trường học"
+msgid "Important School Travel Survey"
+msgstr "Bản khảo sát Quan trọng về Phương tiện đến Trường"
 
 #: templates/survey/form.html:338
 msgid "Dear Parent or Guardian,"
 msgstr "Thưa quý phụ huynh hoặc người giám hộ ,"
 
 #: templates/survey/form.html:342
-msgid ""
-"Your child’s school is conducting a survey to learn how students get to and "
-"from school. This information  will be used to plan safe and healthy "
-"transportation choices for all students. The survey will take less than 3 "
-"minutes to complete. All responses are voluntary and confidential. "
-msgstr ""
-"Trường của con quý vị đang tiến hành một cuộc khảo sát để tìm hiểu cách học "
-"sinh có được đến trường . Thông tin này sẽ được sử dụng để lập kế hoạch lựa "
-"chọn vận chuyển an toàn và lành mạnh cho tất cả học sinh . Cuộc khảo sát sẽ "
-"mất ít hơn 3 phút để hoàn thành . Tất cả các câu trả lời là tự nguyện và bảo"
-" mật."
+msgid "Your school would like to learn how students get to and from school. This information will be used to plan safe and healthy transportation options for all students. The survey will take less than 3 minutes to complete."
+msgstr "Trường học của con em quý vị muốn tìm hiểu xem học sinh đến trường và về nhà bằng phương tiện gì.  Thông tin này sẽ được sử dụng để lên kế hoạch cho những lựa chọn giao thông lành mạnh và an toàn cho tất cả học sinh. Bàn khảo sát chỉ mất ít hơn 3 phút để hoàn thành. "
 
 #: templates/survey/form.html:344
 msgid ""
