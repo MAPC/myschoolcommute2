@@ -22,7 +22,7 @@ msgid "Name of your street"
 msgstr "Non ri kote ou rete a:"
 
 #: forms.py:28
-msgid "Name of nearest cross-street (nearest intersection)"
+msgid "Name of nearest cross-street (intersection)"
 msgstr "Non kafou ki pi pre lakay ou (entèseksyon pi pre a):"
 
 #: forms.py:32

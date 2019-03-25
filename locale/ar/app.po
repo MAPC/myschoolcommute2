@@ -23,7 +23,7 @@ msgid "Name of your street"
 msgstr "اسم الشارع الذي تسكنون فيه"
 
 #: forms.py:28
-msgid "Name of nearest cross-street (nearest intersection)"
+msgid "Name of nearest cross-street (intersection)"
 msgstr "اسم أقرب تقاطع لشارعين بالنسبة لكم"
 
 #: forms.py:32

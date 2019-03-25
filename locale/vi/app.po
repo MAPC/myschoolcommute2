@@ -23,7 +23,7 @@ msgid "Name of your street"
 msgstr "Tên phố:"
 
 #: forms.py:28
-msgid "Name of nearest cross-street (nearest intersection)"
+msgid "Name of nearest cross-street (intersection)"
 msgstr "Tên phố giao cắt gần nhất (giao lộ):"
 
 #: forms.py:32
