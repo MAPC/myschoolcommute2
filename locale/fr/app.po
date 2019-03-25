@@ -22,6 +22,9 @@ msgstr ""
 msgid "Name of your street"
 msgstr "Nom de votre rue:"
 
+msgid "Name of your town/city"
+msgstr "Ville/localité:"
+
 #: forms.py:28
 msgid "Name of nearest cross-street (intersection)"
 msgstr "Nom de la rue transversale la plus proche (intersection la plus proche) :"
