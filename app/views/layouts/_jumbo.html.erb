@@ -78,6 +78,7 @@
 
       if (text) {
         var $menu = $selectModel.find('.menu');
+        $menu.html("");
 
         options.schools[text].forEach(function(option) {
           $menu.append('<a href="surveys/' +  option.value + '" class="item" data-value="' + option.value + '">' + option.name + '</a>');
