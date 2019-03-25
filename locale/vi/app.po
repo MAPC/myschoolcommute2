@@ -40,7 +40,7 @@ msgstr "Con em quý vị học lớp mấy?"
 
 #: forms.py:89
 msgid "How does your child get TO school on most days?"
-msgstr "Con quí vị đến trường bằng cách nào hầu hết các ngày?"
+msgstr "Hầu như các ngày con em quý vị ĐẾN trường bằng gì?"
 
 #: forms.py:94
 msgid ""

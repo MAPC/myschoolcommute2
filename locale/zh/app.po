@@ -39,7 +39,7 @@ msgstr "您孩子上几年级？"
 
 #: forms.py:89
 msgid "How does your child get TO school on most days?"
-msgstr "您的子女通常如何上学？"
+msgstr "上学的时候，您孩子大多数日子如何去学校？"
 
 #: forms.py:94
 msgid ""

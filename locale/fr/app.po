@@ -41,7 +41,7 @@ msgstr "En quelle classe est votre enfant?"
 
 #: forms.py:89
 msgid "How does your child get TO school on most days?"
-msgstr "Comment votre enfant se rend à l’école la plupart des jours?"
+msgstr "Comment votre enfant VA-t-il à l’école le plus souvent?"
 
 #: forms.py:94
 msgid ""

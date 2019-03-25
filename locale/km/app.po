@@ -40,7 +40,7 @@ msgstr "តើកូនរបស់លោក-អ្នកនៅថ្នាក�
 
 #: forms.py:89
 msgid "How does your child get TO school on most days?"
-msgstr "etIkUnrbs'G~k eTA salaswgEtral'«f©  edayrebobNa?"
+msgstr "តើកូនរបស់លោក-អ្នកទៅសាលាដោយវិធីណា ភាគច្រើន?"
 
 #: forms.py:94
 msgid ""

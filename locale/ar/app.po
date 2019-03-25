@@ -40,7 +40,7 @@ msgstr "في أي مرحلة دراسية يدرس طفلك؟"
 
 #: forms.py:89
 msgid "How does your child get TO school on most days?"
-msgstr "بأي وسيلة يتم نقل ولدكم إلى المدرسة في ؟"
+msgstr "كيف يذهب طفلكم إلى المدرسة في معظم الأيام؟"
 
 #: forms.py:94
 msgid ""

@@ -40,7 +40,7 @@ msgstr "Sua criança está em que série?"
 
 #: forms.py:89
 msgid "How does your child get TO school on most days?"
-msgstr "Como é que o seu filho(a) chega à escola na maioria dos dias? "
+msgstr "Como sua criança se locomove PARA a escola normalmente?"
 
 #: forms.py:94
 msgid ""

@@ -39,7 +39,7 @@ msgstr "Nan ki klas pitit ou a ye?"
 
 #: forms.py:89
 msgid "How does your child get TO school on most days?"
-msgstr "Kijan pitit ou vini NAN lekòl la nan pifò jou yo?"
+msgstr "Kouman pitit ou ALE lekòl chak jou, pou pi souvan?"
 
 #: forms.py:94
 msgid ""
