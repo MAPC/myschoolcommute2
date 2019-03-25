@@ -44,51 +44,45 @@ msgstr "Kouman pitit ou ALE lekòl chak jou, pou pi souvan?"
 #: forms.py:94
 msgid ""
 "Do you usually drop off your child on your way to work or another "
-"destination?"
-msgstr ""
-"Si ou te chwazi “machin fanmi” oswa “ko-vwatiraj” pou vini nan lekòl la, "
-"èske chofè a kontinye travay oswa ale yon lòt kote anjeneral?"
+"destination (other than home)?"
+msgstr "Eske nòmalman ou depoze timoun yo pandan ou pral nan travay ou, oubyen ou pral yon lòt kote (ki pa lakay ou)?"
 
 #: forms.py:100
 msgid "How does your child get home FROM school on most days?"
-msgstr ""
-"Kijan pitit ou vini sòti NAN lekòl la pou ale lakay li nan pifò jou yo?"
+msgstr "Kouman pitit ou TOUNEN lakay li chak jou apre lekòl, pou pi souvan?"
 
 #: forms.py:105
 msgid ""
-"Do you usually pick up your child on your way from work or another origin?"
-msgstr ""
-"Si ou te chwazi “machin fanmi” oswa “ko-vwatiraj” pou pitit ou sòti lekòl la"
-" pou ale lakay li, èske ou vin chèche pitit ou pandan ou sou wout apre "
-"travay ou oswa yon lòt kote?"
+"Do you usually pick up your child on your way from work or another location (other than home)?"
+msgstr "Eske nòmalman ou ale chèche timoun yo lè ou soti nan travay ou, oubyen nan yon lòt kote (ki pa lakay ou)?"
 
 #: models.py:275
 msgid "Walk"
-msgstr "Mache"
+msgstr "Apye"
 
 #: models.py:276
-msgid "Bicycle"
-msgstr "Bisiklèt"
+msgid "Bike (skateboard, scooter, inline skates, etc.)"
+msgstr "Bisiklèt (planch ak woulèt, motosiklèt, paten, elatriye...)"
 
 #: models.py:277
-msgid "School Bus"
-msgstr "Otobis Lekòl"
+msgid "School Bus (regular & SPED transport)"
+msgstr "Otobis Lekòl (regilye ak transpò SPED)"
 
 #: models.py:278
 msgid "Family Vehicle (only children in your family)"
-msgstr "Machin fanmi (sèlman timoun ki nan fanmi ou)"
+msgstr "Oto fanmi an (avèk sèlman timoun nan fanmi ou)"
 
 #: models.py:279
 msgid "Carpool (with children from other families)"
-msgstr "Ko-vwatiraj (avèk timoun lòt fanmi)"
+msgstr "Transpò ansanm nan oto (avèk timoun lòt fanmi)"
 
 #: models.py:280
 msgid "Transit (city bus, subway, etc.)"
-msgstr "Transpò Komen (otobis minisipalite vil la, metwo, elatriye)"
+msgstr "Transpò komen (otobis, metwo, elatriye...)"
 
 #: models.py:281
-msgid "Other (skateboard, scooter, inline skates, etc.)"
-msgstr "Lòt (planch-a-woulèt, eskoutè, paten ki gen wou aliyen, elatriye)"
+msgid "Other (private bus/van, taxi, after-school transport, etc.)"
+msgstr "Lòt mwayen (otobis prive / kamyonnèt, taksi, transpò apre lekòl, elatriye...)"
 
 #: models.py:297
 msgid "Yes"

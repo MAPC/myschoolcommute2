@@ -45,49 +45,45 @@ msgstr "តើកូនរបស់លោក-អ្នកទៅសាលាដ�
 #: forms.py:94
 msgid ""
 "Do you usually drop off your child on your way to work or another "
-"destination?"
-msgstr ""
-"ebIG~ke¨CIsyk \\rfyn¶¨KYsar| É \\CiHLanrYmK~a| sMrab'kareFÃIdMeNIreTAsala "
-"etItamFmµta G~kebIkrfyn¶bn¶eFÃIdMeNIreTAeFÃIkar ÉeTATisedAmYyeTot ÉeT?"
+"destination (other than home)?"
+msgstr "មិនសូវទម្លាក់កូននៅសាលាពេលអ្នកចេញទៅធ្វើការ ឬក៏ទៅណាផ្សេងទៀត (ក្រៅពីផ្ទះ)?"
 
 #: forms.py:100
 msgid "How does your child get home FROM school on most days?"
-msgstr "etIkUnrbs'G~k mkBI salaswgEtral'«f©  edayrebobNa?"
+msgstr "តើកូនរបស់លោក-អ្នកចេញពីសាលាមកផ្ទះដោយវិធីណា ភាគច្រើន? (ជ្រើសមួយ)"
 
 #: forms.py:105
 msgid ""
-"Do you usually pick up your child on your way from work or another origin?"
-msgstr ""
-"ebIG~ke¨CIsyk \\rfyn¶¨KYsar| É \\CiHLanrYmK~a| sMrab'kareFÃIdMeNIrmkBIsala "
-"etItamFmµta G~kmkykkUnrbs'G~k tampÂèvmkBIeFÃIkar ÉmkBITIkEnÂgmYyeTot ÉeT?"
+"Do you usually pick up your child on your way from work or another location (other than home)?"
+msgstr "តាមធម្មតាទៅយកកូននៅពេលចេញពីធ្វើការមកផ្ទះ ឫពីកន្លែងដទៃទៀត (ក្រៅពីផ្ទះ)?"
 
 #: models.py:275
 msgid "Walk"
-msgstr "edIr"
+msgstr "ដើរ"
 
 #: models.py:276
-msgid "Bicycle"
-msgstr "kg'"
+msgid "Bike (skateboard, scooter, inline skates, etc.)"
+msgstr "កង់ (ស្កេតបត, ស្កូតទ័រ, ស្បែកជើងមានកង់, ។ល។) "
 
 #: models.py:277
-msgid "School Bus"
-msgstr "Lansala"
+msgid "School Bus (regular & SPED transport)"
+msgstr "រថយន្តបឺសរបស់សាលា (ធម្មតា & ការដឹកជញ្ជូនតាម SPED)"
 
 #: models.py:278
 msgid "Family Vehicle (only children in your family)"
-msgstr "rfyn¶¨KYsar (EtkUnrbs'G~k k~¬g¨KYsarrbs'G~k)"
+msgstr "រថយន្តប្រចាំគ្រួសារ (សម្រាប់តែក្មេងនៅក្នុងគ្រួសាររបស់អ្នក)"
 
 #: models.py:279
 msgid "Carpool (with children from other families)"
-msgstr "CiHLanrYmK~a (CamYyekµg@mkBI¨KYsard«TeTot)"
+msgstr "ជិះជុំគ្នា (ជាមួយក្មេងៗ ពីគ្រួសារដទៃ)"
 
 #: models.py:280
 msgid "Transit (city bus, subway, etc.)"
-msgstr "¨bB&nìKmnaKmn_ (Lan¨kug, rfePÂIge¨kamdI, CaedIm)"
+msgstr "ការដឹកជញ្ជូនសាធារណៈ (រថយន្តក្រុង, រថភ្លើងក្រោមដី, ។ល។)"
 
 #: models.py:281
-msgid "Other (skateboard, scooter, inline skates, etc.)"
-msgstr "ep§geTot (edIresûtbßt, sðèT&r, esûtmankg', CaedIm)"
+msgid "Other (private bus/van, taxi, after-school transport, etc.)"
+msgstr "ផ្សេងទៀត (រថយន្តបឺសឯកជន/រថយន្តវែន, តាក់ស៊ី, ការដឹកជញ្ជូនក្រោយម៉ោងសាលា ។ល។)"
 
 #: models.py:297
 msgid "Yes"

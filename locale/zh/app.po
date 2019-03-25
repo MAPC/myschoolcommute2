@@ -44,45 +44,45 @@ msgstr "上学的时候，您孩子大多数日子如何去学校？"
 #: forms.py:94
 msgid ""
 "Do you usually drop off your child on your way to work or another "
-"destination?"
-msgstr "如果您选择以“乘坐私家车”或“拼车”的方式上学，司机通常是否会继续工作或前往另一目的地？"
+"destination (other than home)?"
+msgstr "您通常是不是先把孩子送到学校，接着去上班或去其他地方？"
 
 #: forms.py:100
 msgid "How does your child get home FROM school on most days?"
-msgstr "您的子女放学后通常如何回家？"
+msgstr "放学的时候，您孩子大多数日子如何回家？"
 
 #: forms.py:105
 msgid ""
-"Do you usually pick up your child on your way from work or another origin?"
-msgstr "如果您选择以“乘坐私家车”或“拼车”的方式回家，您通常是否从下班途中或另一地点出发接子女？"
+"Do you usually pick up your child on your way from work or another location (other than home)?"
+msgstr "您通常是不是从上班的地方或其他地方（不是家里）出发，然后去学校接孩子？"
 
 #: models.py:275
 msgid "Walk"
 msgstr "步行"
 
 #: models.py:276
-msgid "Bicycle"
-msgstr "骑自行车"
+msgid "Bike (skateboard, scooter, inline skates, etc.)"
+msgstr "自行车（滑板、滑板车、轮滑鞋等）"
 
 #: models.py:277
-msgid "School Bus"
-msgstr "搭乘校车"
+msgid "School Bus (regular & SPED transport)"
+msgstr "校车（普通校车 & SPED 校车）"
 
 #: models.py:278
 msgid "Family Vehicle (only children in your family)"
-msgstr "乘坐私家车（仅您家的子女）"
+msgstr "家庭用车（仅载您自己的孩子）"
 
 #: models.py:279
 msgid "Carpool (with children from other families)"
-msgstr "(与其他家庭的子女）拼车"
+msgstr "拼车（与其他家庭的孩子一起）"
 
 #: models.py:280
 msgid "Transit (city bus, subway, etc.)"
-msgstr "城市公交、地铁等"
+msgstr "公交（城市公交车、地铁等）"
 
 #: models.py:281
-msgid "Other (skateboard, scooter, inline skates, etc.)"
-msgstr "其他方式（滑板、单脚滑行车、轮滑等)"
+msgid "Other (private bus/van, taxi, after-school transport, etc.)"
+msgstr "其他（私人巴士/面包车、出租车、学校公交等）"
 
 #: models.py:297
 msgid "Yes"
