@@ -395,16 +395,8 @@ msgid "Dear Parent or Guardian,"
 msgstr "Chè Paran oswa Gadyen ,"
 
 #: templates/survey/form.html:342
-msgid ""
-"Your child’s school is conducting a survey to learn how students get to and "
-"from school. This information  will be used to plan safe and healthy "
-"transportation choices for all students. The survey will take less than 3 "
-"minutes to complete. All responses are voluntary and confidential. "
-msgstr ""
-"Lekòl pitit ou a ap fè yon sondaj aprann kijan elèv yo ale ak sòti nan lekòl"
-" la. Yo pral itilize enfòmasyon sa a pou gen plan pou chwa transpò sekirite "
-"ak an sante pou tout elèv. Sondaj la ap pran mwens pase 3 minit. Tout repons"
-" yo se volontè ak konfidansyèl ."
+msgid "Your school would like to learn how students get to and from school. This information will be used to plan safe and healthy transportation options for all students. The survey will take less than 3 minutes to complete."
+msgstr "Lekòl ou ta renmen konnen kouman elèv yo ale lekòl ak tounen lakay yo. Enfòmasyon sa yo pral sèvi pou plannifye diferan chwa nan mwayen transpò ki bon pou sekirite ak sante tout elèv yo. Pou reponn kesyonnè a, sa pral pran mwens pase 3 minit."
 
 #: templates/survey/form.html:344
 msgid ""

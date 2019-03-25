@@ -337,13 +337,8 @@ msgid "Dear Parent or Guardian,"
 msgstr "亲爱的家长或监护人，"
 
 #: templates/survey/form.html:342
-msgid ""
-"Your child’s school is conducting a survey to learn how students get to and "
-"from school. This information  will be used to plan safe and healthy "
-"transportation choices for all students. The survey will take less than 3 "
-"minutes to complete. All responses are voluntary and confidential. "
-msgstr ""
-"您孩子的学校进行调查，以了解学生如何去上学。这些信息将被用于计划安全和健康的交通工具的选择对所有学生。这项调查将需要不到3分钟完成。所有的反应是自愿和保密的。"
+msgid "Your school would like to learn how students get to and from school. This information will be used to plan safe and healthy transportation options for all students. The survey will take less than 3 minutes to complete."
+msgstr "您孩子所在学校希望了解您孩子往返学校的交通方式。所收集的信息将用于为所有学生规划最安全、最健康的交通方式。调查3分钟内即可完成。"
 
 #: templates/survey/form.html:344
 msgid ""

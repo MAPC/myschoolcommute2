@@ -401,17 +401,8 @@ msgid "Dear Parent or Guardian,"
 msgstr "Thưa quý phụ huynh hoặc người giám hộ ,"
 
 #: templates/survey/form.html:342
-msgid ""
-"Your child’s school is conducting a survey to learn how students get to and "
-"from school. This information  will be used to plan safe and healthy "
-"transportation choices for all students. The survey will take less than 3 "
-"minutes to complete. All responses are voluntary and confidential. "
-msgstr ""
-"Trường của con quý vị đang tiến hành một cuộc khảo sát để tìm hiểu cách học "
-"sinh có được đến trường . Thông tin này sẽ được sử dụng để lập kế hoạch lựa "
-"chọn vận chuyển an toàn và lành mạnh cho tất cả học sinh . Cuộc khảo sát sẽ "
-"mất ít hơn 3 phút để hoàn thành . Tất cả các câu trả lời là tự nguyện và bảo"
-" mật."
+msgid "Your school would like to learn how students get to and from school. This information will be used to plan safe and healthy transportation options for all students. The survey will take less than 3 minutes to complete."
+msgstr "Trường học của con em quý vị muốn tìm hiểu xem học sinh đến trường và về nhà bằng phương tiện gì.  Thông tin này sẽ được sử dụng để lên kế hoạch cho những lựa chọn giao thông lành mạnh và an toàn cho tất cả học sinh. Bàn khảo sát chỉ mất ít hơn 3 phút để hoàn thành. "
 
 #: templates/survey/form.html:344
 msgid ""

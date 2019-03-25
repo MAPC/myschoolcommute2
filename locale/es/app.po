@@ -410,17 +410,8 @@ msgid "Dear Parent or Guardian,"
 msgstr "Estimado padre o tutor ,"
 
 #: templates/survey/form.html:342
-msgid ""
-"Your child’s school is conducting a survey to learn how students get to and "
-"from school. This information  will be used to plan safe and healthy "
-"transportation choices for all students. The survey will take less than 3 "
-"minutes to complete. All responses are voluntary and confidential. "
-msgstr ""
-"La escuela de su hijo está realizando una encuesta para conocer cómo los "
-"estudiantes llegan a la escuela. Esta información será utilizada para "
-"planificar opciones de transporte seguras y saludables para todos los "
-"estudiantes. La encuesta le tomará menos de 3 minutos en completarse. Todas "
-"las respuestas son de carácter voluntario y confidencial."
+msgid "Your school would like to learn how students get to and from school. This information will be used to plan safe and healthy transportation options for all students. The survey will take less than 3 minutes to complete."
+msgstr "La escuela desea saber cómo los alumnos llegan a la escuela y se retiran de ella. Esta información se utilizará para planificar opciones de transporte seguras y saludables para todos los alumnos. Contestar la encuesta le llevará menos de tres minutos."
 
 #: templates/survey/form.html:344
 msgid ""

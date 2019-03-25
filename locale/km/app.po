@@ -398,17 +398,8 @@ msgid "Dear Parent or Guardian,"
 msgstr "មាតាបិតា ឬអាណាព្យាបាល ជាទីស្រឡាញ់ ,"
 
 #: templates/survey/form.html:342
-msgid ""
-"Your child’s school is conducting a survey to learn how students get to and "
-"from school. This information  will be used to plan safe and healthy "
-"transportation choices for all students. The survey will take less than 3 "
-"minutes to complete. All responses are voluntary and confidential. "
-msgstr ""
-"សាលារៀនរបស់កូន របស់អ្នកត្រូវបាន ធ្វើ ការស្ទង់មតិ មួយដើម្បី រៀនពីរបៀប ទទួលបាន"
-" សិស្សនិស្សិត ទៅនិងមកពី សាលារៀន។ ព័ត៌មាននេះនឹង ត្រូវបានប្រើដើម្បី មានគម្រោង "
-"ការជ្រើសរើស ការដឹកជញ្ជូន មានសុវត្ថិភាព និងមានសុខភាពល្អ សម្រាប់ សិស្សនិស្សិត "
-"ទាំងអស់។ ការស្ទង់មតិ នេះនឹង ចំណាយពេលតិចជាង 3 នាទី ដើម្បីបញ្ចប់។ "
-"ចម្លើយទាំងអស់ មាន ការស្ម័គ្រចិត្ត និង ជាសម្ងាត់។"
+msgid "Your school would like to learn how students get to and from school. This information will be used to plan safe and healthy transportation options for all students. The survey will take less than 3 minutes to complete."
+msgstr "សាលារៀនរបស់លោក-អ្នកចង់ដឹងនូវវិធីដែលសិស្សានុសិស្សទៅ និងត្រឡប់ពីសាលារៀន។ ព័ត៌មាននេះនឹងត្រូវគេប្រើដើម្បីរៀបចំជម្រើសនៃការដឹកជញ្ជូនដោយសុវត្ថិភាព និងភាពរឹងមាំសម្រាប់សិស្សទាំងអស់។ ការស្ទង់មតិនេះនឹងចំណាយពេលតិចជាង 3 នាទីដើម្បីបញ្ចប់"
 
 #: templates/survey/form.html:344
 msgid ""

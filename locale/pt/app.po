@@ -404,17 +404,8 @@ msgid "Dear Parent or Guardian,"
 msgstr "Prezado pai ou responsável ,"
 
 #: templates/survey/form.html:342
-msgid ""
-"Your child’s school is conducting a survey to learn how students get to and "
-"from school. This information  will be used to plan safe and healthy "
-"transportation choices for all students. The survey will take less than 3 "
-"minutes to complete. All responses are voluntary and confidential. "
-msgstr ""
-"A escola de seu filho está realizando uma pesquisa para saber como os alunos"
-" ir e voltar da escola. Esta informação será usada para planejar seguras e "
-"saudáveis ​​opções de transporte para todos os alunos . A pesquisa vai "
-"demorar menos de 3 minutos para ser concluído. Todas as respostas são "
-"voluntários e confidenciais ."
+msgid "Your school would like to learn how students get to and from school. This information will be used to plan safe and healthy transportation options for all students. The survey will take less than 3 minutes to complete."
+msgstr "Sua escola quer apreender como os alunos chegam e voltam da escola. Essas informações serão usadas para planejar opções de transporte seguras e saldáveis para todos os alunos. Completar a pesquisa leva menos de três minutos."
 
 #: templates/survey/form.html:344
 msgid ""
