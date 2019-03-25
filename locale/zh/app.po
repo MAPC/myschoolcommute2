@@ -22,8 +22,8 @@ msgid "Name of your street"
 msgstr "您所住街道的名称："
 
 #: forms.py:28
-msgid "Name of nearest cross-street"
-msgstr "最近的交叉路口的名称："
+msgid "Name of nearest cross-street (nearest intersection)"
+msgstr "距离您家最近的横街 （最近的十字路口）的名称："
 
 #: forms.py:32
 msgid "How many vehicles do you have in your household?"
