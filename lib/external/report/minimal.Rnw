@@ -87,7 +87,7 @@ read_chunk("process_postgres_chunks.R")
 
 
 {\flushleft   
-\includegraphics[height=20 mm]{2010SRTSLogo}%[height=12 mm]{2010SRTSLogo}
+\includegraphics[height=20 mm]{2019SRTSLogo}
 \newline
 \newline
 \includegraphics[height=12 mm]{MassDOT_Logo_Color}%[height=12 mm]{MassDOT_Logo_Color}
@@ -150,7 +150,7 @@ increase since reported to ESE on October 1\textsuperscript{st}.
 \end{itemize*}
 
 The chart and table below show the number of students surveyed and the total estimated students by walkshed. Student totals by walkshed are estimated assuming that the proportion of surveyed students within each walkshed and grade is proportional to the enrolled students within each walkshed and grade.
-<<b_dfg, echo=FALSE,eval=TRUE, results="asis",fig.height = 5, fig.align="center",fig.pos='H'>>=
+<<b_dfg, echo=FALSE,eval=TRUE, results="asis",fig.height = 4, fig.align="center",fig.pos='H'>>=
 @
 
 \begin{table}[H]
@@ -171,8 +171,10 @@ The chart and table below show the number of students surveyed and the total est
 
 The chart below shows what percent of trips are made by each travel mode in the morning and afternoon.
 
-<<modeByTime, echo=FALSE,fig.width=7,fig.height=5,fig.align="center",fig.pos='H'>>=
+<<modeByTime, echo=FALSE,fig.width=7,fig.height=4,fig.align="center",fig.pos='H'>>=
 @
+
+\columnbreak
 
 Walk share is \Sexpr{walkTripMorningPct}\% in the morning and \Sexpr{walkTripAfternoonPct}\% in the afternoon. \Sexpr{modeByTimeText}
 
@@ -181,8 +183,8 @@ Walk share is \Sexpr{walkTripMorningPct}\% in the morning and \Sexpr{walkTripAft
 
 %%%%% Begin New Code %%%%%
 \begin{table}[H]
-\captionsetup{width=.75\textwidth}
-\caption*{Travel Mode, Morning and Afternoon}
+\captionsetup{width=.75\textwidth,font={sf,footnotesize}}
+\caption*{Estimated Travel Mode, Morning and Afternoon}
 <<mByBuffer_table, echo=FALSE, eval=TRUE, results="asis">>=
 @ 
 \end{table}
@@ -211,6 +213,7 @@ Transportation generates more than one-third of the total greenhouse gas (GHG) e
 % 
 
 \thispagestyle{empty}
+
 \section*{How Your School Compares}
 The table below compares, for each walkshed, your school's actual walk \textbackslash bike 
 share to an expected value reflecting average walking and biking rates across Massachusetts. 
@@ -224,6 +227,8 @@ school, and is based on more than 6,000 surveys collected statewide since 2011.
 <<walkExpectedActual,  echo=FALSE, eval=TRUE, results="asis">>=
 @
 \end{table}
+
+\columnbreak
 
 \section*{Benefits of Walking and Biking}
 Shifting some school commutes from auto to walking or biking can create real benefits for your community.  This section estimates the traffic, physical activity, and GHG benefits that might result from increasing walking and biking. It can help you make the case for investing in Safe Routes to School programs and to track your progress over time.
