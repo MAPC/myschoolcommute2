@@ -211,6 +211,7 @@ Transportation generates more than one-third of the total greenhouse gas (GHG) e
 % 
 
 \thispagestyle{empty}
+
 \section*{How Your School Compares}
 The table below compares, for each walkshed, your school's actual walk \textbackslash bike 
 share to an expected value reflecting average walking and biking rates across Massachusetts. 
@@ -224,6 +225,8 @@ school, and is based on more than 6,000 surveys collected statewide since 2011.
 <<walkExpectedActual,  echo=FALSE, eval=TRUE, results="asis">>=
 @
 \end{table}
+
+\columnbreak
 
 \section*{Benefits of Walking and Biking}
 Shifting some school commutes from auto to walking or biking can create real benefits for your community.  This section estimates the traffic, physical activity, and GHG benefits that might result from increasing walking and biking. It can help you make the case for investing in Safe Routes to School programs and to track your progress over time.
