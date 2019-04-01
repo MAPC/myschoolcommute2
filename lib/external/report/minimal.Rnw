@@ -181,8 +181,8 @@ Walk share is \Sexpr{walkTripMorningPct}\% in the morning and \Sexpr{walkTripAft
 
 %%%%% Begin New Code %%%%%
 \begin{table}[H]
-\captionsetup{width=.75\textwidth}
-\caption*{Travel Mode, Morning and Afternoon}
+\captionsetup{width=.75\textwidth,font={sf,footnotesize}}
+\caption*{Estimated Travel Mode, Morning and Afternoon}
 <<mByBuffer_table, echo=FALSE, eval=TRUE, results="asis">>=
 @ 
 \end{table}
