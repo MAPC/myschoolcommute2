@@ -87,7 +87,7 @@ read_chunk("process_postgres_chunks.R")
 
 
 {\flushleft   
-\includegraphics[height=20 mm]{2010SRTSLogo}%[height=12 mm]{2010SRTSLogo}
+\includegraphics[height=20 mm]{2019SRTSLogo}%[height=12 mm]{2010SRTSLogo}
 \newline
 \newline
 \includegraphics[height=12 mm]{MassDOT_Logo_Color}%[height=12 mm]{MassDOT_Logo_Color}
