@@ -19,7 +19,7 @@
       <% end %>
       <% if current_user.is_admin %>
         <%= link_to 'Download Data', survey_responses_path(format: :csv), class: 'item'  %>
-        <%= link_to 'Download Metadata', '/metadata.csv', class: 'item', download: 'Metadata.csv' %>
+        <%= link_to 'Download Metadata', '/masrts-metadata_03-25-2019.xlsx', class: 'item', download: 'masrts-metadata_03-25-2019.xlsx' %>
       <% end %>
       <div class="right menu">
         <% if current_user.nil? %>
