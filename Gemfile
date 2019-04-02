@@ -8,6 +8,7 @@ gem 'rails'
 gem 'pg', '~> 0.18'
 gem 'activerecord-postgis-adapter'
 gem "rgeo"
+gem 'rgeo-proj4'
 gem 'rgeo-activerecord'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'

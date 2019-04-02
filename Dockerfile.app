@@ -17,11 +17,13 @@ RUN set -ex \
       git \
       tzdata \
       build-essential \
+      libgeos-dev \
       libxml2-dev \
       libxslt-dev \
       libpq-dev \
+      libproj-dev \
       postgresql \
-      libgeos-dev \
+      proj-bin \
       ruby-geos \
     ; \
     bundle install

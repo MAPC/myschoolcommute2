@@ -263,6 +263,8 @@ GEM
       rgeo (>= 1.0.0)
     rgeo-geojson (2.1.1)
       rgeo (>= 1.0.0)
+    rgeo-proj4 (2.0.0)
+      rgeo (~> 2.0)
     rspec-core (3.8.0)
       rspec-support (~> 3.8.0)
     rspec-expectations (3.8.2)
@@ -376,6 +378,7 @@ DEPENDENCIES
   rgeo
   rgeo-activerecord
   rgeo-geojson
+  rgeo-proj4
   rspec-rails (~> 3.5)
   sass-rails (~> 5.0)
   scenic
