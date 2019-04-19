@@ -134,7 +134,7 @@ higher the participation rate, the more reliable the survey results are.
 
 \begin{itpar}
 \textsuperscript{*} Survey data discrepancies may exist in cases where more than one survey was 
-submitted per student. Current year enrollment is not currently available or school enrollment has 
+submitted per student, current year enrollment is not currently available, or school enrollment has 
 increase since reported to ESE on October 1\textsuperscript{st}.
 \end{itpar}
 
