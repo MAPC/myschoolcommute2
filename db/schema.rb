@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20190213175020) do
     t.integer  "district_id"
     t.text     "survey_incentive"
     t.boolean  "survey_active"
-    t.geometry "geometry",         limit: {:srid=>26986, :type=>"point"},    null: false
+    t.geometry "geometry",         limit: {:srid=>26986, :type=>"st_point"}, null: false
     t.geometry "shed_05",          limit: {:srid=>26986, :type=>"geometry"}
     t.geometry "shed_10",          limit: {:srid=>26986, :type=>"geometry"}
     t.geometry "shed_15",          limit: {:srid=>26986, :type=>"geometry"}
@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 20190213175020) do
   end
 
   create_table "survey_responses", force: :cascade do |t|
-    t.geometry "geometry",       limit: {:srid=>4326, :type=>"point"}
+    t.geometry "geometry",       limit: {:srid=>4326, :type=>"st_point"}
     t.string   "question"
     t.string   "mode"
     t.integer  "shed"
@@ -190,8 +190,8 @@ ActiveRecord::Schema.define(version: 20190213175020) do
     t.string   "pickup_19"
     t.string   "nr_vehicles"
     t.string   "nr_licenses"
-    t.datetime "created_at",                                           null: false
-    t.datetime "updated_at",                                           null: false
+    t.datetime "created_at",                                              null: false
+    t.datetime "updated_at",                                              null: false
     t.index ["survey_id"], name: "index_survey_responses_on_survey_id", using: :btree
   end
 
@@ -240,7 +240,7 @@ ActiveRecord::Schema.define(version: 20190213175020) do
 
   add_foreign_key "surveys", "schools"
 
-  create_view "melted_survey_responses",  sql_definition: <<-SQL
+  create_view "melted_survey_responses", sql_definition: <<-SQL
       SELECT melted.survey_response_id,
       melted.survey_id,
       melted.distance,
@@ -279,5 +279,4 @@ ActiveRecord::Schema.define(version: 20190213175020) do
             ORDER BY survey_responses.id) melted
     WHERE ((melted.from_school IS NOT NULL) AND (melted.grade IS NOT NULL) AND (melted.to_school IS NOT NULL));
   SQL
-
 end

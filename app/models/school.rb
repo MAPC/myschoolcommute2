@@ -1,5 +1,5 @@
 require 'json'
-require 'rgeo/geos/geos_c_impl'
+# require 'rgeo/geos/geos_c_impl'
 CARTO_SQL_API_ENDPOINT = 'http://mapc-admin.carto.com/api/v2'
 
 class School < ActiveRecord::Base

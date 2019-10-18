@@ -10,6 +10,7 @@ gem 'activerecord-postgis-adapter'
 gem "rgeo"
 gem 'rgeo-proj4'
 gem 'rgeo-activerecord'
+gem "recaptcha"
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 gem 'pry'

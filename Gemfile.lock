@@ -248,6 +248,8 @@ GEM
     rb-inotify (0.10.0)
       ffi (~> 1.0)
     rdoc (4.3.0)
+    recaptcha (5.2.1)
+      json
     redis (4.1.0)
     regexp_parser (1.3.0)
     responders (2.4.1)
@@ -375,6 +377,7 @@ DEPENDENCIES
   pry
   pry-byebug
   rails
+  recaptcha
   rgeo
   rgeo-activerecord
   rgeo-geojson
@@ -394,4 +397,4 @@ RUBY VERSION
    ruby 2.5.3p105
 
 BUNDLED WITH
-   1.17.2
+   1.17.3
