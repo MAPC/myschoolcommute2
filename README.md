@@ -15,12 +15,14 @@ Run `bin/setup` in your terminal.
 
 Obtain a Sentry Client Key DSN from [Sentry](https://sentry.io/settings/metropolitan-area-planning-cou/my-school-commute-2/keys/) and set `SENTRY_DSN` in your `.env` to that value.
 
+This project uses the [reCAPTCHA gem](https://github.com/ambethia/recaptcha) for bot filtering. To set this up in your development environment, go to the [reCAPTCHA admin console](https://www.google.com/recaptcha/admin/create) and select "reCAPTCHA v2" and "Invisible reCAPTCHA badge" for the reCAPTCHA type. Set the domain to **localhost**. Upon creation, you'll be given a site key and a secret key. Add these values to your `.env` file under `RECAPTCHA_SITE_KEY` and `RECAPTCHA_SECRET_KEY`, respectively.
+
 Make sure to install the libgeos dev package on your deployment server so that the RGeo gem native extensions work.
 
 `sudo apt-get install libgeos-dev`
 
 Mac users will also need to install the geos library locally to do development.
-`brew install geos`
+`brew install geos`. If you hit a `Cannot load such file -- rgeo/geos/geos_c_impl` error on a Mac, patch the proj bundle following [these instructions](https://github.com/rgeo/rgeo-proj4/issues/4#issuecomment-536193184).
 
 ## Deployment
 This project is setup to deploy with capistrano to MAPC servers. Run `cap staging deploy` or `cap production deploy` to deploy the develop branch to staging or master branch to production after pushing your changes to Github. 
