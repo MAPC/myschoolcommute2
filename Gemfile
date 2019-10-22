@@ -61,9 +61,11 @@ gem 'pbkdf2_password_hasher'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.5'
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
   gem 'dotenv-rails'
   gem 'pry-byebug'
+  gem 'pry-rescue'
+  gem 'pry-stack_explorer'
 end
 
 group :test do
