@@ -3,7 +3,7 @@ ruby '2.5.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails'
-gem 'dotenv-rails'
+gem 'dotenv-rails', :require => 'dotenv/rails-now'
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
 gem 'pg', '~> 0.18'
@@ -11,7 +11,7 @@ gem 'activerecord-postgis-adapter'
 gem "rgeo"
 # gem 'rgeo-proj4'
 gem 'rgeo-activerecord'
-gem "recaptcha"
+gem "recaptcha", require: "recaptcha/rails"
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 gem 'pry'
