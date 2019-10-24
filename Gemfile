@@ -9,7 +9,7 @@ gem 'dotenv-rails', :require => 'dotenv/rails-now'
 gem 'pg', '~> 0.18'
 gem 'activerecord-postgis-adapter'
 gem "rgeo"
-# gem 'rgeo-proj4'
+gem 'rgeo-proj4'
 gem 'rgeo-activerecord'
 gem "recaptcha", require: "recaptcha/rails"
 # Use SCSS for stylesheets
@@ -34,6 +34,7 @@ gem 'administrate'
 # gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
+gem 'multi_json', '~> 1.11', '>= 1.11.2'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-datepicker-rails', '1.3.1.1'
@@ -63,7 +64,6 @@ gem 'pbkdf2_password_hasher'
 group :development, :test do
   gem 'rspec-rails', '~> 3.5'
   gem 'factory_bot_rails'
-  gem 'dotenv-rails'
   gem 'pry-byebug'
   gem 'pry-rescue'
   gem 'pry-stack_explorer'

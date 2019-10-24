@@ -198,6 +198,7 @@ GEM
     minitest (5.12.2)
     momentjs-rails (2.20.1)
       railties (>= 3.1)
+    multi_json (1.14.1)
     multipart-post (2.1.1)
     net-scp (2.0.0)
       net-ssh (>= 2.6.5, < 6.0.0)
@@ -275,6 +276,8 @@ GEM
       rgeo (>= 1.0.0)
     rgeo-geojson (2.1.1)
       rgeo (>= 1.0.0)
+    rgeo-proj4 (2.0.0)
+      rgeo (~> 2.0)
     rspec-core (3.9.0)
       rspec-support (~> 3.9.0)
     rspec-expectations (3.9.0)
@@ -387,6 +390,7 @@ DEPENDENCIES
   kaminari
   launchy
   mailgun_rails
+  multi_json (~> 1.11, >= 1.11.2)
   pbkdf2_password_hasher
   pg (~> 0.18)
   pry
@@ -398,6 +402,7 @@ DEPENDENCIES
   rgeo
   rgeo-activerecord
   rgeo-geojson
+  rgeo-proj4
   rspec-rails (~> 3.5)
   sass-rails (~> 5.0)
   scenic
