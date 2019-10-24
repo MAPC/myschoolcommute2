@@ -44,9 +44,9 @@ set :keep_releases, 3
 #
 # Global options
 # --------------
- set :ssh_options, {
-   forward_agent: true
- }
+#  set :ssh_options, {
+#    forward_agent: true
+#  }
 #
 # The server-based syntax can be used to override options:
 # ------------------------------------
