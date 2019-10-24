@@ -23,7 +23,6 @@ node_modules/
 public/reports/*.pdf
 lib/external/school-map/build
 lib/external/intersecting-streets/build
-lib/external/report/*.png
 lib/external/school-map/screens/*.png
 
 
