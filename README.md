@@ -24,8 +24,22 @@ Make sure to install the libgeos dev package on your deployment server so that t
 Mac users will also need to install the geos library locally to do development.
 `brew install geos`. If you hit a `Cannot load such file -- rgeo/geos/geos_c_impl` error on a Mac, patch the proj bundle following [these instructions](https://github.com/rgeo/rgeo-proj4/issues/4#issuecomment-536193184).
 
+- Install dependencies from Dockerfile.app (Ubuntu packages, Node packages, R packages; R command listed
+- Make sure that database.yml contains 5 necessary components to run R script: username, password, host, port, database url
+- Make sure that instance of R is 3.6.1 (if you need to update, you can find the necessary commands (in the CRAN documentation)[https://cran.r-project.org/bin/linux/ubuntu/README.html])
+- lualatex command: `sudo apt install texlive-latex-base`
+- ```sudo apt-get install xzdec
+tlmgr init-usertree
+tlmgr install caption
+```
+https://tex.stackexchange.com/questions/158700/latex-cant-find-sty-files-altough-packages-are-installed-texlive-ubuntu-12 answer by Dox re: installing caption.sty
+
+```
+sudo apt-get install texlive-science
+```
+
 ## Deployment
-This project is setup to deploy with capistrano to MAPC servers. Run `cap staging deploy` or `cap production deploy` to deploy the develop branch to staging or master branch to production after pushing your changes to Github. 
+This project is setup to deploy with capistrano to MAPC servers. Run `cap staging deploy` or `cap production deploy` to deploy the develop branch to staging or master branch to production after pushing your changes to Github.
 
 ## Data Migration
 The data migration process to generate a new seed file from the old site is documented [in this commit](https://github.com/MAPC/myschoolcommute2/commit/1fe57646446be2779203b97c5347c3f9dc5e6af4).
