@@ -88,14 +88,13 @@ class SurveysController < ApplicationController
       generate_map(data_file)
 
       report_script = File.join(REPORT_DIR, 'compile.R')
-
       pg_values = Rails.configuration.database_configuration[Rails.env].values_at('username', 'password', 'host', 'port', 'database').compact
 
       if pg_values.count == 5
         pg_user, pg_password, pg_host, pg_port, pg_database = pg_values
         pg_dsn = "postgis://#{pg_user}:#{pg_password}@#{pg_host}:#{pg_port}/#{pg_database}"
       else
-        raise 'Missing database credentials. Please set DATABASE_URL to a valid PostGIS DSN.'
+        raise 'Missing database credentials. Please make sure your database.yml contains a username, password, host, port, and database name.'
       end
 
       report_args = [
@@ -108,10 +107,8 @@ class SurveysController < ApplicationController
       ]
 
       report_cmd = "Rscript --vanilla #{report_script} #{report_args.join(" ")}"
-      Rails.logger.info report_cmd
 
       report_output = `#{report_cmd}`
-      Rails.logger.info report_output
 
       Rails.logger.info "Cleaning up"
       [
