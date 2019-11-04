@@ -21,22 +21,20 @@ Make sure to install the libgeos dev package on your deployment server so that t
 
 `sudo apt-get install libgeos-dev`
 
-Mac users will also need to install the geos library locally to do development.
+Mac users will also need to install the geos library locally to do development:
 `brew install geos`. If you hit a `Cannot load such file -- rgeo/geos/geos_c_impl` error on a Mac, patch the proj bundle following [these instructions](https://github.com/rgeo/rgeo-proj4/issues/4#issuecomment-536193184).
 
-- Install dependencies from Dockerfile.app (Ubuntu packages, Node packages, R packages; R command listed
-- Make sure that database.yml contains 5 necessary components to run R script: username, password, host, port, database url
-- Make sure that instance of R is 3.6.1 (if you need to update, you can find the necessary commands (in the CRAN documentation)[https://cran.r-project.org/bin/linux/ubuntu/README.html])
-- lualatex command: `sudo apt install texlive-latex-base`
-- ```sudo apt-get install xzdec
-tlmgr init-usertree
-tlmgr install caption
-```
-https://tex.stackexchange.com/questions/158700/latex-cant-find-sty-files-altough-packages-are-installed-texlive-ubuntu-12 answer by Dox re: installing caption.sty
+Install all dependencies from [Dockerfile.app](https://github.com/MAPC/myschoolcommute2/blob/master/Dockerfile.app); this includes installing [R](https://www.r-project.org/) and a LaTeX compiler/editor like [MacTeX](https://tug.org/mactex/) for your development environment. If your previously-installed instance of R is earlier than 3.6.1, you can find updating instructions [in the CRAN documentation](https://cran.r-project.org/bin/linux/ubuntu/README.html)).
+
+Run the following script to finalize your R and LaTeX setup:
 
 ```
-sudo apt-get install texlive-science
+sudo apt-get -y install xzdec texlive-science texlive-latex-base texlive-latex-recommended texlive-pictures texlive-latex-extra
+tlmgr init-usertree
+tlmgr install caption adjustbox colectbox ucs floatrow siunitx lipsum
 ```
+
+Finally, make sure that `database.yml` contains specifies a username, password, host, port, and database name. If omitted, you will not be able to run the R script that generated PDF reports.
 
 ## Deployment
 This project is setup to deploy with capistrano to MAPC servers. Run `cap staging deploy` or `cap production deploy` to deploy the develop branch to staging or master branch to production after pushing your changes to Github.
