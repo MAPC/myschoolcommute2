@@ -24,6 +24,7 @@ public/reports/*.pdf
 lib/external/school-map/build
 lib/external/intersecting-streets/build
 lib/external/school-map/screens/*.png
+lib/external/report/*.png
 
 
 .env

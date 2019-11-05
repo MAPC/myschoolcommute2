@@ -34,7 +34,7 @@ tlmgr init-usertree
 tlmgr install caption adjustbox colectbox ucs floatrow siunitx lipsum
 ```
 
-Finally, make sure that `database.yml` contains specifies a username, password, host, port, and database name. If omitted, you will not be able to run the R script that generated PDF reports.
+Make sure that `database.yml` contains specifies a username, password, host, port, and database name. Specifically, make sure to add your `USER` and `POSTGRES_PASSWORD` values to a `.env`. If omitted, you will not be able to run the R script that generated PDF reports. Additionally, the final page of the report relies on the output of a build of school-map; to ensure that the walkshed map is visible, run `npm run build` on `lib/external/school-map/src`.
 
 ## Deployment
 This project is setup to deploy with capistrano to MAPC servers. Run `cap staging deploy` or `cap production deploy` to deploy the develop branch to staging or master branch to production after pushing your changes to Github.

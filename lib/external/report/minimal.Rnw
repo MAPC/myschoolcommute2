@@ -87,10 +87,10 @@ read_chunk("process_postgres_chunks.R")
 
 
 {\flushleft   
-\includegraphics[height=20 mm]{2019SRTSLogo}
+\includegraphics[height=20 mm]{saferoutes-logo}
 \newline
 \newline
-\includegraphics[height=12 mm]{saferoutes-logo}%[height=12 mm]{MassDOT_Logo_Color}
+\includegraphics[height=12 mm]{MassDOT_Logo_Color}
 \newline
 \newline
 
@@ -120,7 +120,7 @@ This report measures distance to school in terms of walksheds and bikesheds. A \
 
 \vfill
 \columnbreak
-\vspace*{180 pt}
+\vspace*{225 pt}
 
 \section*{Survey Statistics}
 
