@@ -87,17 +87,23 @@ read_chunk("process_postgres_chunks.R")
 
 
 {\flushleft   
-\includegraphics[height=20 mm]{2019SRTSLogo}
+\includegraphics[height=20 mm]{saferoutes-logo}
 \newline
 \newline
-\includegraphics[height=12 mm]{MassDOT_Logo_Color}%[height=12 mm]{MassDOT_Logo_Color}
+\includegraphics[height=12 mm]{MassDOT_Logo_Color}
 \newline
 \newline
 
   {
     MASafeRoutesSurvey.org\\
     Survey Report: \Sexpr{School_Name}\\ 
-    Date Printed: \today \\     
+    Survey Print Date: \today \\
+    \begin{itemize*}
+    \item Survey Dates: \Sexpr{start_date} to \Sexpr{end_date}
+    \item Responses Received: \Sexpr{sampleSize}
+    \item School-wide Participation Rate: \Sexpr{surveyPct}\% \textsuperscript{*}
+    \end{itemize*}
+    \vspace*{0 cm}
   }                                 
 }
 
@@ -114,15 +120,9 @@ This report measures distance to school in terms of walksheds and bikesheds. A \
 
 \vfill
 \columnbreak
-\vspace*{180 pt}
+\vspace*{225 pt}
 
 \section*{Survey Statistics}
-\begin{itemize*}
-\item Survey Dates: \Sexpr{start_date} to \Sexpr{end_date}
-\item Responses Received: \Sexpr{sampleSize}
-\item School-wide Participation Rate: \Sexpr{surveyPct}\% \textsuperscript{*}
-\end{itemize*}
-\vspace*{0 cm}
 
 The figure below shows the survey participation rate for each grade. Total enrollment is based on 
 the \Sexpr{enrollmentDate} school year, per Department of Elementary and Secondary Education \textsuperscript{*}. 
@@ -219,7 +219,7 @@ The table below compares, for each walkshed, your school's actual walk \textback
 share to an expected value reflecting average walking and biking rates across Massachusetts. 
 Each percentage is the share of students in the walkshed that are walking or biking or expected 
 to be walking or biking. The expected value accounts for student grade levels and proximity to 
-school, and is based on more than 6,000 surveys collected statewide since 2011. 
+school, and is based on more than 40,000 surveys collected statewide since 2011. 
 
 \begin{table}[H]
 \captionsetup{width=.75\textwidth}

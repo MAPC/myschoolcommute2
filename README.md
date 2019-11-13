@@ -21,11 +21,23 @@ Make sure to install the libgeos dev package on your deployment server so that t
 
 `sudo apt-get install libgeos-dev`
 
-Mac users will also need to install the geos library locally to do development.
+Mac users will also need to install the geos library locally to do development:
 `brew install geos`. If you hit a `Cannot load such file -- rgeo/geos/geos_c_impl` error on a Mac, patch the proj bundle following [these instructions](https://github.com/rgeo/rgeo-proj4/issues/4#issuecomment-536193184).
 
+Install all dependencies from [Dockerfile.app](https://github.com/MAPC/myschoolcommute2/blob/master/Dockerfile.app); this includes installing [R](https://www.r-project.org/) and a LaTeX compiler/editor like [MacTeX](https://tug.org/mactex/) for your development environment. If your previously-installed instance of R is earlier than 3.6.1, you can find updating instructions [in the CRAN documentation](https://cran.r-project.org/bin/linux/ubuntu/README.html)).
+
+Run the following script to finalize your R and LaTeX setup:
+
+```
+sudo apt-get -y install xzdec texlive-science texlive-latex-base texlive-latex-recommended texlive-pictures texlive-latex-extra
+tlmgr init-usertree
+tlmgr install caption adjustbox colectbox ucs floatrow siunitx lipsum
+```
+
+Make sure that `database.yml` contains specifies a username, password, host, port, and database name. Specifically, make sure to add your `USER` and `POSTGRES_PASSWORD` values to a `.env`. If omitted, you will not be able to run the R script that generated PDF reports. Additionally, the final page of the report relies on the output of a build of school-map; to ensure that the walkshed map is visible, run `npm run build` on `lib/external/school-map/src`.
+
 ## Deployment
-This project is setup to deploy with capistrano to MAPC servers. Run `cap staging deploy` or `cap production deploy` to deploy the develop branch to staging or master branch to production after pushing your changes to Github. 
+This project is setup to deploy with capistrano to MAPC servers. Run `cap staging deploy` or `cap production deploy` to deploy the develop branch to staging or master branch to production after pushing your changes to Github.
 
 ## Data Migration
 The data migration process to generate a new seed file from the old site is documented [in this commit](https://github.com/MAPC/myschoolcommute2/commit/1fe57646446be2779203b97c5347c3f9dc5e6af4).
