@@ -22,15 +22,17 @@
   <div class="ui basic segment">
     <%= form_for @survey.survey_responses.new do |f| %>
       <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css">
-      <div class="field" id="root"><div id="map-container"></div></div>
+      <div class="field surveyFormBox" id="root">
+        <div id="map-container"></div>
+      </div>
       <script type="text/javascript">
         window.muni_id = <%= @survey.school.muni_id %>
         window.school = { lat: <%= @survey.school.wgs84_lat %>, lng: <%= @survey.school.wgs84_lng %> }
       </script>
 
-      <%= javascript_include_tag "react_modules/intersectingstreets-vendor.min.js" %>
-      <%= javascript_include_tag "react_modules/intersectingstreets-runtime.min.js" %>
-      <%= javascript_include_tag "react_modules/intersectingstreets-main.min.js" %>
+      <%= javascript_include_tag 'application' %>
+        <%= javascript_pack_tag 'components' %>
+        <%= stylesheet_pack_tag 'components' %>
 
       <%= f.hidden_field :survey_id, value: @survey.id %>
       <%= f.submit 'Submit Survey' %>

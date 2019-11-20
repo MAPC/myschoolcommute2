@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import StreetDropdown from './StreetDropdown';
-import ChildSurveys from './ChildSurveys';
+import StreetDropdown from './intersecting-streets/StreetDropdown';
+import ChildSurveys from './intersecting-streets/ChildSurveys';
 
-import './App.css';
+import './intersecting-streets/App.css';
 
 class App extends Component {
   render() {
