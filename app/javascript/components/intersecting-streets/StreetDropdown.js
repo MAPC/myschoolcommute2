@@ -4,8 +4,9 @@ import { Form } from 'semantic-ui-react';
 import $ from 'jquery';
 import L from 'leaflet';
 
-const endpoint = "//mapc-admin.carto.com/api/v2/sql?q=";
-const muni_id = window.muni_id || 1;
+const endpoint = "https://prql.mapc.org/?query=";
+const token = "&token=e2e3101e16208f04f7415e36052ce59b"
+const muni_id = 1;
 const school = window.school || { lat: 42, lng: -71 };
 
 let muniCache = [];
@@ -50,7 +51,7 @@ class StreetDropdown extends Component {
       return this.setState({ munis: muniCache})
     }
 
-    return $.getJSON(`${endpoint}SELECT DISTINCT(town) as text, town_id as value FROM %22mapc-admin%22.survey_intersection ORDER BY town`)
+    return $.getJSON(`${endpoint}SELECT DISTINCT(town) as text, town_id as value FROM mapc.trans_street_intersections ORDER BY town${token}`)
       .then(data => {
         muniCache = data.rows;
         this.setState({ munis: muniCache })
@@ -58,7 +59,7 @@ class StreetDropdown extends Component {
   }
 
   InitialStreets(muni) {
-    return $.getJSON(`${endpoint}SELECT DISTINCT(st_name_1) AS text%20, st_name_1 AS value FROM%20%22mapc-admin%22.survey_intersection%20WHERE town_id=${muni} ORDER BY st_name_1`)
+    return $.getJSON(`${endpoint}SELECT DISTINCT(st_name_1) AS text, st_name_1 AS value FROM mapc.trans_street_intersections WHERE town_id=${muni} ORDER BY st_name_1 ${token}`)
       .then((data) => {
         this.setState({ initialStreets: data.rows });
       });
@@ -66,7 +67,7 @@ class StreetDropdown extends Component {
 
   IntersectingStreets(street) {
     let encodedStreet = street;
-    return $.getJSON(`${endpoint}SELECT DISTINCT(st_name_2) AS text, st_name_2 AS value FROM%20%22mapc-admin%22.survey_intersection%20WHERE st_name_1='${encodedStreet}' AND town_id=${this.state.muni} ORDER BY st_name_2`)
+    return $.getJSON(`${endpoint}SELECT DISTINCT(st_name_2) AS text, st_name_2 AS value FROM mapc.trans_street_intersections WHERE st_name_1='${encodedStreet}' AND town_id=${this.state.muni} ORDER BY st_name_2 ${token}`)
       .then((data) => {
         const sortedRows = data.rows.sort((a,b) => (a.text > b.text) ? 1 : -1);
 
@@ -77,7 +78,7 @@ class StreetDropdown extends Component {
 
   IntersectingPoints = (street) => {
     let encodedStreet = street;
-    return $.getJSON(`${endpoint}SELECT DISTINCT(st_name_2) AS text, lat, long AS lng FROM%20%22mapc-admin%22.survey_intersection%20WHERE st_name_1='${encodedStreet}' AND town_id=${this.state.muni}`)
+    return $.getJSON(`${endpoint}SELECT DISTINCT(st_name_2) AS text, lat, long AS lng FROM mapc.trans_street_intersections WHERE st_name_1='${encodedStreet}' AND town_id=${this.state.muni} ${token}`)
       .then((data) => {
         const sortedRows = data.rows.sort((a,b) => (a.text > b.text) ? 1 : -1);
         let latlngs = sortedRows.map((row) => { return [row.lat,row.lng]; });
