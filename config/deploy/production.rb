@@ -60,4 +60,3 @@ set :keep_releases, 3
 #   }
 
 after 'deploy:published', 'schoolmap:install'
-after 'deploy:published', 'intersectingstreets:install'
