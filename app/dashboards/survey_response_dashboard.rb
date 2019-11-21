@@ -255,7 +255,6 @@ class SurveyResponseDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :survey,
     :school,
-    :geometry,
     :question,
     :mode,
     :shed,

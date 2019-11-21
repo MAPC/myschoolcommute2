@@ -6,6 +6,10 @@ module Admin
       params[:order] ||= "created_at"
       params[:direction] ||= "desc"
     end
+
+    def edit
+      redirect_to "/admin/survey_responses/#{params[:id]}"
+    end
     # To customize the behavior of this controller,
     # you can overwrite any of the RESTful actions. For example:
     #
