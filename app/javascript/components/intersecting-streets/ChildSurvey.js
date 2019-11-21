@@ -11,7 +11,7 @@ const modes = [ {value: "w",    text: "Walk"},
                 {value: "t",    text: "Transit (city bus, subway, etc.)"},
                 {value: "cp",   text: "Carpool (with children from other families)"}
               ].map(option=> {
-                return { value: option.value, text: window.__(option.text) };
+                return { value: option.value, text: option.text};
               });
 
 const grades = [  { value: 'pk',   text: 'Pre-K'},
@@ -33,7 +33,7 @@ const grades = [  { value: 'pk',   text: 'Pre-K'},
 const yesNo = [ { value: 'y', text: 'Yes' },
                 { value: 'n', text: 'No'  }
               ].map(option=> {
-                return { value: option.value, text: window.__(option.text) };
+                return { value: option.value, text: option.text };
               });
 
 const TripReasonQuestion = ({id, mode, question, name, onChange}) => {
@@ -44,7 +44,7 @@ const TripReasonQuestion = ({id, mode, question, name, onChange}) => {
                   required
                   name={name}
                   onChange={onChange}
-                  label={ window.__(question) }
+                  label={ question }
                   options={ yesNo } />
       </div>
     )
@@ -96,7 +96,7 @@ class ChildSurvey extends Component {
           </div>
           <Form.Dropdown placeholder='Select from an option below' fluid selection
                     required
-                    label={ window.__('What grade is your child in?') }
+                    label={ 'What grade is your child in?' }
                     options={ grades }
                     labeled={ true }
                     onChange={this.updateGrade}
@@ -108,7 +108,7 @@ class ChildSurvey extends Component {
                     required
                     onChange={this.updateTo}
                     options={ modes }
-                    label={ window.__('How does your child get TO school on most days?') }
+                    label={ 'How does your child get TO school on most days?' }
                     name={ `survey_response[to_school_${this.state.id}]` } />
 
           <input type="hidden" name={`survey_response[to_school_${this.state.id}]`} value={this.state.to} />
@@ -125,7 +125,7 @@ class ChildSurvey extends Component {
                     required
                     onChange={this.updateFrom}
                     options={ modes }
-                    label={ window.__('How does your child get home FROM school on most days?') }
+                    label={ 'How does your child get home FROM school on most days?'}
                     name={ `survey_response[from_school_${this.state.id}]` } />
 
           <input type="hidden" name={`survey_response[from_school_${this.state.id}]`} value={this.state.from} />

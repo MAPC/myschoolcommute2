@@ -30,9 +30,10 @@
         window.school = { lat: <%= @survey.school.wgs84_lat %>, lng: <%= @survey.school.wgs84_lng %> }
       </script>
 
-      <%= javascript_include_tag 'application' %>
+      
         <%= javascript_pack_tag 'components' %>
         <%= stylesheet_pack_tag 'components' %>
+        <%= javascript_include_tag 'application' %>
 
       <%= f.hidden_field :survey_id, value: @survey.id %>
       <%= f.submit 'Submit Survey' %>
