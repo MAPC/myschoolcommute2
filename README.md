@@ -15,7 +15,7 @@ Run `bin/setup` in your terminal.
 
 Obtain a Sentry Client Key DSN from [Sentry](https://sentry.io/settings/metropolitan-area-planning-cou/my-school-commute-2/keys/) and set `SENTRY_DSN` in your `.env` to that value.
 
-This project uses the [reCAPTCHA gem](https://github.com/ambethia/recaptcha) for bot filtering. To set this up in your development environment, go to the [reCAPTCHA admin console](https://www.google.com/recaptcha/admin/create) and select "reCAPTCHA v2" and "Invisible reCAPTCHA badge" for the reCAPTCHA type. Set the domain to **localhost**. Upon creation, you'll be given a site key and a secret key. Add these values to your `.env` file under `RECAPTCHA_SITE_KEY` and `RECAPTCHA_SECRET_KEY`, respectively.
+This project uses the [reCAPTCHA gem](https://github.com/ambethia/recaptcha) for bot filtering. To set this up in your development environment, go to the [reCAPTCHA admin console](https://www.google.com/recaptcha/admin/create) and select "reCAPTCHA v2" and "Invisible reCAPTCHA badge" for the reCAPTCHA type. Set the domain to **localhost** and/or **127.0.0.1**, whichever you prefer for local development. Upon creation, you'll be given a site key and a secret key. Add these values to your `.env` file under `RECAPTCHA_SITE_KEY` and `RECAPTCHA_SECRET_KEY`, respectively.
 
 Make sure to install the libgeos dev package on your deployment server so that the RGeo gem native extensions work.
 
@@ -36,6 +36,9 @@ tlmgr install caption adjustbox colectbox ucs floatrow siunitx lipsum
 
 Make sure that `database.yml` contains specifies a username, password, host, port, and database name. Specifically, make sure to add your `USER` and `POSTGRES_PASSWORD` values to a `.env`. If omitted, you will not be able to run the R script that generated PDF reports. Additionally, the final page of the report relies on the output of a build of school-map; to ensure that the walkshed map is visible, run `npm run build` on `lib/external/school-map/src`.
 
+## Running locally
+This is a Rails project with some React components rendered with the [Webpacker gem](https://github.com/rails/webpacker). To run, execute `bundle exec rails s` and `bin/webpack-dev-server` in two separate command prompts.
+
 ## Deployment
 This project is setup to deploy with capistrano to MAPC servers. Run `cap staging deploy` or `cap production deploy` to deploy the develop branch to staging or master branch to production after pushing your changes to Github.
 
@@ -48,16 +51,3 @@ User: `admin@user.org`
 Password: `password`
 
 This should be deleted before moved to production!
-
-# Submodules
-Some of the view logic was complicated enough to warrant a front-end framework. There are two, both using React:
-1. Public survey form: https://github.com/MAPC/intersecting-streets-react
-2. Map for viewing a school and its walksheds: https://github.com/MAPC/school-map
-
-To push changes from these submodules into this repository, follow these steps:
-1. Setup the submodule; it must be a sibling directory with this repository:
-  /repositories
-     /myschoolcommute2
-     /intersecting-streets-react
-     /school-map
-2. From within the submodule directory, run `npm build`. This will build the script and load it into the correct place in the Rails app.

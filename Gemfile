@@ -12,6 +12,7 @@ gem "rgeo"
 gem 'rgeo-proj4'
 gem 'rgeo-activerecord'
 gem "recaptcha", require: "recaptcha/rails"
+gem 'webpacker', '~> 4.x'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 gem 'pry'

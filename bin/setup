@@ -19,7 +19,7 @@ Dir.chdir APP_ROOT do
 
   puts "\n== Installing React Components =="
   system 'bin/rails schoolmap:install'
-  system 'bin/rails intersectingstreets:install'
+  system('bin/yarn')
 
   puts "\n== Creating database =="
   system 'bin/rails db:create'
