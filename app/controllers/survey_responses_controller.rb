@@ -31,10 +31,9 @@ class SurveyResponsesController < ApplicationController
   # POST /survey_responses.json
   def create
     @survey_response = SurveyResponse.new(survey_response_params)
-
     respond_to do |format|
       if @survey_response.save
-        format.html { redirect_back fallback_location: districts_path, notice: 'Survey response was successfully created.' }
+        format.json { render json: {message: "Survey response was successfully created."} }
       else
         format.html { redirect_to '/', notice: 'Something went wrong. Please contact an administrator.' }
       end
