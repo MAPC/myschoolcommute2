@@ -42,6 +42,11 @@ function App() {
       }
     });
 
+    // if (!window.surveyId) {
+    //   field.classList.add(ERROR_CLASS);
+    //   noErrors = false;
+    // }
+
     if (noErrors) {
       handleSubmit(event)
     }
