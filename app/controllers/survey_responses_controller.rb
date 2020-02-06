@@ -19,6 +19,8 @@ class SurveyResponsesController < ApplicationController
     if params[:school_id]
       @survey_response = SurveyResponse.new(school: School.find(params[:school_id]))
       @school = School.find(params[:school_id])
+      @all_surveys = Survey.select(:id).where(:school_id => @school.id).all
+      # binding.pry
     else
       @survey_response = SurveyResponse.new
     end

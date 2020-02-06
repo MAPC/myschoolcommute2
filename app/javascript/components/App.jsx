@@ -14,15 +14,17 @@ function App() {
     const mapContainer = form.querySelector('.map-container');
     const geometry = form.querySelector('input[name="survey_response[geometry]"]');
     const formFields = Array.from(form.querySelectorAll('*[required]')); // the user might add more fields dynamically
+    const surveySelectDropdown = form.querySelector('.survey-id-selection')
     let noErrors = true;
     const ERROR_CLASS = 'error';
     const DEFAULT_POINT = 'POINT (-71 42)';
 
-    document.getElementsByClassName('leaflet-container')[0].addEventListener('click', function() {
-      if (geometry.value !== DEFAULT_POINT) {
-        mapContainer.classList.remove(ERROR_CLASS);
-      }
-    })
+    if (!surveySelectDropdown.querySelector('input[name="survey_response[survey_id]"]').getAttribute('value')) {
+      surveySelectDropdown.classList.add(ERROR_CLASS);
+      noErrors = false;
+    } else {
+      surveySelectDropdown.classList.remove(ERROR_CLASS)
+    }
 
     if (geometry.value === DEFAULT_POINT) {
       mapContainer.classList.add(ERROR_CLASS);
@@ -42,22 +44,18 @@ function App() {
       }
     });
 
-    // if (!window.surveyId) {
-    //   field.classList.add(ERROR_CLASS);
-    //   noErrors = false;
-    // }
-
     if (noErrors) {
       handleSubmit(event)
     }
   }
 
   const handleSubmit = (event) => {
-    const submit = document.querySelector("button[type='submit'")
+    const surveyId = +document.querySelector('[name="survey_response[survey_id]"]').getAttribute("value");
+    const submit = document.querySelector("button[type='submit']")
     submit.innerText="Submitting..."
     submit.disabled = true
     const submission = new FormData(event.target)
-    submission.append("survey_response[survey_id]", window.survey_id)
+    submission.append("survey_response[survey_id]", surveyId)
     axios({
       method: 'post',
       url: '/survey_responses',
@@ -68,6 +66,7 @@ function App() {
     .then(function (response) {
       submit.innerText="Submitted"
       document.querySelector('.submit__results-text').innerText = response.data.message
+      sessionStorage.setItem("surveyId", window.survey_id)
     })
     .catch(function (error) {
       console.log(error);
