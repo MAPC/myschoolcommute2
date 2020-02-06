@@ -8,6 +8,7 @@
     <% if @survey_response.school.surveys.count > 0 %>
       <script type="text/javascript">
         window.school = { lat: <%= @school.wgs84_lat %>, lng: <%= @school.wgs84_lng %> }
+        window.isBulkEntry = true;
       </script>
       <%= form_for @survey_response do |f| %>
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css">

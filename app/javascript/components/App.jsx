@@ -19,11 +19,13 @@ function App() {
     const ERROR_CLASS = 'error';
     const DEFAULT_POINT = 'POINT (-71 42)';
 
-    if (!surveySelectDropdown.querySelector('input[name="survey_response[survey_id]"]').getAttribute('value')) {
-      surveySelectDropdown.classList.add(ERROR_CLASS);
-      noErrors = false;
-    } else {
-      surveySelectDropdown.classList.remove(ERROR_CLASS)
+    if (surveySelectDropdown) {
+      if (!surveySelectDropdown.querySelector('input[name="survey_response[survey_id]"]').getAttribute('value')) {
+        surveySelectDropdown.classList.add(ERROR_CLASS);
+        noErrors = false;
+      } else {
+        surveySelectDropdown.classList.remove(ERROR_CLASS)
+      }
     }
 
     if (geometry.value === DEFAULT_POINT) {
@@ -50,7 +52,7 @@ function App() {
   }
 
   const handleSubmit = (event) => {
-    const surveyId = +document.querySelector('[name="survey_response[survey_id]"]').getAttribute("value");
+    const surveyId = window.isBulkEntry ? +document.querySelector('[name="survey_response[survey_id]"]').getAttribute("value") : window.survey_id;
     const submit = document.querySelector("button[type='submit']")
     submit.innerText="Submitting..."
     submit.disabled = true
@@ -65,11 +67,13 @@ function App() {
     })
     .then(function (response) {
       submit.innerText="Submitted"
-      document.querySelector('.submit__results-text').innerText = response.data.message
-      sessionStorage.setItem("surveyId", window.survey_id)
+      document.querySelector('.submit__results-text').innerText = "Survey response was successfully created. Page refreshing momentarily..."
+      setTimeout(function() { location.reload(); }, 2000);
     })
     .catch(function (error) {
       console.log(error);
+      submit.innerText="Submission failed"
+      document.querySelector('.submit__results-text').innerText = "Something went wrong. Please contact an administrator."
     })
   }
 
