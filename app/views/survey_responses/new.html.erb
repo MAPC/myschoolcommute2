@@ -5,18 +5,15 @@
 <div class="ui container">
   <div class="ui segment">
     <h1>New Survey Response</h1>
-
     <% if @survey_response.school.surveys.count > 0 %>
+      <script type="text/javascript">
+        window.school = { lat: <%= @school.wgs84_lat %>, lng: <%= @school.wgs84_lng %> }
+        window.isBulkEntry = true;
+      </script>
       <%= form_for @survey_response do |f| %>
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css">
-        <div class="field" id="root"><div id="map-container"></div></div>
-        <script type="text/javascript">
-          window.muni_id = <%= @survey_response.school.muni_id %>;
-          window.school = { lat: <%= @survey_response.school.wgs84_lat %>, lng: <%= @survey_response.school.wgs84_lng %> };
-        </script>
-        <%= javascript_include_tag "react_modules/intersectingstreets.min.js" %>
-        <div><p>Select Survey by Begin Date</p></div>
-        <div class="ui selection dropdown noreact">
+        <p>Select Survey by Begin Date</p>
+        <div class="ui selection dropdown noreact survey-id-selection">
           <input type="hidden" name="survey_response[survey_id]">
           <i class="dropdown icon"></i>
           <div class="default text">Select Survey by Begin Date</div>
@@ -26,9 +23,12 @@
             <% end %>
           </div>
         </div>
-        <div class="button">
-          <%= f.submit 'Submit Survey' %>
+        <div class="field surveyFormBox" id="root">
+          <div id="map-container"></div>
         </div>
+        <%= javascript_pack_tag 'components' %>
+        <%= stylesheet_pack_tag 'components' %>
+        <%= javascript_include_tag 'application' %>
       <% end %>
     <% else %>
       This school has no surveys. <%= link_to 'Create one here.', school_path(@survey_response.school) %>

@@ -27,6 +27,7 @@
     <script type="text/javascript">
       window.survey_id = <%= @survey.id %>
       window.school = { lat: <%= @survey.school.wgs84_lat %>, lng: <%= @survey.school.wgs84_lng %> }
+      window.isBulkEntry = false
     </script>
     <%= javascript_pack_tag 'components' %>
     <%= stylesheet_pack_tag 'components' %>
