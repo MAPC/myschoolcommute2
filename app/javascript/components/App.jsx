@@ -68,7 +68,8 @@ function App() {
     .then(function (response) {
       submit.innerText="Submitted"
       document.querySelector('.submit__results-text').innerText = "Survey response was successfully created. Page refreshing momentarily..."
-      setTimeout(function() { location.reload(); }, 2000);
+      sessionStorage.setItem('lastSubmittedSurveyId', surveyId);
+      setTimeout(function() { location.reload(); }, 1000);
     })
     .catch(function (error) {
       console.log(error);

@@ -5,4 +5,7 @@ $(document)
     $('.ui.selection.dropdown.noreact')
       .dropdown()
     ;
+    if (sessionStorage.getItem('lastSubmittedSurveyId')) {
+      $('.selected-survey').val(sessionStorage.getItem('lastSubmittedSurveyId'))
+    }
   });
