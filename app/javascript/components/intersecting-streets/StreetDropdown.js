@@ -5,7 +5,7 @@ import $ from 'jquery';
 import L from 'leaflet';
 
 const endpoint = "https://prql.mapc.org/?query=";
-const token = "&token=e2e3101e16208f04f7415e36052ce59b"
+const token = "&token=5e567e555ab7a2d22effa249e81cb903"
 const muni_id = 1;
 const school = window.school || { lat: 42, lng: -71 };
 
