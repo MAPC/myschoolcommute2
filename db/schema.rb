@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190213175020) do
+ActiveRecord::Schema.define(version: 20200804175633) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -192,6 +192,7 @@ ActiveRecord::Schema.define(version: 20190213175020) do
     t.string   "nr_licenses"
     t.datetime "created_at",                                              null: false
     t.datetime "updated_at",                                              null: false
+    t.boolean  "is_bulk_entry"
     t.index ["survey_id"], name: "index_survey_responses_on_survey_id", using: :btree
   end
 

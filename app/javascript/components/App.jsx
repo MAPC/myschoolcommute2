@@ -58,6 +58,7 @@ function App() {
     submit.disabled = true
     const submission = new FormData(event.target)
     submission.append("survey_response[survey_id]", surveyId)
+    submission.append("survey_response[is_bulk_entry]", window.isBulkEntry)
     axios({
       method: 'post',
       url: '/survey_responses',

@@ -185,7 +185,8 @@ class SurveyResponsesController < ApplicationController
         :from_school_19,
         :pickup_19,
         :nr_vehicles,
-        :nr_licenses
+        :nr_licenses,
+        :is_bulk_entry
                                             )
     end
 end
