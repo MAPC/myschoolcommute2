@@ -1,5 +1,6 @@
 class SurveyResponsesController < ApplicationController
   before_action :set_survey_response, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_district_user, only: [:new]
 
   # GET /survey_responses
   # GET /survey_responses.json
@@ -72,6 +73,14 @@ class SurveyResponsesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def authenticate_district_user
+      redirect_to '/', alert: 'Not authorized - please notify program coordinator to grant access.' unless access_whitelist
+    end
+
+    def access_whitelist
+      current_user.try(:is_admin?) || current_user.try(:is_district?)
+    end
+
     def set_survey_response
       @survey_response = SurveyResponse.find(params[:id])
     end
