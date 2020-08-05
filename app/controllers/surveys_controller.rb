@@ -8,6 +8,7 @@ class SurveysController < ApplicationController
   before_action :set_survey, only: [:show, :edit, :update, :destroy, :show_report]
   before_action :authenticate_user!, except: [:show]
   before_action :authenticate_district_user, except: [:show]
+  before_action :check_survey_date, only: [:show]
   # GET /surveys/1
   # GET /surveys/1.json
   def show
@@ -69,6 +70,15 @@ class SurveysController < ApplicationController
     def set_survey
       @survey = Survey.find(params[:id])
     end
+
+    def check_survey_date
+      @survey = Survey.find(params[:id])
+
+      if Date.today > @survey.end
+        redirect_to '/', alert: 'Survey closed - please notify program coordinator to submit response.'
+      end
+    end
+
 
     def authenticate_district_user
       redirect_to '/', alert: 'Not authorized - please notify program coordinator to grant access.' unless access_whitelist
