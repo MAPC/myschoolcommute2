@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require semantic-ui
-//= require bootstrap-datepicker
+//= require bootstrap-datepicker/core
 //= require_tree .
 //= require_tree ./locale
 //= require gettext/all
