@@ -1,6 +1,5 @@
 class SurveyResponsesController < ApplicationController
   before_action :set_survey_response, only: [:show, :edit, :update, :destroy]
-
   # GET /survey_responses
   # GET /survey_responses.json
   def index
@@ -16,6 +15,7 @@ class SurveyResponsesController < ApplicationController
 
   # GET /survey_responses/new
   def new
+    authorize SurveyResponse
     if params[:school_id]
       @survey_response = SurveyResponse.new(school: School.find(params[:school_id]))
       @school = School.find(params[:school_id])
