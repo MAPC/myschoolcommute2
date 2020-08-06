@@ -34,6 +34,7 @@ class SurveyResponsesController < ApplicationController
   # POST /survey_responses.json
   def create
     @survey_response = SurveyResponse.new(survey_response_params)
+    authorize @survey_response
     respond_to do |format|
       if @survey_response.save
         format.json { render json: {message: "Survey response was successfully created."} }
