@@ -8,6 +8,7 @@ class SurveysController < ApplicationController
   before_action :set_survey, only: [:show, :edit, :update, :destroy, :show_report]
   before_action :authenticate_user!, except: [:show]
   before_action :authenticate_district_user, except: [:show]
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   # GET /surveys/1
   # GET /surveys/1.json
   def show
@@ -68,6 +69,11 @@ class SurveysController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def user_not_authorized
+      flash[:alert] = "You are not authorized to perform this action."
+      redirect_to(request.referrer || root_path)
+    end
+
     def set_survey
       @survey = Survey.find(params[:id])
     end

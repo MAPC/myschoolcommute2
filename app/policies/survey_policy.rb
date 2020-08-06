@@ -1,5 +1,5 @@
 class SurveyPolicy < ApplicationPolicy
   def show?
-    record.begin?
+    record.end > Date.today
   end
 end
