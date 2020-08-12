@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import StreetDropdown from './intersecting-streets/StreetDropdown';
 import ChildSurveys from './intersecting-streets/ChildSurveys';
-import { Button } from 'semantic-ui-react';
+import { Form, Button, Dropdown } from 'semantic-ui-react';
 import axios from 'axios';
 import './intersecting-streets/App.css';
 
@@ -79,15 +79,39 @@ function App() {
     })
   }
 
+  const counts = [  { value: '0', text: '0'  },
+                  { value: '1', text: '1'  },
+                  { value: '2', text: '2'  },
+                  { value: '3', text: '3'  },
+                  { value: '4', text: '4'  },
+                  { value: '5', text: '5'  },
+                  { value: '6', text: '6'  },
+                  { value: '7', text: '7'  },
+                  { value: '8', text: '8'  },
+                  { value: '9', text: '9'  } ];
+
   return (
-    <>
-      <form className="new_survey_response" id="new_survey_response" acceptCharset="UTF-8" _lpchecked="1" onSubmit={verifySubmission}>
+    <Form onSubmit={() => console.log("!")} className="new_survey_response" id="new_survey_response">
+      {/* <form className="new_survey_response" id="new_survey_response" acceptCharset="UTF-8" _lpchecked="1" onSubmit={verifySubmission}> */}
         <StreetDropdown />
         <ChildSurveys />
+        <label>{ window.__('How many vehicles do you have in your household?') }</label>
+        <Dropdown 
+          placeholder='Select from an option below' fluid selection
+          options={ counts }
+          onChange={(value) => updateNrVehicles(value)}
+          name={ 'survey_response[nr_vehicles]' }
+        />
+        <label>{ window.__("How many people in your household have a driver's license?") }</label>
+        <Dropdown
+          placeholder="Select from an option below" fluid selection
+          options={ counts }
+          onChange={(value) => updateNrLicenses(value)}
+          name={ 'survey_response[nr_licenses]' }
+        />
         <Button type='submit'>Submit</Button>
-      </form>
       <div className="submit__results-text"></div>
-    </>
+    </Form>
   )
 }
 
