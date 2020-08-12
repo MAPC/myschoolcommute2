@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import StreetDropdown from './intersecting-streets/StreetDropdown';
 import ChildSurveys from './intersecting-streets/ChildSurveys';
 import { Form, Button, Dropdown } from 'semantic-ui-react';
@@ -89,6 +89,9 @@ function App() {
                   { value: '7', text: '7'  },
                   { value: '8', text: '8'  },
                   { value: '9', text: '9'  } ];
+  
+  const [nrVehicles, updateNrVehicles] = useState();
+  const [nrLicenses, updateNrLicenses] = useState();
 
   return (
     <Form onSubmit={() => console.log("!")} className="new_survey_response" id="new_survey_response">

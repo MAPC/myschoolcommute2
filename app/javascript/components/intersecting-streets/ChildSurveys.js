@@ -3,13 +3,16 @@ import ChildSurvey from './ChildSurvey';
 import { Button } from 'semantic-ui-react';
 
 const ChildSurveys = () => {
-  const [count, addChild] = useState(1);
+  const [count, setStudentCount] = useState(1);
 
   let childSurveys = [];
   for (var i = 0; i < count; i++) {
     childSurveys.push(
       <div key={i}>
-        <ChildSurvey id={i+1} />
+        <ChildSurvey
+          id={i+1}
+          setStudentCount
+        />
       </div>
     );
   }
@@ -18,7 +21,7 @@ const ChildSurveys = () => {
     <div>
       {childSurveys}
       <Button 
-        onClick={() => addChild(count+1)}
+        onClick={() => setStudentCount(count+1)}
         type='button'
         className="primary"
       >

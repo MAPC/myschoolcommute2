@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, Component } from 'react';
 import { Form } from 'semantic-ui-react';
 
 // answers and values
@@ -53,94 +53,58 @@ const TripReasonQuestion = ({id, mode, question, name, onChange}) => {
   }
 }
 
-class ChildSurvey extends Component {
-  constructor(props) {
-    super(props);
+const ChildSurvey = ({id, setStudentCount}) => {
+  const [toMethod, updateTo] = useState();
+  const [fromMethod, updateFrom] = useState();
+  const [grade, updateGrade] = useState();
+  const [dropoff, updateDropoff] = useState();
+  const [pickup, updatePickup] = useState();
 
-    this.state = {
-      to: '',
-      from: '',
-      id: props.id,
-      grade: '',
-      dropoff: '',
-      pickup: '',
-    }
-  }
-
-  updateTo = (event, el) => {
-    this.setState({ to: el.value });
-  }
-
-  updateFrom = (event, el) => {
-    this.setState({ from: el.value });
-  }
-
-  updateGrade = (event, { value }) => {
-    this.setState({ grade: value });
-  }
-
-  updateDropoff = (event, { value }) => {
-    this.setState({ dropoff: value });
-  }
-
-  updatePickup = (event, { value }) => {
-    this.setState({ pickup: value });
-  }
-
-  render() {
-    return (
-      <div className="child-survey">
-        <div className="ui attached segment">
-          <div className="ui top attached label">
-            Child { this.state.id }
-          </div>
-          <Form.Dropdown placeholder='Select from an option below' fluid selection
-                    required
-                    label={ window.__('What grade is your child in?') }
-                    options={ grades }
-                    labeled={ true }
-                    onChange={this.updateGrade}
-                    name={ `survey_response[grade_${this.state.id}]` } />
-
-          <input type="hidden" name={`survey_response[grade_${this.state.id}]`} value={this.state.grade} />
-
-          <Form.Dropdown placeholder='Select from an option below' fluid selection
-                    required
-                    onChange={this.updateTo}
-                    options={ modes }
-                    label={ window.__('How does your child get TO school on most days?') }
-                    name={ `survey_response[to_school_${this.state.id}]` } />
-
-          <input type="hidden" name={`survey_response[to_school_${this.state.id}]`} value={this.state.to} />
-
-          <TripReasonQuestion id={this.state.id}
-                            mode={this.state.to}
-                            onChange={this.updateDropoff}
-                            name={ `survey_response[dropoff_${this.state.id}]` }
-                            question='Do you usually drop off your child on your way to work or another destination (other than home)?' />
-
-          <input type="hidden" name={`survey_response[dropoff_${this.state.id}]`} value={this.state.dropoff} />
-
-          <Form.Dropdown placeholder='Select from an option below' fluid selection
-                    required
-                    onChange={this.updateFrom}
-                    options={ modes }
-                    label={ window.__('How does your child get home FROM school on most days?') }
-                    name={ `survey_response[from_school_${this.state.id}]` } />
-
-          <input type="hidden" name={`survey_response[from_school_${this.state.id}]`} value={this.state.from} />
-
-          <TripReasonQuestion id={this.state.id}
-                            mode={this.state.from}
-                            onChange={this.updatePickup}
-                            name={ `survey_response[pickup_${this.state.id}]` }
-                            question='Do you usually pick up your child on your way from work or another location (other than home)?' />
-
-          <input type="hidden" name={`survey_response[pickup_${this.state.id}]`} value={this.state.pickup} />
-        </div>
+  return (
+    <div className="child-survey">
+      <div className="ui attached segment">
+        <div className="ui top attached label">Child {id}</div>
+        <Form.Dropdown
+          placeholder='Select from an option below' fluid selection
+          required
+          label={ window.__('What grade is your child in?') }
+          options={ grades }
+          onChange={ (e, { value }) => updateGrade(value) }
+          name={ `survey_response[grade_${id}]` }
+        />
+        <Form.Dropdown
+          placeholder='Select from an option below' fluid selection
+          required
+          onChange={ (e, { value }) => updateTo(value)}
+          options={ modes }
+          label={ window.__('How does your child get TO school on most days?') }
+          name={ `survey_response[to_school_${id}]` }
+        />
+        <TripReasonQuestion
+          id={id}
+          mode={toMethod}
+          onChange={ (e, { value }) => updateDropoff(value)}
+          name={ `survey_response[dropoff_${id}]` }
+          question='Do you usually drop off your child on your way to work or another destination (other than home)?'
+        />
+        <Form.Dropdown
+          placeholder='Select from an option below' fluid selection
+          required
+          onChange={ (e, { value }) => updateFrom(value)}
+          options={ modes }
+          label={ window.__('How does your child get home FROM school on most days?') }
+          name={ `survey_response[from_school_${id}]` }
+        />
+        <TripReasonQuestion
+          id={id}
+          mode={fromMethod}
+          onChange={ (e, { value }) => updatePickup(value)}
+          name={ `survey_response[pickup_${id}]` }
+          question='Do you usually pick up your child on your way from work or another location (other than home)?'
+        />
       </div>
-    )
-  }
-}
+    </div>
+  )
+};
 
 export default ChildSurvey;
