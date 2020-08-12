@@ -11,6 +11,8 @@ class SurveysController < ApplicationController
   # GET /surveys/1
   # GET /surveys/1.json
   def show
+    @survey = Survey.find(params[:id])
+    authorize @survey
   end
 
   # GET /surveys/new
@@ -66,6 +68,7 @@ class SurveysController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+
     def set_survey
       @survey = Survey.find(params[:id])
     end

@@ -42,6 +42,7 @@ gem 'bootstrap-datepicker-rails', '1.3.1.1'
 gem 'devise'
 gem 'devise_invitable'
 gem 'mailgun_rails'
+gem 'pundit'
 
 gem 'scenic'
 gem 'sidekiq'
