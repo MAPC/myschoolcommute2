@@ -4,7 +4,7 @@ import { Button } from 'semantic-ui-react';
 
 const ChildSurveys = () => {
   const [count, setStudentCount] = useState(1);
-
+  const [studentInfo, setStudentInfo] = useState({})
   let childSurveys = [];
   for (var i = 0; i < count; i++) {
     childSurveys.push(
@@ -13,6 +13,8 @@ const ChildSurveys = () => {
         setStudentCount={setStudentCount}
         count={count}
         key={i}
+        studentInfo={studentInfo}
+        setStudentInfo={setStudentInfo}
       />
     );
   }

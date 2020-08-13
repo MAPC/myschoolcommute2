@@ -53,22 +53,18 @@ const TripReasonQuestion = ({id, mode, question, name, onChange}) => {
   }
 }
 
-const ChildSurvey = ({id, setStudentCount, count}) => {
-  const [toMethod, updateTo] = useState();
-  const [fromMethod, updateFrom] = useState();
-  const [grade, updateGrade] = useState();
-  const [dropoff, updateDropoff] = useState();
-  const [pickup, updatePickup] = useState();
-
-  const deleteButton = <button 
-    onClick={(e) => {
-      e.preventDefault()
-      console.log("?")  
-    }}
-    id={`remove${id}`}
-  >
-    x
-  </button>
+const ChildSurvey = ({id, setStudentCount, count, studentInfo, setStudentInfo}) => {
+  const deleteButton = id > 1
+    ? <button 
+        onClick={(e) => {
+          e.preventDefault()
+          setStudentCount(count-1)
+        }}
+        id={`remove${id}`}
+      >
+        x
+      </button>
+      : '';
   
 
   return (
@@ -76,52 +72,43 @@ const ChildSurvey = ({id, setStudentCount, count}) => {
       <div className="ui attached segment">
         <div className="ui top attached label child-survey__header">
           <span>Child {id}</span>
-          <button 
-            onClick={(e) => {
-              e.preventDefault()
-              setStudentCount(count-1)
-              console.log("?")  
-            }}
-            id={`remove${id}`}
-          >
-            x
-          </button>
+          {deleteButton}
         </div>
         <Form.Dropdown
           placeholder='Select from an option below' fluid selection
           required
           label={ window.__('What grade is your child in?') }
           options={ grades }
-          onChange={ (e, { value }) => updateGrade(value) }
+          onChange={ (e, { value }) => setStudentInfo({...studentInfo, [`grade_${id}`]: value}) }
           name={ `survey_response[grade_${id}]` }
         />
         <Form.Dropdown
           placeholder='Select from an option below' fluid selection
           required
-          onChange={ (e, { value }) => updateTo(value)}
+          onChange={ (e, { value }) => setStudentInfo({...studentInfo, [`to_school_${id}`]: value}) }
           options={ modes }
           label={ window.__('How does your child get TO school on most days?') }
           name={ `survey_response[to_school_${id}]` }
         />
         <TripReasonQuestion
           id={id}
-          mode={toMethod}
-          onChange={ (e, { value }) => updateDropoff(value)}
+          mode={studentInfo[`to_school_${id}`]}
+          onChange={ (e, { value }) => setStudentInfo({...studentInfo, [`dropoff_${id}`]: value}) }
           name={ `survey_response[dropoff_${id}]` }
           question='Do you usually drop off your child on your way to work or another destination (other than home)?'
         />
         <Form.Dropdown
           placeholder='Select from an option below' fluid selection
           required
-          onChange={ (e, { value }) => updateFrom(value)}
+          onChange={ (e, { value }) => setStudentInfo({...studentInfo, [`from_school_${id}`]: value}) }
           options={ modes }
           label={ window.__('How does your child get home FROM school on most days?') }
           name={ `survey_response[from_school_${id}]` }
         />
         <TripReasonQuestion
           id={id}
-          mode={fromMethod}
-          onChange={ (e, { value }) => updatePickup(value)}
+          mode={studentInfo[`from_school_${id}`]}
+          onChange={ (e, { value }) => setStudentInfo({...studentInfo, [`pickup_${id}`]: value}) }
           name={ `survey_response[pickup_${id}]` }
           question='Do you usually pick up your child on your way from work or another location (other than home)?'
         />
