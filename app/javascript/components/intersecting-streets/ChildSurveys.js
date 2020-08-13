@@ -8,12 +8,12 @@ const ChildSurveys = () => {
   let childSurveys = [];
   for (var i = 0; i < count; i++) {
     childSurveys.push(
-      <div key={i}>
-        <ChildSurvey
-          id={i+1}
-          setStudentCount
-        />
-      </div>
+      <ChildSurvey
+        id={i+1}
+        setStudentCount={setStudentCount}
+        count={count}
+        key={i}
+      />
     );
   }
 

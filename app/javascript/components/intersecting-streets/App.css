@@ -33,3 +33,9 @@ body {
 .map-container {
   width: 100%;
 }
+
+.ui.top.attached.label.child-survey__header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

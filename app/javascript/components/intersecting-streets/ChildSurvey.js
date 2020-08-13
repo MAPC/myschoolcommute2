@@ -53,17 +53,40 @@ const TripReasonQuestion = ({id, mode, question, name, onChange}) => {
   }
 }
 
-const ChildSurvey = ({id, setStudentCount}) => {
+const ChildSurvey = ({id, setStudentCount, count}) => {
   const [toMethod, updateTo] = useState();
   const [fromMethod, updateFrom] = useState();
   const [grade, updateGrade] = useState();
   const [dropoff, updateDropoff] = useState();
   const [pickup, updatePickup] = useState();
 
+  const deleteButton = <button 
+    onClick={(e) => {
+      e.preventDefault()
+      console.log("?")  
+    }}
+    id={`remove${id}`}
+  >
+    x
+  </button>
+  
+
   return (
     <div className="child-survey">
       <div className="ui attached segment">
-        <div className="ui top attached label">Child {id}</div>
+        <div className="ui top attached label child-survey__header">
+          <span>Child {id}</span>
+          <button 
+            onClick={(e) => {
+              e.preventDefault()
+              setStudentCount(count-1)
+              console.log("?")  
+            }}
+            id={`remove${id}`}
+          >
+            x
+          </button>
+        </div>
         <Form.Dropdown
           placeholder='Select from an option below' fluid selection
           required
