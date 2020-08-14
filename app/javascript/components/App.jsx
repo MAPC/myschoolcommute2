@@ -7,6 +7,8 @@ import './intersecting-streets/App.css';
 
 function reducer(state, action) {
   switch(action.type) {
+    case 'updateLatLng':
+      return {...state, chosenLatLng: action.value}
     case 'updateStudent':
       const updatedStudentInfo = state.studentInfo
       updatedStudentInfo[`${action.id}`][`${action.property}`] = action.value;
@@ -36,6 +38,7 @@ function reducer(state, action) {
 
 function App() {
   const [state, dispatch] = useReducer(reducer, {
+    chosenLatLng: '',
     studentInfo: [{
       grade: '',
       to_school: '',
@@ -133,7 +136,9 @@ function App() {
   return (
     <Form onSubmit={() => console.log("!")} className="new_survey_response" id="new_survey_response">
       {/* <form className="new_survey_response" id="new_survey_response" acceptCharset="UTF-8" _lpchecked="1" onSubmit={verifySubmission}> */}
-        <StreetDropdown />
+        <StreetDropdown 
+          dispatch={dispatch}
+        />
         <ChildSurveys 
           studentInfo={state.studentInfo}
           dispatch={dispatch}
