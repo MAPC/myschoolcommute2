@@ -53,33 +53,10 @@ const TripReasonQuestion = ({id, mode, question, name, onChange}) => {
   }
 }
 
-const deleteStudentEntry = (e, id, studentInfo, setStudentInfo, count, setStudentCount) => {
-  e.preventDefault()
-  setStudentInfo(() => {
-    console.log(`Delete id ${id} out of ${count} total objects`)
-    let tempStudentInfo = studentInfo;
-     for (let i = id; i <= count; i++) {
-      tempStudentInfo[`grade_${i}`] = tempStudentInfo[`grade_${i+1}`]
-      tempStudentInfo[`to_school_${i-1}`] = tempStudentInfo[`to_school_${i}`]
-      tempStudentInfo[`dropoff_${i-1}`] = tempStudentInfo[`dropoff_${i}`]
-      tempStudentInfo[`from_school_${i-1}`] = tempStudentInfo[`from_school_${i}`]
-      tempStudentInfo[`pickup_${i-1}`] = tempStudentInfo[`pickup_${i}`]
-    }
-    delete tempStudentInfo[`grade_${count}`]
-    delete tempStudentInfo[`to_school_${count}`]
-    delete tempStudentInfo[`dropoff_${count}`]
-    delete tempStudentInfo[`from_school_${count}`]
-    delete tempStudentInfo[`pickup_${count}`]
-    return tempStudentInfo
-  })
-  
-  setStudentCount(count-1);
-}
-
-const ChildSurvey = ({id, setStudentCount, count, studentInfo, setStudentInfo}) => {
-  const deleteButton = id > 1
+const ChildSurvey = ({id, studentInfo, dispatch}) => {
+  const deleteButton = id > 0
     ? <button
-        onClick={(e) => deleteStudentEntry(e, id, studentInfo, setStudentInfo, count, setStudentCount)}
+        onClick={() => dispatch({type: 'removeStudent', id: id})}
         id={`remove${id}`}
       >
         x
@@ -90,7 +67,7 @@ const ChildSurvey = ({id, setStudentCount, count, studentInfo, setStudentInfo}) 
     <div className="child-survey">
       <div className="ui attached segment">
         <div className="ui top attached label child-survey__header">
-          <span>Child {id}</span>
+          <span>Child {id+1}</span>
           {deleteButton}
         </div>
         <Form.Dropdown
@@ -98,39 +75,43 @@ const ChildSurvey = ({id, setStudentCount, count, studentInfo, setStudentInfo}) 
           required
           label={ window.__('What grade is your child in?') }
           options={ grades }
-          onChange={ (e, { value }) => setStudentInfo({...studentInfo, [`grade_${id}`]: value}) }
+          onChange={(e, {value}) => dispatch({type: 'updateStudent', id: id, value: value, property: 'grade'})}
           name={ `survey_response[grade_${id}]` }
-          value={studentInfo[`grade_${id}`]}
+          value={studentInfo[`${id}`].grade}
         />
         <Form.Dropdown
           placeholder='Select from an option below' fluid selection
           required
-          onChange={ (e, { value }) => setStudentInfo({...studentInfo, [`to_school_${id}`]: value}) }
+          onChange={(e, {value}) => dispatch({type: 'updateStudent', id: id, value: value, property: 'to_school'})}
           options={ modes }
           label={ window.__('How does your child get TO school on most days?') }
           name={ `survey_response[to_school_${id}]` }
+          value={studentInfo[`${id}`].to_school}
         />
         <TripReasonQuestion
           id={id}
-          mode={studentInfo[`to_school_${id}`]}
-          onChange={ (e, { value }) => setStudentInfo({...studentInfo, [`dropoff_${id}`]: value}) }
+          mode={studentInfo[`${id}`].to_school}
+          onChange={(e, {value}) => dispatch({type: 'updateStudent', id: id, value: value, property: 'dropoff'})}
           name={ `survey_response[dropoff_${id}]` }
           question='Do you usually drop off your child on your way to work or another destination (other than home)?'
+          value={studentInfo[`${id}`].dropoff}
         />
         <Form.Dropdown
           placeholder='Select from an option below' fluid selection
           required
-          onChange={ (e, { value }) => setStudentInfo({...studentInfo, [`from_school_${id}`]: value}) }
+          onChange={(e, {value}) => dispatch({type: 'updateStudent', id: id, value: value, property: 'from_school'})}
           options={ modes }
           label={ window.__('How does your child get home FROM school on most days?') }
           name={ `survey_response[from_school_${id}]` }
+          value={studentInfo[`${id}`].from_school}
         />
         <TripReasonQuestion
           id={id}
-          mode={studentInfo[`from_school_${id}`]}
-          onChange={ (e, { value }) => setStudentInfo({...studentInfo, [`pickup_${id}`]: value}) }
+          mode={studentInfo[`${id}`].from_school}
+          onChange={(e, {value}) => dispatch({type: 'updateStudent', id: id, value: value, property: 'pickup'})}
           name={ `survey_response[pickup_${id}]` }
           question='Do you usually pick up your child on your way from work or another location (other than home)?'
+          value={studentInfo[`${id}`].pickup}
         />
       </div>
     </div>
