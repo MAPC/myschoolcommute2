@@ -1,11 +1,51 @@
-import React, { useState } from 'react';
+import React, { useReducer } from 'react';
 import StreetDropdown from './intersecting-streets/StreetDropdown';
 import ChildSurveys from './intersecting-streets/ChildSurveys';
 import { Form, Button, Dropdown } from 'semantic-ui-react';
 import axios from 'axios';
 import './intersecting-streets/App.css';
 
+function reducer(state, action) {
+  switch(action.type) {
+    case 'updateStudent':
+      const updatedStudentInfo = state.studentInfo
+      updatedStudentInfo[`${action.id}`][`${action.property}`] = action.value;
+      return { ...state, studentInfo: updatedStudentInfo }
+    case 'addStudent':
+      const increasedStudentInfo = state.studentInfo
+      increasedStudentInfo.push({
+        grade: '',
+        to_school: '',
+        dropoff: '',
+        from_school: '',
+        pickup: ''
+      })
+      return { ...state, studentInfo: increasedStudentInfo }
+    case 'removeStudent':
+      const removedStudentInfo = state.studentInfo
+      removedStudentInfo.splice([`${action.id}`], 1)
+      return { ...state, studentInfo: removedStudentInfo}
+    case 'updateVehicles':
+      return {...state, nrVehicles: action.value}
+    case 'updateLicenses':
+      return {...state, nrLicenses: action.value}
+    default:
+      throw new Error();
+  }
+}
+
 function App() {
+  const [state, dispatch] = useReducer(reducer, {
+    studentInfo: [{
+      grade: '',
+      to_school: '',
+      dropoff: '',
+      from_school: '',
+      pickup: '',
+    }],
+    nrLicenses: '',
+    nrVehicles: '',
+  })
   const csrfToken = document.querySelector('[name=csrf-token]').content
 
   const verifySubmission = (event) => {
@@ -90,26 +130,26 @@ function App() {
                   { value: '8', text: '8'  },
                   { value: '9', text: '9'  } ];
   
-  const [nrVehicles, updateNrVehicles] = useState();
-  const [nrLicenses, updateNrLicenses] = useState();
-
   return (
     <Form onSubmit={() => console.log("!")} className="new_survey_response" id="new_survey_response">
       {/* <form className="new_survey_response" id="new_survey_response" acceptCharset="UTF-8" _lpchecked="1" onSubmit={verifySubmission}> */}
-        {/* <StreetDropdown /> */}
-        <ChildSurveys />
+        <StreetDropdown />
+        <ChildSurveys 
+          studentInfo={state.studentInfo}
+          dispatch={dispatch}
+        />
         <label>{ window.__('How many vehicles do you have in your household?') }</label>
         <Dropdown 
           placeholder='Select from an option below' fluid selection
           options={ counts }
-          onChange={(value) => updateNrVehicles(value)}
+          onChange={(e, {value}) => dispatch({type: 'updateVehicles', value: value})}
           name={ 'survey_response[nr_vehicles]' }
         />
         <label>{ window.__("How many people in your household have a driver's license?") }</label>
         <Dropdown
           placeholder="Select from an option below" fluid selection
           options={ counts }
-          onChange={(value) => updateNrLicenses(value)}
+          onChange={(e, {value}) => dispatch({type: 'updateLicenses', value: value})}
           name={ 'survey_response[nr_licenses]' }
         />
         <Button type='submit'>Submit</Button>
