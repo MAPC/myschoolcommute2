@@ -96,7 +96,7 @@ function App() {
   return (
     <Form onSubmit={() => console.log("!")} className="new_survey_response" id="new_survey_response">
       {/* <form className="new_survey_response" id="new_survey_response" acceptCharset="UTF-8" _lpchecked="1" onSubmit={verifySubmission}> */}
-        <StreetDropdown />
+        {/* <StreetDropdown /> */}
         <ChildSurveys />
         <label>{ window.__('How many vehicles do you have in your household?') }</label>
         <Dropdown 

@@ -53,19 +53,38 @@ const TripReasonQuestion = ({id, mode, question, name, onChange}) => {
   }
 }
 
+const deleteStudentEntry = (e, id, studentInfo, setStudentInfo, count, setStudentCount) => {
+  e.preventDefault()
+  setStudentInfo(() => {
+    console.log(`Delete id ${id} out of ${count} total objects`)
+    let tempStudentInfo = studentInfo;
+     for (let i = id; i <= count; i++) {
+      tempStudentInfo[`grade_${i}`] = tempStudentInfo[`grade_${i+1}`]
+      tempStudentInfo[`to_school_${i-1}`] = tempStudentInfo[`to_school_${i}`]
+      tempStudentInfo[`dropoff_${i-1}`] = tempStudentInfo[`dropoff_${i}`]
+      tempStudentInfo[`from_school_${i-1}`] = tempStudentInfo[`from_school_${i}`]
+      tempStudentInfo[`pickup_${i-1}`] = tempStudentInfo[`pickup_${i}`]
+    }
+    delete tempStudentInfo[`grade_${count}`]
+    delete tempStudentInfo[`to_school_${count}`]
+    delete tempStudentInfo[`dropoff_${count}`]
+    delete tempStudentInfo[`from_school_${count}`]
+    delete tempStudentInfo[`pickup_${count}`]
+    return tempStudentInfo
+  })
+  
+  setStudentCount(count-1);
+}
+
 const ChildSurvey = ({id, setStudentCount, count, studentInfo, setStudentInfo}) => {
   const deleteButton = id > 1
-    ? <button 
-        onClick={(e) => {
-          e.preventDefault()
-          setStudentCount(count-1)
-        }}
+    ? <button
+        onClick={(e) => deleteStudentEntry(e, id, studentInfo, setStudentInfo, count, setStudentCount)}
         id={`remove${id}`}
       >
         x
       </button>
-      : '';
-  
+    : '';
 
   return (
     <div className="child-survey">
@@ -81,6 +100,7 @@ const ChildSurvey = ({id, setStudentCount, count, studentInfo, setStudentInfo}) 
           options={ grades }
           onChange={ (e, { value }) => setStudentInfo({...studentInfo, [`grade_${id}`]: value}) }
           name={ `survey_response[grade_${id}]` }
+          value={studentInfo[`grade_${id}`]}
         />
         <Form.Dropdown
           placeholder='Select from an option below' fluid selection
