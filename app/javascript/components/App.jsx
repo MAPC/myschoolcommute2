@@ -18,9 +18,7 @@ function reducer(state, action) {
       increasedStudentInfo.push({
         grade: '',
         to_school: '',
-        dropoff: '',
         from_school: '',
-        pickup: ''
       })
       return { ...state, studentInfo: increasedStudentInfo }
     case 'removeStudent':
@@ -38,13 +36,11 @@ function reducer(state, action) {
 
 function App() {
   const [state, dispatch] = useReducer(reducer, {
-    chosenLatLng: '',
+    chosenLatLng: 'POINT (-71 42)',
     studentInfo: [{
       grade: '',
       to_school: '',
-      dropoff: '',
       from_school: '',
-      pickup: '',
     }],
     nrLicenses: '',
     nrVehicles: '',
@@ -55,57 +51,72 @@ function App() {
     event.preventDefault();
     const form = document.querySelector('#root').parentNode;
     const mapContainer = form.querySelector('.map-container');
-    const geometry = form.querySelector('input[name="survey_response[geometry]"]');
     const formFields = Array.from(form.querySelectorAll('*[required]')); // the user might add more fields dynamically
     const surveySelectDropdown = form.querySelector('.survey-id-selection')
     let noErrors = true;
     const ERROR_CLASS = 'error';
     const DEFAULT_POINT = 'POINT (-71 42)';
 
+    // Bulk editor - select which survey to run
     if (surveySelectDropdown) {
       if (!surveySelectDropdown.querySelector('input[name="survey_response[survey_id]"]').getAttribute('value')) {
         surveySelectDropdown.classList.add(ERROR_CLASS);
         noErrors = false;
+        return;
       } else {
         surveySelectDropdown.classList.remove(ERROR_CLASS)
       }
     }
 
-    if (geometry.value === DEFAULT_POINT) {
+    // Check if coordinates are selected on map or from dropdowns
+    if (state.chosenLatLng === DEFAULT_POINT) {
       mapContainer.classList.add(ERROR_CLASS);
       noErrors = false;
+      return;
     }
     else {
       mapContainer.classList.remove(ERROR_CLASS);
     }
 
-    formFields.forEach(field => {
-      const fieldName=field.attributes.name.nodeValue;
-      const input = document.querySelector("input[name='" + fieldName + "']")
-  
-      if (input.value === '') {
+    // Make sure each field has a filled, corresponding piece of state
+    formFields.forEach((field) => {
+      let studentId = /\d+/.exec(field.id)[0]
+      let studentField = /\D+/.exec(field.id)[0].slice(0, -1)
+
+      if (!state.studentInfo[studentId][`${studentField}`]) {
         field.classList.add(ERROR_CLASS);
         noErrors = false;
+        return;
       }
     });
 
     if (noErrors) {
-      handleSubmit(event)
+      const formResponse = {};
+      formResponse.geometry = state.chosenLatLng
+      state.studentInfo.forEach((student, i) => {
+        formResponse[`grade_${i}`] = student.grade
+        formResponse[`to_school_${i}`] = student.to_school
+        formResponse[`from_school_${i}`] = student.from_school
+        formResponse[`dropoff_${i}`] = student.dropoff
+        formResponse[`pickup_${i}`] = student.pickup
+      })
+      formResponse.nr_licenses = state.nrLicenses
+      formResponse.nr_vehicles = state.nrVehicles
+      handleSubmit(event, formResponse)
     }
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event, response) => {
     const surveyId = window.isBulkEntry ? +document.querySelector('[name="survey_response[survey_id]"]').getAttribute("value") : window.survey_id;
     const submit = document.querySelector("button[type='submit']")
     submit.innerText="Submitting..."
     submit.disabled = true
-    const submission = new FormData(event.target)
-    submission.append("survey_response[survey_id]", surveyId)
-    submission.append("survey_response[is_bulk_entry]", window.isBulkEntry)
+    response.survey_id = surveyId
+    response.is_bulk_entry = isBulkEntry
     axios({
       method: 'post',
       url: '/survey_responses',
-      data: submission,
+      data: response,
       headers: { 'X-CSRF-TOKEN': csrfToken, 'Accept': 'application/json' },
       responseType: "json",
     })
@@ -134,30 +145,27 @@ function App() {
                   { value: '9', text: '9'  } ];
   
   return (
-    <Form onSubmit={() => console.log("!")} className="new_survey_response" id="new_survey_response">
-      {/* <form className="new_survey_response" id="new_survey_response" acceptCharset="UTF-8" _lpchecked="1" onSubmit={verifySubmission}> */}
-        <StreetDropdown 
-          dispatch={dispatch}
-        />
-        <ChildSurveys 
-          studentInfo={state.studentInfo}
-          dispatch={dispatch}
-        />
-        <label>{ window.__('How many vehicles do you have in your household?') }</label>
-        <Dropdown 
-          placeholder='Select from an option below' fluid selection
-          options={ counts }
-          onChange={(e, {value}) => dispatch({type: 'updateVehicles', value: value})}
-          name={ 'survey_response[nr_vehicles]' }
-        />
-        <label>{ window.__("How many people in your household have a driver's license?") }</label>
-        <Dropdown
-          placeholder="Select from an option below" fluid selection
-          options={ counts }
-          onChange={(e, {value}) => dispatch({type: 'updateLicenses', value: value})}
-          name={ 'survey_response[nr_licenses]' }
-        />
-        <Button type='submit'>Submit</Button>
+    <Form onSubmit={(e) => { return verifySubmission(e) }} className="new_survey_response" id="new_survey_response">
+      <StreetDropdown dispatch={dispatch} />
+      <ChildSurveys 
+        studentInfo={state.studentInfo}
+        dispatch={dispatch}
+      />
+      <label>{ window.__('How many vehicles do you have in your household?') }</label>
+      <Dropdown 
+        placeholder='Select from an option below' fluid selection
+        options={ counts }
+        onChange={(e, {value}) => dispatch({type: 'updateVehicles', value: value})}
+        name={ 'survey_response[nr_vehicles]' }
+      />
+      <label>{ window.__("How many people in your household have a driver's license?") }</label>
+      <Dropdown
+        placeholder="Select from an option below" fluid selection
+        options={ counts }
+        onChange={(e, {value}) => dispatch({type: 'updateLicenses', value: value})}
+        name={ 'survey_response[nr_licenses]' }
+      />
+      <Button type='submit'>Submit</Button>
       <div className="submit__results-text"></div>
     </Form>
   )

@@ -36,17 +36,18 @@ const yesNo = [ { value: 'y', text: 'Yes' },
                 return { value: option.value, text: window.__(option.text) };
               });
 
-const TripReasonQuestion = ({id, mode, question, name, onChange}) => {
+const TripReasonQuestion = ({id, idText, mode, question, onChange, studentInfo}) => {
   if (mode === 'fv' || mode === 'cp' ) {
     return (
-      <div className="field">
-        <Form.Dropdown placeholder={question} fluid selection
-                  required
-                  name={name}
-                  onChange={onChange}
-                  label={ window.__(question) }
-                  options={ yesNo } />
-      </div>
+      <Form.Dropdown 
+        placeholder={question} fluid selection
+        id={`${idText}_${id}`}
+        required
+        onChange={onChange}
+        label={ window.__(question) }
+        options={ yesNo }
+        value={studentInfo[`${id}`][`${idText}`]}
+      />
     )
   } else {
     return null
@@ -76,7 +77,7 @@ const ChildSurvey = ({id, studentInfo, dispatch}) => {
           label={ window.__('What grade is your child in?') }
           options={ grades }
           onChange={(e, {value}) => dispatch({type: 'updateStudent', id: id, value: value, property: 'grade'})}
-          name={ `survey_response[grade_${id}]` }
+          id={`grade_${id}`}
           value={studentInfo[`${id}`].grade}
         />
         <Form.Dropdown
@@ -85,16 +86,17 @@ const ChildSurvey = ({id, studentInfo, dispatch}) => {
           onChange={(e, {value}) => dispatch({type: 'updateStudent', id: id, value: value, property: 'to_school'})}
           options={ modes }
           label={ window.__('How does your child get TO school on most days?') }
-          name={ `survey_response[to_school_${id}]` }
+          id={`to_school_${id}`}
           value={studentInfo[`${id}`].to_school}
         />
         <TripReasonQuestion
           id={id}
+          idText={`dropoff`}
           mode={studentInfo[`${id}`].to_school}
           onChange={(e, {value}) => dispatch({type: 'updateStudent', id: id, value: value, property: 'dropoff'})}
-          name={ `survey_response[dropoff_${id}]` }
           question='Do you usually drop off your child on your way to work or another destination (other than home)?'
           value={studentInfo[`${id}`].dropoff}
+          studentInfo={studentInfo}
         />
         <Form.Dropdown
           placeholder='Select from an option below' fluid selection
@@ -102,16 +104,17 @@ const ChildSurvey = ({id, studentInfo, dispatch}) => {
           onChange={(e, {value}) => dispatch({type: 'updateStudent', id: id, value: value, property: 'from_school'})}
           options={ modes }
           label={ window.__('How does your child get home FROM school on most days?') }
-          name={ `survey_response[from_school_${id}]` }
+          id={`from_school_${id}`}
           value={studentInfo[`${id}`].from_school}
         />
         <TripReasonQuestion
           id={id}
+          idText={`pickup`}
           mode={studentInfo[`${id}`].from_school}
           onChange={(e, {value}) => dispatch({type: 'updateStudent', id: id, value: value, property: 'pickup'})}
-          name={ `survey_response[pickup_${id}]` }
           question='Do you usually pick up your child on your way from work or another location (other than home)?'
           value={studentInfo[`${id}`].pickup}
+          studentInfo={studentInfo}
         />
       </div>
     </div>
