@@ -62,7 +62,6 @@ function App() {
       if (!surveySelectDropdown.querySelector('input[name="survey_response[survey_id]"]').getAttribute('value')) {
         surveySelectDropdown.classList.add(ERROR_CLASS);
         noErrors = false;
-        return;
       } else {
         surveySelectDropdown.classList.remove(ERROR_CLASS)
       }
@@ -72,7 +71,6 @@ function App() {
     if (state.chosenLatLng === DEFAULT_POINT) {
       mapContainer.classList.add(ERROR_CLASS);
       noErrors = false;
-      return;
     }
     else {
       mapContainer.classList.remove(ERROR_CLASS);
@@ -86,7 +84,6 @@ function App() {
       if (!state.studentInfo[studentId][`${studentField}`]) {
         field.classList.add(ERROR_CLASS);
         noErrors = false;
-        return;
       }
     });
 

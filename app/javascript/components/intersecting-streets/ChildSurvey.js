@@ -57,7 +57,10 @@ const TripReasonQuestion = ({id, idText, mode, question, onChange, studentInfo})
 const ChildSurvey = ({id, studentInfo, dispatch}) => {
   const deleteButton = id > 0
     ? <button
-        onClick={() => dispatch({type: 'removeStudent', id: id})}
+        onClick={(e) => {
+          e.preventDefault()
+          dispatch({type: 'removeStudent', id: id})}
+        }
         id={`remove${id}`}
       >
         x
