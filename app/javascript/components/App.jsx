@@ -3,7 +3,6 @@ import StreetDropdown from './intersecting-streets/StreetDropdown';
 import ChildSurveys from './intersecting-streets/ChildSurveys';
 import { Form, Button, Dropdown } from 'semantic-ui-react';
 import axios from 'axios';
-import './intersecting-streets/App.css';
 
 function reducer(state, action) {
   switch(action.type) {
