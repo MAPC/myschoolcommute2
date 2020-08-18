@@ -107,17 +107,20 @@ class StreetDropdown extends Component {
 
   OnIntersectingPointsChange = (event, data) => {
     let chosenIndex = data.options.findIndex((el) => { return el.value === data.value });
+    this.props.dispatch({type: 'updateLatLng', value: `POINT (${this.state.points[`${chosenIndex}`]['lng']} ${this.state.points[`${chosenIndex}`]['lat']})` })
     this.setState({ selectedIntersectionIndex: chosenIndex, customPoint: null }, done => {
       this.forceUpdate();
     });
   }
 
   OnMarkerClick = (index) => {
+    this.props.dispatch({type: 'updateLatLng', value: `POINT (${this.state.points[`${index}`]['lng']} ${this.state.points[`${index}`]['lat']})` })
     this.setState({ selectedIntersectionIndex: index, customPoint: null });
   }
 
   AddCustomPoint = (loc) => {
     this.setState({ customPoint: { lat: loc.latlng.lat, lng: loc.latlng.lng } });
+    this.props.dispatch({type: 'updateLatLng', value: `POINT (${this.state.customPoint['lng']} ${this.state.customPoint['lat']})` })
   }
 
   ShowDropdowns = (event) => {
@@ -178,7 +181,6 @@ class StreetDropdown extends Component {
                         onChange={onSecondChange} />
             </div>
           </div>
-          <input type="hidden" name="survey_response[geometry]" value={`POINT (${chosenLatLng['lng']} ${chosenLatLng['lat']})`} />
         </div>
       </div>
     )
