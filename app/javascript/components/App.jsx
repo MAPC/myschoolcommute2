@@ -148,22 +148,26 @@ function App() {
         studentInfo={state.studentInfo}
         dispatch={dispatch}
       />
-      <label>{ window.__('How many vehicles do you have in your household?') }</label>
-      <Dropdown 
-        placeholder='Select from an option below' fluid selection
-        options={ counts }
-        onChange={(e, {value}) => dispatch({type: 'updateVehicles', value: value})}
-        name={ 'survey_response[nr_vehicles]' }
-      />
-      <label>{ window.__("How many people in your household have a driver's license?") }</label>
-      <Dropdown
-        placeholder="Select from an option below" fluid selection
-        options={ counts }
-        onChange={(e, {value}) => dispatch({type: 'updateLicenses', value: value})}
-        name={ 'survey_response[nr_licenses]' }
-      />
-      <Button type='submit'>Submit</Button>
-      <div className="submit__results-text"></div>
+      <div className="ui attached segment segment__wrapper">
+        <label>{ window.__('How many vehicles do you have in your household?') }</label>
+        <Dropdown 
+          placeholder='Select from an option below' fluid selection
+          options={ counts }
+          onChange={(e, {value}) => dispatch({type: 'updateVehicles', value: value})}
+          name={ 'survey_response[nr_vehicles]' }
+        />
+        <label>{ window.__("How many people in your household have a driver's license?") }</label>
+        <Dropdown
+          placeholder="Select from an option below" fluid selection
+          options={ counts }
+          onChange={(e, {value}) => dispatch({type: 'updateLicenses', value: value})}
+          name={ 'survey_response[nr_licenses]' }
+        />
+      </div>
+      <div className="row">
+        <Button type='submit' className="primary ui button center">Submit</Button>
+        <div className="submit__results-text"></div>
+      </div>
     </Form>
   )
 }

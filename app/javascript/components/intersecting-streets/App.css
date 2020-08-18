@@ -39,3 +39,17 @@ body {
   flex-direction: row;
   justify-content: space-between;
 }
+
+.ui.equal.width.padded.grid.attached.segment.segment__wrapper,
+.ui.child-survey__wrapper,
+.ui.attached.segment.segment__wrapper {
+  margin-bottom: 2rem!important;
+}
+
+.child-survey {
+  margin-bottom: 1rem;
+}
+
+.ui.button.center {
+  margin: 0 auto;
+}

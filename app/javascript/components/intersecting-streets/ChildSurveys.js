@@ -16,12 +16,12 @@ const ChildSurveys = ({studentInfo, dispatch}) => {
   }
 
   return (
-    <div>
+    <div className="ui child-survey__wrapper">
       {childSurveys}
       <Button
         onClick={() => dispatch({type: 'addStudent'})}
         type='button'
-        className="primary"
+        className="pui button"
       >
         { window.__('Add another child at this school') }
       </Button>
