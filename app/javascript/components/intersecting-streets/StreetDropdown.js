@@ -140,7 +140,7 @@ class StreetDropdown extends Component {
         chosenLatLng = this.state.customPoint || selectedIntersection;
 
     return (
-      <div className="ui equal width padded grid">
+      <div className="ui equal width padded grid attached segment segment__wrapper">
         <div className="row">
           <PointsMap  zoom={this.state.zoom}
                       points={this.state.points}
