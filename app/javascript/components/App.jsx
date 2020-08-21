@@ -120,7 +120,11 @@ function App() {
       submit.innerText="Submitted"
       document.querySelector('.submit__results-text').innerText = "Survey response was successfully created. Page refreshing momentarily..."
       sessionStorage.setItem('lastSubmittedSurveyId', surveyId);
-      setTimeout(function() { location.reload(); }, 1000);
+      if (isBulkEntry) {
+        setTimeout(function() { location.reload(); }, 1000);
+      } else {
+        setTimeout(function() { location.reload(); }, 3000);
+      }
     })
     .catch(function (error) {
       console.log(error);
@@ -163,10 +167,8 @@ function App() {
           name={ 'survey_response[nr_licenses]' }
         />
       </div>
-      <div className="row">
-        <Button type='submit' className="primary ui button center">Submit</Button>
-        <div className="submit__results-text"></div>
-      </div>
+      <Button type='submit' className="row primary ui button center">Submit</Button>
+      <div className="submit__results-text"></div>
     </Form>
   )
 }

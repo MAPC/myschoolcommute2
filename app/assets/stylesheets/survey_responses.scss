@@ -37,3 +37,10 @@
 .child-survey {
   margin-bottom: 1rem;
 }
+
+.submit {
+  &__results-text {
+    margin: 1rem auto;
+    text-align: center;
+  }
+}
