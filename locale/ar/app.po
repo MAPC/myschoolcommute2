@@ -408,7 +408,7 @@ msgid ""
 "Routes to School at 857-368-8638."
 msgstr ""
 "إذا كان لديك أسئلة ، يرجى الاتصال على مدير المدرسة أو استدعاء طرق آمنة لل "
-"مدرسة في 857-368-8638 ."
+"مدرسة في 857-383-3808 ."
 
 #: templates/survey/form.html:351
 msgid "We appreciate your time and effort!"
