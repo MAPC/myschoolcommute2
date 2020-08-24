@@ -27,7 +27,6 @@
           <div id="map-container"></div>
         </div>
         <%= javascript_pack_tag 'components' %>
-        <%= stylesheet_pack_tag 'components' %>
       <% end %>
     <% else %>
       This school has no surveys. <%= link_to 'Create one here.', school_path(@survey_response.school) %>
