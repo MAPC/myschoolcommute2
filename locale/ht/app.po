@@ -419,10 +419,10 @@ msgstr "Si ou deja fè yon sondaj sou papye , pa ranpli fòm sa a sou entènèt.
 #: templates/survey/form.html:347
 msgid ""
 "If you have questions, please contact a school administrator or call Safe "
-"Routes to School at 857-368-8638."
+"Routes to School at 857-383-3808."
 msgstr ""
 "Si w gen kesyon , tanpri kontakte yon administratè lekòl la oswa rele Wout "
-"Sekirite a Lekòl nan 857-368-8638 ."
+"Sekirite a Lekòl nan 857-383-3808 ."
 
 #: templates/survey/form.html:351
 msgid "We appreciate your time and effort!"
