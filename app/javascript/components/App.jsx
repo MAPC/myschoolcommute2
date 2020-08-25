@@ -143,7 +143,6 @@ function App() {
                   { value: '7', text: '7'  },
                   { value: '8', text: '8'  },
                   { value: '9', text: '9'  } ];
-  
   return (
     <Form onSubmit={(e) => { return verifySubmission(e) }} className="new_survey_response" id="new_survey_response">
       <StreetDropdown dispatch={dispatch} />
