@@ -19,6 +19,7 @@ Rails.application.configure do
     api_key: Rails.application.secrets.mailgun_api_key,
     domain: 'mailgun2.mapc.org'
   }
+  config.action_mailer.default_url_options = { host: 'masaferoutessurvey.org' }
 
 
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
