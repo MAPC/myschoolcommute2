@@ -157,7 +157,7 @@ class StreetDropdown extends Component {
         <div className={this.state.showDropdowns ? 'row active' : 'row'} style={{display: this.state.showDropdowns ? 'flex' : 'none'}}>
           <div className="column">
             <div className="field">
-              <Form.Dropdown placeholder='Select from an option below' fluid search selection
+              <Form.Dropdown placeholder={ window.__('Select from an option below') } fluid search selection
                         options={munis}
                         value={muni}
                         label={ window.__('Name of your town/city') }
@@ -166,7 +166,7 @@ class StreetDropdown extends Component {
           </div>
           <div className="column">
             <div className="field">
-              <Form.Dropdown placeholder='Select from an option below' fluid search selection
+              <Form.Dropdown placeholder={ window.__('Select from an option below') } fluid search selection
                         options={ initialStreets }
                         label={ window.__('Name of your street') }
                         onChange={onFirstChange} />
@@ -174,7 +174,7 @@ class StreetDropdown extends Component {
           </div>
           <div className="column">
             <div className="field">
-              <Form.Dropdown placeholder='Select from an option below' fluid search
+              <Form.Dropdown placeholder={ window.__('Select from an option below') } fluid search
                         value={selectedIntersection.text} selection
                         options={ intersectingStreets }
                         label={ window.__('Name of nearest cross-street (intersection)') }

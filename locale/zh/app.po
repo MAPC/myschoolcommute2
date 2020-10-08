@@ -395,6 +395,21 @@ msgstr "…或告诉我们距离您家最近的街道交叉路口。"
 msgid "Add another child at this school"
 msgstr "添加另一个孩子在这所学校"
 
+msgid "Child"
+msgstr "子"
+
+msgid "Select from an option below"
+msgstr "从下面的选项中选择"
+
+msgid "Submit"
+msgstr "提交"
+
+msgid "Survey response was successfully created. Page refreshing momentarily..."
+msgstr "调查回复已成功创建。页面短暂刷新..."
+
+msgid "Something went wrong. Please contact an administrator."
+msgstr "出问题了。请联系管理员。"
+
 #: templates/survey/index.html:56
 msgid ""
 "Would you like to help create safe routes to school for students in your "

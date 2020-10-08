@@ -472,8 +472,23 @@ msgstr ""
 " de votre résidence."
 
 #: templates/survey/form.html:450
+msgid "Child"
+msgstr "Enfant"
+
+msgid "Select from an option below"
+msgstr "Veuillez sélectionner une option ci-dessous"
+
+msgid "Submit"
+msgstr "Envoyer"
+
 msgid "Add another child at this school"
 msgstr "Ajouter un autre enfant à cette école"
+
+msgid "Survey response was successfully created. Page refreshing momentarily..."
+msgstr "Les réponses à l'enquête ont été créées avec succès.  La page est momentanément en cours d'actualisation... "
+
+msgid "Something went wrong. Please contact an administrator."
+msgstr "Une erreur est survenue. Veuillez contacter votre administrateur."
 
 #: templates/survey/index.html:56
 msgid ""

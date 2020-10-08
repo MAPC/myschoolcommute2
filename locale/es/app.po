@@ -38,6 +38,12 @@ msgid "How many people in your household have a driver's license?"
 msgstr "¿Cuántas personas en su hogar tienen una licencia de conducir?"
 
 #: forms.py:83
+msgid: "Child"
+msgstr "Niño/a"
+
+msgid: "Select from an option below"
+msgstr "Seleccione una opción a continuación"
+
 msgid "What grade is your child in?"
 msgstr "¿En qué grado está su hijo?"
 
@@ -59,6 +65,15 @@ msgstr "¿Cómo vuelve su hijo de la escuela la mayoría de los días?"
 msgid ""
 "Do you usually pick up your child on your way from work or another location (other than home)?"
 msgstr "¿Recoge usted normalmente a su hijo de camino a su casa al volver del trabajo o de otro sitio (que no sea su hogar)?"
+
+msgid "Submit"
+msgstr "Enviar"
+
+msgid "Survey response was successfully created. Page refreshing momentarily..."
+msgstr "La respuesta a la encuesta se creó correctamente. La página se está actualizando en este momento."
+
+msgid "Something went wrong. Please contact an administrator."
+msgstr "Se produjo un error. Contáctese con un administrador."
 
 #: models.py:275
 msgid "Walk"

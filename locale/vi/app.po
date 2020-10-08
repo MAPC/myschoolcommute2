@@ -463,6 +463,21 @@ msgstr ""
 msgid "Add another child at this school"
 msgstr "Thêm một đứa trẻ khác ở trường này"
 
+msgid "Child"
+msgstr "Con"
+
+msgid "Select from an option below"
+msgstr "Chọn một ý bên dưới"
+
+msgid "Submit"
+msgstr "Gửi"
+
+msgid "Survey response was successfully created. Page refreshing momentarily..."
+msgstr "Đã tạo thành công câu trả lời khảo sát. Đang tải lại trang trong giây lát..."
+
+msgid "Something went wrong. Please contact an administrator."
+msgstr "Đã xảy ra sự cố. Vui lòng liên hệ với quản trị viên."
+
 #: templates/survey/index.html:56
 msgid ""
 "Would you like to help create safe routes to school for students in your "

@@ -451,8 +451,23 @@ msgid "...or tell us the street intersection closest to your home."
 msgstr "…oswa di nou entèseksyon ri ki pipre a lakay ou."
 
 #: templates/survey/form.html:450
+msgid "Child"
+msgstr "Timoun"
+
+msgid "Select from an option below"
+msgstr "Chwazi nan yon opsyon ki anba a"
+
+msgid "Submit"
+msgstr "Soumèt"
+
 msgid "Add another child at this school"
 msgstr "Ajoute yon lòt pitit nan lekòl sa a"
+
+msgid "Survey response was successfully created. Page refreshing momentarily..."
+msgstr "Repons sondaj la te kreye avèk siksè. Paj la ap aktyalize pandan yon moman ..."
+
+msgid "Something went wrong. Please contact an administrator."
+msgstr "Gen yon bagay ki pase mal. Tanpri kontakte yon administratè."
 
 #: templates/survey/index.html:56
 msgid ""
