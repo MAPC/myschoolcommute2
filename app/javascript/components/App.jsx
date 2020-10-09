@@ -105,7 +105,6 @@ function App() {
   const handleSubmit = (event, response) => {
     const surveyId = window.isBulkEntry ? +document.querySelector('[name="survey_response[survey_id]"]').getAttribute("value") : window.survey_id;
     const submit = document.querySelector("button[type='submit']")
-    submit.innerText="Submitting..."
     submit.disabled = true
     response.survey_id = surveyId
     response.is_bulk_entry = isBulkEntry
@@ -117,8 +116,7 @@ function App() {
       responseType: "json",
     })
     .then(function (response) {
-      submit.innerText="Submitted"
-      document.querySelector('.submit__results-text').innerText = "Survey response was successfully created. Page refreshing momentarily..."
+      document.querySelector('.submit__results-text').innerText = window.__('Survey response was successfully created. Page refreshing momentarily...')
       sessionStorage.setItem('lastSubmittedSurveyId', surveyId);
       if (isBulkEntry) {
         setTimeout(function() { location.reload(); }, 1000);
@@ -128,8 +126,7 @@ function App() {
     })
     .catch(function (error) {
       console.log(error);
-      submit.innerText="Submission failed"
-      document.querySelector('.submit__results-text').innerText = "Something went wrong. Please contact an administrator."
+      document.querySelector('.submit__results-text').innerText = window.__('Something went wrong. Please contact an administrator.')
     })
   }
 
@@ -153,20 +150,20 @@ function App() {
       <div className="ui attached segment segment__wrapper">
         <label>{ window.__('How many vehicles do you have in your household?') }</label>
         <Dropdown 
-          placeholder='Select from an option below' fluid selection
+          placeholder={ window.__('Select from an option below') } fluid selection
           options={ counts }
           onChange={(e, {value}) => dispatch({type: 'updateVehicles', value: value})}
           name={ 'survey_response[nr_vehicles]' }
         />
         <label>{ window.__("How many people in your household have a driver's license?") }</label>
         <Dropdown
-          placeholder="Select from an option below" fluid selection
+          placeholder={ window.__('Select from an option below') } fluid selection
           options={ counts }
           onChange={(e, {value}) => dispatch({type: 'updateLicenses', value: value})}
           name={ 'survey_response[nr_licenses]' }
         />
       </div>
-      <Button type='submit' className="row primary ui button center">Submit</Button>
+      <Button type='submit' className="row primary ui button center">{ window.__('Submit') }</Button>
       <div className="submit__results-text"></div>
     </Form>
   )

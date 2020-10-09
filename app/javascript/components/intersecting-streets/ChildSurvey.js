@@ -71,11 +71,11 @@ const ChildSurvey = ({id, studentInfo, dispatch}) => {
     <div className="child-survey">
       <div className="ui attached segment">
         <div className="ui top attached label child-survey__header">
-          <span>Child {id+1}</span>
+          <span>{ window.__('Child') } { id+1 }</span>
           {deleteButton}
         </div>
         <Form.Dropdown
-          placeholder='Select from an option below' fluid selection
+          placeholder={ window.__('Select from an option below') } fluid selection
           required
           label={ window.__('What grade is your child in?') }
           options={ grades }
@@ -84,7 +84,7 @@ const ChildSurvey = ({id, studentInfo, dispatch}) => {
           value={studentInfo[`${id}`].grade}
         />
         <Form.Dropdown
-          placeholder='Select from an option below' fluid selection
+          placeholder={ window.__('Select from an option below') } fluid selection
           required
           onChange={(e, {value}) => dispatch({type: 'updateStudent', id: id, value: value, property: 'to_school'})}
           options={ modes }
@@ -97,12 +97,12 @@ const ChildSurvey = ({id, studentInfo, dispatch}) => {
           idText={`dropoff`}
           mode={studentInfo[`${id}`].to_school}
           onChange={(e, {value}) => dispatch({type: 'updateStudent', id: id, value: value, property: 'dropoff'})}
-          question='Do you usually drop off your child on your way to work or another destination (other than home)?'
+          question={ window.__('Do you usually drop off your child on your way to work or another destination (other than home)?') }
           value={studentInfo[`${id}`].dropoff}
           studentInfo={studentInfo}
         />
         <Form.Dropdown
-          placeholder='Select from an option below' fluid selection
+          placeholder={ window.__('Select from an option below') } fluid selection
           required
           onChange={(e, {value}) => dispatch({type: 'updateStudent', id: id, value: value, property: 'from_school'})}
           options={ modes }
@@ -115,7 +115,7 @@ const ChildSurvey = ({id, studentInfo, dispatch}) => {
           idText={`pickup`}
           mode={studentInfo[`${id}`].from_school}
           onChange={(e, {value}) => dispatch({type: 'updateStudent', id: id, value: value, property: 'pickup'})}
-          question='Do you usually pick up your child on your way from work or another location (other than home)?'
+          question={ window.__('Do you usually pick up your child on your way from work or another location (other than home)?') }
           value={studentInfo[`${id}`].pickup}
           studentInfo={studentInfo}
         />

@@ -461,6 +461,21 @@ msgstr ""
 msgid "Add another child at this school"
 msgstr "បន្ថែម កូនមួយទៀត នៅសាលា នេះ"
 
+msgid "Child"
+msgstr "កុមារ"
+
+msgid "Select from an option below"
+msgstr "ជ្រើសរើសពីជម្រើសខាងក្រោម"
+
+msgid "Submit"
+msgstr "ដាក់ស្នើ"
+
+msgid "Survey response was successfully created. Page refreshing momentarily..."
+msgstr "ការឆ្លើយតបលើការស្ទង់មតិត្រូវបានបង្កើតដោយជោគជ័យ។ ធ្វើឱ្យទំព័រថ្មីឡើងវិញមួយភ្លែត..."
+
+msgid "Something went wrong. Please contact an administrator."
+msgstr "មានអ្វីមួយមិនប្រក្រតី។ សូមទាក់ទងអ្នកគ្រប់គ្រងប្រព័ន្ធ។"
+
 #: templates/survey/index.html:56
 msgid ""
 "Would you like to help create safe routes to school for students in your "

@@ -439,6 +439,21 @@ msgstr "... أو أخبرنا أقرب تقاطع طرق إلى منزلك."
 msgid "Add another child at this school"
 msgstr "إضافة طفل آخر في هذه المدرسة"
 
+msgid "Child"
+msgstr "الطفل"
+
+msgid "Select from an option below"
+msgstr "حدد أحد الخيارات"
+
+msgid "Submit"
+msgstr "إرسال"
+
+msgid "Survey response was successfully created. Page refreshing momentarily..."
+msgstr "تم إنشاء إجابة الاستبيان بنجاح. يتم تحديث الصفحة للحظات..."
+
+msgid "Something went wrong. Please contact an administrator."
+msgstr "حدث خطأ ما. يُرجى الاتصال بالمسؤول."
+
 #: templates/survey/index.html:56
 msgid ""
 "Would you like to help create safe routes to school for students in your "
