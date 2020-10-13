@@ -31,3 +31,15 @@ append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/syst
 
 # Default value for keep_releases is 5
 set :keep_releases, 2
+
+before "deploy:assets:precompile", "deploy:yarn_install"
+namespace :deploy do
+  desc "Run rake yarn install"
+  task :yarn_install do
+    on roles(:web) do
+      within release_path do
+        execute("source ~/.nvm/nvm.sh && cd #{release_path} && yarn install --silent --no-progress --no-audit --no-optional")
+      end
+    end
+  end
+end
