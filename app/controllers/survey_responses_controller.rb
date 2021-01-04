@@ -3,8 +3,11 @@ class SurveyResponsesController < ApplicationController
   # GET /survey_responses
   # GET /survey_responses.json
   def index
+    authorize SurveyResponse
     respond_to do |format|
       format.csv { send_data SurveyResponse.to_csv }
+      format.html { redirect_to '/', notice: 'This page is not available. Please contact an administrator for assistance.' }
+      format.json { redirect_to '/', notice: 'This resource is not available. Please contact an administrator for assistance.' }
     end
   end
 
@@ -20,7 +23,6 @@ class SurveyResponsesController < ApplicationController
       @survey_response = SurveyResponse.new(school: School.find(params[:school_id]))
       @school = School.find(params[:school_id])
       @all_surveys = Survey.select(:id).where(:school_id => @school.id).all
-      # binding.pry
     else
       @survey_response = SurveyResponse.new
     end
