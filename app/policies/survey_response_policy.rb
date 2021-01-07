@@ -1,4 +1,8 @@
 class SurveyResponsePolicy < ApplicationPolicy
+  def index?
+    user != nil and (user.is_admin?)
+  end
+
   def new?
     user != nil and (user.is_admin? or user.is_district?)
   end
