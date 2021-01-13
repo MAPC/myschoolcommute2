@@ -2,11 +2,9 @@
  var clickMarker
  var latlong
 
- L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
      maxZoom: 18,
-     id: 'mapbox.streets',
-     accessToken: 'pk.eyJ1IjoibXphZ2FqYSIsImEiOiJ5N0Y3Z3pVIn0.Wqu2VeG4ycaw0nPrwy0-sA'
  }).addTo(mymap);
 
  function onMapClick(e) {

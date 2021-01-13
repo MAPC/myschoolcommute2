@@ -63,8 +63,8 @@ class SchoolDashboard < Administrate::BaseDashboard
     # :shed_10,
     # :shed_15,
     # :shed_20,
-    :created_at,
-    :updated_at,
+    # :created_at,
+    # :updated_at,
     # :muni_id,
   ].freeze
 
