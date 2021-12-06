@@ -6,4 +6,5 @@
 enrollment16_17 = read.csv("enrollment16_17.csv", as.is = T)
 enrollment17_18 = read.csv("enrollment17_18.csv", as.is = T)
 enrollment18_19 = read.csv("enrollment18_19.csv", as.is = T)
+enrollment19_20 = read.csv("enrollment19_20.csv", as.is = T)
 enrollment20_21 = read.csv("enrollment20_21.csv", as.is = T)
