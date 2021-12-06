@@ -44,6 +44,9 @@ get_enrollment_df = function(start_date) {
   else if (start_date < as.Date("2019-07-30")) {
     df = enrollment18_19
   }
+  else if (start_date < as.Date("2020-07-30")) {
+    df = enrollment19_20
+  }
   else if (start_date < as.Date("2021-07-30")) {
     df = enrollment20_21
   }
