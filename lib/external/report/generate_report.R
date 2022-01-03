@@ -14,19 +14,19 @@
 # 8) create ModeToMod and ModeFromMod from the ModeTo and ModeFrom columns, respectively
 # 9) assign 'df' to the variable 'DF'
 
-library(RPostgreSQL)
-library(DBI)
-library(reshape2)
-library(plyr)
-library(ggplot2)
-library(scales)
-library(knitr)
-library(Hmisc)
-library(car)
-library(httr)
+# library(RPostgreSQL)
+# library(DBI)
+# library(reshape2)
+# library(plyr)
+# library(ggplot2)
+# library(scales)
+# library(knitr)
+# library(Hmisc)
+# library(car)
+# library(httr)
 
-# DATE1 = "2019-06-01"
-# DATE2 = "2021-01-14"
+#DATE1 = "2012-06-01"
+#DATE2 = "2014-01-14"
 # test with 1 response
 #ORG_CODE = "06450310"
 # test with more than 10 responses
@@ -528,7 +528,7 @@ mt_df <- ddply(mt_df,
                Mean = mean(Estimate))
 
 mt_df$Mode <- reorder(mt_df$Mode,-1*mt_df$Mean)
-mt_df$Time <- as.factor(mt_df$Time)
+
 
 # Factoids
 carTripMorningCount <- sum(mt_df$Estimate[mt_df$Time == "Morning" & mt_df$Mode %in% c("Carpool","Family Vehicle")])
@@ -562,7 +562,7 @@ modeByTimeText <- ifelse(walkMorningvAfternoon == "higher" & carMorningvAfternoo
                                " of those who are driven to school in the morning get home by other means in the afternoon.",sep=""),
                          "")
 
-mt_df
+
 
 # mb_df will have three columns
 # Columns:
@@ -961,18 +961,16 @@ bufferByModeDF = mergeDF(bufferByModeDF,
                          data.column1 = "actual",
                          data.column2 = "freq")
 
-mt_df
 ## compile to pdf and rename
 School_Name <- enrollmentDF[enrollmentDF$ORG.CODE==ORG_CODE,"SCHOOL"]
-school_name_no_space <- gsub("\\s","",School_Name)
-school_name_no_slash <- gsub("\\/","",school_name_no_space)
-# school_name_no_slash <- paste("SurveyReport", SURVEY_ID, sep="")
+# school_name_no_space <- gsub("\\s","",School_Name)
+# school_name_no_slash <- gsub("\\/","",school_name_no_space)
+school_name_no_slash <- paste("SurveyReport", SURVEY_ID, sep="")
 knit2pdf("minimal.Rnw", compiler = "lualatex", output=paste(school_name_no_slash,".tex", sep=""), quiet=TRUE)
-# knit2html("minimal.Rnw", output=paste(school_name_no_slash,".tex", sep=""), quiet=TRUE)
+# knit2html("minimal.Rnw", compiler = "lualatex", output=paste(school_name_no_slash,".tex", sep=""), quiet=TRUE)
 file.copy(paste(school_name_no_slash, ".pdf", sep=""),"../../../public/reports", overwrite=TRUE)
 file.remove(paste(school_name_no_slash, ".pdf", sep=""))
 
 cat(paste(school_name_no_slash,".pdf",sep=""))
 
 ################### End  How Your School Compares ########################
-mt_df
