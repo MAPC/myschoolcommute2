@@ -45,6 +45,9 @@ This project is setup to deploy with capistrano to MAPC servers. Run `cap stagin
 ## Data Migration
 The data migration process to generate a new seed file from the old site is documented [in this commit](https://github.com/MAPC/myschoolcommute2/commit/1fe57646446be2779203b97c5347c3f9dc5e6af4).
 
+## Fetch Enrollment Data for annual update from 
+https://www.doe.mass.edu/infoservices/reports/enroll/default.html
+
 ## WARNING
 `bin/setup` runs a seed task that creates an admin user with the following credentials: 
 User: `admin@user.org`
