@@ -9,8 +9,9 @@ library(Hmisc)
 library(httr)
 library(car)
 
-# setwd('lib/external/report')
-setwd('C:/Users/cgately/Downloads/myschoolcommute2-develop/myschoolcommute2-develop/lib/external/report')
+setwd('lib/external/report')
+# setwd('/Users/tcomer/Projects/myschoolcommute2/lib/external/report')
+# setwd('C:/Users/cgately/Downloads/myschoolcommute2-develop/myschoolcommute2-develop/lib/external/report')
 load('.RData')
 source('_read_data.R')
 source('_functions.R')
@@ -30,5 +31,8 @@ enrollment19_20$ORG.CODE <- enrollment19_20$ORG_CODE
 
 enrollment20_21$ORG_CODE <- sprintf("%08d",enrollment20_21$ORG_CODE)
 enrollment20_21$ORG.CODE <- enrollment20_21$ORG_CODE
+
+enrollment21_22$ORG_CODE <- sprintf("%08d",enrollment21_22$ORG_CODE)
+enrollment21_22$ORG.CODE <- enrollment21_22$ORG_CODE
 
 save(list = ls(all.names = TRUE), file = ".RData", envir = .GlobalEnv)
