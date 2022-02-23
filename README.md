@@ -48,6 +48,10 @@ The data migration process to generate a new seed file from the old site is docu
 ## Fetch Enrollment Data for annual update from 
 https://www.doe.mass.edu/infoservices/reports/enroll/default.html
 
+## Correct Issues with Distance Value 
+When you have a case where you have null distances, run the following command
+```rake database:correct_distances RAILS_ENV=production```
+
 ## WARNING
 `bin/setup` runs a seed task that creates an admin user with the following credentials: 
 User: `admin@user.org`
