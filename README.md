@@ -48,6 +48,23 @@ The data migration process to generate a new seed file from the old site is docu
 ## Fetch Enrollment Data for annual update from 
 https://www.doe.mass.edu/infoservices/reports/enroll/default.html
 
+Postgres `CREATE` statements can be regenerated though [csvkit](https://csvkit.readthedocs.io/en/latest/)
+```
+csvsql --db postgresql:///myschoolcommute2 --insert enrollment19_20.csv
+```
+Run the `CREATE` statement in the myschoolcommute2 database.
+Use the import/export command to import the data in the csv.
+
+You may have to run and `UPDATE` (and possibly create) on potentially 2 fields `ORG_CODE` and `SCHOOL` both char fields.
+
+Basis for command is
+
+```
+UPDATE enrollment20_21
+SET ORG_CODE = LPAD(schid, 8 '0'),
+SCHOOL = CONCAT(name, ' - ', district, ' (District)')
+```
+
 ## Correct Issues with Distance Value 
 When you have a case where you have null distances, run the following command
 ```rake database:correct_distances RAILS_ENV=production```
