@@ -26,7 +26,7 @@ lib/external/intersecting-streets/build
 lib/external/school-map/screens/*.png
 lib/external/report/*.png
 
-
+logfile
 .env
 .ssh
 
