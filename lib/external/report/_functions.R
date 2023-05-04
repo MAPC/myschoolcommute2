@@ -53,8 +53,11 @@ get_enrollment_df = function(start_date) {
   else if (start_date < as.Date("2022-07-30")) {
     df = enrollment21_22
   }
+  else if (start_date < as.Date("2023-07-30")) {
+    df = enrollment22_23
+  }
   else {
-    df = enrollment21_22
+    df = enrollment22_23
   }
 
   return(df)
@@ -98,8 +101,11 @@ get_enrollment_date = function(start_date) {
   else if (start_date < as.Date("2022-07-30")) {
     df = "2021-2022"
   }
+  else if (start_date < as.Date("2023-07-30")) {
+    df = "2022-2023"
+  }
   else {
-    df = "2021-2022"
+    df = "2022-2023"
   }
 
   return(df)

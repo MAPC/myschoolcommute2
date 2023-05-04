@@ -1,4 +1,4 @@
-schid,SCHOOL,municipal,enrolled,PK,K,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,SP,ORG_CODE,schoolyear,name
+schid,school_name,municipal,enrolled,pk,k,x1,x2,x3,x4,x5,x6,x7,x8,x9,x10,x11,x12,sp,ORG_CODE,schoolyear,SCHOOL
 0,State Totals - State Totals,State Totals,913735,30924,61611,65628,63966,65083,66360,66453,67299,67468,69397,75502,73829,69463,69134,1618,0,2022-23,State Totals
 10001,Abington - Abington Early Education Program,Abington,87,87,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10001,2022-23,Abington Early Education Program
 10015,Abington - Woodsdale Elementary School,Abington,335,0,0,0,0,166,169,0,0,0,0,0,0,0,0,0,10015,2022-23,Woodsdale Elementary School
