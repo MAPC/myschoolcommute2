@@ -6,6 +6,6 @@
 \thispagestyle{empty}                           
 
 \section*{No Enrollment Information}
-We cannot generate a report for your school; we either do not have enrollment data for your school, or our enrollment data does not match the grades reported in your survey. We apologize for the inconvenice. 
+We cannot generate a report for your school; we either do not have enrollment data for your school, or our enrollment data does not match the grades reported in your survey. We apologize for the inconvenience.
 
 \end{document}

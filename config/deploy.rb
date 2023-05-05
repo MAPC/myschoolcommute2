@@ -1,5 +1,5 @@
 # config valid only for current version of Capistrano
-lock "3.8.2"
+lock "3.17.2"
 
 set :application, 'myschoolcommute2'
 set :repo_url, 'git@github.com:MAPC/myschoolcommute2.git'
